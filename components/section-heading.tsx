@@ -1,0 +1,3 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+export function SectionHeading({ title, eyebrow, href }: { title: string; eyebrow?: string; href?: string }) { return <div className="mb-3 flex items-end justify-between border-b pb-3"><div>{eyebrow && <p className="micro-label mb-1 text-primary">{eyebrow}</p>}<h2 className="text-lg font-bold tracking-tight sm:text-xl">{title}</h2></div>{href && <Link href={href} className="flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-primary">View all <ArrowRight className="size-4"/></Link>}</div>; }

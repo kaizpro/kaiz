@@ -1,0 +1,2 @@
+import { requireAdmin } from "@/lib/auth";import { Card } from "@/components/ui/card";import { CompetitionForm } from "@/components/admin/competition-form";import { createCompetition } from "@/app/admin/actions";
+export default async function NewCompetition(){await requireAdmin();return <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6"><h1 className="text-3xl font-bold">New competition</h1><p className="mt-2 text-muted-foreground">Publish a verified opportunity to the directory.</p><Card className="mt-8 p-6"><CompetitionForm action={createCompetition}/></Card></div>}

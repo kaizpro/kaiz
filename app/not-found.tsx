@@ -1,0 +1,2 @@
+import Link from "next/link"; import { Button } from "@/components/ui/button";
+export default function NotFound() { return <div className="grid min-h-[65vh] place-items-center px-4 text-center"><div><p className="font-mono text-sm text-primary">404 / NOT FOUND</p><h1 className="mt-3 text-3xl font-bold">This page is off the leaderboard.</h1><p className="mt-3 text-muted-foreground">The route may have moved or the record is no longer public.</p><Button asChild className="mt-6"><Link href="/">Back home</Link></Button></div></div>; }

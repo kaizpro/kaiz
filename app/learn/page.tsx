@@ -1,0 +1,1 @@
+import type { Metadata } from "next";import { MilestonePlaceholder } from "@/components/milestone-placeholder";export const metadata:Metadata={title:"Learn"};export default function Page(){return <MilestonePlaceholder title="Learning resources" milestone={2} description="Curated competition preparation resources will follow the community discussion system."/>}

@@ -1,0 +1,3 @@
+import { DatabaseZap } from "lucide-react";
+import { Card } from "@/components/ui/card";
+export function EmptyState({ title = "Competition data is not connected", description = "Configure Supabase to load the live directory. No sample results are shown as real data." }: { title?: string; description?: string }) { return <Card className="grid min-h-36 place-items-center border-dashed bg-muted/10 p-7 text-center"><div><DatabaseZap className="mx-auto mb-3 size-5 text-primary"/><h3 className="text-sm font-semibold">{title}</h3><p className="mx-auto mt-1 max-w-md text-sm leading-6 text-muted-foreground">{description}</p></div></Card>; }

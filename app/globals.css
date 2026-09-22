@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f5f7f9; --foreground: #11151b; --card: #ffffff; --card-foreground: #11151b;
+  --muted: #eef1f4; --muted-foreground: #67717e; --border: #d9dee5; --input: #c9d0d9;
+  --primary: #007fa8; --primary-foreground: #ffffff; --ring: #009bc9; --destructive: #c73546;
+  --gold: #a66b00; --success: #16865c; --warning: #b66d08;
+}
+.dark {
+  --background: #090b0f; --foreground: #f4f6f8; --card: #11141a; --card-foreground: #f4f6f8;
+  --muted: #171b22; --muted-foreground: #89929f; --border: #242933; --input: #303641;
+  --primary: #18c8ff; --primary-foreground: #041216; --ring: #18c8ff; --destructive: #ff5b6e;
+  --gold: #f5b942; --success: #3ddc97; --warning: #f2a33c;
+}
+@theme inline {
+  --color-background: var(--background); --color-foreground: var(--foreground); --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground); --color-muted: var(--muted); --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border); --color-input: var(--input); --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground); --color-ring: var(--ring); --color-destructive: var(--destructive);
+  --color-gold: var(--gold); --color-success: var(--success); --color-warning: var(--warning);
+  --font-sans: var(--font-inter); --font-mono: var(--font-mono);
+}
+* { border-color: var(--border); }
+html { scroll-behavior: smooth; }
+body { background: var(--background); color: var(--foreground); font-family: var(--font-inter), system-ui, sans-serif; font-feature-settings: "ss01" 1, "cv01" 1; }
+::selection { background: color-mix(in srgb, var(--primary) 30%, transparent); }
+.tabular { font-variant-numeric: tabular-nums slashed-zero; }
+.micro-label { font-family: var(--font-mono), monospace; font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.signal-grid { background-image: linear-gradient(to right, color-mix(in srgb, var(--border) 38%, transparent) 1px, transparent 1px); background-size: 64px 100%; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
