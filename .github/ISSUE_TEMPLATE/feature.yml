@@ -1,0 +1,42 @@
+name: Feature request
+description: Propose a focused KAIZ product capability.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: Do not include credentials, tokens, secret keys, or private user data.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user or team problem should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Describe the expected behavior without prescribing unnecessary implementation details.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and acceptance criteria
+      placeholder: |
+        - [ ] Acceptance criterion
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and shared areas
+      description: Note related issues, migrations, environment changes, or hot-zone files.
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add non-sensitive references, mockups, or screenshots.
+

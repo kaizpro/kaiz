@@ -1,0 +1,49 @@
+name: Bug report
+description: Report a reproducible problem in KAIZ.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Do not include credentials, tokens, secret keys, or private user data.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened, and what did you expect instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to ...
+        2. Select ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: input
+    id: route
+    attributes:
+      label: Route or module
+      placeholder: /competitions or lib/data/...
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser, device, Preview/local environment, and relevant account role. Do not include secrets.
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Add sanitized logs, screenshots, or error messages.
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact and severity
+      description: Who is affected, and is there a safe workaround?
+    validations:
+      required: true
+
