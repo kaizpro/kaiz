@@ -1,39 +1,39 @@
+## Linked Issue
+
+<!-- Use closing syntax where appropriate: Closes #123 / Fixes #123 -->
+
 ## Summary
 
-<!-- What changed, and why? -->
+<!-- What changed and why? -->
 
-## Scope
+## Ownership and scope
 
-- Branch: `<!-- type/task-name -->`
-- Files/modules affected:
+- Owner:
+- Branch:
+- In scope:
 - Out of scope:
+- Changed areas/files:
 
-## Shared areas
+## Coordination
 
-- Shared/hot-zone files modified: <!-- none, or list them -->
-- Coordination completed: <!-- not needed, or explain -->
-
-## Data and deployment
-
-- Database migration: <!-- none, or migration filename and rollout order -->
-- Supabase production changes: <!-- none; production changes require owner approval -->
-- Vercel/environment changes: <!-- none, or describe Preview/Production impact -->
+- Shared/hot files: <!-- none, or list and describe coordination -->
+- Migration/config/environment changes: <!-- none, or describe rollout impact -->
+- Conflict/overlap assessment: <!-- none, or related Issues/PRs and merge order -->
+- [ ] Latest `main` has been accounted for
 
 ## Verification
 
 - [ ] TypeScript — `npm run typecheck`
 - [ ] ESLint — `npm run lint`
 - [ ] Production build — `npm run build`
-- [ ] Screenshots attached for visual changes, or not applicable
-- [ ] Manual QA described below, or not applicable
+- [ ] Required CI is passing
+- [ ] Manual testing described below, or not applicable
+- [ ] Screenshots attached for relevant visual changes, or not applicable
 
-Manual QA:
+Manual testing:
 
-<!-- Routes, roles, browsers, and scenarios checked. -->
+<!-- Routes, roles, environments, and scenarios checked. -->
 
 ## Risks
 
-<!-- Known risks, follow-up work, rollback notes, or "None". -->
-
-- [ ] This pull request is focused, synchronized with `main`, and ready for review.
-
+<!-- Known risks, dependencies, rollback notes, or "None". -->

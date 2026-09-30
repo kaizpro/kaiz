@@ -1,95 +1,128 @@
 # KAIZ team workflow
 
-This workflow keeps `main` stable while multiple developers and Codex sessions work in parallel.
+This workflow keeps `main` stable while three developers and their Codex sessions work in parallel.
 
-## Stable branch
+## Source of truth
 
-- `main` is the protected, deployable branch. Never develop or push directly to it.
-- Every change reaches `main` through a reviewed pull request with passing CI.
-- Do not force-push or delete `main`.
+GitHub is the source of truth for task ownership and status, branches, pull requests, review state, and merge state. ChatGPT and Codex sessions are working tools, not coordination records. Verify current Issues, assignees, Project status, branches, and pull requests in GitHub before assuming what another developer owns.
 
-## Start new work
+Do not create mutable coordination files such as `who-is-working.md`; current work belongs in GitHub.
 
-Before creating a task branch, synchronize local `main`:
+## Task lifecycle
+
+The normal Project flow is:
+
+`Backlog → Ready → In Progress → PR Review → Done`
+
+- **Backlog:** captured but not yet prepared or assigned.
+- **Ready:** scoped, actionable, and clear of known blockers.
+- **In Progress:** assigned and actively being implemented on a task branch.
+- **Blocked:** waiting on another developer, a decision, credential, shared file, migration, or unresolved conflict. Record the blocker on the Issue.
+- **PR Review:** a pull request is open and awaiting CI, review, revisions, or merge.
+- **Done:** merged and verified; the linked Issue is closed.
+
+## Issues and ownership
+
+Create a GitHub Issue before implementing any meaningful task. It should state the objective, owner, scope, acceptance criteria, dependencies, shared/hot files, and out-of-scope areas.
+
+The Issue assignee is the authoritative primary owner. Other developers must not silently duplicate that scope; collaboration and handoffs are coordinated in the Issue or pull request.
+
+Current major ownership is:
+
+- Developer A / `Zhunussov`: Auth
+- Developer B / `alimendeke-maker`: Problem Archive
+- Developer C / `bekjj`: Team Infrastructure
+
+Future Issues may change this mapping, but current work remains within these boundaries until GitHub records a handoff.
+
+## Starting work
+
+Before starting a task:
+
+1. Inspect open Issues and pull requests.
+2. Check the GitHub Project and confirm no Issue already owns the scope.
+3. Confirm dependencies and shared/hot files.
+4. Assign the Issue and move it to **In Progress**.
+5. Synchronize local `main` and create a dedicated task branch:
 
 ```bash
 git switch main
 git pull origin main
-git switch -c <type>/<short-task-name>
+git switch -c <type>/<short-description>
 ```
 
-Use one branch for one task and one pull request. Branch names use lowercase, hyphenated descriptions:
+Never develop or push directly on `main`. Use one task per branch and keep branches short-lived. Supported prefixes are `feature/`, `fix/`, `chore/`, and `docs/`; an Issue number may be included, such as `feature/123-problem-statistics`.
 
-- `feature/*` for product capabilities
-- `fix/*` for defects
-- `chore/*` for tooling, dependencies, and repository maintenance
-- `docs/*` for documentation-only changes
+## Pull requests and CI
 
-Do not reuse a merged branch for new work.
+Every integration into `main` requires a pull request. Link its Issue with GitHub closing syntax where applicable, for example `Closes #123` or `Fixes #123`. Document ownership and scope, checks, shared/hot files, migrations or configuration changes, and relevant conflicts or dependencies. Move the Issue or Project item to **PR Review** when the PR opens.
 
-## Pull requests
+Before merge:
 
-1. Keep the branch focused and avoid unrelated formatting or refactors.
-2. Sync the latest `origin/main` before requesting final review. Resolve conflicts on the task branch, never on `main`.
-3. Complete the pull request template, including shared-file, database, environment, and verification sections.
-4. Wait for CI and required review to pass.
-5. Merge through GitHub using the repository's approved merge method. Never bypass protection or push a merge directly to `main`.
+- dependency installation, TypeScript, ESLint, and the production build must pass;
+- required GitHub CI must pass once configured;
+- the latest `main` must be accounted for; and
+- review conversations must be resolved.
 
-Draft pull requests are encouraged when coordination is useful but the work is not ready to merge.
+Do not bypass failing CI without explicit team discussion.
 
-## Conflicts and parallel work
+## Shared and hot files
 
-- Announce ownership of a task and its branch before editing shared areas.
-- Prefer small pull requests and coordinate sequencing when two tasks touch the same hot-zone file.
-- Fetch before resolving conflicts. Read both sides and preserve both intended behaviors; do not accept one side wholesale without checking it.
-- Run all affected checks again after conflict resolution.
-- Do not rewrite another developer's branch, discard their changes, or force-push a shared branch without their explicit agreement.
+Common hot areas include `package.json`, `package-lock.json`, shared application configuration, central layout and navigation, shared Supabase utilities, database schema and migrations, GitHub workflows, and environment configuration.
 
-Common hot zones include:
+When a task requires a hot-file change:
 
-- `package.json` and `package-lock.json`
-- `app/layout.tsx`, `app/globals.css`, and `proxy.ts`
-- shared components under `components/ui/`
-- shared contracts and clients under `lib/`
-- `.github/` workflows and templates
-- `supabase/config.toml` and `supabase/migrations/`
+1. Check active Issues and pull requests for another owner.
+2. Record the required change in the relevant Issue or PR.
+3. Coordinate ownership before editing.
+4. Keep the change minimal and exclude unrelated work.
+5. Re-check latest `main` before merge.
+
+If two tasks require incompatible edits, stop the conflicting portion and resolve ownership and merge order through GitHub.
+
+## Semantic conflicts
+
+A clean textual merge does not prove the work is compatible. Semantic conflicts include duplicate implementations, an API change another branch depends on, migrations touching the same schema area, or independent edits to a shared component.
+
+When overlap is discovered:
+
+1. Stop expanding the overlapping change.
+2. Comment on the relevant Issue or PR and identify the owner.
+3. Agree on merge order and let one branch own the shared implementation.
+4. Update the dependent branch after the owner branch merges.
+
+Do not duplicate or guess how to reconcile another developer's implementation.
 
 ## Database migrations
 
-- Use a new, uniquely timestamped migration for every schema change.
-- Never edit, rename, reorder, or delete a migration that has been applied to a shared or production project.
-- Keep migrations backward-compatible where practical and document destructive or data-changing operations in the pull request.
-- Coordinate migration timestamps and deployment order with anyone else changing the schema.
-- Test migrations against a non-production environment first. Application code that depends on a migration must state the required rollout order.
+Migrations are shared/hot work:
 
-## Supabase environments
+- inspect active migration work before creating one;
+- never edit another developer's already-shared or applied migration;
+- create a new uniquely timestamped migration for a follow-up;
+- avoid independent changes to the same schema area;
+- record dependencies and merge order in the Issue and PR; and
+- never modify production data during normal feature work without explicit coordination.
 
-- Production Supabase is owned by the designated project owner or release owner. A task branch, preview deployment, or Codex session must not mutate production.
-- Production schema pushes, provider changes, Auth settings, RLS changes, data corrections, and role grants require explicit owner approval and a documented rollout.
-- Developers use their approved local or shared development project for testing. Never copy production secrets or user data into a task environment.
+Test migrations outside production first. Production Supabase changes, Auth/provider settings, data corrections, and role grants require explicit project-owner approval.
 
-## Vercel deployments and environment variables
+## Vercel and secrets
 
-- Pull requests may use Vercel Preview deployments for review and manual QA.
-- Preview deployments must use preview-safe environment values and must not write to production Supabase.
-- Production deployment is sourced only from protected `main` after review and passing CI.
-- Production environment-variable changes are made only by the designated project or release owner and are recorded in the pull request or release notes.
+Pull requests may use Vercel Preview with preview-safe environment values; previews must not write to production Supabase. Production deploys come only from protected `main`, and production environment changes belong to the designated release owner.
 
-## Secrets
+Never commit or paste credentials, tokens, `.env.local`, service-role keys, or private user data into code, Issues, PRs, logs, screenshots, or Codex prompts. `NEXT_PUBLIC_` variables may contain public values only. Notify the project owner and rotate any exposed secret immediately.
 
-- Never commit secrets, credentials, tokens, `.env.local`, or service-role keys.
-- Store local values only in ignored environment files and use the team's approved secret storage for hosted environments.
-- Browser variables prefixed with `NEXT_PUBLIC_` must contain public values only. Supabase secret/service-role keys must never use that prefix or enter client code.
-- Do not paste secrets into issues, pull requests, screenshots, terminal logs, CI output, or Codex prompts.
-- If a secret is exposed, stop using it, notify the project owner, and rotate it immediately; deleting it from a later commit is not sufficient.
+## Merge readiness
 
-## Local verification
+Before requesting merge:
 
-Run the same checks as CI before marking a pull request ready:
+1. Fetch current remote state and inspect latest `main` and active PRs.
+2. Account for latest `main` and resolve textual and semantic conflicts.
+3. Run required checks and verify GitHub CI.
+4. Obtain review and resolve every review conversation.
 
-```bash
-npm run typecheck
-npm run lint
-npm run build
-```
+Nobody pushes directly to `main`.
 
+## After merge
+
+Move the Issue or Project item to **Done**, let closing syntax close the Issue where possible, and delete the merged task branch when safe. Fetch and pull latest `main` before starting the next task.

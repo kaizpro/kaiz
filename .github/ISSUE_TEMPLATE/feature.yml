@@ -1,5 +1,5 @@
 name: Feature request
-description: Propose a focused KAIZ product capability.
+description: Define a focused KAIZ capability and its ownership.
 title: "[Feature]: "
 labels:
   - enhancement
@@ -8,35 +8,44 @@ body:
     attributes:
       value: Do not include credentials, tokens, secret keys, or private user data.
   - type: textarea
-    id: problem
+    id: objective
     attributes:
-      label: Problem
-      description: What user or team problem should this solve?
-    validations:
-      required: true
-  - type: textarea
-    id: outcome
-    attributes:
-      label: Desired outcome
-      description: Describe the expected behavior without prescribing unnecessary implementation details.
+      label: Objective
+      description: What user or team outcome should this task achieve?
     validations:
       required: true
   - type: textarea
     id: scope
     attributes:
-      label: Scope and acceptance criteria
+      label: Scope
+      description: What work belongs in this task?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
       placeholder: |
         - [ ] Acceptance criterion
     validations:
       required: true
+  - type: input
+    id: ownership
+    attributes:
+      label: Proposed or known owner
+      description: GitHub username or ownership area, if known. The final assignee is authoritative.
   - type: textarea
     id: dependencies
     attributes:
-      label: Dependencies and shared areas
-      description: Note related issues, migrations, environment changes, or hot-zone files.
+      label: Dependencies
+      description: Related Issues, PRs, decisions, migrations, or required merge order.
   - type: textarea
-    id: context
+    id: shared-files
     attributes:
-      label: Additional context
-      description: Add non-sensitive references, mockups, or screenshots.
-
+      label: Shared or hot files
+      description: List shared files or modules requiring coordination, or state none.
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: Out of scope
+      description: Explicitly list adjacent work that this task must not include.

@@ -10,8 +10,8 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: Description
-      description: What happened, and what did you expect instead?
+      label: Bug description
+      description: Concisely describe the problem and its impact.
     validations:
       required: true
   - type: textarea
@@ -24,26 +24,30 @@ body:
         3. Observe ...
     validations:
       required: true
-  - type: input
-    id: route
+  - type: textarea
+    id: expected
     attributes:
-      label: Route or module
-      placeholder: /competitions or lib/data/...
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
   - type: textarea
     id: environment
     attributes:
       label: Environment
-      description: Browser, device, Preview/local environment, and relevant account role. Do not include secrets.
+      description: Route, browser, device, local/Preview environment, and relevant account role. Do not include secrets.
   - type: textarea
     id: evidence
     attributes:
-      label: Evidence
-      description: Add sanitized logs, screenshots, or error messages.
-  - type: textarea
-    id: impact
+      label: Relevant logs or screenshots
+      description: Add sanitized evidence only.
+  - type: input
+    id: ownership
     attributes:
-      label: Impact and severity
-      description: Who is affected, and is there a safe workaround?
-    validations:
-      required: true
-
+      label: Likely ownership or area
+      description: GitHub username, feature area, or module if known. The final assignee is authoritative.
