@@ -4,7 +4,7 @@ import { Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
-const links = [["Compete", "/competitions"], ["Leaderboard", "/leaderboard"], ["Discuss", "/discussions"], ["Learn", "/learn"]] as const;
+const links = [["Compete", "/competitions"], ["Problems", "/problems"], ["Leaderboard", "/leaderboard"], ["Discuss", "/discussions"], ["Learn", "/learn"]] as const;
 
 export function MainNav() {
   const pathname = usePathname();

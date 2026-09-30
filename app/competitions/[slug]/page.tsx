@@ -7,10 +7,12 @@ import { StatusBadge } from "@/components/status-badge";
 import { UnavailablePanel } from "@/components/unavailable-panel";
 import { CompetitionLeaderboard } from "@/components/competition-leaderboard";
 import { CompetitionDiscussions } from "@/components/competition-discussions";
+import { CompetitionProblems } from "@/components/competition-problems";
 import { getCurrentUser } from "@/lib/auth";
 import { getCompetition } from "@/lib/data/competitions";
 import { getPublishedCompetitionResults } from "@/lib/data/competition-results";
 import { listDiscussionPosts } from "@/lib/data/discussions";
+import { listCompetitionProblems } from "@/lib/data/problems";
 import { formatCompetitionFormat, formatCompetitionLocation, formatDate, formatDateRange, isSameDate } from "@/lib/utils";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -27,10 +29,11 @@ function DataPoint({ label, value }: { label: string; value: React.ReactNode }) 
 export default async function CompetitionDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params; const competition = await getCompetition(slug); if (!competition) notFound();
   const singleDay = isSameDate(competition.start_date, competition.end_date);
-  const [resultSets, discussionResult, user] = await Promise.all([
+  const [resultSets, discussionResult, user, problems] = await Promise.all([
     getPublishedCompetitionResults(competition.id),
     listDiscussionPosts({ competitionId: competition.id, limit: 4 }),
     getCurrentUser(),
+    listCompetitionProblems(competition.id),
   ]);
   return <div className="mx-auto max-w-[1440px] px-4 py-8 sm:px-6 lg:px-8">
     <header className="border-b pb-7"><div className="flex flex-wrap items-center gap-2"><StatusBadge status={competition.status}/><Badge>{competition.category}</Badge><Badge>{competition.format}</Badge>{competition.verified && <Badge className="border-primary/30 text-primary"><CheckCircle2 className="mr-1 size-3"/>Verified</Badge>}</div><div className="mt-6 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end"><div><h1 className="max-w-5xl text-3xl font-black leading-tight tracking-[-.035em] sm:text-5xl">{competition.title}</h1><p className="mt-3 text-base text-muted-foreground">{competition.organizer}</p></div><div className="flex flex-wrap gap-2">{competition.registration_url && <Button asChild size="lg"><a href={competition.registration_url} target="_blank" rel="noreferrer">Register <ExternalLink className="size-4"/></a></Button>}{competition.official_website && <Button asChild size="lg" variant="outline"><a href={competition.official_website} target="_blank" rel="noreferrer">Official site</a></Button>}</div></div></header>
@@ -41,6 +44,7 @@ export default async function CompetitionDetail({ params }: { params: Promise<{ 
         <section className="py-8"><p className="micro-label text-primary">Brief</p><h2 className="mt-2 text-xl font-bold">About this competition</h2><p className="mt-4 max-w-4xl whitespace-pre-line text-base leading-8 text-muted-foreground">{competition.description}</p></section>
         {competition.eligibility && <section className="border-t py-8"><div className="flex items-center gap-2"><ShieldCheck className="size-5 text-primary"/><h2 className="text-lg font-bold">Eligibility</h2></div><p className="mt-3 max-w-4xl leading-7 text-muted-foreground">{competition.eligibility}</p></section>}
         {!!competition.tags.length && <section className="border-t py-6"><p className="micro-label text-muted-foreground">Tags</p><div className="mt-3 flex flex-wrap gap-2">{competition.tags.map((tag) => <Badge key={tag}>{tag}</Badge>)}</div></section>}
+        <CompetitionProblems problems={problems}/>
         <CompetitionLeaderboard resultSets={resultSets}/>
         <CompetitionDiscussions competitionId={competition.id} posts={discussionResult.posts} signedIn={Boolean(user)}/>
         <section className="border-t pt-8"><UnavailablePanel title="Participant directory unavailable" description="Registration data will appear here."/></section>
