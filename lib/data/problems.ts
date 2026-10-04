@@ -100,7 +100,8 @@ export async function listProblems(options: {
     .select(problemSelect)
     .eq("published", true)
     .order("created_at", { ascending: false })
-    .order("title", { ascending: true });
+    .order("title", { ascending: true })
+    .order("id", { ascending: true });
   const query = cleanSearch(options.query);
   if (query) request = request.or(`title.ilike.%${query}%,category.ilike.%${query}%`);
   if (["unrated", "provisional", "rated"].includes(options.difficulty ?? "")) {
@@ -138,7 +139,8 @@ export async function listCompetitionProblems(competitionId: string) {
     .eq("competition_id", competitionId)
     .eq("published", true)
     .order("sort_order", { ascending: true })
-    .order("title", { ascending: true });
+    .order("title", { ascending: true })
+    .order("id", { ascending: true });
   if (error) throw new Error("Unable to load competition problems.");
   return attachCurrentStatistics((data ?? []) as unknown as Omit<Problem, "statistics">[]);
 }
@@ -154,12 +156,13 @@ export async function listOfficialProblemPerformances(problemId: string, limit =
     .eq("status", "valid")
     .order("normalized_performance", { ascending: false, nullsFirst: false })
     .order("attempted_at", { ascending: true })
+    .order("id", { ascending: true })
     .limit(limit);
   if (error) throw new Error("Unable to load official problem performances.");
   return (data ?? []) as unknown as ProblemPerformance[];
 }
 
-export async function getBestPracticePerformance(problemId: string, userId: string) {
+export async function getBestPracticePerformance(problemId: string, userId: string, direction: ProblemMetricDirection) {
   if (!hasSupabaseEnv()) return null;
   const supabase = await createClient();
   const { data, error } = await supabase
@@ -170,7 +173,9 @@ export async function getBestPracticePerformance(problemId: string, userId: stri
     .eq("attempt_type", "practice")
     .eq("status", "valid")
     .order("normalized_performance", { ascending: false, nullsFirst: false })
+    .order("raw_score", { ascending: direction === "lower_is_better" })
     .order("attempted_at", { ascending: false })
+    .order("id", { ascending: true })
     .limit(1)
     .maybeSingle();
   if (error) throw new Error("Unable to load your practice performance.");
