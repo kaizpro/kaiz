@@ -1,0 +1,53 @@
+name: Bug report
+description: Report a reproducible problem in KAIZ.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Do not include credentials, tokens, secret keys, or private user data.
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug description
+      description: Concisely describe the problem and its impact.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to ...
+        2. Select ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Route, browser, device, local/Preview environment, and relevant account role. Do not include secrets.
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Relevant logs or screenshots
+      description: Add sanitized evidence only.
+  - type: input
+    id: ownership
+    attributes:
+      label: Likely ownership or area
+      description: GitHub username, feature area, or module if known. The final assignee is authoritative.

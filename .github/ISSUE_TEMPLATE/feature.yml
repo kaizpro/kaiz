@@ -1,0 +1,51 @@
+name: Feature request
+description: Define a focused KAIZ capability and its ownership.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: Do not include credentials, tokens, secret keys, or private user data.
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: What user or team outcome should this task achieve?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: What work belongs in this task?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      placeholder: |
+        - [ ] Acceptance criterion
+    validations:
+      required: true
+  - type: input
+    id: ownership
+    attributes:
+      label: Proposed or known owner
+      description: GitHub username or ownership area, if known. The final assignee is authoritative.
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: Related Issues, PRs, decisions, migrations, or required merge order.
+  - type: textarea
+    id: shared-files
+    attributes:
+      label: Shared or hot files
+      description: List shared files or modules requiring coordination, or state none.
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: Out of scope
+      description: Explicitly list adjacent work that this task must not include.
