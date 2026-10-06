@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowDown, ArrowUp, BarChart3, ExternalLink, Gauge, History, Medal, ShieldCheck } from "lucide-react";
+import { ArrowDown, ArrowUp, BarChart3, ExternalLink, Gauge, Medal, ShieldCheck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { UnavailablePanel } from "@/components/unavailable-panel";
 import { getCurrentUser } from "@/lib/auth";
-import { formatDateTime } from "@/lib/utils";
+import { ProblemPractice } from "@/components/problem-practice";
+import { listOwnPracticeAttempts } from "@/lib/data/practice";
 import { getBestPracticePerformance, getProblem, listOfficialProblemPerformances, type Problem } from "@/lib/data/problems";
 
 function formatNumber(value: number | null) {
@@ -35,14 +36,19 @@ function DataPoint({ label, value }: { label: string; value: React.ReactNode }) 
   return <div className="border-b py-4 last:border-b-0"><dt className="micro-label text-muted-foreground">{label}</dt><dd className="mt-1.5 text-sm font-semibold">{value}</dd></div>;
 }
 
-export default async function ProblemDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ProblemDetailPage({ params, searchParams }: {
+  params: Promise<{ slug: string }>; searchParams: Promise<{ practicePage?: string }>;
+}) {
   const { slug } = await params;
   const problem = await getProblem(slug);
   if (!problem) notFound();
   const user = await getCurrentUser();
-  const [officialPerformances, bestPractice] = await Promise.all([
+  const { practicePage: requested } = await searchParams;
+  const practicePage = /^\d{1,5}$/.test(requested ?? "") ? Math.max(1, Math.min(10000, Number(requested))) : 1;
+  const [officialPerformances, bestPractice, history] = await Promise.all([
     listOfficialProblemPerformances(problem.id),
     user ? getBestPracticePerformance(problem.id, user.id, problem.metric_direction) : Promise.resolve(null),
+    user ? listOwnPracticeAttempts(problem.id, practicePage) : Promise.resolve({ attempts: [], count: 0 }),
   ]);
   const DirectionIcon = problem.metric_direction === "higher_is_better" ? ArrowUp : ArrowDown;
   return <div className="mx-auto max-w-[1440px] px-4 py-8 sm:px-6 lg:px-8">
@@ -58,7 +64,7 @@ export default async function ProblemDetailPage({ params }: { params: Promise<{ 
 
         <section className="border-t pt-8"><div className="flex items-center gap-2"><Medal className="size-5 text-primary"/><h2 className="text-lg font-bold">Official performances</h2></div><p className="mt-2 text-sm leading-6 text-muted-foreground">Official contest evidence is shown separately from practice and upsolving.</p>{officialPerformances.length ? <div className="mt-4 border bg-card">{officialPerformances.map((performance) => <div key={performance.id} className="grid grid-cols-[minmax(0,1fr)_7rem_7rem] items-center border-b px-4 py-3 text-sm last:border-b-0"><div className="min-w-0"><p className="truncate font-semibold">{performance.user?.display_name ?? "KAIZ participant"}</p>{performance.user?.username && <Link className="text-xs text-muted-foreground hover:text-primary" href={`/u/${performance.user.username}`}>@{performance.user.username}</Link>}</div><span className="tabular text-right font-mono">{formatNumber(performance.raw_score)}</span><span className="tabular text-right font-mono text-primary">{formatPercent(performance.normalized_performance)}</span></div>)}</div> : <UnavailablePanel className="mt-4" title="No official performances published" description="Official per-problem records will appear independently of practice attempts."/>}</section>
 
-        <section className="border-t pt-8"><div className="flex items-center gap-2"><History className="size-5 text-primary"/><h2 className="text-lg font-bold">Practice / upsolving</h2></div>{user ? bestPractice ? <div className="mt-4 grid border sm:grid-cols-3"><div className="border-b p-4 sm:border-b-0 sm:border-r"><p className="micro-label text-muted-foreground">{bestPractice.normalized_performance === null ? "Best raw score" : "Raw score of best attempt"}</p><p className="tabular mt-2 font-mono text-xl font-bold">{formatNumber(bestPractice.raw_score)}</p></div><div className="border-b p-4 sm:border-b-0 sm:border-r"><p className="micro-label text-muted-foreground">Normalized</p><p className="tabular mt-2 font-mono text-xl font-bold">{formatPercent(bestPractice.normalized_performance)}</p></div><div className="p-4"><p className="micro-label text-muted-foreground">Attempted</p><p className="mt-2 text-sm font-semibold">{formatDateTime(bestPractice.attempted_at)}</p></div></div> : <UnavailablePanel className="mt-4" title="No practice performance recorded" description="Practice submission capture is not part of this foundation milestone."/> : <UnavailablePanel className="mt-4" title="Sign in to view practice data" description="Private practice and upsolving records are visible only to their owner."/>}</section>
+        {user ? <ProblemPractice problemId={problem.id} slug={problem.slug} metric={problem.metric_name} direction={problem.metric_direction} best={bestPractice} attempts={history.attempts} count={history.count} page={practicePage}/> : <section className="border-t pt-8"><h2 className="text-lg font-bold">Practice / upsolving</h2><UnavailablePanel className="mt-4" title="Sign in to record practice" description="Self-reported practice records are private and separate from official evidence."/><Button asChild className="mt-4"><Link href={`/auth/login?next=${encodeURIComponent(`/problems/${problem.slug}`)}`}>Sign in</Link></Button></section>}
       </main>
 
       <aside><div className="border bg-card px-5 lg:sticky lg:top-20"><div className="flex items-center gap-2 border-b py-4"><Gauge className="size-4 text-primary"/><h2 className="font-bold">Problem data</h2></div><dl><DataPoint label="Competition" value={problem.competition ? <Link className="hover:text-primary" href={`/competitions/${problem.competition.slug}`}>{problem.competition.title}</Link> : "Independent archive"}/><DataPoint label="Category" value={problem.category}/><DataPoint label="Metric direction" value={problem.metric_direction === "higher_is_better" ? "Higher is better" : "Lower is better"}/><DataPoint label="Source" value={problem.source_label ?? problem.source_provider}/><DataPoint label="Source ID" value={problem.source_external_id ?? "Not supplied"}/></dl>{problem.tags.length > 0 && <div className="border-t py-4"><p className="micro-label text-muted-foreground">Tags</p><div className="mt-3 flex flex-wrap gap-2">{problem.tags.map((tag) => <Badge key={tag}>{tag}</Badge>)}</div></div>}<div className="flex items-start gap-2 border-t py-4 text-xs leading-5 text-muted-foreground"><ShieldCheck className="mt-0.5 size-4 shrink-0 text-success"/>Official and practice records remain separate.</div></div></aside>

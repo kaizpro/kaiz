@@ -2,7 +2,7 @@
 
 ## Scope
 
-Milestone 3 establishes a source-faithful problem catalogue and the data needed for later practice and competitive rating work. It does not define a rating formula, estimate population difficulty, import external submissions, or provide a submission runner.
+The archive provides a source-faithful problem catalogue, administrator content management, and private self-reported practice entry. It does not define a rating formula, estimate population difficulty, import external submissions, or provide a submission runner.
 
 The archive treats AI olympiad performance as a measurement rather than a solved/unsolved flag. Every problem records its original metric and whether higher or lower values are better. A normalized performance may be stored alongside the raw score, but normalization is explicitly not a rating.
 
@@ -73,8 +73,19 @@ This structure leaves Milestone 4 free to introduce versioned Practice Rating, C
 - `/problems` lists published problems and filters by search, difficulty state and metric direction.
 - `/problems/[slug]` shows statement/source metadata, metric semantics, the current statistics snapshot, official performances and the signed-in user's separate best practice performance.
 - Competition detail pages show their published archive problems and link back to each problem detail.
+- `/admin/problems` lists drafts and published content in pages of 20. `/admin/problems/new` and `/admin/problems/[id]/edit` reuse the existing administrator session/RLS boundaries. Competition operations link to archive management.
 
 Lists have stable ID tie-breaks. Official rows are observations, not numbered ranks (ties and missing normalization do not imply a standings rank). Full archive/competition pagination is deferred; those lists remain subject to the Supabase response limit. The official list is limited to ten records by the detail page.
+
+## Content management and practice entry
+
+Administrators can create/edit schema-supported content, select a competition or explicitly choose an independent problem, configure the metric/direction, enter an existing difficulty value, and publish/unpublish. Draft is the default. Unrated problems cannot carry difficulty values; rated problems require one. No difficulty/rating algorithm is run. HTTP(S) links and content lengths are validated server-side. Unique slug/source identity conflicts and missing competition references produce actionable errors. Changing competition context while official evidence is linked fails without deleting or detaching that evidence. Existing source provenance is preserved rather than overwritten by ordinary form input; publishing exposes existing snapshot history under the established RLS policy.
+
+Signed-in users can add a raw score and attempt time, view private history (20 records per page), and edit/delete eligible plain self-reports. Scores must be finite decimal numbers; input decimals are not rounded through JavaScript before being sent to PostgreSQL. Attempt times are explicitly entered/shown in UTC and cannot be in the future. Deletion requires a checked confirmation. Forms retain entered values after validation failures, disable controls while pending, and announce errors/success. Reviewed attempts stay visible to their owner but have no edit/delete controls.
+
+Practice actions derive the owner from the verified session, require a published problem, and send only allowlisted raw score/time fields plus server-derived identity/type on creation. Extra normalization, review, provider, provenance, official-link and audit inputs are ignored. Update/delete queries are scoped to problem, owner and practice type, and check review eligibility before mutation; database triggers enforce the same boundary if an administrator reviews the row concurrently. Best-result selection still spans all eligible rows, independent of the displayed history page. Existing official records and aggregate statistics are never rewritten by practice actions.
+
+Unpublishing makes the public problem route unavailable, including its practice form. It does not erase attempts or change the existing database policy allowing owners to read their own rows. Production use requires all merged archive migrations to be applied by the designated database owner; this implementation does not access hosted Supabase.
 
 ## Migration and verification order
 
@@ -88,15 +99,19 @@ npx --no-install supabase db reset --local
 npx --no-install supabase db lint --local --level error
 npx --no-install supabase test db
 node --test tests/problem-performances.test.mjs
+node --test tests/problem-workflows.test.mjs
+node tests/problem-workflows.local.mjs
 ```
 
-The pgTAP security suite uses transactional local fixtures and rolls them back. It covers anon/owner/other-member/admin reads/writes, trusted-field spoofing, reviewed-attempt protection, standings withdrawal, incompatible parent changes and existing delete cascades. The dependency-free Node test command uses the existing TypeScript and Supabase query-builder packages with in-memory responses: it checks query ordering, not database RLS. Never run these fixtures against hosted Supabase; do not use `--linked`, `db push`, or hosted environment files for these checks.
+The pgTAP security suite uses transactional local fixtures and rolls them back. It covers anon/owner/other-member/admin reads/writes, trusted-field spoofing, reviewed-attempt protection, standings withdrawal, incompatible parent changes and existing delete cascades. Node unit checks use the existing TypeScript/Supabase packages: query ordering, validation, and action outcomes are covered without network requests. The opt-in `.local.mjs` check obtains runtime credentials only from local CLI status, rejects non-loopback URLs, creates uniquely identified local accounts/content, executes the actual actions against local Supabase, and removes its own fixtures in `finally`. It neither reads hosted environment files nor applies migrations. Never run fixtures against hosted Supabase; do not use `--linked`, `db push`, or hosted environment files for these checks.
+
+For optional browser coverage, supply `KAIZ_PLAYWRIGHT_MODULE` pointing to an already-installed Playwright module and `KAIZ_LOCAL_APP_URL` pointing to a locally running application configured **only with local Supabase**. The checker verifies the practice add/edit/delete flow, member admin denial, administrator editing and layout widths 320/768/1024/1440; browser requests outside the local app and local API origins are blocked. No Playwright dependency or credentials are added to the repository.
 
 ## Deferred work
 
-- administrative problem/result ingestion UI;
+- official per-problem result ingestion and provenance management UI;
 - external provider adapters and scheduled synchronization;
-- a practice submission or manual-entry workflow;
+- an executable practice submission runner;
 - normalization and statistics calculation jobs;
 - minimum-sample rules and the final difficulty/rating algorithms;
 - team-level per-problem performances and anonymous/external participant matching;
