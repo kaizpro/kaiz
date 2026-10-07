@@ -1,2 +1,15 @@
-import Link from "next/link"; import { Card } from "@/components/ui/card"; import { AuthForm } from "@/components/auth-form"; import { register } from "@/app/auth/actions";
-export default function RegisterPage() { return <div className="mx-auto grid min-h-[70vh] max-w-md place-items-center px-4 py-12"><Card className="w-full p-6 sm:p-8"><p className="font-mono text-xs uppercase tracking-[.16em] text-primary">Join the field</p><h1 className="mt-2 text-2xl font-bold">Create your profile</h1><p className="mt-2 text-sm text-muted-foreground">Use a real email — verification is required.</p><div className="mt-6"><AuthForm mode="register" action={register}/></div><p className="mt-5 text-sm text-muted-foreground">Already registered? <Link href="/auth/login" className="text-primary hover:underline">Sign in</Link></p></Card></div>; }
+import { AuthPanel } from "@/components/auth-panel";
+import { AuthForm } from "@/components/auth-form";
+import { GoogleAuthButton } from "@/components/google-auth-button";
+import { register, signInWithGoogle } from "@/app/auth/actions";
+
+export default function RegisterPage() {
+  return <AuthPanel>
+    <p className="font-mono text-xs uppercase tracking-[.16em] text-primary">Join the field</p>
+    <h1 className="mt-2 text-2xl font-bold">Create your account</h1>
+    <p className="mt-2 text-sm text-muted-foreground">Use a real email — verification is required.</p>
+    <div className="mt-6"><AuthForm mode="register" action={register} /></div>
+    <div className="my-5 flex items-center gap-3 text-xs text-muted-foreground"><span className="h-px flex-1 bg-border" />or<span className="h-px flex-1 bg-border" /></div>
+    <form action={signInWithGoogle}><GoogleAuthButton /></form>
+  </AuthPanel>;
+}

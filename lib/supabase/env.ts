@@ -1,3 +1,5 @@
+import { resolveSiteOrigin } from "@/lib/auth/urls";
+
 function getBrowserKey() {
   return process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 }
@@ -14,6 +16,5 @@ export function getSupabaseEnv() {
 }
 
 export function getSiteUrl() {
-  const value = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-  return new URL(value).origin;
+  return resolveSiteOrigin(process.env);
 }
