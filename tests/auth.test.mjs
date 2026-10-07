@@ -301,11 +301,24 @@ test("Google button renders a local decorative icon and pending accessible state
     assert.equal(html.includes('disabled=""'), pending);
   }
 });
-test("shared auth footer contains the requested team credits as three lines", () => {
-  const { AuthFooter } = load("../components/auth-footer.tsx");
-  const html = renderToStaticMarkup(React.createElement(AuthFooter));
-  for (const name of ["Temirlan Zhunussov", "Ali Mendeke", "Bekzhan Zhanatov"]) assert.ok(html.includes(`<li>${name}</li>`));
+test("shared creator credit renders compact wrapping names with decorative separators", () => {
+  const { CreatorCredit } = load("../components/creator-credit.tsx");
+  const html = renderToStaticMarkup(React.createElement(CreatorCredit));
+  for (const name of ["Temirlan Zhunussov", "Ali Mendeke", "Bekzhan Zhanatov"]) assert.ok(html.includes(name));
   assert.match(html, /Made by/);
+  assert.match(html, /flex-wrap/);
+  assert.match(html, /text-\[11px\]/);
+  assert.equal((html.match(/aria-hidden="true"/g) ?? []).length, 2);
+  assert.ok(!html.includes("<footer"));
+});
+
+test("root site footer owns exactly one creator credit without nested footers", () => {
+  const credit = load("../components/creator-credit.tsx");
+  const { SiteFooter } = load("../components/site-footer.tsx", { "@/components/creator-credit": credit });
+  const html = renderToStaticMarkup(React.createElement(SiteFooter));
+  assert.equal((html.match(/<footer/g) ?? []).length, 1);
+  assert.equal((html.match(/Made by/g) ?? []).length, 1);
+  assert.ok(!html.includes("position:fixed"));
 });
 
 test("email correction remounts the form and pending submits are suppressed", () => {
