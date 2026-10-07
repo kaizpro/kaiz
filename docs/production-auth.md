@@ -4,15 +4,17 @@ KAIZ uses Supabase Auth with cookie-backed PKCE sessions. Signup, confirmation r
 
 ## Current verification boundary
 
-The auth code is tested locally; it is NOT a claim of production readiness. At the start of this task the hosted public Auth settings reported Google disabled and email confirmation enabled. No provider credentials, templates, SMTP settings, DNS, custom domains, billing or hosted schema were changed by this branch. Custom SMTP/sender-domain configuration and the current Supabase subscription are not confirmed. Complete the dashboard setup and the production checklist below before closing the release verification.
+As reported by the release owner on 2026-10-07: production is `https://kaizpro.com`, Vercel production main is current, Google OAuth works end-to-end, `auth.kaizpro.com` is verified in Resend, Supabase Custom SMTP is enabled through Resend, and real confirmation emails are delivered. The two archive migrations were applied and verified separately on 2026-10-06. Do not repeat provider, DNS, SMTP or deployment configuration as part of UX polish. This branch changed none of those settings. Production confirmation-link completion and password recovery QA remain unverified for this UX revision.
 
-No database migration is required for these auth changes. The merged archive migrations are unrelated to this task; do not apply them as part of auth configuration. A release owner must separately coordinate them before deploying current main, which queries archive tables.
+Valid signup, confirmation resend and recovery requests return the same neutral public state for provider successes, account-specific errors, throttling and transport failures. Supabase still enforces its rate limits; the UI never promises delivery or discloses account existence. Signup shows only the user's validated entered email with resend, sign-in, recovery and correction actions. No email is added to navigation URLs or browser storage. Local tests isolate provider responses; they do not send production emails.
+
+No database migration is required for these auth changes. Hosted archive rollout is complete; do not apply migrations as part of this UX task. The sections below are reference setup instructions, not outstanding tasks.
 
 ## Vercel environment
 
 Configure these variables for the Production environment in Vercel and redeploy after saving them:
 
-- `NEXT_PUBLIC_SITE_URL=https://kaiz-indol.vercel.app`
+- `NEXT_PUBLIC_SITE_URL=https://kaizpro.com`
 - `NEXT_PUBLIC_SUPABASE_URL` with the hosted Supabase project URL
 - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` with the hosted project's publishable browser key
 
@@ -26,8 +28,9 @@ Keep Development, Preview and Production environment values separately scoped in
 
 In Supabase Dashboard, open **Authentication → URL Configuration** and set:
 
-- Site URL: `https://kaiz-indol.vercel.app`
-- Redirect URL: `https://kaiz-indol.vercel.app/**`
+- Site URL: `https://kaizpro.com`
+- Redirect URL: `https://kaizpro.com/**`
+- Retain the existing `https://kaiz-indol.vercel.app/**` redirect during transition.
 - Redirect URL: `http://localhost:3000/**`
 
 Keep email confirmation enabled. Do not weaken confirmation or RLS for testing.

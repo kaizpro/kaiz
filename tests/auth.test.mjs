@@ -12,13 +12,14 @@ function load(relative, mocks = {}) {
   const source = readFileSync(new URL(relative, import.meta.url), "utf8");
   const exports = {};
   vm.runInNewContext(ts.transpileModule(source, {
-    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
+    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.ReactJSX },
   }).outputText, {
     exports, URL, process: { env: {} },
     require: (name) => {
       if (Object.hasOwn(mocks, name)) return mocks[name];
       if (name === "./redirects" || name === "@/lib/auth/redirects") return redirects;
       if (name === "@/lib/auth/urls") return urls;
+      if (name === "@/lib/auth/messages") return load("../lib/auth/messages.ts");
       if (name === "@/lib/validation/auth") return load("../lib/validation/auth.ts");
       if (name === "server-only") return {};
       return require(name);
@@ -29,7 +30,7 @@ function load(relative, mocks = {}) {
 
 const redirects = load("../lib/auth/redirects.ts");
 const urls = load("../lib/auth/urls.ts");
-const production = "https://kaiz-indol.vercel.app";
+const production = "https://kaizpro.com";
 
 for (const value of [null, undefined, {}, "", "https://example.invalid", "//example.invalid", "/\\example.invalid",
   "\\\\example.invalid", "javascript:alert(1)", "data:text/html,test", "file:///tmp/test", "http://localhost:3000/",
@@ -72,10 +73,10 @@ test("explicit origins support localhost builds and canonical production domains
   assert.equal(urls.resolveSiteOrigin({ NEXT_PUBLIC_SITE_URL: "https://chosen-domain.invalid", VERCEL_URL: "preview.vercel.app" }), "https://chosen-domain.invalid");
 });
 test("production uses Vercel domain fallback; preview does not default to production", () => {
-  const env = { VERCEL_PROJECT_PRODUCTION_URL: "kaiz-indol.vercel.app", VERCEL_URL: "preview.vercel.app" };
+  const env = { VERCEL_PROJECT_PRODUCTION_URL: "kaizpro.com", VERCEL_URL: "preview.vercel.app" };
   assert.equal(urls.resolveSiteOrigin({ ...env, VERCEL_ENV: "production" }), production);
   assert.equal(urls.resolveSiteOrigin({ ...env, VERCEL_ENV: "preview" }), "https://preview.vercel.app");
-  assert.throws(() => urls.resolveSiteOrigin({ VERCEL_ENV: "preview", VERCEL_PROJECT_PRODUCTION_URL: "kaiz-indol.vercel.app" }));
+  assert.throws(() => urls.resolveSiteOrigin({ VERCEL_ENV: "preview", VERCEL_PROJECT_PRODUCTION_URL: "kaizpro.com" }));
   assert.equal(urls.resolveSiteOrigin({ VERCEL_URL: "deployment.vercel.app" }), "https://deployment.vercel.app");
   assert.equal(urls.resolveSiteOrigin({ NEXT_PUBLIC_VERCEL_URL: "legacy.vercel.app" }), "https://legacy.vercel.app");
 });
@@ -133,7 +134,7 @@ function actions(overrides = {}) {
   const calls = [];
   const auth = Object.fromEntries(["signUp", "resend", "resetPasswordForEmail", "signInWithOAuth", "signInWithPassword", "signOut"].map((method) => [method, async (...args) => {
     calls.push({ method, args });
-    return overrides[method] ?? { error: null, data: { user: { id: "test-user" }, url: "https://provider.invalid/authorize" } };
+    return typeof overrides[method] === "function" ? overrides[method](...args) : overrides[method] ?? { error: null, data: { user: { id: "test-user" }, url: "https://provider.invalid/authorize" } };
   }]));
   const authActions = load("../app/auth/actions.ts", {
     "next/navigation": { redirect: (path) => { throw new Redirect(path); } },
@@ -218,4 +219,108 @@ test("successful password update redirects to the persisted public profile", asy
   const flow = passwordActions();
   await assert.rejects(flow.module.updatePassword({}, form()), (error) => error instanceof Redirect && error.path === "/u/test-user");
   assert.equal(flow.calls.length, 1);
+});
+
+for (const [action, provider] of [["register", "signUp"], ["resendConfirmation", "resend"], ["resetPassword", "resetPasswordForEmail"]]) {
+  test(`${action} returns identical neutral state for success, account errors, throttling and transport failures`, async () => {
+    const expected = await actions().module[action]({}, form());
+    for (const response of [
+      { error: { code: "user_already_exists", message: "Account exists" } },
+      { error: { code: "user_not_found", message: "User not found" } },
+      { error: { code: "over_email_send_rate_limit", message: "private-provider-details" } },
+      () => { throw new Error("private-transport-details"); },
+    ]) {
+      const actual = await actions({ [provider]: response }).module[action]({}, form());
+      assert.equal(JSON.stringify(actual), JSON.stringify(expected));
+      assert.equal(actual.error, undefined);
+      assert.equal(actual.email, "test@example.invalid");
+    }
+  });
+  test(`${action} validates input before requesting an email`, async () => {
+    const flow = actions();
+    assert.ok((await flow.module[action]({}, form({ email: "invalid" }))).error);
+    assert.equal(flow.calls.length, 0);
+  });
+}
+
+test("signup returns only validated entered email and neutral copy, never provider identity or credentials", async () => {
+  const flow = actions({ signUp: { error: null, data: { user: { id: "private-id", identities: [] }, session: { access_token: "private-test-token" } } } });
+  const result = await flow.module.register({}, form({ email: "  typo@example.invalid  " }));
+  assert.deepEqual(Object.keys(result).sort(), ["email", "success"]);
+  assert.equal(result.email, "typo@example.invalid");
+  assert.match(result.success, /If this email is new/);
+});
+
+test("login provider errors remain neutral", async () => {
+  const result = await actions({ signInWithPassword: { error: { message: "Email not confirmed: private-details" } } }).module.login({}, form());
+  assert.equal(result.error.includes("private-details"), false);
+  assert.match(result.error, /Check your email and password/);
+});
+
+const React = require("react");
+const { renderToStaticMarkup } = require("react-dom/server");
+const uiMocks = {
+  "next/link": { default: ({ children, ...props }) => React.createElement("a", props, children) },
+  "@/components/ui/button": { Button: ({ children, variant, ...props }) => React.createElement("button", { ...props, "data-variant": variant }, children) },
+  "@/components/ui/input": { Input: (props) => React.createElement("input", props) },
+  "@/app/auth/actions": { resendConfirmation: async () => ({}) },
+};
+function renderForm(mode, state = {}, pending = false, initialEmail = "") {
+  let calls = 0;
+  const { AuthForm } = load("../components/auth-form.tsx", {
+    ...uiMocks,
+    react: { ...React, useActionState: () => [calls++ === 0 ? state : {}, () => {}, pending],
+      useState: (initial) => [initial, () => {}], useRef: () => ({ current: null }), useEffect: () => {} },
+  });
+  return renderToStaticMarkup(React.createElement(AuthForm, { mode, action: async () => ({}), initialEmail }));
+}
+test("neutral signup screen shows entered email, prefilled resend, and all recovery actions", () => {
+  const html = renderForm("register", { success: "If this email is new, we sent a confirmation link.", email: "typo@example.invalid" });
+  assert.match(html, /Check your email/);
+  assert.match(html, /value="typo@example.invalid"/);
+  for (const label of ["Resend confirmation", "Sign in", "Forgot password?", "Use a different email"]) assert.ok(html.includes(label));
+  assert.ok(!html.includes('name="password"'));
+  assert.ok(!html.includes('href="http'));
+});
+test("auth forms disable pending submissions and retain email and autocomplete", () => {
+  for (const mode of ["login", "register", "reset", "resend"]) {
+    const html = renderForm(mode, {}, true, "typed@example.invalid");
+    assert.match(html, /aria-busy="true"/);
+    assert.match(html, /disabled=""/);
+    assert.match(html, /value="typed@example.invalid"/);
+    assert.match(html, /autoComplete="email"/);
+  }
+});
+test("Google button renders a local decorative icon and pending accessible state", () => {
+  for (const pending of [false, true]) {
+    const { GoogleAuthButton } = load("../components/google-auth-button.tsx", { ...uiMocks, "react-dom": { useFormStatus: () => ({ pending }) } });
+    const html = renderToStaticMarkup(React.createElement(GoogleAuthButton));
+    assert.match(html, /<svg aria-hidden="true" focusable="false"/);
+    assert.ok(!html.includes("http"));
+    assert.ok(html.includes(pending ? "Connecting to Google" : "Continue with Google"));
+    assert.equal(html.includes('disabled=""'), pending);
+  }
+});
+test("shared auth footer contains the requested team credits as three lines", () => {
+  const { AuthFooter } = load("../components/auth-footer.tsx");
+  const html = renderToStaticMarkup(React.createElement(AuthFooter));
+  for (const name of ["Temirlan Zhunussov", "Ali Mendeke", "Bekzhan Zhanatov"]) assert.ok(html.includes(`<li>${name}</li>`));
+  assert.match(html, /Made by/);
+});
+
+test("email correction remounts the form and pending submits are suppressed", () => {
+  let nextRevision;
+  const { AuthForm } = load("../components/auth-form.tsx", {
+    ...uiMocks,
+    react: { ...React, useActionState: () => [{}, () => {}, true],
+      useState: (initial) => [initial, (update) => { nextRevision = update(initial); }],
+      useRef: () => ({ current: null }), useEffect: () => {} },
+  });
+  const wrapper = AuthForm({ mode: "register", action: async () => ({}) });
+  wrapper.props.onDifferentEmail();
+  assert.equal(nextRevision, 1);
+  const formElement = wrapper.type(wrapper.props);
+  let prevented = false;
+  formElement.props.onSubmit({ preventDefault: () => { prevented = true; } });
+  assert.equal(prevented, true);
 });

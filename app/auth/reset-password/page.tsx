@@ -1,2 +1,7 @@
-import { Card } from "@/components/ui/card"; import { AuthForm } from "@/components/auth-form"; import { resetPassword } from "@/app/auth/actions";
-export default function ResetPage() { return <div className="mx-auto grid min-h-[70vh] max-w-md place-items-center px-4 py-12"><Card className="w-full p-6 sm:p-8"><h1 className="text-2xl font-bold">Reset password</h1><p className="mt-2 text-sm text-muted-foreground">We’ll send a secure recovery link.</p><div className="mt-6"><AuthForm mode="reset" action={resetPassword}/></div></Card></div>; }
+import { AuthPanel } from "@/components/auth-panel";
+import { AuthForm } from "@/components/auth-form";
+import { resetPassword } from "@/app/auth/actions";
+
+export default function ResetPage() {
+  return <AuthPanel><h1 className="text-2xl font-bold">Reset password</h1><p className="mt-2 text-sm text-muted-foreground">Request a secure recovery link for your email.</p><div className="mt-6"><AuthForm mode="reset" action={resetPassword} /></div></AuthPanel>;
+}

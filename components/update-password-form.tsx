@@ -1,9 +1,10 @@
 "use client";
 
 import { useActionState } from "react";
+import Link from "next/link";
 import { updatePassword, type UpdatePasswordState } from "@/app/auth/update-password/actions";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { AuthPanel } from "@/components/auth-panel";
 import { Input } from "@/components/ui/input";
 
 const initialState: UpdatePasswordState = {};
@@ -12,11 +13,11 @@ export function UpdatePasswordForm() {
   const [state, formAction, pending] = useActionState(updatePassword, initialState);
 
   return (
-    <div className="mx-auto grid min-h-[70vh] max-w-md place-items-center px-4">
-      <Card className="w-full p-7">
+    <AuthPanel>
         <h1 className="text-2xl font-bold">Choose a new password</h1>
-        <form action={formAction} className="mt-6 space-y-4">
-          <label className="text-sm font-medium">
+        <p className="mt-2 text-sm text-muted-foreground">Use at least 8 characters for your new password.</p>
+        <form action={formAction} aria-busy={pending} className="mt-6 space-y-4" onSubmit={(event) => { if (pending) event.preventDefault(); }}>
+          <label className="block text-sm font-medium">
             New password
             <Input
               className="mt-2"
@@ -34,11 +35,11 @@ export function UpdatePasswordForm() {
               {state.error}
             </p>
           ) : null}
-          <Button className="w-full" disabled={pending}>
+          <Button type="submit" className="w-full" disabled={pending}>
             {pending ? "Updating password…" : "Update password"}
           </Button>
         </form>
-      </Card>
-    </div>
+        <Link href="/auth/reset-password" className="mt-5 block text-sm text-muted-foreground hover:text-foreground focus-visible:underline">Request a new recovery link</Link>
+    </AuthPanel>
   );
 }
