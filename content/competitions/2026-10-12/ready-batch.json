@@ -1,0 +1,1106 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-12",
+  "sources": [
+    {
+      "id": "ioai-2025-edition",
+      "url": "https://ioai-official.org/china-2025/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "edition",
+        "dates",
+        "city",
+        "country",
+        "format"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "ioai-2025-host",
+      "url": "https://ioai-official.org/2025-press-release-1/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "host",
+        "co-host",
+        "eligibility",
+        "stages"
+      ],
+      "notes": "BNDS and ITCCC are named hosts; preserve this distinction from patrons and sponsors."
+    },
+    {
+      "id": "ioai-2026-edition",
+      "url": "https://ioai-official.org/republic-of-kazakhstan/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "edition",
+        "dates",
+        "city",
+        "country",
+        "host",
+        "eligibility"
+      ],
+      "notes": "Current Astana page supersedes the old Abu Dhabi announcement."
+    },
+    {
+      "id": "ioai-2025-results",
+      "url": "https://ioai-official.org/china-2025/results-2025/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "individual standings",
+        "final team challenge",
+        "GAITE standings"
+      ],
+      "notes": "Selected public rows only; see source for full tables. Award spelling and decimal precision retained."
+    },
+    {
+      "id": "ioai-2026-results",
+      "url": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "individual standings",
+        "GAITE standings"
+      ],
+      "notes": "Selected public rows only. Decimal comma converted to numeric decimal point; original display retained."
+    },
+    {
+      "id": "apoai-2026",
+      "url": "https://www.apoai.org/apoai2026",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "dates",
+        "host",
+        "format",
+        "organizer",
+        "eligibility",
+        "standings"
+      ],
+      "notes": "June 13 is competition day. June 1 delegation-list and June 27 tentative release dates are not student-registration and actual-publication dates."
+    },
+    {
+      "id": "euroai-2026-results",
+      "url": "https://euroai-official.org/2026/results/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "member ranks",
+        "remote participation",
+        "score",
+        "award",
+        "dates",
+        "location"
+      ],
+      "notes": "Member ranks and Remote/Guest blanks have different meaning; remote entries remain unranked."
+    },
+    {
+      "id": "ioai-2027",
+      "url": "https://ioai-official.org/singapore-2027/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "edition",
+        "dates",
+        "city",
+        "country",
+        "hosts",
+        "eligibility"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "iaio-2024",
+      "url": "https://iaio-official.org/olympiad-2024/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "dates",
+        "city",
+        "country",
+        "organizers",
+        "on-site schedule"
+      ],
+      "notes": "IAIO and IOAI are different events. No 2025 IAIO edition inferred."
+    },
+    {
+      "id": "iaio-2026",
+      "url": "https://iaio-official.org/olympiad-2026/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "dates",
+        "city",
+        "country",
+        "organizer",
+        "results link"
+      ],
+      "notes": "Use the edition's published Winter IAIO identity."
+    },
+    {
+      "id": "usaaio-2025",
+      "url": "https://ioai-official.org/the-usa-north-america-ai-olympiad-is-organized-by-the-usa-ai-olympiad-usaaio/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "year",
+        "Round 2 date",
+        "venue",
+        "organizer",
+        "eligibility"
+      ],
+      "notes": "Edition dates cover Round 2 only; other rounds are not duplicated as separate annual editions."
+    },
+    {
+      "id": "usaaio-2026",
+      "url": "https://www.usaaio.org/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "2026 Round 2 dates",
+        "venues",
+        "organizer",
+        "historical announcements"
+      ],
+      "notes": "April 4–6 is the organizer's event window; competition sessions are April 4–5. Camp June 8–12 is a different stage."
+    },
+    {
+      "id": "usaaio-2027",
+      "url": "https://www.usaaio.org/2027-usa-na-aio",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "Round 1 date",
+        "registration",
+        "eligibility",
+        "proctored format"
+      ],
+      "notes": "Date scope is Round 1 only, not the complete multi-round season. Distributed, proctored on-site test centers mapped to hybrid."
+    },
+    {
+      "id": "bwki-archive",
+      "url": "https://www.bw-ki.de/rueckblick",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "2022 final date",
+        "2023 final date and city",
+        "2024 final date and city",
+        "2025 final date and city"
+      ],
+      "notes": "Historical date scope is the finale only, not annual project submission. No student project materials copied."
+    },
+    {
+      "id": "bwki-2026",
+      "url": "https://www.bw-ki.de/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "2026 registration opens",
+        "deadline",
+        "project submission",
+        "final date",
+        "city"
+      ],
+      "notes": "Full season March 1–November 13. Remote project preparation plus on-site final mapped to hybrid."
+    },
+    {
+      "id": "bwki-organizer",
+      "url": "https://www.bw-ki.de/impressum",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "organizer"
+      ],
+      "notes": "Tübingen AI Center; links/factual event metadata only."
+    },
+    {
+      "id": "bwki-eligibility",
+      "url": "https://www.bw-ki.de/teilnahmebedingungen",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "national eligibility",
+        "student project format"
+      ],
+      "notes": "Current terms for 2026; do not assert current detailed age rules for earlier editions."
+    }
+  ],
+  "competitions": [
+    {
+      "editionKey": "ioai-2027",
+      "year": 2027,
+      "sourceIds": [
+        "ioai-2027"
+      ],
+      "dateScope": "Full international event week",
+      "notes": "",
+      "form": {
+        "title": "International Olympiad in Artificial Intelligence 2027",
+        "slug": "ioai-2027",
+        "description": "The fourth IOAI edition is scheduled in Singapore, jointly hosted by AISG and NTU. The dates cover the announced international event week.",
+        "organizer": "AI Singapore (AISG) and Nanyang Technological University (NTU)",
+        "officialWebsite": "https://ioai-official.org/singapore-2027/",
+        "registrationUrl": "",
+        "startDate": "2027-07-04",
+        "endDate": "2027-07-10",
+        "registrationDeadline": "",
+        "city": "Singapore",
+        "country": "Singapore",
+        "format": "offline",
+        "status": "upcoming",
+        "category": "Machine Learning",
+        "eligibility": "High-school national delegations selected through the IOAI accreditation framework.",
+        "tags": "AI, Machine Learning, IOAI, 2027",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "iaio-2024",
+      "year": 2024,
+      "sourceIds": [
+        "iaio-2024"
+      ],
+      "dateScope": "Arrival through closing/departure",
+      "notes": "",
+      "form": {
+        "title": "International Artificial Intelligence Olympiad 2024",
+        "slug": "iaio-2024",
+        "description": "The first IAIO edition took place in Riyadh, with theory and practical AI competition. IAIO is distinct from the International Olympiad in Artificial Intelligence (IOAI).",
+        "organizer": "IRCAI and International Center for AI Research and Ethics (ICAIRE)",
+        "officialWebsite": "https://iaio-official.org/olympiad-2024/",
+        "registrationUrl": "",
+        "startDate": "2024-09-08",
+        "endDate": "2024-09-12",
+        "registrationDeadline": "",
+        "city": "Riyadh",
+        "country": "Saudi Arabia",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "National delegations; consult the edition's competition requirements before inferring individual eligibility.",
+        "tags": "AI, Machine Learning, IAIO, 2024",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "iaio-2026",
+      "year": 2026,
+      "sourceIds": [
+        "iaio-2026"
+      ],
+      "dateScope": "Full international event",
+      "notes": "",
+      "form": {
+        "title": "International Winter AI Olympiad 2026",
+        "slug": "iaio-2026",
+        "description": "The International Winter AI Olympiad 2026 was held in Ljubljana and organized by IRCAI at the Jožef Stefan Institute. This is an IAIO edition, not IOAI 2026.",
+        "organizer": "International Research Centre on Artificial Intelligence (IRCAI), Jožef Stefan Institute",
+        "officialWebsite": "https://iaio-official.org/olympiad-2026/",
+        "registrationUrl": "",
+        "startDate": "2026-02-23",
+        "endDate": "2026-02-27",
+        "registrationDeadline": "",
+        "city": "Ljubljana",
+        "country": "Slovenia",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "National delegations; consult the edition's competition requirements.",
+        "tags": "AI, Machine Learning, IAIO, 2026",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "usaaio-2025",
+      "year": 2025,
+      "sourceIds": [
+        "usaaio-2025"
+      ],
+      "dateScope": "Round 2 only",
+      "notes": "Cambridge is the MIT venue's city; do not treat this date as the entire season.",
+      "form": {
+        "title": "USA–North America AI Olympiad 2025 — Round 2",
+        "slug": "usaaio-2025",
+        "description": "The 2025 USA–North America AI Olympiad Round 2 was held at MIT. This listing covers that round only; Round 1 and the subsequent selection camp belong to the same annual edition.",
+        "organizer": "USA AI Olympiad (USAAIO)",
+        "officialWebsite": "https://ioai-official.org/the-usa-north-america-ai-olympiad-is-organized-by-the-usa-ai-olympiad-usaaio/",
+        "registrationUrl": "",
+        "startDate": "2025-04-27",
+        "endDate": "2025-04-27",
+        "registrationDeadline": "",
+        "city": "Cambridge",
+        "country": "United States",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "Top scorers invited from Round 1; primarily U.S. students with North American participation.",
+        "tags": "AI, Machine Learning, USAAIO, 2025",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "usaaio-2026",
+      "year": 2026,
+      "sourceIds": [
+        "usaaio-2026"
+      ],
+      "dateScope": "Round 2 event programme only",
+      "notes": "",
+      "form": {
+        "title": "USA–North America AI Olympiad 2026 — Round 2",
+        "slug": "usaaio-2026",
+        "description": "The organizer reports Round 2 at Harvard and MIT during April 4–6. The contest sessions took place April 4–5; the listed window includes the Round 2 event programme, not the subsequent camp.",
+        "organizer": "USA AI Olympiad (USAAIO)",
+        "officialWebsite": "https://www.usaaio.org/",
+        "registrationUrl": "",
+        "startDate": "2026-04-04",
+        "endDate": "2026-04-06",
+        "registrationDeadline": "",
+        "city": "Cambridge",
+        "country": "United States",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "Invited Round 2 qualifiers from the annual USA–North America AI Olympiad.",
+        "tags": "AI, Machine Learning, USAAIO, 2026",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "usaaio-2027",
+      "year": 2027,
+      "sourceIds": [
+        "usaaio-2027"
+      ],
+      "dateScope": "Round 1 only",
+      "notes": "United States identifies the organizing country, not every participant's location. No single city. Hybrid is the closest existing format for distributed proctored computer-based participation.",
+      "form": {
+        "title": "USA–North America AI Olympiad 2027 — Round 1",
+        "slug": "usaaio-2027",
+        "description": "The 2027 Round 1 is a simultaneous AI test taken at students' schools or approved test sites. The edition's later rounds and camp have only month-level dates and are not represented by this one-day window.",
+        "organizer": "USA AI Olympiad (USAAIO)",
+        "officialWebsite": "https://www.usaaio.org/2027-usa-na-aio",
+        "registrationUrl": "https://portal.usaaio.org/",
+        "startDate": "2027-02-19",
+        "endDate": "2027-02-19",
+        "registrationDeadline": "",
+        "city": "",
+        "country": "United States",
+        "format": "hybrid",
+        "status": "upcoming",
+        "category": "Machine Learning",
+        "eligibility": "Round 1 is open to everyone; an approved on-site proctor/test site is required.",
+        "tags": "AI, Machine Learning, USAAIO, 2027",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "bwki-2023",
+      "year": 2023,
+      "sourceIds": [
+        "bwki-archive",
+        "bwki-organizer"
+      ],
+      "dateScope": "Finale only",
+      "notes": "No separate duplicate records for stages of this annual edition.",
+      "form": {
+        "title": "Bundeswettbewerb Künstliche Intelligenz 2023 — Finale",
+        "slug": "bwki-2023",
+        "description": "The 2023 finale of Germany's Bundeswettbewerb Künstliche Intelligenz presented selected student AI projects. Dates in this listing describe the finale only, not the full annual project-development season.",
+        "organizer": "Tübingen AI Center",
+        "officialWebsite": "https://www.bw-ki.de/rueckblick",
+        "registrationUrl": "",
+        "startDate": "2023-11-10",
+        "endDate": "2023-11-10",
+        "registrationDeadline": "",
+        "city": "Tübingen",
+        "country": "Germany",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "Invited finalists in the national student AI project competition.",
+        "tags": "AI, Machine Learning, BWKI, 2023",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "bwki-2024",
+      "year": 2024,
+      "sourceIds": [
+        "bwki-archive",
+        "bwki-organizer"
+      ],
+      "dateScope": "Finale only",
+      "notes": "No separate duplicate records for stages of this annual edition.",
+      "form": {
+        "title": "Bundeswettbewerb Künstliche Intelligenz 2024 — Finale",
+        "slug": "bwki-2024",
+        "description": "The 2024 finale of Germany's Bundeswettbewerb Künstliche Intelligenz presented selected student AI projects. Dates in this listing describe the finale only, not the full annual project-development season.",
+        "organizer": "Tübingen AI Center",
+        "officialWebsite": "https://www.bw-ki.de/rueckblick",
+        "registrationUrl": "",
+        "startDate": "2024-11-15",
+        "endDate": "2024-11-15",
+        "registrationDeadline": "",
+        "city": "Tübingen",
+        "country": "Germany",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "Invited finalists in the national student AI project competition.",
+        "tags": "AI, Machine Learning, BWKI, 2024",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "bwki-2025",
+      "year": 2025,
+      "sourceIds": [
+        "bwki-archive",
+        "bwki-organizer"
+      ],
+      "dateScope": "Finale only",
+      "notes": "No separate duplicate records for stages of this annual edition.",
+      "form": {
+        "title": "Bundeswettbewerb Künstliche Intelligenz 2025 — Finale",
+        "slug": "bwki-2025",
+        "description": "The 2025 finale of Germany's Bundeswettbewerb Künstliche Intelligenz presented selected student AI projects. Dates in this listing describe the finale only, not the full annual project-development season.",
+        "organizer": "Tübingen AI Center",
+        "officialWebsite": "https://www.bw-ki.de/rueckblick",
+        "registrationUrl": "",
+        "startDate": "2025-11-14",
+        "endDate": "2025-11-14",
+        "registrationDeadline": "",
+        "city": "Frankfurt am Main",
+        "country": "Germany",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "Invited finalists in the national student AI project competition.",
+        "tags": "AI, Machine Learning, BWKI, 2025",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "bwki-2026",
+      "year": 2026,
+      "sourceIds": [
+        "bwki-2026",
+        "bwki-organizer",
+        "bwki-eligibility"
+      ],
+      "dateScope": "Full project competition season",
+      "notes": "Registration is closed; do not advertise the portal as accepting new 2026 entries.",
+      "form": {
+        "title": "Bundeswettbewerb Künstliche Intelligenz 2026",
+        "slug": "bwki-2026",
+        "description": "Germany's national student AI project competition combines remote project development with an on-site finale in Tübingen. The dates span registration/team formation through the final, not just an exam day.",
+        "organizer": "Tübingen AI Center",
+        "officialWebsite": "https://www.bw-ki.de/",
+        "registrationUrl": "",
+        "startDate": "2026-03-01",
+        "endDate": "2026-11-13",
+        "registrationDeadline": "",
+        "city": "Tübingen",
+        "country": "Germany",
+        "format": "hybrid",
+        "status": "active",
+        "category": "Machine Learning",
+        "eligibility": "Secondary-school students and up to one year after school completion; German citizenship, residence or recognized German school abroad as specified in the official terms.",
+        "tags": "AI, Machine Learning, BWKI, 2026",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "ioai-2025",
+      "year": 2025,
+      "expectedId": "6f9d4073-366b-47f1-8859-f0fc83c36afb",
+      "form": {
+        "title": "International Olympiad in Artificial Intelligence 2025",
+        "slug": "ioai-2025",
+        "description": "The second International Olympiad in Artificial Intelligence (IOAI), hosted in Beijing, China. High-school students representing countries and territories around the world competed in artificial intelligence through individual and team activities.",
+        "organizer": "Beijing National Day School (BNDS) and ITCCC",
+        "officialWebsite": "https://ioai-official.org/china-2025/",
+        "registrationUrl": "",
+        "startDate": "2025-08-02",
+        "endDate": "2025-08-09",
+        "registrationDeadline": "",
+        "city": "Beijing",
+        "country": "China",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "High school students",
+        "tags": "AI, Machine Learning, International, Olympiad, High School, China, IOAI",
+        "verified": true
+      },
+      "sourceIds": [
+        "ioai-2025-edition",
+        "ioai-2025-host"
+      ],
+      "dateScope": "Full international event week",
+      "notes": "Review-only metadata proposal against the existing UUID; never recreate the competition."
+    },
+    {
+      "editionKey": "apoai-2026",
+      "year": 2026,
+      "expectedId": "4f0dc01c-c6cc-49b1-8333-2d17f2d096d4",
+      "form": {
+        "title": "Asia-Pacific Olympiad in Artificial Intelligence 2026",
+        "slug": "apoai-2026",
+        "description": "The 2026 Asia Pacific Olympiad in Artificial Intelligence (APOAI), a regional artificial intelligence olympiad operating under the supervision of the International Olympiad in Artificial Intelligence. It provides a regional competition and preparation pathway aligned with IOAI standards.",
+        "organizer": "NOAI Organizing Committee (China)",
+        "officialWebsite": "https://www.apoai.org/apoai2026",
+        "registrationUrl": "",
+        "startDate": "2026-06-13",
+        "endDate": "2026-06-13",
+        "registrationDeadline": "",
+        "city": "",
+        "country": "China",
+        "format": "hybrid",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "High-school students selected through participating national/local organizers; no individual registration. Each delegation may send up to 8 participants.",
+        "tags": "AI, Asia Pacific, International, Regional, Olympiad, High School, APOAI, IOAI",
+        "verified": true
+      },
+      "sourceIds": [
+        "apoai-2026"
+      ],
+      "dateScope": "Official competition day only",
+      "notes": "Review-only metadata proposal against the existing UUID; never recreate the competition."
+    }
+  ],
+  "resultSets": [
+    {
+      "key": "ioai-2025-individual",
+      "competitionSlug": "ioai-2025",
+      "sourceIds": [
+        "ioai-2025-results"
+      ],
+      "division": "Individual contest",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null.",
+      "form": {
+        "name": "Individual contest 2025 — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://ioai-official.org/china-2025/results-2025/",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantName": "Krzysztof Rojek",
+          "countryCode": "PL",
+          "rank": 1,
+          "score": 542.05,
+          "scoreDisplay": "542.05",
+          "award": "Gold",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2025-results"
+          ]
+        },
+        {
+          "participantName": "Kieran Chai Kai Ren",
+          "countryCode": "SG",
+          "rank": 2,
+          "score": 465.71,
+          "scoreDisplay": "465.71",
+          "award": "Gold",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2025-results"
+          ]
+        },
+        {
+          "participantName": "Wang Jiayu",
+          "countryCode": "SG",
+          "rank": 3,
+          "score": 463.17,
+          "scoreDisplay": "463.17",
+          "award": "Gold",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2025-results"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ioai-2025-team-final",
+      "competitionSlug": "ioai-2025",
+      "sourceIds": [
+        "ioai-2025-results"
+      ],
+      "division": "Final Round of Team Challenge",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null.",
+      "form": {
+        "name": "Final Round of Team Challenge 2025 — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://ioai-official.org/china-2025/results-2025/",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantName": "Poland Team 1",
+          "countryCode": "PL",
+          "rank": 1,
+          "score": 212.3,
+          "scoreDisplay": "212.3",
+          "award": "First Place Trophy",
+          "participantType": "team",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2025-results"
+          ]
+        },
+        {
+          "participantName": "Russia Team 1",
+          "countryCode": "RU",
+          "rank": 2,
+          "score": 212.2,
+          "scoreDisplay": "212.2",
+          "award": "Second Place Trophy",
+          "participantType": "team",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2025-results"
+          ]
+        },
+        {
+          "participantName": "Poland Team 2",
+          "countryCode": "PL",
+          "rank": 3,
+          "score": 210.89,
+          "scoreDisplay": "210.89",
+          "award": "Third Place Trophy",
+          "participantType": "team",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2025-results"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ioai-2025-gaite",
+      "competitionSlug": "ioai-2025",
+      "sourceIds": [
+        "ioai-2025-results"
+      ],
+      "division": "GAITE contest",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null.",
+      "form": {
+        "name": "GAITE contest 2025 — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://ioai-official.org/china-2025/results-2025/",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantName": "Kabel Cisse",
+          "countryCode": "ML",
+          "rank": 1,
+          "score": 423.96,
+          "scoreDisplay": "423.96",
+          "award": "First Level",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2025-results"
+          ]
+        },
+        {
+          "participantName": "Ariana Rivera Ferraiuoli",
+          "countryCode": "PR",
+          "rank": 2,
+          "score": 390.93,
+          "scoreDisplay": "390.93",
+          "award": "First Level",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2025-results"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ioai-2026-individual",
+      "competitionSlug": "ioai-2026",
+      "sourceIds": [
+        "ioai-2026-results"
+      ],
+      "division": "Individual contest",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null.",
+      "form": {
+        "name": "Individual contest 2026 — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantName": "Artem Gorokhov",
+          "countryCode": "RU",
+          "rank": 1,
+          "score": 428.4866,
+          "scoreDisplay": "428,4866",
+          "award": "Gold + 1st Place 🏆",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2026-results"
+          ]
+        },
+        {
+          "participantName": "Dauzhan Beketov",
+          "countryCode": "KZ",
+          "rank": 2,
+          "score": 405.5759,
+          "scoreDisplay": "405,5759",
+          "award": "Gold + 2nd Place 🏆",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2026-results"
+          ]
+        },
+        {
+          "participantName": "Shao Zixi",
+          "countryCode": "CN",
+          "rank": 3,
+          "score": 375.4507,
+          "scoreDisplay": "375,4507",
+          "award": "Gold + 3rd Place 🏆",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2026-results"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ioai-2026-gaite",
+      "competitionSlug": "ioai-2026",
+      "sourceIds": [
+        "ioai-2026-results"
+      ],
+      "division": "GAITE contest",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null.",
+      "form": {
+        "name": "GAITE contest 2026 — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantName": "Kadanga Essognim Elisee",
+          "countryCode": "TG",
+          "rank": 1,
+          "score": 108.8463,
+          "scoreDisplay": "108,8463",
+          "award": "Level 1 Award",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2026-results"
+          ]
+        },
+        {
+          "participantName": "Solevo Essaie Henoc Winner",
+          "countryCode": "TG",
+          "rank": 2,
+          "score": 83.5054,
+          "scoreDisplay": "83,5054",
+          "award": "Level 1 Award",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2026-results"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "apoai-2026-individual",
+      "competitionSlug": "apoai-2026",
+      "sourceIds": [
+        "apoai-2026"
+      ],
+      "division": "Individual contest",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Partial selection intentionally retains official ties at 122/125, a real zero score and a ranked N/A score. Publication date remains unknown; tentative release date is not evidence of actual release.",
+      "form": {
+        "name": "APOAI 2026 final standings — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://www.apoai.org/apoai2026",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantName": "Bat-Erdene Budkhand",
+          "countryCode": "MN",
+          "rank": 1,
+          "score": 340.3075,
+          "scoreDisplay": "340.3075",
+          "award": "Gold",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "apoai-2026"
+          ]
+        },
+        {
+          "participantName": "Gorokhov Artem",
+          "countryCode": "RU",
+          "rank": 2,
+          "score": 314.9089,
+          "scoreDisplay": "314.9089",
+          "award": "Gold",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "apoai-2026"
+          ]
+        },
+        {
+          "participantName": "Zachary Justin Tang",
+          "countryCode": "AU",
+          "rank": 122,
+          "score": 37.5151,
+          "scoreDisplay": "37.5151",
+          "award": null,
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "apoai-2026"
+          ]
+        },
+        {
+          "participantName": "CHEN, Yi Heng",
+          "countryCode": "HK",
+          "rank": 122,
+          "score": 37.5151,
+          "scoreDisplay": "37.5151",
+          "award": null,
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "apoai-2026"
+          ]
+        },
+        {
+          "participantName": "Tan Yu Xuan",
+          "countryCode": "MY",
+          "rank": 125,
+          "score": 0,
+          "scoreDisplay": "0.0000",
+          "award": null,
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "apoai-2026"
+          ]
+        },
+        {
+          "participantName": "HO, Yau Tong Princeton",
+          "countryCode": "HK",
+          "rank": 125,
+          "score": null,
+          "scoreDisplay": "N/A",
+          "award": null,
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "apoai-2026"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "euroai-2026-members",
+      "competitionSlug": "euroai-2026",
+      "sourceIds": [
+        "euroai-2026-results"
+      ],
+      "division": "Member",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Member-country standings only. Preserve the official shared rank 8. Remote and Guest entries are not assigned row-position ranks.",
+      "form": {
+        "name": "EUROAI 2026 Member standings — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://euroai-official.org/2026/results/",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantName": "Roman Mielamud",
+          "countryCode": "UA",
+          "rank": 1,
+          "score": 323,
+          "scoreDisplay": "323",
+          "award": "Gold",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "euroai-2026-results"
+          ]
+        },
+        {
+          "participantName": "Lovmar Teo",
+          "countryCode": "SE",
+          "rank": 2,
+          "score": 293,
+          "scoreDisplay": "293",
+          "award": "Gold",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "euroai-2026-results"
+          ]
+        },
+        {
+          "participantName": "Persson Holm Simon",
+          "countryCode": "SE",
+          "rank": 8,
+          "score": 234,
+          "scoreDisplay": "234",
+          "award": "Silver",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "euroai-2026-results"
+          ]
+        },
+        {
+          "participantName": "Rekhviashvili Mate",
+          "countryCode": "GE",
+          "rank": 8,
+          "score": 234,
+          "scoreDisplay": "234",
+          "award": "Silver",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "euroai-2026-results"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "euroai-2026-remote",
+      "competitionSlug": "euroai-2026",
+      "sourceIds": [
+        "euroai-2026-results"
+      ],
+      "division": "Remote",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Remote category, not Member ranks. Official blank ranks become null/unranked, NOT an invented placement. Preserve public source spelling; no automatic profile matching.",
+      "form": {
+        "name": "EUROAI 2026 Remote awards — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://euroai-official.org/2026/results/",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantName": "Kanabek Abu",
+          "countryCode": "KZ",
+          "rank": null,
+          "score": 286,
+          "scoreDisplay": "286",
+          "award": "Gold",
+          "participantType": "individual",
+          "resultStatus": "unranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "euroai-2026-results"
+          ]
+        },
+        {
+          "participantName": "Beketov Dauzhan",
+          "countryCode": "KZ",
+          "rank": null,
+          "score": 253,
+          "scoreDisplay": "253",
+          "award": "Silver",
+          "participantType": "individual",
+          "resultStatus": "unranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "euroai-2026-results"
+          ]
+        }
+      ]
+    }
+  ]
+}

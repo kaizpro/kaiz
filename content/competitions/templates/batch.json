@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-12",
+  "sources": [
+    {
+      "id": "replace-with-source-id",
+      "url": "https://example.org/",
+      "checkedAt": "2026-10-12",
+      "status": "needs_review",
+      "fields": [
+        "replace with verified fields"
+      ],
+      "notes": "TEMPLATE ONLY. Replace this placeholder; do not invent edition data."
+    }
+  ],
+  "competitions": [],
+  "resultSets": []
+}
