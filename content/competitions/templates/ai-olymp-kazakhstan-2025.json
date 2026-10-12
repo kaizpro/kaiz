@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "editionKey": "ai-olymp-2025",
+  "importAllowed": false,
+  "status": "pending_screenshot_and_organizer_source",
+  "expectedParticipantCount": 38,
+  "countVerification": "user_reported_not_independently_verified",
+  "sourceUrl": null,
+  "sourceImagePath": null,
+  "checkedAt": "2026-10-12",
+  "stageTemplates": [
+    {
+      "stageGroup": "Qualification",
+      "exactStageLabel": null,
+      "officialSourceUrl": null,
+      "originalScoringFields": [],
+      "availability": "source_not_supplied",
+      "verificationStatus": "pending_source",
+      "rows": []
+    },
+    {
+      "stageGroup": "Final",
+      "exactStageLabel": null,
+      "officialSourceUrl": null,
+      "originalScoringFields": [],
+      "availability": "screenshot_not_supplied",
+      "verificationStatus": "pending_source",
+      "rows": []
+    }
+  ],
+  "rowTemplate": {
+    "sourceRowIndex": null,
+    "participantDisplayName": null,
+    "originalRank": null,
+    "originalAward": null,
+    "originalTotal": null,
+    "originalScoringFields": [],
+    "sourceNotes": null
+  },
+  "instructions": [
+    "Supply full-resolution screenshot/organizer export plus provenance and publication/stage confirmation.",
+    "Capture exact headers before typing rows; retain stage/task components separately.",
+    "Reconcile all 38 user-reported rows, without placeholder participants.",
+    "Do NOT interpret red-colored rows as exclusions. Only explicit organizer status supports exclusions.",
+    "Do not infer total/rank/citizenship/awards or set missing scores to zero.",
+    "Ali and Tima independently check transcription; convert to existing draft-set batch shape only after source approval."
+  ]
+}

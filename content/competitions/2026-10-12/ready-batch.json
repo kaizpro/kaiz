@@ -1,0 +1,1799 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-12",
+  "sources": [
+    {
+      "id": "ioai-2024",
+      "url": "https://ioai-official.org/bulgaria-2024/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "edition",
+        "Burgas",
+        "Bulgaria",
+        "August 9–15 dates",
+        "separate scientific and practical rounds"
+      ],
+      "notes": "Dedicated retrospective explicitly establishes event dates August 9–15. Use that named scope for this draft; retain general-regulations August 8–15 as an approval caveat, not a guessed compromise."
+    },
+    {
+      "id": "ioai-2025-edition",
+      "url": "https://ioai-official.org/china-2025/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "edition",
+        "dates",
+        "city",
+        "country",
+        "format"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "ioai-2025-host",
+      "url": "https://ioai-official.org/2025-press-release-1/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "host",
+        "co-host",
+        "eligibility",
+        "stages"
+      ],
+      "notes": "BNDS and ITCCC are named hosts; preserve this distinction from patrons and sponsors."
+    },
+    {
+      "id": "ioai-2026-edition",
+      "url": "https://ioai-official.org/republic-of-kazakhstan/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "edition",
+        "dates",
+        "city",
+        "country",
+        "host",
+        "eligibility"
+      ],
+      "notes": "Current Astana page supersedes the old Abu Dhabi announcement."
+    },
+    {
+      "id": "ioai-2025-results",
+      "url": "https://ioai-official.org/china-2025/results-2025/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "individual standings",
+        "final team challenge",
+        "GAITE standings"
+      ],
+      "notes": "Selected public rows only; see source for full tables. Award spelling and decimal precision retained."
+    },
+    {
+      "id": "ioai-2026-results",
+      "url": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "individual standings",
+        "GAITE standings"
+      ],
+      "notes": "Selected public rows only. Decimal comma converted to numeric decimal point; original display retained."
+    },
+    {
+      "id": "apoai-2026",
+      "url": "https://www.apoai.org/apoai2026",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "dates",
+        "host",
+        "format",
+        "organizer",
+        "eligibility",
+        "standings"
+      ],
+      "notes": "June 13 is competition day. June 1 delegation-list and June 27 tentative release dates are not student-registration and actual-publication dates."
+    },
+    {
+      "id": "euroai-2026-results",
+      "url": "https://euroai-official.org/2026/results/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "member ranks",
+        "remote participation",
+        "score",
+        "award",
+        "dates",
+        "location"
+      ],
+      "notes": "Member ranks and Remote/Guest blanks have different meaning; remote entries remain unranked."
+    },
+    {
+      "id": "iaio-2024",
+      "url": "https://iaio-official.org/olympiad-2024/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "dates",
+        "city",
+        "country",
+        "organizers",
+        "on-site schedule"
+      ],
+      "notes": "IAIO and IOAI are different events. No 2025 IAIO edition inferred."
+    },
+    {
+      "id": "iaio-2026",
+      "url": "https://iaio-official.org/olympiad-2026/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "dates",
+        "city",
+        "country",
+        "organizer",
+        "results link"
+      ],
+      "notes": "Use the edition's published Winter IAIO identity."
+    },
+    {
+      "id": "usaaio-2025",
+      "url": "https://ioai-official.org/the-usa-north-america-ai-olympiad-is-organized-by-the-usa-ai-olympiad-usaaio/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "year",
+        "Round 2 date",
+        "venue",
+        "organizer",
+        "eligibility"
+      ],
+      "notes": "Edition dates cover Round 2 only; other rounds are not duplicated as separate annual editions."
+    },
+    {
+      "id": "usaaio-2026",
+      "url": "https://www.usaaio.org/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "2026 Round 2 dates",
+        "venues",
+        "organizer",
+        "historical announcements"
+      ],
+      "notes": "April 4–6 is the organizer's event window; competition sessions are April 4–5. Camp June 8–12 is a different stage."
+    },
+    {
+      "id": "neoai-2026",
+      "url": "https://cu.ru/olympiad/events/neoai",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "May 3–4 dates",
+        "hybrid format",
+        "eligibility",
+        "practice task titles"
+      ],
+      "notes": "Official indexed page confirms May 3–4. Direct retrieval timed out. The broader CU selection page announces May 2–8; retain the dedicated edition dates, not a selection-week range. No final standings URL verified."
+    },
+    {
+      "id": "ioai-2024-host",
+      "url": "https://ioai-official.org/bulgaria-2024/2024-team/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "LERAI Foundation organizer"
+      ],
+      "notes": "Do not copy organizers' private contact information."
+    },
+    {
+      "id": "euroai-2027",
+      "url": "https://euroai-official.org/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "second edition",
+        "Belgrade",
+        "Serbia",
+        "July 27–August 1 dates"
+      ],
+      "notes": "Latest homepage now leads with 2027 while still describing 2026 historically. Confirm edition-specific organizer before preparing form."
+    },
+    {
+      "id": "ioai-2024-results",
+      "url": "https://ioai-official.org/bulgaria-2024/results/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "Scientific Round",
+        "Practical Round",
+        "score",
+        "rank",
+        "medal"
+      ],
+      "notes": "Separate team rounds; practical fields: jury score and peer voting score."
+    },
+    {
+      "id": "neoai-2025",
+      "url": "https://ioai-official.org/northern-eurasia-oai-2025/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "dates",
+        "organizer",
+        "format",
+        "countries"
+      ],
+      "notes": "Official IOAI retrospective confirms May 6–11 and Central University + AI Alliance."
+    },
+    {
+      "id": "neoai-2025-platform",
+      "url": "https://www.kaggle.com/competitions/neoai-2025/overview",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "date scope",
+        "venue",
+        "tasks"
+      ],
+      "notes": "Linked by official retrospective. Late submissions/task leaderboards are not audited aggregate final standings."
+    },
+    {
+      "id": "faio-2025",
+      "url": "https://www.faio.kz/2025/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "qualification date",
+        "final dates",
+        "city",
+        "audience",
+        "final-results link"
+      ],
+      "notes": "Rendered archive: September 28 online qualifier; October 30–31 offline final, Almaty. Organizer label uses FAIO itself."
+    },
+    {
+      "id": "faio-2026",
+      "url": "https://www.faio.kz/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "organizer",
+        "qualification date",
+        "final contest dates",
+        "city",
+        "format",
+        "eligibility"
+      ],
+      "notes": "Fizmat organizes FAIO; September 20 qualifier; October 27–28 contest rounds."
+    },
+    {
+      "id": "faio-2026-final",
+      "url": "https://www.faio.kz/final/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "programme",
+        "venue",
+        "contest days"
+      ],
+      "notes": "October 26–30 includes arrival/departure; contests October 27–28. Preliminary programme, recheck."
+    },
+    {
+      "id": "faio-2025-results",
+      "url": "https://docs.google.com/spreadsheets/d/10Rj9aCxwFR5EoTQUo9ChunzffX7Xgxb3fy3zDGNjlrQ/edit?usp=sharing",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "final team labels",
+        "rank",
+        "delegation",
+        "problem 1–5",
+        "total"
+      ],
+      "notes": "Linked by official archive; public view-only. Omit schools, contacts and member details."
+    },
+    {
+      "id": "poland-oai-2025",
+      "url": "https://www.oai.edu.pl/edycje/ii-oai",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "edition",
+        "stage dates",
+        "final results",
+        "stage I/II scores",
+        "eligibility",
+        "tasks"
+      ],
+      "notes": "II OAI: online February 17–March 22; regional April 26–27; final May 30–June 2 Wrocław. I/II score lists lack explicit rank numbering."
+    },
+    {
+      "id": "poland-oai-2025-rules",
+      "url": "https://www.oai.edu.pl/regulamin-iioai",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "organizer",
+        "dates",
+        "individual format",
+        "eligibility",
+        "deadline"
+      ],
+      "notes": "Foundation organizer. Scheduled results dates are not actual publication timestamps."
+    },
+    {
+      "id": "onia-2026-archive",
+      "url": "https://www.olimpiada-ai.ro/en/editii/2026",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "edition",
+        "stages",
+        "dates",
+        "format",
+        "venue",
+        "result links"
+      ],
+      "notes": "Anonymous HTTP 200: national April 17–20 UPB, contest April 18; local February 14, county March 14, camps separate."
+    },
+    {
+      "id": "onia-2026-organizer",
+      "url": "https://www.olimpiada-ai.ro/en/news/comunicat-nationala-2026",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "organizer",
+        "city",
+        "national stage",
+        "grade sections",
+        "awards"
+      ],
+      "notes": "UPIR under Ministry aegis with HRIA/academic partners. Grades 9–10 and 11–12 separate."
+    },
+    {
+      "id": "iaio-2026-results",
+      "url": "https://iaio-official.org/results2026/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "final results",
+        "Round 1",
+        "Round 2",
+        "Final Result",
+        "place",
+        "delegation",
+        "awards"
+      ],
+      "notes": "95 contestants. Delegation strings have team numbers, not residence; no independent round ranks inferred."
+    }
+  ],
+  "competitions": [
+    {
+      "editionKey": "ioai-2024",
+      "year": 2024,
+      "sourceIds": [
+        "ioai-2024",
+        "ioai-2024-host"
+      ],
+      "dateScope": "Dedicated retrospective edition event dates August 9–15, not travel range",
+      "notes": "Earlier general regulations say August 8–15. Dedicated retrospective explicitly states August 9–15; retain date-scope distinction for approval.",
+      "form": {
+        "title": "International Olympiad in Artificial Intelligence 2024",
+        "slug": "ioai-2024",
+        "description": "First IOAI edition; separate Scientific and Practical team rounds. The dedicated retrospective dates are used rather than broader planning/travel ranges.",
+        "organizer": "LERAI Foundation",
+        "officialWebsite": "https://ioai-official.org/bulgaria-2024/",
+        "registrationUrl": "",
+        "startDate": "2024-08-09",
+        "endDate": "2024-08-15",
+        "registrationDeadline": "",
+        "city": "Burgas",
+        "country": "Bulgaria",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "High-school national teams under the IOAI framework.",
+        "tags": "AI, Machine Learning, Olympiad, IOAI, 2024",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "ioai-2026",
+      "year": 2026,
+      "expectedId": "45fa3bfb-6e3b-43e0-927e-ea0ee617b9ba",
+      "sourceIds": [
+        "ioai-2026-edition"
+      ],
+      "dateScope": "Existing reviewed edition dates, current row retained",
+      "notes": "Existing metadata retained, not new. Organizer/location caveats require review; no silent replacement.",
+      "form": {
+        "title": "International Olympiad in Artificial Intelligence 2026",
+        "slug": "ioai-2026",
+        "description": "The third International Olympiad in Artificial Intelligence (IOAI), hosted in Astana, Kazakhstan. IOAI is an international artificial intelligence olympiad for high-school students, bringing together national delegations for individual and team-based AI competition and international collaboration.",
+        "organizer": "Competitive Programming Federation of Kazakhstan (CPFED)",
+        "officialWebsite": "https://ioai-official.org/republic-of-kazakhstan/",
+        "registrationUrl": "",
+        "startDate": "2026-08-02",
+        "endDate": "2026-08-08",
+        "registrationDeadline": "",
+        "city": "Astana",
+        "country": "Kazakhstan",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "High school students",
+        "tags": "AI, Machine Learning, International, Olympiad, High School, Kazakhstan, IOAI",
+        "verified": true
+      }
+    },
+    {
+      "editionKey": "neoai-2026",
+      "year": 2026,
+      "expectedId": "4e4f151a-c541-41d8-a845-8106bf70d438",
+      "sourceIds": [
+        "neoai-2026"
+      ],
+      "dateScope": "Existing reviewed edition dates, current row retained",
+      "notes": "Existing metadata retained, not new. Organizer/location caveats require review; no silent replacement.",
+      "form": {
+        "title": "Northern Eurasia Olympiad in Artificial Intelligence 2026",
+        "slug": "neoai-2026",
+        "description": "The Northern Eurasia Olympiad in Artificial Intelligence is an international AI olympiad for high-school students from Northern Eurasia and partner countries. The competition uses a practice-oriented format with challenges in areas including machine learning, computer vision, natural language processing, data analysis, and algorithmic thinking. Participants from Russia compete onsite at the official venue, while international participants can compete remotely or at local partner venues.",
+        "organizer": "Central University",
+        "officialWebsite": "https://cu.ru/olympiad/events/neoai",
+        "registrationUrl": "",
+        "startDate": "2026-05-03",
+        "endDate": "2026-05-04",
+        "registrationDeadline": "",
+        "city": "",
+        "country": "Russia",
+        "format": "hybrid",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "High school students",
+        "tags": "AI, Machine Learning, Computer Vision, NLP, Data Analysis, Olympiad, High School, NEOAI",
+        "verified": true
+      }
+    },
+    {
+      "editionKey": "apoai-2026",
+      "year": 2026,
+      "expectedId": "4f0dc01c-c6cc-49b1-8333-2d17f2d096d4",
+      "form": {
+        "title": "Asia-Pacific Olympiad in Artificial Intelligence 2026",
+        "slug": "apoai-2026",
+        "description": "The 2026 Asia Pacific Olympiad in Artificial Intelligence (APOAI), a regional artificial intelligence olympiad operating under the supervision of the International Olympiad in Artificial Intelligence. It provides a regional competition and preparation pathway aligned with IOAI standards.",
+        "organizer": "NOAI Organizing Committee (China)",
+        "officialWebsite": "https://www.apoai.org/apoai2026",
+        "registrationUrl": "",
+        "startDate": "2026-06-13",
+        "endDate": "2026-06-13",
+        "registrationDeadline": "",
+        "city": "",
+        "country": "China",
+        "format": "hybrid",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "High-school students selected through participating national/local organizers; no individual registration. Each delegation may send up to 8 participants.",
+        "tags": "AI, Asia Pacific, International, Regional, Olympiad, High School, APOAI, IOAI",
+        "verified": true
+      },
+      "sourceIds": [
+        "apoai-2026"
+      ],
+      "dateScope": "Official competition day only",
+      "notes": "Review-only metadata proposal against the existing UUID; never recreate the competition."
+    },
+    {
+      "editionKey": "euroai-2026",
+      "year": 2026,
+      "expectedId": "663f286e-b6b6-479a-9350-55caf31343b9",
+      "sourceIds": [
+        "euroai-2027"
+      ],
+      "dateScope": "Existing reviewed edition dates, current row retained",
+      "notes": "Existing metadata retained, not new. Organizer/location caveats require review; no silent replacement.",
+      "form": {
+        "title": "European Olympiad in Artificial Intelligence 2026",
+        "slug": "euroai-2026",
+        "description": "The 2026 European Olympiad in Artificial Intelligence (EUROAI), initially launched as the Central European Olympiad in Artificial Intelligence (CEOAI) before being renamed ahead of its first edition. The regional AI olympiad brings together secondary-school students for theoretical and practical artificial intelligence competition.",
+        "organizer": "EUROAI International Committee",
+        "officialWebsite": "https://euroai-official.org/",
+        "registrationUrl": "",
+        "startDate": "2026-07-14",
+        "endDate": "2026-07-19",
+        "registrationDeadline": "",
+        "city": "Cluj-Napoca",
+        "country": "Romania",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "High school students",
+        "tags": "AI, Machine Learning, Europe, International, Regional, Olympiad, High School, EUROAI, CEOAI, IOAI",
+        "verified": true
+      }
+    },
+    {
+      "editionKey": "ioai-2025",
+      "year": 2025,
+      "expectedId": "6f9d4073-366b-47f1-8859-f0fc83c36afb",
+      "form": {
+        "title": "International Olympiad in Artificial Intelligence 2025",
+        "slug": "ioai-2025",
+        "description": "The second International Olympiad in Artificial Intelligence (IOAI), hosted in Beijing, China. High-school students representing countries and territories around the world competed in artificial intelligence through individual and team activities.",
+        "organizer": "Beijing National Day School (BNDS) and ITCCC",
+        "officialWebsite": "https://ioai-official.org/china-2025/",
+        "registrationUrl": "",
+        "startDate": "2025-08-02",
+        "endDate": "2025-08-09",
+        "registrationDeadline": "",
+        "city": "Beijing",
+        "country": "China",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "High school students",
+        "tags": "AI, Machine Learning, International, Olympiad, High School, China, IOAI",
+        "verified": true
+      },
+      "sourceIds": [
+        "ioai-2025-edition",
+        "ioai-2025-host"
+      ],
+      "dateScope": "Full international event week",
+      "notes": "Review-only metadata proposal against the existing UUID; never recreate the competition."
+    },
+    {
+      "editionKey": "faio-2025",
+      "year": 2025,
+      "sourceIds": [
+        "faio-2025"
+      ],
+      "dateScope": "September 28 qualification through October 30–31 final contest",
+      "notes": "",
+      "form": {
+        "title": "Fizmat AI Olympiad 2025",
+        "slug": "faio-2025",
+        "description": "International school-student AI olympiad in Kazakhstan. Online qualification and Almaty offline final are distinct stages; the date span is the season, not continuous competition.",
+        "organizer": "Fizmat AI Olympiad (FAIO)",
+        "officialWebsite": "https://www.faio.kz/2025/",
+        "registrationUrl": "",
+        "startDate": "2025-09-28",
+        "endDate": "2025-10-31",
+        "registrationDeadline": "",
+        "city": "Almaty",
+        "country": "Kazakhstan",
+        "format": "hybrid",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "School students; consult archived rules for edition-specific entry conditions.",
+        "tags": "AI, Machine Learning, Olympiad, FAIO, 2025",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "faio-2026",
+      "year": 2026,
+      "sourceIds": [
+        "faio-2026",
+        "faio-2026-final"
+      ],
+      "dateScope": "September 20 qualification through October 27–28 final contest rounds",
+      "notes": "Final results not yet available October 12; programme preliminary, recheck before entry.",
+      "form": {
+        "title": "Fizmat AI Olympiad 2026",
+        "slug": "faio-2026",
+        "description": "International AI olympiad organized by Fizmat. Online qualification precedes October 27–28 final contest rounds in Almaty. October 26–30 is arrival/departure programme, not contest duration.",
+        "organizer": "Fizmat (National School of Physics and Math)",
+        "officialWebsite": "https://www.faio.kz/",
+        "registrationUrl": "",
+        "startDate": "2026-09-20",
+        "endDate": "2026-10-28",
+        "registrationDeadline": "",
+        "city": "Almaty",
+        "country": "Kazakhstan",
+        "format": "hybrid",
+        "status": "active",
+        "category": "Machine Learning",
+        "eligibility": "School students; free participation and supporting theory provided.",
+        "tags": "AI, Machine Learning, Olympiad, FAIO, 2026",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "iaio-2026",
+      "year": 2026,
+      "sourceIds": [
+        "iaio-2026"
+      ],
+      "dateScope": "Full international event",
+      "notes": "",
+      "form": {
+        "title": "International Winter AI Olympiad 2026",
+        "slug": "iaio-2026",
+        "description": "The International Winter AI Olympiad 2026 was held in Ljubljana and organized by IRCAI at the Jožef Stefan Institute. This is an IAIO edition, not IOAI 2026.",
+        "organizer": "International Research Centre on Artificial Intelligence (IRCAI), Jožef Stefan Institute",
+        "officialWebsite": "https://iaio-official.org/olympiad-2026/",
+        "registrationUrl": "",
+        "startDate": "2026-02-23",
+        "endDate": "2026-02-27",
+        "registrationDeadline": "",
+        "city": "Ljubljana",
+        "country": "Slovenia",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "National delegations; consult the edition's competition requirements.",
+        "tags": "AI, Machine Learning, IAIO, 2026",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "neoai-2025",
+      "year": 2025,
+      "sourceIds": [
+        "neoai-2025",
+        "neoai-2025-platform"
+      ],
+      "dateScope": "Retrospective May 6–11, not Kaggle April 3 opening",
+      "notes": "Russia is organizing/on-site country, not every contestant location. City unestablished; late submissions are not final aggregate standings.",
+      "form": {
+        "title": "Northern Eurasia Olympiad in Artificial Intelligence 2025",
+        "slug": "neoai-2025",
+        "description": "Regional school-student AI olympiad, on-site at SberUniversity and online, including Kazakhstan. The official retrospective identifies eight main-round challenges.",
+        "organizer": "Central University and AI Alliance",
+        "officialWebsite": "https://www.kaggle.com/competitions/neoai-2025/overview",
+        "registrationUrl": "",
+        "startDate": "2025-05-06",
+        "endDate": "2025-05-11",
+        "registrationDeadline": "",
+        "city": "",
+        "country": "Russia",
+        "format": "hybrid",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "Northern Eurasia school students; on-site participation restricted to international olympiad training programme.",
+        "tags": "AI, Machine Learning, Olympiad, NEOAI, 2025",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "usaaio-2025",
+      "year": 2025,
+      "sourceIds": [
+        "usaaio-2025"
+      ],
+      "dateScope": "Round 2 only",
+      "notes": "Cambridge is the MIT venue's city; do not treat this date as the entire season.",
+      "form": {
+        "title": "USA–North America AI Olympiad 2025 — Round 2",
+        "slug": "usaaio-2025",
+        "description": "The 2025 USA–North America AI Olympiad Round 2 was held at MIT. This listing covers that round only; Round 1 and the subsequent selection camp belong to the same annual edition.",
+        "organizer": "USA AI Olympiad (USAAIO)",
+        "officialWebsite": "https://ioai-official.org/the-usa-north-america-ai-olympiad-is-organized-by-the-usa-ai-olympiad-usaaio/",
+        "registrationUrl": "",
+        "startDate": "2025-04-27",
+        "endDate": "2025-04-27",
+        "registrationDeadline": "",
+        "city": "Cambridge",
+        "country": "United States",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "Top scorers invited from Round 1; primarily U.S. students with North American participation.",
+        "tags": "AI, Machine Learning, USAAIO, 2025",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "poland-oai-2025",
+      "year": 2025,
+      "sourceIds": [
+        "poland-oai-2025",
+        "poland-oai-2025-rules"
+      ],
+      "dateScope": "Stage I February 17–March 22 through final May 30–June 2; later camp excluded",
+      "notes": "No single city for season; Wrocław is final venue. Country not assumed contestant citizenship.",
+      "form": {
+        "title": "Olimpiada Sztucznej Inteligencji 2025 — II OAI",
+        "slug": "poland-oai-2025",
+        "description": "Second Polish AI Olympiad: online qualification, April 26–27 regional contests and Wrocław final May 30–June 2. Separate stage results preserve distinct scoring.",
+        "organizer": "Fundacja Edukacji i Rozwoju Sztucznej Inteligencji",
+        "officialWebsite": "https://www.oai.edu.pl/edycje/ii-oai",
+        "registrationUrl": "",
+        "startDate": "2025-02-17",
+        "endDate": "2025-06-02",
+        "registrationDeadline": "",
+        "city": "",
+        "country": "Poland",
+        "format": "hybrid",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "Primary and secondary school students under the Polish Olympiad rules.",
+        "tags": "AI, Machine Learning, Olympiad, POLAND, 2025",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "onia-2026",
+      "year": 2026,
+      "sourceIds": [
+        "onia-2026-archive",
+        "onia-2026-organizer"
+      ],
+      "dateScope": "National programme April 17–20; contest April 18; camps excluded",
+      "notes": "",
+      "form": {
+        "title": "Romanian National Artificial Intelligence Olympiad 2026 — National Stage",
+        "slug": "onia-2026",
+        "description": "Third ONIA edition's national programme at Politehnica Bucharest. Local/county stages and team-selection camps remain distinct result records; national sections grades 9–10 and 11–12 are separate.",
+        "organizer": "Romanian Computer Science Teachers' Union (UPIR)",
+        "officialWebsite": "https://www.olimpiada-ai.ro/en/editii/2026",
+        "registrationUrl": "",
+        "startDate": "2026-04-17",
+        "endDate": "2026-04-20",
+        "registrationDeadline": "",
+        "city": "Bucharest",
+        "country": "Romania",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "County-stage qualifiers in grades 9–10 and 11–12; special guests separate.",
+        "tags": "AI, Machine Learning, Olympiad, ONIA, 2026",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "iaio-2024",
+      "year": 2024,
+      "sourceIds": [
+        "iaio-2024"
+      ],
+      "dateScope": "Arrival through closing/departure",
+      "notes": "",
+      "form": {
+        "title": "International Artificial Intelligence Olympiad 2024",
+        "slug": "iaio-2024",
+        "description": "The first IAIO edition took place in Riyadh, with theory and practical AI competition. IAIO is distinct from the International Olympiad in Artificial Intelligence (IOAI).",
+        "organizer": "IRCAI and International Center for AI Research and Ethics (ICAIRE)",
+        "officialWebsite": "https://iaio-official.org/olympiad-2024/",
+        "registrationUrl": "",
+        "startDate": "2024-09-08",
+        "endDate": "2024-09-12",
+        "registrationDeadline": "",
+        "city": "Riyadh",
+        "country": "Saudi Arabia",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "National delegations; consult the edition's competition requirements before inferring individual eligibility.",
+        "tags": "AI, Machine Learning, IAIO, 2024",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "usaaio-2026",
+      "year": 2026,
+      "sourceIds": [
+        "usaaio-2026"
+      ],
+      "dateScope": "Round 2 event programme only",
+      "notes": "",
+      "form": {
+        "title": "USA–North America AI Olympiad 2026 — Round 2",
+        "slug": "usaaio-2026",
+        "description": "The organizer reports Round 2 at Harvard and MIT during April 4–6. The contest sessions took place April 4–5; the listed window includes the Round 2 event programme, not the subsequent camp.",
+        "organizer": "USA AI Olympiad (USAAIO)",
+        "officialWebsite": "https://www.usaaio.org/",
+        "registrationUrl": "",
+        "startDate": "2026-04-04",
+        "endDate": "2026-04-06",
+        "registrationDeadline": "",
+        "city": "Cambridge",
+        "country": "United States",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "Invited Round 2 qualifiers from the annual USA–North America AI Olympiad.",
+        "tags": "AI, Machine Learning, USAAIO, 2026",
+        "verified": false
+      }
+    }
+  ],
+  "resultSets": [
+    {
+      "key": "ioai-2025-individual",
+      "competitionSlug": "ioai-2025",
+      "sourceIds": [
+        "ioai-2025-results"
+      ],
+      "division": "Individual contest",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null.",
+      "form": {
+        "name": "Individual contest 2025 — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://ioai-official.org/china-2025/results-2025/",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantName": "Krzysztof Rojek",
+          "countryCode": "PL",
+          "rank": 1,
+          "score": 542.05,
+          "scoreDisplay": "542.05",
+          "award": "Gold",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2025-results"
+          ]
+        },
+        {
+          "participantName": "Kieran Chai Kai Ren",
+          "countryCode": "SG",
+          "rank": 2,
+          "score": 465.71,
+          "scoreDisplay": "465.71",
+          "award": "Gold",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2025-results"
+          ]
+        },
+        {
+          "participantName": "Wang Jiayu",
+          "countryCode": "SG",
+          "rank": 3,
+          "score": 463.17,
+          "scoreDisplay": "463.17",
+          "award": "Gold",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2025-results"
+          ]
+        },
+        {
+          "participantType": "individual",
+          "participantName": "Kanabek Abu",
+          "countryCode": "KZ",
+          "rank": 9,
+          "score": 400.09,
+          "scoreDisplay": "400.09",
+          "award": "Gold",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2025-results"
+          ]
+        },
+        {
+          "participantType": "individual",
+          "participantName": "Issatay Sultanbi",
+          "countryCode": "KZ",
+          "rank": 15,
+          "score": 380.37,
+          "scoreDisplay": "380.37",
+          "award": "Gold",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2025-results"
+          ]
+        },
+        {
+          "participantType": "individual",
+          "participantName": "Kassymkan Zhanibek",
+          "countryCode": "KZ",
+          "rank": 22,
+          "score": 359.39,
+          "scoreDisplay": "359.39",
+          "award": "Gold",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2025-results"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ioai-2025-team-final",
+      "competitionSlug": "ioai-2025",
+      "sourceIds": [
+        "ioai-2025-results"
+      ],
+      "division": "Final Round of Team Challenge",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null.",
+      "form": {
+        "name": "Final Round of Team Challenge 2025 — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://ioai-official.org/china-2025/results-2025/",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantName": "Poland Team 1",
+          "countryCode": "PL",
+          "rank": 1,
+          "score": 212.3,
+          "scoreDisplay": "212.3",
+          "award": "First Place Trophy",
+          "participantType": "team",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2025-results"
+          ]
+        },
+        {
+          "participantName": "Russia Team 1",
+          "countryCode": "RU",
+          "rank": 2,
+          "score": 212.2,
+          "scoreDisplay": "212.2",
+          "award": "Second Place Trophy",
+          "participantType": "team",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2025-results"
+          ]
+        },
+        {
+          "participantName": "Poland Team 2",
+          "countryCode": "PL",
+          "rank": 3,
+          "score": 210.89,
+          "scoreDisplay": "210.89",
+          "award": "Third Place Trophy",
+          "participantType": "team",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2025-results"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ioai-2025-gaite",
+      "competitionSlug": "ioai-2025",
+      "sourceIds": [
+        "ioai-2025-results"
+      ],
+      "division": "GAITE contest",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null.",
+      "form": {
+        "name": "GAITE contest 2025 — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://ioai-official.org/china-2025/results-2025/",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantName": "Kabel Cisse",
+          "countryCode": "ML",
+          "rank": 1,
+          "score": 423.96,
+          "scoreDisplay": "423.96",
+          "award": "First Level",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2025-results"
+          ]
+        },
+        {
+          "participantName": "Ariana Rivera Ferraiuoli",
+          "countryCode": "PR",
+          "rank": 2,
+          "score": 390.93,
+          "scoreDisplay": "390.93",
+          "award": "First Level",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2025-results"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ioai-2026-individual",
+      "competitionSlug": "ioai-2026",
+      "sourceIds": [
+        "ioai-2026-results"
+      ],
+      "division": "Individual contest",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null.",
+      "form": {
+        "name": "Individual contest 2026 — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantName": "Artem Gorokhov",
+          "countryCode": "RU",
+          "rank": 1,
+          "score": 428.4866,
+          "scoreDisplay": "428,4866",
+          "award": "Gold + 1st Place 🏆",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2026-results"
+          ]
+        },
+        {
+          "participantName": "Dauzhan Beketov",
+          "countryCode": "KZ",
+          "rank": 2,
+          "score": 405.5759,
+          "scoreDisplay": "405,5759",
+          "award": "Gold + 2nd Place 🏆",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2026-results"
+          ]
+        },
+        {
+          "participantName": "Shao Zixi",
+          "countryCode": "CN",
+          "rank": 3,
+          "score": 375.4507,
+          "scoreDisplay": "375,4507",
+          "award": "Gold + 3rd Place 🏆",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2026-results"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ioai-2026-gaite",
+      "competitionSlug": "ioai-2026",
+      "sourceIds": [
+        "ioai-2026-results"
+      ],
+      "division": "GAITE contest",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null.",
+      "form": {
+        "name": "GAITE contest 2026 — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantName": "Kadanga Essognim Elisee",
+          "countryCode": "TG",
+          "rank": 1,
+          "score": 108.8463,
+          "scoreDisplay": "108,8463",
+          "award": "Level 1 Award",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2026-results"
+          ]
+        },
+        {
+          "participantName": "Solevo Essaie Henoc Winner",
+          "countryCode": "TG",
+          "rank": 2,
+          "score": 83.5054,
+          "scoreDisplay": "83,5054",
+          "award": "Level 1 Award",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2026-results"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "apoai-2026-individual",
+      "competitionSlug": "apoai-2026",
+      "sourceIds": [
+        "apoai-2026"
+      ],
+      "division": "Individual contest",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Partial selection intentionally retains official ties at 122/125, a real zero score and a ranked N/A score. Publication date remains unknown; tentative release date is not evidence of actual release.",
+      "form": {
+        "name": "APOAI 2026 final standings — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://www.apoai.org/apoai2026",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantName": "Bat-Erdene Budkhand",
+          "countryCode": "MN",
+          "rank": 1,
+          "score": 340.3075,
+          "scoreDisplay": "340.3075",
+          "award": "Gold",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "apoai-2026"
+          ]
+        },
+        {
+          "participantName": "Gorokhov Artem",
+          "countryCode": "RU",
+          "rank": 2,
+          "score": 314.9089,
+          "scoreDisplay": "314.9089",
+          "award": "Gold",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "apoai-2026"
+          ]
+        },
+        {
+          "participantName": "Zachary Justin Tang",
+          "countryCode": "AU",
+          "rank": 122,
+          "score": 37.5151,
+          "scoreDisplay": "37.5151",
+          "award": null,
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "apoai-2026"
+          ]
+        },
+        {
+          "participantName": "CHEN, Yi Heng",
+          "countryCode": "HK",
+          "rank": 122,
+          "score": 37.5151,
+          "scoreDisplay": "37.5151",
+          "award": null,
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "apoai-2026"
+          ]
+        },
+        {
+          "participantName": "Tan Yu Xuan",
+          "countryCode": "MY",
+          "rank": 125,
+          "score": 0,
+          "scoreDisplay": "0.0000",
+          "award": null,
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "apoai-2026"
+          ]
+        },
+        {
+          "participantName": "HO, Yau Tong Princeton",
+          "countryCode": "HK",
+          "rank": 125,
+          "score": null,
+          "scoreDisplay": "N/A",
+          "award": null,
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "apoai-2026"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "euroai-2026-members",
+      "competitionSlug": "euroai-2026",
+      "sourceIds": [
+        "euroai-2026-results"
+      ],
+      "division": "Member",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Member-country standings only. Preserve the official shared rank 8. Remote and Guest entries are not assigned row-position ranks.",
+      "form": {
+        "name": "EUROAI 2026 Member standings — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://euroai-official.org/2026/results/",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantName": "Roman Mielamud",
+          "countryCode": "UA",
+          "rank": 1,
+          "score": 323,
+          "scoreDisplay": "323",
+          "award": "Gold",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "euroai-2026-results"
+          ]
+        },
+        {
+          "participantName": "Lovmar Teo",
+          "countryCode": "SE",
+          "rank": 2,
+          "score": 293,
+          "scoreDisplay": "293",
+          "award": "Gold",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "euroai-2026-results"
+          ]
+        },
+        {
+          "participantName": "Persson Holm Simon",
+          "countryCode": "SE",
+          "rank": 8,
+          "score": 234,
+          "scoreDisplay": "234",
+          "award": "Silver",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "euroai-2026-results"
+          ]
+        },
+        {
+          "participantName": "Rekhviashvili Mate",
+          "countryCode": "GE",
+          "rank": 8,
+          "score": 234,
+          "scoreDisplay": "234",
+          "award": "Silver",
+          "participantType": "individual",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "euroai-2026-results"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "euroai-2026-remote",
+      "competitionSlug": "euroai-2026",
+      "sourceIds": [
+        "euroai-2026-results"
+      ],
+      "division": "Remote",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Remote category, not Member ranks. Official blank ranks become null/unranked, NOT an invented placement. Preserve public source spelling; no automatic profile matching.",
+      "form": {
+        "name": "EUROAI 2026 Remote awards — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://euroai-official.org/2026/results/",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantName": "Kanabek Abu",
+          "countryCode": "KZ",
+          "rank": null,
+          "score": 286,
+          "scoreDisplay": "286",
+          "award": "Gold",
+          "participantType": "individual",
+          "resultStatus": "unranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "euroai-2026-results"
+          ]
+        },
+        {
+          "participantName": "Beketov Dauzhan",
+          "countryCode": "KZ",
+          "rank": null,
+          "score": 253,
+          "scoreDisplay": "253",
+          "award": "Silver",
+          "participantType": "individual",
+          "resultStatus": "unranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "euroai-2026-results"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "ioai-2024-scientific",
+      "competitionSlug": "ioai-2024",
+      "sourceIds": [
+        "ioai-2024-results"
+      ],
+      "division": "Scientific Round 2024",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Country left null: team label is not proof of participant citizenship.",
+      "form": {
+        "name": "Scientific Round 2024 — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer publication; selected rows, full table linked",
+        "sourceUrl": "https://ioai-official.org/bulgaria-2024/results/",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantType": "team",
+          "participantName": "Letovo",
+          "countryCode": null,
+          "rank": 1,
+          "score": 99.04457078,
+          "scoreDisplay": "99.04457078",
+          "award": "Gold",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2024-results"
+          ]
+        },
+        {
+          "participantType": "team",
+          "participantName": "Poland 1",
+          "countryCode": null,
+          "rank": 2,
+          "score": 75.93371728,
+          "scoreDisplay": "75.93371728",
+          "award": "Gold",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2024-results"
+          ]
+        },
+        {
+          "participantType": "team",
+          "participantName": "Singapore 2",
+          "countryCode": null,
+          "rank": 3,
+          "score": 68.30534503,
+          "scoreDisplay": "68.30534503",
+          "award": "Gold",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "ioai-2024-results"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "faio-2025-final",
+      "competitionSlug": "faio-2025",
+      "sourceIds": [
+        "faio-2025-results"
+      ],
+      "division": "FAIO 2025 Final Results",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Original team-on-Kaggle labels; not KAIZ profiles. No inferred awards, member details or color-based exclusions.",
+      "form": {
+        "name": "FAIO 2025 Final Results — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer publication; selected rows, full table linked",
+        "sourceUrl": "https://docs.google.com/spreadsheets/d/10Rj9aCxwFR5EoTQUo9ChunzffX7Xgxb3fy3zDGNjlrQ/edit?usp=sharing",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantType": "team",
+          "participantName": "Moscow_Andronov_Stanislav",
+          "countryCode": "RU",
+          "rank": 1,
+          "score": 3.21128,
+          "scoreDisplay": "3,21128",
+          "award": null,
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "faio-2025-results"
+          ]
+        },
+        {
+          "participantType": "team",
+          "participantName": "Sirius_Labzin_Kirill",
+          "countryCode": "RU",
+          "rank": 2,
+          "score": 3.16874,
+          "scoreDisplay": "3,16874",
+          "award": null,
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "faio-2025-results"
+          ]
+        },
+        {
+          "participantType": "team",
+          "participantName": "RusNovosibirsk_Artem_Goncharov",
+          "countryCode": "RU",
+          "rank": 3,
+          "score": 3.02994,
+          "scoreDisplay": "3,02994",
+          "award": null,
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "faio-2025-results"
+          ]
+        },
+        {
+          "participantType": "team",
+          "participantName": "Almaty_Shyngys_Sovetkhan",
+          "countryCode": "KZ",
+          "rank": 4,
+          "score": 2.93082,
+          "scoreDisplay": "2,93082",
+          "award": null,
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "faio-2025-results"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "poland-oai-2025-final",
+      "competitionSlug": "poland-oai-2025",
+      "sourceIds": [
+        "poland-oai-2025"
+      ],
+      "division": "Wyniki Finału II Olimpiady Sztucznej Inteligencji",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Source explicitly numbers final ranks including tied 15. Do not convert Polish award categories into medals.",
+      "form": {
+        "name": "Wyniki Finału II Olimpiady Sztucznej Inteligencji — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer publication; selected rows, full table linked",
+        "sourceUrl": "https://www.oai.edu.pl/edycje/ii-oai",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantType": "individual",
+          "participantName": "Dawid Kot",
+          "countryCode": null,
+          "rank": 1,
+          "score": 374,
+          "scoreDisplay": "374",
+          "award": "Laureaci I stopnia",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "poland-oai-2025"
+          ]
+        },
+        {
+          "participantType": "individual",
+          "participantName": "Tymoteusz Stępkowski",
+          "countryCode": null,
+          "rank": 2,
+          "score": 366,
+          "scoreDisplay": "366",
+          "award": "Laureaci I stopnia",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "poland-oai-2025"
+          ]
+        },
+        {
+          "participantType": "individual",
+          "participantName": "Krzysztof Rojek",
+          "countryCode": null,
+          "rank": 3,
+          "score": 338,
+          "scoreDisplay": "338",
+          "award": "Laureaci I stopnia",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "poland-oai-2025"
+          ]
+        },
+        {
+          "participantType": "individual",
+          "participantName": "Marcel Kosmala",
+          "countryCode": null,
+          "rank": 15,
+          "score": 127,
+          "scoreDisplay": "127",
+          "award": "Laureaci II stopnia",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "poland-oai-2025"
+          ]
+        },
+        {
+          "participantType": "individual",
+          "participantName": "Kamil Grzesło",
+          "countryCode": null,
+          "rank": 15,
+          "score": 127,
+          "scoreDisplay": "127",
+          "award": "Laureaci II stopnia",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "poland-oai-2025"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "poland-oai-2025-stage1",
+      "competitionSlug": "poland-oai-2025",
+      "sourceIds": [
+        "poland-oai-2025"
+      ],
+      "division": "Wyniki I etapu",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Official selected score list; no numbered ranks. Preserve scores and null/unranked instead of deriving rank from list position.",
+      "form": {
+        "name": "Wyniki I etapu — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer publication; selected rows, full table linked",
+        "sourceUrl": "https://www.oai.edu.pl/edycje/ii-oai",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantType": "individual",
+          "participantName": "Kamil Grzesło",
+          "countryCode": null,
+          "rank": null,
+          "score": 495,
+          "scoreDisplay": "495",
+          "award": null,
+          "resultStatus": "unranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "poland-oai-2025"
+          ]
+        },
+        {
+          "participantType": "individual",
+          "participantName": "Krzysztof Rojek",
+          "countryCode": null,
+          "rank": null,
+          "score": 480,
+          "scoreDisplay": "480",
+          "award": null,
+          "resultStatus": "unranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "poland-oai-2025"
+          ]
+        },
+        {
+          "participantType": "individual",
+          "participantName": "Wojciech Machel",
+          "countryCode": null,
+          "rank": null,
+          "score": 478,
+          "scoreDisplay": "478",
+          "award": null,
+          "resultStatus": "unranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "poland-oai-2025"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "poland-oai-2025-stage2",
+      "competitionSlug": "poland-oai-2025",
+      "sourceIds": [
+        "poland-oai-2025"
+      ],
+      "division": "Wyniki 2 etapu",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Three equal scores are preserved. Source does not number ranks; do not infer first place.",
+      "form": {
+        "name": "Wyniki 2 etapu — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer publication; selected rows, full table linked",
+        "sourceUrl": "https://www.oai.edu.pl/edycje/ii-oai",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantType": "individual",
+          "participantName": "Jan Kociszewski",
+          "countryCode": null,
+          "rank": null,
+          "score": 400,
+          "scoreDisplay": "400",
+          "award": null,
+          "resultStatus": "unranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "poland-oai-2025"
+          ]
+        },
+        {
+          "participantType": "individual",
+          "participantName": "Krzysztof Rojek",
+          "countryCode": null,
+          "rank": null,
+          "score": 400,
+          "scoreDisplay": "400",
+          "award": null,
+          "resultStatus": "unranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "poland-oai-2025"
+          ]
+        },
+        {
+          "participantType": "individual",
+          "participantName": "Bartosz Trojan",
+          "countryCode": null,
+          "rank": null,
+          "score": 400,
+          "scoreDisplay": "400",
+          "award": null,
+          "resultStatus": "unranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "poland-oai-2025"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "iaio-2026-final",
+      "competitionSlug": "iaio-2026",
+      "sourceIds": [
+        "iaio-2026-results"
+      ],
+      "division": "IAIO 2026 Competition Results",
+      "coverage": "partial",
+      "publicationDate": null,
+      "notes": "Round 1/2 components retained in stage catalog; not separate qualification/final events or independently ranked sets.",
+      "form": {
+        "name": "IAIO 2026 Competition Results — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer publication; selected rows, full table linked",
+        "sourceUrl": "https://iaio-official.org/results2026/",
+        "published": false
+      },
+      "entries": [
+        {
+          "participantType": "individual",
+          "participantName": "Anango Prabhat",
+          "countryCode": "GB",
+          "rank": 1,
+          "score": 97.98619057,
+          "scoreDisplay": "97.98619057",
+          "award": "Gold Medal",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "iaio-2026-results"
+          ]
+        },
+        {
+          "participantType": "individual",
+          "participantName": "Bryan Zhu",
+          "countryCode": "CA",
+          "rank": 2,
+          "score": 91.97724789,
+          "scoreDisplay": "91.97724789",
+          "award": "Gold Medal",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "iaio-2026-results"
+          ]
+        },
+        {
+          "participantType": "individual",
+          "participantName": "Muyang Hou",
+          "countryCode": "CN",
+          "rank": 3,
+          "score": 91.78929602,
+          "scoreDisplay": "91.78929602",
+          "award": "Gold Medal",
+          "resultStatus": "ranked",
+          "externalParticipantId": null,
+          "sourceIds": [
+            "iaio-2026-results"
+          ]
+        }
+      ]
+    }
+  ]
+}
