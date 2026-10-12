@@ -1,0 +1,325 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-12",
+  "scope": "secondary_backlog_not_in_first_batch",
+  "candidateEditions": [
+    {
+      "editionKey": "ioai-2027",
+      "year": 2027,
+      "name": "International Olympiad in Artificial Intelligence 2027",
+      "status": "secondary_verified",
+      "sourceIds": [
+        "ioai-2027"
+      ],
+      "missingRequired": [],
+      "dateScope": "Full international event week",
+      "notes": "",
+      "priority": "secondary"
+    },
+    {
+      "editionKey": "usaaio-2027",
+      "year": 2027,
+      "name": "USA–North America AI Olympiad 2027 — Round 1",
+      "status": "secondary_verified",
+      "sourceIds": [
+        "usaaio-2027"
+      ],
+      "missingRequired": [],
+      "dateScope": "Round 1 only",
+      "notes": "United States identifies the organizing country, not every participant's location. No single city. Hybrid is the closest existing format for distributed proctored computer-based participation.",
+      "priority": "secondary"
+    },
+    {
+      "editionKey": "bwki-2023",
+      "year": 2023,
+      "name": "Bundeswettbewerb Künstliche Intelligenz 2023 — Finale",
+      "status": "secondary_verified",
+      "sourceIds": [
+        "bwki-archive",
+        "bwki-organizer"
+      ],
+      "missingRequired": [],
+      "dateScope": "Finale only",
+      "notes": "No separate duplicate records for stages of this annual edition.",
+      "priority": "secondary"
+    },
+    {
+      "editionKey": "bwki-2024",
+      "year": 2024,
+      "name": "Bundeswettbewerb Künstliche Intelligenz 2024 — Finale",
+      "status": "secondary_verified",
+      "sourceIds": [
+        "bwki-archive",
+        "bwki-organizer"
+      ],
+      "missingRequired": [],
+      "dateScope": "Finale only",
+      "notes": "No separate duplicate records for stages of this annual edition.",
+      "priority": "secondary"
+    },
+    {
+      "editionKey": "bwki-2025",
+      "year": 2025,
+      "name": "Bundeswettbewerb Künstliche Intelligenz 2025 — Finale",
+      "status": "secondary_verified",
+      "sourceIds": [
+        "bwki-archive",
+        "bwki-organizer"
+      ],
+      "missingRequired": [],
+      "dateScope": "Finale only",
+      "notes": "No separate duplicate records for stages of this annual edition.",
+      "priority": "secondary"
+    },
+    {
+      "editionKey": "bwki-2026",
+      "year": 2026,
+      "name": "Bundeswettbewerb Künstliche Intelligenz 2026",
+      "status": "secondary_verified",
+      "sourceIds": [
+        "bwki-2026",
+        "bwki-organizer",
+        "bwki-eligibility"
+      ],
+      "missingRequired": [],
+      "dateScope": "Full project competition season",
+      "notes": "Registration is closed; do not advertise the portal as accepting new 2026 entries.",
+      "priority": "secondary"
+    },
+    {
+      "editionKey": "iaio-2027",
+      "year": 2027,
+      "name": "International Artificial Intelligence Olympiad 2027",
+      "status": "needs_review",
+      "sourceIds": [
+        "iaio-2027"
+      ],
+      "missingRequired": [
+        "format",
+        "edition-specific organizer"
+      ],
+      "notes": "Vietnam; February 25–March 2. City explicitly not announced; nullable, not invented.",
+      "priority": "secondary"
+    },
+    {
+      "editionKey": "euroai-2027",
+      "year": 2027,
+      "name": "European Olympiad in Artificial Intelligence 2027",
+      "status": "needs_review",
+      "sourceIds": [
+        "euroai-2027"
+      ],
+      "missingRequired": [
+        "edition-specific organizer confirmation"
+      ],
+      "notes": "Belgrade, Serbia; July 27–August 1. Do not carry Romania 2026 metadata into 2027.",
+      "priority": "secondary"
+    },
+    {
+      "editionKey": "ukaio-2027",
+      "year": 2027,
+      "name": "UK Artificial Intelligence Olympiad 2027",
+      "status": "needs_review",
+      "sourceIds": [
+        "ukaio-2027"
+      ],
+      "missingRequired": [
+        "format",
+        "complete season dates or approved qualifier-only scope"
+      ],
+      "notes": "Tentative first selection November 29, 2026; do not use IAIO Vietnam dates as UK competition dates.",
+      "priority": "secondary"
+    },
+    {
+      "editionKey": "bwki-2022",
+      "year": 2022,
+      "name": "Bundeswettbewerb Künstliche Intelligenz 2022 — Finale",
+      "status": "needs_review",
+      "sourceIds": [
+        "bwki-archive",
+        "bwki-organizer"
+      ],
+      "missingRequired": [
+        "historical organizer confirmation"
+      ],
+      "notes": "Final date October 14 verified. Current March 2023 imprint establishes present organizer, not explicitly historical 2022 organizer.",
+      "priority": "secondary"
+    }
+  ],
+  "preparedMetadata": [
+    {
+      "editionKey": "ioai-2027",
+      "year": 2027,
+      "sourceIds": [
+        "ioai-2027"
+      ],
+      "dateScope": "Full international event week",
+      "notes": "",
+      "form": {
+        "title": "International Olympiad in Artificial Intelligence 2027",
+        "slug": "ioai-2027",
+        "description": "The fourth IOAI edition is scheduled in Singapore, jointly hosted by AISG and NTU. The dates cover the announced international event week.",
+        "organizer": "AI Singapore (AISG) and Nanyang Technological University (NTU)",
+        "officialWebsite": "https://ioai-official.org/singapore-2027/",
+        "registrationUrl": "",
+        "startDate": "2027-07-04",
+        "endDate": "2027-07-10",
+        "registrationDeadline": "",
+        "city": "Singapore",
+        "country": "Singapore",
+        "format": "offline",
+        "status": "upcoming",
+        "category": "Machine Learning",
+        "eligibility": "High-school national delegations selected through the IOAI accreditation framework.",
+        "tags": "AI, Machine Learning, IOAI, 2027",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "usaaio-2027",
+      "year": 2027,
+      "sourceIds": [
+        "usaaio-2027"
+      ],
+      "dateScope": "Round 1 only",
+      "notes": "United States identifies the organizing country, not every participant's location. No single city. Hybrid is the closest existing format for distributed proctored computer-based participation.",
+      "form": {
+        "title": "USA–North America AI Olympiad 2027 — Round 1",
+        "slug": "usaaio-2027",
+        "description": "The 2027 Round 1 is a simultaneous AI test taken at students' schools or approved test sites. The edition's later rounds and camp have only month-level dates and are not represented by this one-day window.",
+        "organizer": "USA AI Olympiad (USAAIO)",
+        "officialWebsite": "https://www.usaaio.org/2027-usa-na-aio",
+        "registrationUrl": "https://portal.usaaio.org/",
+        "startDate": "2027-02-19",
+        "endDate": "2027-02-19",
+        "registrationDeadline": "",
+        "city": "",
+        "country": "United States",
+        "format": "hybrid",
+        "status": "upcoming",
+        "category": "Machine Learning",
+        "eligibility": "Round 1 is open to everyone; an approved on-site proctor/test site is required.",
+        "tags": "AI, Machine Learning, USAAIO, 2027",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "bwki-2023",
+      "year": 2023,
+      "sourceIds": [
+        "bwki-archive",
+        "bwki-organizer"
+      ],
+      "dateScope": "Finale only",
+      "notes": "No separate duplicate records for stages of this annual edition.",
+      "form": {
+        "title": "Bundeswettbewerb Künstliche Intelligenz 2023 — Finale",
+        "slug": "bwki-2023",
+        "description": "The 2023 finale of Germany's Bundeswettbewerb Künstliche Intelligenz presented selected student AI projects. Dates in this listing describe the finale only, not the full annual project-development season.",
+        "organizer": "Tübingen AI Center",
+        "officialWebsite": "https://www.bw-ki.de/rueckblick",
+        "registrationUrl": "",
+        "startDate": "2023-11-10",
+        "endDate": "2023-11-10",
+        "registrationDeadline": "",
+        "city": "Tübingen",
+        "country": "Germany",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "Invited finalists in the national student AI project competition.",
+        "tags": "AI, Machine Learning, BWKI, 2023",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "bwki-2024",
+      "year": 2024,
+      "sourceIds": [
+        "bwki-archive",
+        "bwki-organizer"
+      ],
+      "dateScope": "Finale only",
+      "notes": "No separate duplicate records for stages of this annual edition.",
+      "form": {
+        "title": "Bundeswettbewerb Künstliche Intelligenz 2024 — Finale",
+        "slug": "bwki-2024",
+        "description": "The 2024 finale of Germany's Bundeswettbewerb Künstliche Intelligenz presented selected student AI projects. Dates in this listing describe the finale only, not the full annual project-development season.",
+        "organizer": "Tübingen AI Center",
+        "officialWebsite": "https://www.bw-ki.de/rueckblick",
+        "registrationUrl": "",
+        "startDate": "2024-11-15",
+        "endDate": "2024-11-15",
+        "registrationDeadline": "",
+        "city": "Tübingen",
+        "country": "Germany",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "Invited finalists in the national student AI project competition.",
+        "tags": "AI, Machine Learning, BWKI, 2024",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "bwki-2025",
+      "year": 2025,
+      "sourceIds": [
+        "bwki-archive",
+        "bwki-organizer"
+      ],
+      "dateScope": "Finale only",
+      "notes": "No separate duplicate records for stages of this annual edition.",
+      "form": {
+        "title": "Bundeswettbewerb Künstliche Intelligenz 2025 — Finale",
+        "slug": "bwki-2025",
+        "description": "The 2025 finale of Germany's Bundeswettbewerb Künstliche Intelligenz presented selected student AI projects. Dates in this listing describe the finale only, not the full annual project-development season.",
+        "organizer": "Tübingen AI Center",
+        "officialWebsite": "https://www.bw-ki.de/rueckblick",
+        "registrationUrl": "",
+        "startDate": "2025-11-14",
+        "endDate": "2025-11-14",
+        "registrationDeadline": "",
+        "city": "Frankfurt am Main",
+        "country": "Germany",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "Invited finalists in the national student AI project competition.",
+        "tags": "AI, Machine Learning, BWKI, 2025",
+        "verified": false
+      }
+    },
+    {
+      "editionKey": "bwki-2026",
+      "year": 2026,
+      "sourceIds": [
+        "bwki-2026",
+        "bwki-organizer",
+        "bwki-eligibility"
+      ],
+      "dateScope": "Full project competition season",
+      "notes": "Registration is closed; do not advertise the portal as accepting new 2026 entries.",
+      "form": {
+        "title": "Bundeswettbewerb Künstliche Intelligenz 2026",
+        "slug": "bwki-2026",
+        "description": "Germany's national student AI project competition combines remote project development with an on-site finale in Tübingen. The dates span registration/team formation through the final, not just an exam day.",
+        "organizer": "Tübingen AI Center",
+        "officialWebsite": "https://www.bw-ki.de/",
+        "registrationUrl": "",
+        "startDate": "2026-03-01",
+        "endDate": "2026-11-13",
+        "registrationDeadline": "",
+        "city": "Tübingen",
+        "country": "Germany",
+        "format": "hybrid",
+        "status": "active",
+        "category": "Machine Learning",
+        "eligibility": "Secondary-school students and up to one year after school completion; German citizenship, residence or recognized German school abroad as specified in the official terms.",
+        "tags": "AI, Machine Learning, BWKI, 2026",
+        "verified": false
+      }
+    }
+  ],
+  "notes": "Future/BWKI research retained outside first batch, not testing/import queue."
+}

@@ -28,13 +28,13 @@ All five contain required form fields; none has complete references/results cove
 
 ## Prepared batch
 
-**17 official-source-backed candidate editions beyond the existing five: 10 ready for admin review, 7 held.** Ready means source-backed required fields and explicit date scope, not approved publication.
+**Current Kazakhstan-first revision:** all 15 requested research targets are inventoried; 13 have source-backed scoped metadata drafts, including the five existing competitions. Two proposed verified replacements (IAIO 2024 and USA–NA–AIO 2026 Round 2) complete the 15-edition review batch, subject to Tima's approval. Ready means source-backed required fields and explicit scope, not approved publication. See [curated review and missing-data checklist](curated-content-review.md).
 
-- Ready: IOAI 2027; IAIO 2024 / Winter IAIO 2026; USA–North America AI Olympiad 2025 / 2026 (Round 2) / 2027 (Round 1); Bundeswettbewerb Künstliche Intelligenz 2023 / 2024 / 2025 (finale only) / 2026 (whole project season).
-- Held: IOAI 2024 (arrival-date discrepancy); IAIO 2027 (format/organizer); EUROAI 2027 (organizer); Kazakhstan AI Olymp 2025 (two-day date range), 2026 (full finals scope versus one platform round); UKAIO 2027 (format/scope); BWKI 2022 (historical organizer). Do not invent IAIO/APOAI 2025 or duplicate CEOAI 2026 to meet counts.
+- Active new drafts: IOAI 2024; Winter IAIO 2026; FAIO 2025/2026; NEOAI 2025; Poland II OAI 2025; Romania ONIA 2026 National Stage; USA–North America AI Olympiad 2025 Round 2; proposed replacements IAIO 2024 and USA–North America AI Olympiad 2026 Round 2. IOAI 2024 explicitly uses dedicated retrospective event dates August 9–15 rather than general-planning August 8–15.
+- Priority holds: Kazakhstan AI Olymp 2025/2026 exact finals date scope, 2025 unavailable screenshot and 2026 sheet's unconfirmed organizer publication provenance. No rows guessed. BWKI and future editions now remain only in the separate secondary backlog; original research preserved, not executed.
 - Two metadata proposals: IOAI 2025 co-host; APOAI 2026 official title/eligibility. No automatic replacement of existing rows.
 
-**8 partial draft result sets, 25 prepared public participant/team rows:** IOAI 2025 individual (3), team final (3), GAITE (2); IOAI 2026 individual (3), GAITE (2); APOAI individual (6); EUROAI Member (4), Remote (2). No rows are imported into production. All titles declare selected-row coverage and link full official tables. Other tracks/Guest rows remain official links, not claimed imports.
+**14 partial draft result sets, 49 prepared public participant/team rows:** IOAI 2025 individual (6), team final (3), GAITE (2); IOAI 2026 individual (3), GAITE (2); APOAI individual (6); EUROAI Member (4), Remote (2); IOAI 2024 Scientific (3); FAIO 2025 Final (4); Polish stage I/II/final (3/3/5); IAIO 2026 Final (3). No production rows imported. All titles declare selected coverage and link official sources. Additional stages have separate availability/original scoring records in `stage-catalog.json`; unknown final results are never fabricated.
 
 Preserve actual ties, numeric zero, ranked N/A, null/unranked remote ranks, team names and exact awards. Decimal commas become numeric points while original display remains. Source name order is retained; no speculative cross-event/profile matches. Publication dates remain unknown/null. Only public names/delegation facts are prepared; no emails, birthdays, schools or private data. A Kaggle ranking is not final official standings without organizer verification.
 
@@ -42,7 +42,7 @@ Preserve actual ties, numeric zero, ranked N/A, null/unranked remote ranks, team
 
 No app/dependency/schema changes. The CI change adds only the two new offline suites to the quality job, with no additional permissions. Run install/typecheck/lint, auth/archive/content/results/learning regressions, build and diff check. In-memory action/SQL-contract tests are not fresh live RLS tests; no production writes were used to test them.
 
-Local verification: clean-lockfile `npm ci` completed; TypeScript, ESLint (zero warnings), production build and diff check passed. All **149** tests passed across auth, archive, learning, content and results suites; **35** belong to the new content/results coverage. The worked batch preview passed with zero errors and `writes: 0`; `approvalReady: false` correctly reflects the public-only snapshot.
+Initial verification included clean-lockfile `npm ci` and 149 tests. The curated revision passed TypeScript, zero-warning ESLint, production build and all **157** regression tests, including **43** content/results tests. The updated worked preview has zero errors and `writes: 0`; `approvalReady: false` correctly reflects the public-only snapshot. Diff check and GitHub CI are checked before handoff. No dependency changes.
 
 The latest-main lockfile reported **six high-severity dependency audit findings**, including Next.js and the ESLint glob/braces chain. They pre-exist this content work. No forced fix/downgrade was attempted. [Next.js advisory](https://github.com/advisories/GHSA-3w37-wq28-93x7), [braces advisory](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm). Passing content CI does not establish release security; Tima must triage/update affected dependencies in a separate owned release/security change before deployment.
 

@@ -29,20 +29,22 @@ function rejected(change, message) {
   assert.ok(plan.errors.some((e) => e.message.includes(message)), JSON.stringify(plan.errors));
 }
 
-test("real starter batch: 10 new editions, 2 review-only metadata patches, 8 partial sets and 25 rows; zero writes", () => {
+test("curated batch: 15 editions, 10 new, 2 review-only patches, 14 partial sets and 49 rows; zero writes", () => {
   const p = prepareContentPlan(batch(), snapshot());
   assert.equal(p.valid, true); assert.equal(p.approvalReady, false); assert.equal(p.mode, "dry-run"); assert.equal(p.writes, 0);
-  for (const [action, count] of [["create_competition", 10], ["review_metadata", 2], ["create_draft_set", 8], ["add_draft_row", 25]]) {
+  assert.equal(batch().competitions.length, 15);
+  for (const [action, count] of [["create_competition", 10], ["review_metadata", 2], ["create_draft_set", 14], ["add_draft_row", 49]]) {
     assert.equal(p.actions.filter((a) => a.action === action).length, count);
   }
   assert.match(p.warnings[0], /private drafts/);
 });
-test("all 17 candidates have real source references; held editions cannot leak into the ready batch", () => {
+test("curated candidates have source references; Kazakhstan holds cannot leak into the ready batch", () => {
   const inventory = file("inventory"); const ready = new Set(batch().competitions.map((c) => c.editionKey));
-  assert.equal(inventory.candidates.length, 17);
-  assert.equal(inventory.candidates.filter((c) => c.status === "needs_review").length, 7);
+  assert.equal(inventory.candidates.length, 12);
+  assert.equal(inventory.candidates.filter((c) => c.status === "needs_review").length, 2);
   for (const c of inventory.candidates) {
-    for (const id of c.sourceIds) assert.ok(inventory.sources.some((s) => s.id === id && s.status === "verified"));
+    for (const id of c.sourceIds) assert.ok(inventory.sources.some((s) => s.id === id));
+    assert.ok(c.sourceIds.some((id) => inventory.sources.some((s) => s.id === id && s.status === "verified")));
     assert.equal(ready.has(c.editionKey), c.status === "ready_for_admin_review");
   }
 });
@@ -67,7 +69,7 @@ test("real zero, N/A and remote unranked rows preserve form semantics", () => {
 test("re-import of identical draft rows skips rather than duplicates", () => {
   const { b, s } = existingSet(); const p = prepareContentPlan(b, s);
   assert.equal(p.valid, true); assert.equal(p.approvalReady, true);
-  assert.equal(p.actions.filter((a) => a.path.startsWith("resultSets.0") && a.action === "skip").length, 3);
+  assert.equal(p.actions.filter((a) => a.path.startsWith("resultSets.0") && a.action === "skip").length, b.resultSets[0].entries.length);
   assert.equal(p.actions.some((a) => a.path === "resultSets.0" && a.action === "create_draft_set"), false);
 });
 test("re-import of identical published verified rows is a no-op", () => {
@@ -147,7 +149,7 @@ test("missing country and awards remain null; original decimal comma is preserve
 });
 test("reject impossible dates, reversed dates, truncated tags, missing required form fields", () => {
   rejected((b) => { b.competitions[0].form.startDate = "2027-02-30"; }, "real ISO calendar");
-  rejected((b) => { b.competitions[0].form.endDate = "2026-01-01"; }, "End date must be after");
+  rejected((b) => { b.competitions[0].form.endDate = "2000-01-01"; }, "End date must be after");
   rejected((b) => { b.competitions[0].form.tags = Array(13).fill("AI").join(","); }, "no silent truncation");
   rejected((b) => { delete b.competitions[0].form.organizer; }, "Invalid input");
 });
@@ -190,4 +192,102 @@ test("CLI refuses apply/credentials flags and defaults to dry-run without readin
   assert.equal(refused.status, 2); assert.match(refused.stderr, /forbidden/);
   const text = readFileSync(new URL("../scripts/content/preview.mjs", import.meta.url), "utf8");
   assert.doesNotMatch(text, /process\.env|fetch\(|createClient\(|dotenv/);
+});
+
+test("all fifteen requested targets stay visible, with two explicit replacement proposals", () => {
+  const inventory = file("inventory");
+  const requested = ["ioai-2024", "ioai-2025", "ioai-2026", "apoai-2026", "euroai-2026", "iaio-2026", "ai-olymp-2025", "ai-olymp-2026", "faio-2025", "faio-2026", "neoai-2025", "neoai-2026", "usaaio-2025", "poland-oai-2025", "onia-2026"];
+  assert.deepEqual(inventory.curatedTargets.map((t) => t.editionKey), requested);
+  assert.equal(inventory.curatedTargets.filter((t) => t.status === "ready_for_admin_review").length, 13);
+  assert.equal(inventory.curatedTargets.filter((t) => t.kazakhstanPriority).length, 4);
+  assert.deepEqual(inventory.replacementProposals.map((r) => r.editionKey), ["iaio-2024", "usaaio-2026"]);
+  assert.ok(inventory.replacementProposals.every((r) => r.status === "proposed_requires_human_approval"));
+});
+
+test("BWKI and future editions exist only in the secondary backlog", () => {
+  const ready = new Set(batch().competitions.map((c) => c.editionKey));
+  assert.ok([...ready].every((k) => !k.startsWith("bwki-") && !k.endsWith("-2027")));
+  const backlog = file("secondary-backlog");
+  assert.equal(backlog.candidateEditions.length, 10);
+  assert.ok(backlog.candidateEditions.some((c) => c.editionKey === "ioai-2027"));
+  assert.ok(backlog.candidateEditions.every((c) => !ready.has(c.editionKey)));
+});
+
+test("stage catalog covers every prepared set with exact source, original fields and draft status", () => {
+  const catalog = file("stage-catalog");
+  assert.equal(new Set(catalog.stages.map((s) => s.key)).size, catalog.stages.length);
+  for (const set of batch().resultSets) {
+    const stage = catalog.stages.find((s) => s.key === set.key);
+    assert.equal(stage.exactStageLabel, set.division);
+    assert.equal(stage.officialSourceUrl, set.form.sourceUrl);
+    assert.equal(stage.availability, "official_public_partial_rows_prepared");
+    assert.equal(stage.verificationStatus, "source_verified_admin_review_pending");
+    assert.ok(stage.originalScoringFields.length > 0);
+    assert.equal(stage.published, false);
+  }
+});
+
+test("Kazakhstan 2025 screenshot template has no invented rows or score headers", () => {
+  const template = JSON.parse(readFileSync(new URL("../content/competitions/templates/ai-olymp-kazakhstan-2025.json", import.meta.url), "utf8"));
+  assert.equal(template.expectedParticipantCount, 38);
+  assert.equal(template.countVerification, "user_reported_not_independently_verified");
+  assert.equal(template.importAllowed, false);
+  assert.equal(template.sourceImagePath, null);
+  for (const stage of template.stageTemplates) {
+    assert.deepEqual(stage.rows, []);
+    assert.deepEqual(stage.originalScoringFields, []);
+    assert.equal(stage.officialSourceUrl, null);
+  }
+  assert.match(template.instructions.join(" "), /Do NOT interpret red-colored rows as exclusions/);
+  assert.equal(prepareContentPlan(template, snapshot()).valid, false);
+});
+
+test("public Kazakhstan 2026 sheet is quarantined until organizer publication is confirmed", () => {
+  const stage = file("stage-catalog").stages.find((s) => s.key === "ai-olymp-2026-final");
+  assert.equal(stage.anonymousAccessVerified, true);
+  assert.equal(stage.officialPublicationVerified, false);
+  assert.equal(stage.observedRows, 39);
+  assert.equal(stage.officialSourceUrl, null);
+  assert.equal(stage.verificationStatus, "needs_review");
+  assert.deepEqual(stage.originalScoringFields.slice(4), ["Total Score", "Zhuldyzzhan's Detective Agency", "Forgotten labels", "Jimmy and Aibek brotherhood"]);
+  assert.ok(batch().resultSets.every((s) => !s.competitionSlug.startsWith("ai-olymp-")));
+  const b = batch(); const pending = file("inventory").sources.find((s) => s.id === "ai-olymp-2026-user-sheet");
+  b.sources.push(pending); b.resultSets[0].sourceIds.push(pending.id);
+  assert.ok(prepareContentPlan(b, snapshot()).errors.some((e) => /Unverified sources/.test(e.message)));
+});
+
+test("FAIO qualifier invitation is not final results; future final contains no fabricated rows", () => {
+  const stages = file("stage-catalog").stages;
+  const qualifier = stages.find((s) => s.key === "faio-2026-qualification");
+  assert.equal(qualifier.stageGroup, "Qualification");
+  assert.match(qualifier.notes, /FINAL badge means invited/);
+  const final = stages.find((s) => s.key === "faio-2026-final");
+  assert.equal(final.availability, "not_yet_held");
+  assert.equal(final.officialSourceUrl, null);
+  assert.ok(batch().resultSets.every((s) => s.competitionSlug !== "faio-2026"));
+});
+
+test("Polish stages keep source ranks only, tied final ranks and original award classes", () => {
+  const stages = batch().resultSets.filter((s) => s.competitionSlug === "poland-oai-2025");
+  assert.equal(stages.length, 3);
+  assert.ok(stages.filter((s) => /stage[12]$/.test(s.key)).flatMap((s) => s.entries).every((r) => r.rank === null && r.resultStatus === "unranked"));
+  const final = stages.find((s) => s.key.endsWith("final"));
+  assert.equal(final.entries.filter((r) => r.rank === 15 && r.score === 127).length, 2);
+  assert.equal(final.entries[0].award, "Laureaci I stopnia");
+  assert.ok(stages.flatMap((s) => s.entries).every((r) => r.countryCode === null));
+});
+
+test("original FAIO and IAIO component values reconcile with imported totals without rescaling", () => {
+  const catalog = file("stage-catalog");
+  for (const group of catalog.selectedOriginalComponents) {
+    const set = batch().resultSets.find((s) => s.key === group.resultSetKey);
+    for (const original of group.rows) {
+      assert.equal(original.values.length, group.originalScoringFields.length);
+      const row = set.entries.find((r) => r.participantName === original.name);
+      assert.equal(Number(original.values.at(-1).replace(",", ".")), row.score);
+    }
+  }
+  const practical = catalog.stages.find((s) => s.key === "ioai-2024-practical");
+  assert.deepEqual(practical.originalScoringFields, ["Team", "Jury score", "Peer voting score", "Rank", "Medal"]);
+  assert.equal(practical.rowCoverage, "no rows prepared");
 });

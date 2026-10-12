@@ -5,11 +5,16 @@
     "existingCompetitions": 5,
     "publicResultSets": 0,
     "publicResultRows": 0,
-    "newCandidateEditions": 17,
+    "newCandidateEditions": 12,
     "readyNewEditions": 10,
-    "heldNewEditions": 7,
-    "preparedResultSets": 8,
-    "preparedResultRows": 25
+    "heldNewEditions": 2,
+    "preparedResultSets": 14,
+    "preparedResultRows": 49,
+    "requestedTargets": 15,
+    "sourceBackedRequestedMetadata": 13,
+    "heldRequestedTargets": 2,
+    "curatedBatchEditions": 15,
+    "secondaryBacklog": 10
   },
   "readScope": "Anonymous RLS-constrained SELECT. Counts do not reveal private drafts. Zero public problems likewise does not prove archive tables are empty.",
   "sources": [
@@ -284,7 +289,7 @@
         "August 9–15 dates",
         "separate scientific and practical rounds"
       ],
-      "notes": "Dedicated edition page says August 9–15; later general regulations say August 8–15. Hold date scope for human review."
+      "notes": "Dedicated retrospective explicitly establishes event dates August 9–15. Use that named scope for this draft; retain the general-regulations August 8–15 discrepancy as a travel/planning scope caveat for approval, not a guessed compromise."
     },
     {
       "id": "ioai-2024-host",
@@ -475,6 +480,229 @@
         "2026 task archive"
       ],
       "notes": "Links only; dated by the site's separate edition headings."
+    },
+    {
+      "id": "ioai-2024-results",
+      "url": "https://ioai-official.org/bulgaria-2024/results/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "Scientific Round",
+        "Practical Round",
+        "score",
+        "rank",
+        "medal"
+      ],
+      "notes": "Separate team rounds; practical fields: jury score and peer voting score."
+    },
+    {
+      "id": "neoai-2025",
+      "url": "https://ioai-official.org/northern-eurasia-oai-2025/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "dates",
+        "organizer",
+        "format",
+        "countries"
+      ],
+      "notes": "Official IOAI retrospective confirms May 6–11 and Central University + AI Alliance."
+    },
+    {
+      "id": "neoai-2025-platform",
+      "url": "https://www.kaggle.com/competitions/neoai-2025/overview",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "date scope",
+        "venue",
+        "tasks"
+      ],
+      "notes": "Linked by official retrospective. Late submissions/task leaderboards are not audited aggregate final standings."
+    },
+    {
+      "id": "faio-2025",
+      "url": "https://www.faio.kz/2025/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "qualification date",
+        "final dates",
+        "city",
+        "audience",
+        "final-results link"
+      ],
+      "notes": "Rendered archive: September 28 online qualifier; October 30–31 offline final, Almaty. Organizer label uses FAIO itself."
+    },
+    {
+      "id": "faio-2026",
+      "url": "https://www.faio.kz/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "organizer",
+        "qualification date",
+        "final contest dates",
+        "city",
+        "format",
+        "eligibility"
+      ],
+      "notes": "Fizmat organizes FAIO; September 20 qualifier; October 27–28 contest rounds."
+    },
+    {
+      "id": "faio-2026-final",
+      "url": "https://www.faio.kz/final/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "programme",
+        "venue",
+        "contest days"
+      ],
+      "notes": "October 26–30 includes arrival/departure; contests October 27–28. Preliminary programme, recheck."
+    },
+    {
+      "id": "faio-2025-results",
+      "url": "https://docs.google.com/spreadsheets/d/10Rj9aCxwFR5EoTQUo9ChunzffX7Xgxb3fy3zDGNjlrQ/edit?usp=sharing",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "final team labels",
+        "rank",
+        "delegation",
+        "problem 1–5",
+        "total"
+      ],
+      "notes": "Linked by official archive; public view-only. Omit schools, contacts and member details."
+    },
+    {
+      "id": "faio-2026-qualification",
+      "url": "https://www.faio.kz/results/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "qualification publication",
+        "jury decision",
+        "task fields",
+        "total",
+        "team ranks"
+      ],
+      "notes": "Rendered official page: qualification after September 22 jury decision, 410 teams. FINAL badge is invitation, not final score. Organizer explicitly excludes 37 teams; no color inference."
+    },
+    {
+      "id": "poland-oai-2025",
+      "url": "https://www.oai.edu.pl/edycje/ii-oai",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "edition",
+        "stage dates",
+        "final results",
+        "stage I/II scores",
+        "eligibility",
+        "tasks"
+      ],
+      "notes": "II OAI: online February 17–March 22; regional April 26–27; final May 30–June 2 Wrocław. I/II score lists lack explicit rank numbering."
+    },
+    {
+      "id": "poland-oai-2025-rules",
+      "url": "https://www.oai.edu.pl/regulamin-iioai",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "organizer",
+        "dates",
+        "individual format",
+        "eligibility",
+        "deadline"
+      ],
+      "notes": "Foundation organizer. Scheduled results dates are not actual publication timestamps."
+    },
+    {
+      "id": "onia-2026-archive",
+      "url": "https://www.olimpiada-ai.ro/en/editii/2026",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "edition",
+        "stages",
+        "dates",
+        "format",
+        "venue",
+        "result links"
+      ],
+      "notes": "Anonymous HTTP 200: national April 17–20 UPB, contest April 18; local February 14, county March 14, camps separate."
+    },
+    {
+      "id": "onia-2026-organizer",
+      "url": "https://www.olimpiada-ai.ro/en/news/comunicat-nationala-2026",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "organizer",
+        "city",
+        "national stage",
+        "grade sections",
+        "awards"
+      ],
+      "notes": "UPIR under Ministry aegis with HRIA/academic partners. Grades 9–10 and 11–12 separate."
+    },
+    {
+      "id": "onia-2026-national-results",
+      "url": "https://www.olimpiada-ai.ro/en/rezultate/nationala",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "stage label",
+        "score formula",
+        "results link"
+      ],
+      "notes": "Anonymous HTTP 200; client-rendered table. Link only; no rows transcribed."
+    },
+    {
+      "id": "iaio-2026-results",
+      "url": "https://iaio-official.org/results2026/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "final results",
+        "Round 1",
+        "Round 2",
+        "Final Result",
+        "place",
+        "delegation",
+        "awards"
+      ],
+      "notes": "95 contestants. Delegation strings have team numbers, not residence; no independent round ranks inferred."
+    },
+    {
+      "id": "ai-olymp-2025-government",
+      "url": "https://www.gov.kz/memleket/entities/maidd/press/news/details/989919",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "organizer",
+        "venue",
+        "eligibility",
+        "two final days"
+      ],
+      "notes": "CPFED + DSML.KZ; Astana IT University, grades 9–12. Exact final range not established."
+    },
+    {
+      "id": "ai-olymp-2026-user-sheet",
+      "url": "https://docs.google.com/spreadsheets/d/15ONxNRz7HBSHZigr6Fb0fteYC9SzR1YhMbYsWJTgvrw/edit?gid=132773358",
+      "checkedAt": "2026-10-12",
+      "status": "needs_review",
+      "fields": [
+        "self-labelled Final Scores",
+        "headers",
+        "anonymous access"
+      ],
+      "notes": "Unauthenticated CSV HTTP 200: 39 rows; tab leaderboard_final, self-label Final Scores AI Olymp Final 2026. No verified organizer backlink/sign-off or publication date. Public readability does not prove official publication."
     }
   ],
   "existing": [
@@ -584,15 +812,104 @@
   ],
   "candidates": [
     {
-      "editionKey": "ioai-2027",
-      "year": 2027,
-      "name": "International Olympiad in Artificial Intelligence 2027",
+      "editionKey": "ioai-2024",
+      "year": 2024,
+      "name": "International Olympiad in Artificial Intelligence 2024",
       "status": "ready_for_admin_review",
       "sourceIds": [
-        "ioai-2027"
+        "ioai-2024",
+        "ioai-2024-host"
       ],
       "missingRequired": [],
-      "dateScope": "Full international event week",
+      "dateScope": "Dedicated retrospective edition event dates August 9–15, not travel range",
+      "notes": "Earlier general regulations say August 8–15. Dedicated retrospective explicitly states August 9–15; retain date-scope distinction for approval."
+    },
+    {
+      "editionKey": "faio-2025",
+      "year": 2025,
+      "name": "Fizmat AI Olympiad 2025",
+      "status": "ready_for_admin_review",
+      "sourceIds": [
+        "faio-2025"
+      ],
+      "missingRequired": [],
+      "dateScope": "September 28 qualification through October 30–31 final contest",
+      "notes": ""
+    },
+    {
+      "editionKey": "faio-2026",
+      "year": 2026,
+      "name": "Fizmat AI Olympiad 2026",
+      "status": "ready_for_admin_review",
+      "sourceIds": [
+        "faio-2026",
+        "faio-2026-final"
+      ],
+      "missingRequired": [],
+      "dateScope": "September 20 qualification through October 27–28 final contest rounds",
+      "notes": "Final results not yet available October 12; programme preliminary, recheck before entry."
+    },
+    {
+      "editionKey": "iaio-2026",
+      "year": 2026,
+      "name": "International Winter AI Olympiad 2026",
+      "status": "ready_for_admin_review",
+      "sourceIds": [
+        "iaio-2026"
+      ],
+      "missingRequired": [],
+      "dateScope": "Full international event",
+      "notes": ""
+    },
+    {
+      "editionKey": "neoai-2025",
+      "year": 2025,
+      "name": "Northern Eurasia Olympiad in Artificial Intelligence 2025",
+      "status": "ready_for_admin_review",
+      "sourceIds": [
+        "neoai-2025",
+        "neoai-2025-platform"
+      ],
+      "missingRequired": [],
+      "dateScope": "Retrospective May 6–11, not Kaggle April 3 opening",
+      "notes": "Russia is organizing/on-site country, not every contestant location. City unestablished; late submissions are not final aggregate standings."
+    },
+    {
+      "editionKey": "usaaio-2025",
+      "year": 2025,
+      "name": "USA–North America AI Olympiad 2025 — Round 2",
+      "status": "ready_for_admin_review",
+      "sourceIds": [
+        "usaaio-2025"
+      ],
+      "missingRequired": [],
+      "dateScope": "Round 2 only",
+      "notes": "Cambridge is the MIT venue's city; do not treat this date as the entire season."
+    },
+    {
+      "editionKey": "poland-oai-2025",
+      "year": 2025,
+      "name": "Olimpiada Sztucznej Inteligencji 2025 — II OAI",
+      "status": "ready_for_admin_review",
+      "sourceIds": [
+        "poland-oai-2025",
+        "poland-oai-2025-rules"
+      ],
+      "missingRequired": [],
+      "dateScope": "Stage I February 17–March 22 through final May 30–June 2; later camp excluded",
+      "notes": "No single city for season; Wrocław is final venue. Country not assumed contestant citizenship."
+    },
+    {
+      "editionKey": "onia-2026",
+      "year": 2026,
+      "name": "Romanian National Artificial Intelligence Olympiad 2026 — National Stage",
+      "status": "ready_for_admin_review",
+      "sourceIds": [
+        "onia-2026-archive",
+        "onia-2026-organizer"
+      ],
+      "missingRequired": [],
+      "dateScope": "National programme April 17–20; contest April 18; camps excluded",
       "notes": ""
     },
     {
@@ -608,30 +925,6 @@
       "notes": ""
     },
     {
-      "editionKey": "iaio-2026",
-      "year": 2026,
-      "name": "International Winter AI Olympiad 2026",
-      "status": "ready_for_admin_review",
-      "sourceIds": [
-        "iaio-2026"
-      ],
-      "missingRequired": [],
-      "dateScope": "Full international event",
-      "notes": ""
-    },
-    {
-      "editionKey": "usaaio-2025",
-      "year": 2025,
-      "name": "USA–North America AI Olympiad 2025 — Round 2",
-      "status": "ready_for_admin_review",
-      "sourceIds": [
-        "usaaio-2025"
-      ],
-      "missingRequired": [],
-      "dateScope": "Round 2 only",
-      "notes": "Cambridge is the MIT venue's city; do not treat this date as the entire season."
-    },
-    {
       "editionKey": "usaaio-2026",
       "year": 2026,
       "name": "USA–North America AI Olympiad 2026 — Round 2",
@@ -644,61 +937,465 @@
       "notes": ""
     },
     {
+      "editionKey": "ai-olymp-2025",
+      "year": 2025,
+      "name": "AI Olymp 2025 (Kazakhstan Republican AI Olympiad)",
+      "status": "needs_review",
+      "sourceIds": [
+        "ai-olymp-2025",
+        "ai-olymp-2025-government"
+      ],
+      "missingRequired": [
+        "full final start/end dates"
+      ],
+      "notes": "Two-day final; May 5 dateline alone cannot establish dates. CPFED and DSML.KZ; Astana. User-reported screenshot of 38 finalists is unavailable; no transcription, no red-color exclusions."
+    },
+    {
+      "editionKey": "ai-olymp-2026",
+      "year": 2026,
+      "name": "AI Olymp 2026 (Kazakhstan Republican AI Olympiad)",
+      "status": "needs_review",
+      "sourceIds": [
+        "ai-olymp-2026-round2",
+        "ai-olymp-2026-location",
+        "ai-olymp-2026-user-sheet"
+      ],
+      "missingRequired": [
+        "full edition/finals date scope"
+      ],
+      "notes": "Separate round 2 date April 12 is verified, not assumed to be the entire national final. Astana. Supplied sheet publicly readable and self-labelled final; organizer publication provenance remains unverified."
+    }
+  ],
+  "transformations": [
+    "Olympiad/category -> closest Machine Learning category; original title and tags retained.",
+    "In-person -> offline; distributed proctored/local venues -> closest hybrid, explicitly noted.",
+    "Country codes are explicit ISO alpha-2 mappings of the public delegation labels, not inferred residence.",
+    "Names retain source spelling/order and are not automatically linked across events or to KAIZ profiles.",
+    "Decimal comma -> numeric point, retaining original scoreDisplay; N/A -> null score with N/A display; zero remains zero.",
+    "Missing rank -> null/unranked; tied official ranks remain shared; no rank computed from score.",
+    "Publication date remains null when not established. KAIZ verification/import timestamps are not organizer publication dates.",
+    "Existing competition metadata differences are review-only; not executed or automatically verified.",
+    "BWKI and future editions are secondary backlog only. USA-NA-AIO covers a named round per year; Poland OAI and FAIO full date spans describe seasons, not continuous contests.",
+    "The curated review batch contains 13 requested source-backed metadata drafts plus two proposed verified replacements; AI Olymp Kazakhstan 2025/2026 remain high-priority research holds.",
+    "Original scoring fields and availability are tracked by stage in stage-catalog.json. Never collapse independent rounds, infer task totals or interpret colored rows as exclusions."
+  ],
+  "curatedTargets": [
+    {
+      "priority": 1,
+      "editionKey": "ioai-2024",
+      "name": "International Olympiad in Artificial Intelligence 2024",
+      "status": "ready_for_admin_review",
+      "kazakhstanPriority": false,
+      "sourceIds": [
+        "ioai-2024",
+        "ioai-2024-host"
+      ],
+      "dateScope": "Dedicated retrospective edition event dates August 9–15, not travel range",
+      "verifiedMetadata": {
+        "startDate": "2024-08-09",
+        "endDate": "2024-08-15",
+        "city": "Burgas",
+        "country": "Bulgaria",
+        "organizer": "LERAI Foundation",
+        "officialWebsite": "https://ioai-official.org/bulgaria-2024/",
+        "format": "offline"
+      },
+      "missingRequired": [],
+      "notes": "Earlier general regulations say August 8–15. Dedicated retrospective explicitly states August 9–15; retain date-scope distinction for approval."
+    },
+    {
+      "priority": 2,
+      "editionKey": "ioai-2025",
+      "name": "International Olympiad in Artificial Intelligence 2025",
+      "status": "ready_for_admin_review",
+      "kazakhstanPriority": false,
+      "sourceIds": [
+        "ioai-2025-edition",
+        "ioai-2025-host"
+      ],
+      "dateScope": "Full international event week",
+      "verifiedMetadata": {
+        "startDate": "2025-08-02",
+        "endDate": "2025-08-09",
+        "city": "Beijing",
+        "country": "China",
+        "organizer": "Beijing National Day School (BNDS) and ITCCC",
+        "officialWebsite": "https://ioai-official.org/china-2025/",
+        "format": "offline"
+      },
+      "missingRequired": [],
+      "notes": "Review-only metadata proposal against the existing UUID; never recreate the competition."
+    },
+    {
+      "priority": 3,
+      "editionKey": "ioai-2026",
+      "name": "International Olympiad in Artificial Intelligence 2026",
+      "status": "ready_for_admin_review",
+      "kazakhstanPriority": false,
+      "sourceIds": [
+        "ioai-2026-edition"
+      ],
+      "dateScope": "Existing reviewed edition dates, current row retained",
+      "verifiedMetadata": {
+        "startDate": "2026-08-02",
+        "endDate": "2026-08-08",
+        "city": "Astana",
+        "country": "Kazakhstan",
+        "organizer": "Competitive Programming Federation of Kazakhstan (CPFED)",
+        "officialWebsite": "https://ioai-official.org/republic-of-kazakhstan/",
+        "format": "offline"
+      },
+      "missingRequired": [],
+      "notes": "Existing metadata retained, not new. Organizer/location caveats require review; no silent replacement."
+    },
+    {
+      "priority": 4,
+      "editionKey": "apoai-2026",
+      "name": "Asia-Pacific Olympiad in Artificial Intelligence 2026",
+      "status": "ready_for_admin_review",
+      "kazakhstanPriority": false,
+      "sourceIds": [
+        "apoai-2026"
+      ],
+      "dateScope": "Official competition day only",
+      "verifiedMetadata": {
+        "startDate": "2026-06-13",
+        "endDate": "2026-06-13",
+        "city": null,
+        "country": "China",
+        "organizer": "NOAI Organizing Committee (China)",
+        "officialWebsite": "https://www.apoai.org/apoai2026",
+        "format": "hybrid"
+      },
+      "missingRequired": [],
+      "notes": "Review-only metadata proposal against the existing UUID; never recreate the competition."
+    },
+    {
+      "priority": 5,
+      "editionKey": "euroai-2026",
+      "name": "European Olympiad in Artificial Intelligence 2026",
+      "status": "ready_for_admin_review",
+      "kazakhstanPriority": false,
+      "sourceIds": [
+        "euroai-2027"
+      ],
+      "dateScope": "Existing reviewed edition dates, current row retained",
+      "verifiedMetadata": {
+        "startDate": "2026-07-14",
+        "endDate": "2026-07-19",
+        "city": "Cluj-Napoca",
+        "country": "Romania",
+        "organizer": "EUROAI International Committee",
+        "officialWebsite": "https://euroai-official.org/",
+        "format": "offline"
+      },
+      "missingRequired": [],
+      "notes": "Existing metadata retained, not new. Organizer/location caveats require review; no silent replacement."
+    },
+    {
+      "priority": 6,
+      "editionKey": "iaio-2026",
+      "name": "International Winter AI Olympiad 2026",
+      "status": "ready_for_admin_review",
+      "kazakhstanPriority": false,
+      "sourceIds": [
+        "iaio-2026"
+      ],
+      "dateScope": "Full international event",
+      "verifiedMetadata": {
+        "startDate": "2026-02-23",
+        "endDate": "2026-02-27",
+        "city": "Ljubljana",
+        "country": "Slovenia",
+        "organizer": "International Research Centre on Artificial Intelligence (IRCAI), Jožef Stefan Institute",
+        "officialWebsite": "https://iaio-official.org/olympiad-2026/",
+        "format": "offline"
+      },
+      "missingRequired": [],
+      "notes": ""
+    },
+    {
+      "priority": 7,
+      "editionKey": "ai-olymp-2025",
+      "name": "AI Olymp 2025 (Kazakhstan Republican AI Olympiad)",
+      "status": "needs_review",
+      "kazakhstanPriority": true,
+      "sourceIds": [
+        "ai-olymp-2025",
+        "ai-olymp-2025-government"
+      ],
+      "dateScope": null,
+      "verifiedMetadata": null,
+      "missingRequired": [
+        "full final start/end dates"
+      ],
+      "notes": "Two-day final; May 5 dateline alone cannot establish dates. CPFED and DSML.KZ; Astana. User-reported screenshot of 38 finalists is unavailable; no transcription, no red-color exclusions."
+    },
+    {
+      "priority": 8,
+      "editionKey": "ai-olymp-2026",
+      "name": "AI Olymp 2026 (Kazakhstan Republican AI Olympiad)",
+      "status": "needs_review",
+      "kazakhstanPriority": true,
+      "sourceIds": [
+        "ai-olymp-2026-round2",
+        "ai-olymp-2026-location",
+        "ai-olymp-2026-user-sheet"
+      ],
+      "dateScope": null,
+      "verifiedMetadata": null,
+      "missingRequired": [
+        "full edition/finals date scope"
+      ],
+      "notes": "Separate round 2 date April 12 is verified, not assumed to be the entire national final. Astana. Supplied sheet publicly readable and self-labelled final; organizer publication provenance remains unverified."
+    },
+    {
+      "priority": 9,
+      "editionKey": "faio-2025",
+      "name": "Fizmat AI Olympiad 2025",
+      "status": "ready_for_admin_review",
+      "kazakhstanPriority": true,
+      "sourceIds": [
+        "faio-2025"
+      ],
+      "dateScope": "September 28 qualification through October 30–31 final contest",
+      "verifiedMetadata": {
+        "startDate": "2025-09-28",
+        "endDate": "2025-10-31",
+        "city": "Almaty",
+        "country": "Kazakhstan",
+        "organizer": "Fizmat AI Olympiad (FAIO)",
+        "officialWebsite": "https://www.faio.kz/2025/",
+        "format": "hybrid"
+      },
+      "missingRequired": [],
+      "notes": ""
+    },
+    {
+      "priority": 10,
+      "editionKey": "faio-2026",
+      "name": "Fizmat AI Olympiad 2026",
+      "status": "ready_for_admin_review",
+      "kazakhstanPriority": true,
+      "sourceIds": [
+        "faio-2026",
+        "faio-2026-final"
+      ],
+      "dateScope": "September 20 qualification through October 27–28 final contest rounds",
+      "verifiedMetadata": {
+        "startDate": "2026-09-20",
+        "endDate": "2026-10-28",
+        "city": "Almaty",
+        "country": "Kazakhstan",
+        "organizer": "Fizmat (National School of Physics and Math)",
+        "officialWebsite": "https://www.faio.kz/",
+        "format": "hybrid"
+      },
+      "missingRequired": [],
+      "notes": "Final results not yet available October 12; programme preliminary, recheck before entry."
+    },
+    {
+      "priority": 11,
+      "editionKey": "neoai-2025",
+      "name": "Northern Eurasia Olympiad in Artificial Intelligence 2025",
+      "status": "ready_for_admin_review",
+      "kazakhstanPriority": false,
+      "sourceIds": [
+        "neoai-2025",
+        "neoai-2025-platform"
+      ],
+      "dateScope": "Retrospective May 6–11, not Kaggle April 3 opening",
+      "verifiedMetadata": {
+        "startDate": "2025-05-06",
+        "endDate": "2025-05-11",
+        "city": null,
+        "country": "Russia",
+        "organizer": "Central University and AI Alliance",
+        "officialWebsite": "https://www.kaggle.com/competitions/neoai-2025/overview",
+        "format": "hybrid"
+      },
+      "missingRequired": [],
+      "notes": "Russia is organizing/on-site country, not every contestant location. City unestablished; late submissions are not final aggregate standings."
+    },
+    {
+      "priority": 12,
+      "editionKey": "neoai-2026",
+      "name": "Northern Eurasia Olympiad in Artificial Intelligence 2026",
+      "status": "ready_for_admin_review",
+      "kazakhstanPriority": false,
+      "sourceIds": [
+        "neoai-2026"
+      ],
+      "dateScope": "Existing reviewed edition dates, current row retained",
+      "verifiedMetadata": {
+        "startDate": "2026-05-03",
+        "endDate": "2026-05-04",
+        "city": null,
+        "country": "Russia",
+        "organizer": "Central University",
+        "officialWebsite": "https://cu.ru/olympiad/events/neoai",
+        "format": "hybrid"
+      },
+      "missingRequired": [],
+      "notes": "Existing metadata retained, not new. Organizer/location caveats require review; no silent replacement."
+    },
+    {
+      "priority": 13,
+      "editionKey": "usaaio-2025",
+      "name": "USA–North America AI Olympiad 2025 — Round 2",
+      "status": "ready_for_admin_review",
+      "kazakhstanPriority": false,
+      "sourceIds": [
+        "usaaio-2025"
+      ],
+      "dateScope": "Round 2 only",
+      "verifiedMetadata": {
+        "startDate": "2025-04-27",
+        "endDate": "2025-04-27",
+        "city": "Cambridge",
+        "country": "United States",
+        "organizer": "USA AI Olympiad (USAAIO)",
+        "officialWebsite": "https://ioai-official.org/the-usa-north-america-ai-olympiad-is-organized-by-the-usa-ai-olympiad-usaaio/",
+        "format": "offline"
+      },
+      "missingRequired": [],
+      "notes": "Cambridge is the MIT venue's city; do not treat this date as the entire season."
+    },
+    {
+      "priority": 14,
+      "editionKey": "poland-oai-2025",
+      "name": "Olimpiada Sztucznej Inteligencji 2025 — II OAI",
+      "status": "ready_for_admin_review",
+      "kazakhstanPriority": false,
+      "sourceIds": [
+        "poland-oai-2025",
+        "poland-oai-2025-rules"
+      ],
+      "dateScope": "Stage I February 17–March 22 through final May 30–June 2; later camp excluded",
+      "verifiedMetadata": {
+        "startDate": "2025-02-17",
+        "endDate": "2025-06-02",
+        "city": null,
+        "country": "Poland",
+        "organizer": "Fundacja Edukacji i Rozwoju Sztucznej Inteligencji",
+        "officialWebsite": "https://www.oai.edu.pl/edycje/ii-oai",
+        "format": "hybrid"
+      },
+      "missingRequired": [],
+      "notes": "No single city for season; Wrocław is final venue. Country not assumed contestant citizenship."
+    },
+    {
+      "priority": 15,
+      "editionKey": "onia-2026",
+      "name": "Romanian National Artificial Intelligence Olympiad 2026 — National Stage",
+      "status": "ready_for_admin_review",
+      "kazakhstanPriority": false,
+      "sourceIds": [
+        "onia-2026-archive",
+        "onia-2026-organizer"
+      ],
+      "dateScope": "National programme April 17–20; contest April 18; camps excluded",
+      "verifiedMetadata": {
+        "startDate": "2026-04-17",
+        "endDate": "2026-04-20",
+        "city": "Bucharest",
+        "country": "Romania",
+        "organizer": "Romanian Computer Science Teachers' Union (UPIR)",
+        "officialWebsite": "https://www.olimpiada-ai.ro/en/editii/2026",
+        "format": "offline"
+      },
+      "missingRequired": [],
+      "notes": ""
+    }
+  ],
+  "replacementProposals": [
+    {
+      "forHeldTarget": "ai-olymp-2025",
+      "editionKey": "iaio-2024",
+      "status": "proposed_requires_human_approval",
+      "reason": "Verified historical international AI olympiad; does not demote Kazakhstan research."
+    },
+    {
+      "forHeldTarget": "ai-olymp-2026",
+      "editionKey": "usaaio-2026",
+      "status": "proposed_requires_human_approval",
+      "reason": "Verified current regional AI olympiad stage; no future/BWKI filler."
+    }
+  ],
+  "secondaryBacklog": [
+    {
+      "editionKey": "ioai-2027",
+      "year": 2027,
+      "name": "International Olympiad in Artificial Intelligence 2027",
+      "status": "secondary_verified",
+      "sourceIds": [
+        "ioai-2027"
+      ],
+      "missingRequired": [],
+      "dateScope": "Full international event week",
+      "notes": "",
+      "priority": "secondary"
+    },
+    {
       "editionKey": "usaaio-2027",
       "year": 2027,
       "name": "USA–North America AI Olympiad 2027 — Round 1",
-      "status": "ready_for_admin_review",
+      "status": "secondary_verified",
       "sourceIds": [
         "usaaio-2027"
       ],
       "missingRequired": [],
       "dateScope": "Round 1 only",
-      "notes": "United States identifies the organizing country, not every participant's location. No single city. Hybrid is the closest existing format for distributed proctored computer-based participation."
+      "notes": "United States identifies the organizing country, not every participant's location. No single city. Hybrid is the closest existing format for distributed proctored computer-based participation.",
+      "priority": "secondary"
     },
     {
       "editionKey": "bwki-2023",
       "year": 2023,
       "name": "Bundeswettbewerb Künstliche Intelligenz 2023 — Finale",
-      "status": "ready_for_admin_review",
+      "status": "secondary_verified",
       "sourceIds": [
         "bwki-archive",
         "bwki-organizer"
       ],
       "missingRequired": [],
       "dateScope": "Finale only",
-      "notes": "No separate duplicate records for stages of this annual edition."
+      "notes": "No separate duplicate records for stages of this annual edition.",
+      "priority": "secondary"
     },
     {
       "editionKey": "bwki-2024",
       "year": 2024,
       "name": "Bundeswettbewerb Künstliche Intelligenz 2024 — Finale",
-      "status": "ready_for_admin_review",
+      "status": "secondary_verified",
       "sourceIds": [
         "bwki-archive",
         "bwki-organizer"
       ],
       "missingRequired": [],
       "dateScope": "Finale only",
-      "notes": "No separate duplicate records for stages of this annual edition."
+      "notes": "No separate duplicate records for stages of this annual edition.",
+      "priority": "secondary"
     },
     {
       "editionKey": "bwki-2025",
       "year": 2025,
       "name": "Bundeswettbewerb Künstliche Intelligenz 2025 — Finale",
-      "status": "ready_for_admin_review",
+      "status": "secondary_verified",
       "sourceIds": [
         "bwki-archive",
         "bwki-organizer"
       ],
       "missingRequired": [],
       "dateScope": "Finale only",
-      "notes": "No separate duplicate records for stages of this annual edition."
+      "notes": "No separate duplicate records for stages of this annual edition.",
+      "priority": "secondary"
     },
     {
       "editionKey": "bwki-2026",
       "year": 2026,
       "name": "Bundeswettbewerb Künstliche Intelligenz 2026",
-      "status": "ready_for_admin_review",
+      "status": "secondary_verified",
       "sourceIds": [
         "bwki-2026",
         "bwki-organizer",
@@ -706,21 +1403,8 @@
       ],
       "missingRequired": [],
       "dateScope": "Full project competition season",
-      "notes": "Registration is closed; do not advertise the portal as accepting new 2026 entries."
-    },
-    {
-      "editionKey": "ioai-2024",
-      "year": 2024,
-      "name": "International Olympiad in Artificial Intelligence 2024",
-      "status": "needs_review",
-      "sourceIds": [
-        "ioai-2024",
-        "ioai-2024-host"
-      ],
-      "missingRequired": [
-        "date scope clarification"
-      ],
-      "notes": "August 9–15 on edition page versus August 8–15 in general regulations. Do not invent a compromise."
+      "notes": "Registration is closed; do not advertise the portal as accepting new 2026 entries.",
+      "priority": "secondary"
     },
     {
       "editionKey": "iaio-2027",
@@ -734,7 +1418,8 @@
         "format",
         "edition-specific organizer"
       ],
-      "notes": "Vietnam; February 25–March 2. City explicitly not announced; nullable, not invented."
+      "notes": "Vietnam; February 25–March 2. City explicitly not announced; nullable, not invented.",
+      "priority": "secondary"
     },
     {
       "editionKey": "euroai-2027",
@@ -747,34 +1432,8 @@
       "missingRequired": [
         "edition-specific organizer confirmation"
       ],
-      "notes": "Belgrade, Serbia; July 27–August 1. Do not carry Romania 2026 metadata into 2027."
-    },
-    {
-      "editionKey": "ai-olymp-2025",
-      "year": 2025,
-      "name": "AI Olymp 2025 (Kazakhstan Republican AI Olympiad)",
-      "status": "needs_review",
-      "sourceIds": [
-        "ai-olymp-2025"
-      ],
-      "missingRequired": [
-        "full final start/end dates"
-      ],
-      "notes": "Two-day final; May 5 dateline alone cannot establish dates. CPFED and DSML.KZ; Astana."
-    },
-    {
-      "editionKey": "ai-olymp-2026",
-      "year": 2026,
-      "name": "AI Olymp 2026 (Kazakhstan Republican AI Olympiad)",
-      "status": "needs_review",
-      "sourceIds": [
-        "ai-olymp-2026-round2",
-        "ai-olymp-2026-location"
-      ],
-      "missingRequired": [
-        "full edition/finals date scope"
-      ],
-      "notes": "Separate round 2 date April 12 is verified, not assumed to be the entire national final. Astana."
+      "notes": "Belgrade, Serbia; July 27–August 1. Do not carry Romania 2026 metadata into 2027.",
+      "priority": "secondary"
     },
     {
       "editionKey": "ukaio-2027",
@@ -788,7 +1447,8 @@
         "format",
         "complete season dates or approved qualifier-only scope"
       ],
-      "notes": "Tentative first selection November 29, 2026; do not use IAIO Vietnam dates as UK competition dates."
+      "notes": "Tentative first selection November 29, 2026; do not use IAIO Vietnam dates as UK competition dates.",
+      "priority": "secondary"
     },
     {
       "editionKey": "bwki-2022",
@@ -802,18 +1462,8 @@
       "missingRequired": [
         "historical organizer confirmation"
       ],
-      "notes": "Final date October 14 verified. Current March 2023 imprint establishes present organizer, not explicitly historical 2022 organizer."
+      "notes": "Final date October 14 verified. Current March 2023 imprint establishes present organizer, not explicitly historical 2022 organizer.",
+      "priority": "secondary"
     }
-  ],
-  "transformations": [
-    "Olympiad/category -> closest Machine Learning category; original title and tags retained.",
-    "In-person -> offline; distributed proctored/local venues -> closest hybrid, explicitly noted.",
-    "Country codes are explicit ISO alpha-2 mappings of the public delegation labels, not inferred residence.",
-    "Names retain source spelling/order and are not automatically linked across events or to KAIZ profiles.",
-    "Decimal comma -> numeric point, retaining original scoreDisplay; N/A -> null score with N/A display; zero remains zero.",
-    "Missing rank -> null/unranked; tied official ranks remain shared; no rank computed from score.",
-    "Publication date remains null when not established. KAIZ verification/import timestamps are not organizer publication dates.",
-    "Existing competition metadata differences are review-only; not executed or automatically verified.",
-    "BWKI historical editions cover the final only; USA-NA-AIO listings cover one named round per year. Neither represents a full season nor creates multiple annual duplicates."
   ]
 }

@@ -1,0 +1,801 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-12",
+  "notes": "Research sidecar, NOT import batch. Null official URL/label or empty fields mean unverified. Existing schema stores one score: retain original components here/full source, never synthesize totals or change schema.",
+  "stages": [
+    {
+      "key": "ioai-2025-individual",
+      "editionKey": "ioai-2025",
+      "stageGroup": "Other official stage/track",
+      "exactStageLabel": "Individual contest",
+      "officialSourceUrl": "https://ioai-official.org/china-2025/results-2025/",
+      "availability": "official_public_partial_rows_prepared",
+      "verificationStatus": "source_verified_admin_review_pending",
+      "sourceIds": [
+        "ioai-2025-results"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "Rank",
+        "Name",
+        "Country Or Region",
+        "Task1: Radar",
+        "Task2: Chicken Counting",
+        "Task3: Concepts",
+        "Task4: Restroom Icon Matching",
+        "Task5: Antique Painting Authentication",
+        "Task6: Pixel Parsimony Challenge",
+        "Total Score",
+        "Medal"
+      ],
+      "scoreMapping": "Published total/score only; original component fields stay in this sidecar or full official source. No recalculated scores/ranks.",
+      "rowCoverage": "selected rows, not full standings",
+      "published": false,
+      "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null."
+    },
+    {
+      "key": "ioai-2025-team-final",
+      "editionKey": "ioai-2025",
+      "stageGroup": "Final",
+      "exactStageLabel": "Final Round of Team Challenge",
+      "officialSourceUrl": "https://ioai-official.org/china-2025/results-2025/",
+      "availability": "official_public_partial_rows_prepared",
+      "verificationStatus": "source_verified_admin_review_pending",
+      "sourceIds": [
+        "ioai-2025-results"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "Rank",
+        "Team",
+        "Total",
+        "Award"
+      ],
+      "scoreMapping": "Published total/score only; original component fields stay in this sidecar or full official source. No recalculated scores/ranks.",
+      "rowCoverage": "selected rows, not full standings",
+      "published": false,
+      "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null."
+    },
+    {
+      "key": "ioai-2025-gaite",
+      "editionKey": "ioai-2025",
+      "stageGroup": "Other official stage/track",
+      "exactStageLabel": "GAITE contest",
+      "officialSourceUrl": "https://ioai-official.org/china-2025/results-2025/",
+      "availability": "official_public_partial_rows_prepared",
+      "verificationStatus": "source_verified_admin_review_pending",
+      "sourceIds": [
+        "ioai-2025-results"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "Rank",
+        "Name",
+        "Country Or Region",
+        "Task1: Radar",
+        "Task2: Chicken Counting",
+        "Task3: Concepts",
+        "Task 4: Combinatorial Word Segmentation",
+        "Task 5: Synthetic Speech Detector",
+        "Total Score",
+        "Award"
+      ],
+      "scoreMapping": "Published total/score only; original component fields stay in this sidecar or full official source. No recalculated scores/ranks.",
+      "rowCoverage": "selected rows, not full standings",
+      "published": false,
+      "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null."
+    },
+    {
+      "key": "ioai-2026-individual",
+      "editionKey": "ioai-2026",
+      "stageGroup": "Other official stage/track",
+      "exactStageLabel": "Individual contest",
+      "officialSourceUrl": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+      "availability": "official_public_partial_rows_prepared",
+      "verificationStatus": "source_verified_admin_review_pending",
+      "sourceIds": [
+        "ioai-2026-results"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "rank",
+        "name",
+        "team",
+        "Find the Order",
+        "Robot Chasing",
+        "Potato",
+        "Double Agent Dilemma",
+        "Ghost of Machine",
+        "IOAI Field",
+        "total",
+        "award"
+      ],
+      "scoreMapping": "Published total/score only; original component fields stay in this sidecar or full official source. No recalculated scores/ranks.",
+      "rowCoverage": "selected rows, not full standings",
+      "published": false,
+      "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null."
+    },
+    {
+      "key": "ioai-2026-gaite",
+      "editionKey": "ioai-2026",
+      "stageGroup": "Other official stage/track",
+      "exactStageLabel": "GAITE contest",
+      "officialSourceUrl": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+      "availability": "official_public_partial_rows_prepared",
+      "verificationStatus": "source_verified_admin_review_pending",
+      "sourceIds": [
+        "ioai-2026-results"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "rank",
+        "name",
+        "team",
+        "Find the Order",
+        "Robot Chasing",
+        "Potato",
+        "Double Agent Dilemma",
+        "Ghost of Machine",
+        "IOAI Field",
+        "total",
+        "award"
+      ],
+      "scoreMapping": "Published total/score only; original component fields stay in this sidecar or full official source. No recalculated scores/ranks.",
+      "rowCoverage": "selected rows, not full standings",
+      "published": false,
+      "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null."
+    },
+    {
+      "key": "apoai-2026-individual",
+      "editionKey": "apoai-2026",
+      "stageGroup": "Other official stage/track",
+      "exactStageLabel": "Individual contest",
+      "officialSourceUrl": "https://www.apoai.org/apoai2026",
+      "availability": "official_public_partial_rows_prepared",
+      "verificationStatus": "source_verified_admin_review_pending",
+      "sourceIds": [
+        "apoai-2026"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "Rank",
+        "Name",
+        "Country/Region",
+        "Total Normalized Score",
+        "Award"
+      ],
+      "scoreMapping": "Published total/score only; original component fields stay in this sidecar or full official source. No recalculated scores/ranks.",
+      "rowCoverage": "selected rows, not full standings",
+      "published": false,
+      "notes": "Partial selection intentionally retains official ties at 122/125, a real zero score and a ranked N/A score. Publication date remains unknown; tentative release date is not evidence of actual release."
+    },
+    {
+      "key": "euroai-2026-members",
+      "editionKey": "euroai-2026",
+      "stageGroup": "Other official stage/track",
+      "exactStageLabel": "Member",
+      "officialSourceUrl": "https://euroai-official.org/2026/results/",
+      "availability": "official_public_partial_rows_prepared",
+      "verificationStatus": "source_verified_admin_review_pending",
+      "sourceIds": [
+        "euroai-2026-results"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "#",
+        "Country",
+        "Name",
+        "Status",
+        "Faithful Explanations",
+        "TextSnap",
+        "Clockwork Ellipses",
+        "Day 1 / 300",
+        "Stowaway",
+        "Interleaved Lines",
+        "Odd One Out",
+        "Day 2 / 300",
+        "Total / 600",
+        "Medal"
+      ],
+      "scoreMapping": "Published total/score only; original component fields stay in this sidecar or full official source. No recalculated scores/ranks.",
+      "rowCoverage": "selected rows, not full standings",
+      "published": false,
+      "notes": "Member-country standings only. Preserve the official shared rank 8. Remote and Guest entries are not assigned row-position ranks."
+    },
+    {
+      "key": "euroai-2026-remote",
+      "editionKey": "euroai-2026",
+      "stageGroup": "Other official stage/track",
+      "exactStageLabel": "Remote",
+      "officialSourceUrl": "https://euroai-official.org/2026/results/",
+      "availability": "official_public_partial_rows_prepared",
+      "verificationStatus": "source_verified_admin_review_pending",
+      "sourceIds": [
+        "euroai-2026-results"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "#",
+        "Country",
+        "Name",
+        "Status",
+        "Faithful Explanations",
+        "TextSnap",
+        "Clockwork Ellipses",
+        "Day 1 / 300",
+        "Stowaway",
+        "Interleaved Lines",
+        "Odd One Out",
+        "Day 2 / 300",
+        "Total / 600",
+        "Medal"
+      ],
+      "scoreMapping": "Published total/score only; original component fields stay in this sidecar or full official source. No recalculated scores/ranks.",
+      "rowCoverage": "selected rows, not full standings",
+      "published": false,
+      "notes": "Remote category, not Member ranks. Official blank ranks become null/unranked, NOT an invented placement. Preserve public source spelling; no automatic profile matching."
+    },
+    {
+      "key": "ioai-2024-scientific",
+      "editionKey": "ioai-2024",
+      "stageGroup": "Other official stage/track",
+      "exactStageLabel": "Scientific Round 2024",
+      "officialSourceUrl": "https://ioai-official.org/bulgaria-2024/results/",
+      "availability": "official_public_partial_rows_prepared",
+      "verificationStatus": "source_verified_admin_review_pending",
+      "sourceIds": [
+        "ioai-2024-results"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "Team",
+        "Score",
+        "Rank",
+        "Medal"
+      ],
+      "scoreMapping": "Published total/score only; original component fields stay in this sidecar or full official source. No recalculated scores/ranks.",
+      "rowCoverage": "selected rows, not full standings",
+      "published": false,
+      "notes": "Country left null: team label is not proof of participant citizenship."
+    },
+    {
+      "key": "faio-2025-final",
+      "editionKey": "faio-2025",
+      "stageGroup": "Final",
+      "exactStageLabel": "FAIO 2025 Final Results",
+      "officialSourceUrl": "https://docs.google.com/spreadsheets/d/10Rj9aCxwFR5EoTQUo9ChunzffX7Xgxb3fy3zDGNjlrQ/edit?usp=sharing",
+      "availability": "official_public_partial_rows_prepared",
+      "verificationStatus": "source_verified_admin_review_pending",
+      "sourceIds": [
+        "faio-2025-results"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "unlabelled rank column",
+        "team on kaggle",
+        "Country",
+        "problem 1",
+        "problem 2",
+        "problem 3",
+        "problem 4",
+        "problem 5",
+        "total"
+      ],
+      "scoreMapping": "Published total/score only; original component fields stay in this sidecar or full official source. No recalculated scores/ranks.",
+      "rowCoverage": "selected rows, not full standings",
+      "published": false,
+      "notes": "Original team-on-Kaggle labels; not KAIZ profiles. No inferred awards, member details or color-based exclusions."
+    },
+    {
+      "key": "poland-oai-2025-final",
+      "editionKey": "poland-oai-2025",
+      "stageGroup": "Final",
+      "exactStageLabel": "Wyniki Finału II Olimpiady Sztucznej Inteligencji",
+      "officialSourceUrl": "https://www.oai.edu.pl/edycje/ii-oai",
+      "availability": "official_public_partial_rows_prepared",
+      "verificationStatus": "source_verified_admin_review_pending",
+      "sourceIds": [
+        "poland-oai-2025"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "published participant name",
+        "points"
+      ],
+      "scoreMapping": "Published total/score only; original component fields stay in this sidecar or full official source. No recalculated scores/ranks.",
+      "rowCoverage": "selected rows, not full standings",
+      "published": false,
+      "notes": "Source explicitly numbers final ranks including tied 15. Do not convert Polish award categories into medals."
+    },
+    {
+      "key": "poland-oai-2025-stage1",
+      "editionKey": "poland-oai-2025",
+      "stageGroup": "Qualification",
+      "exactStageLabel": "Wyniki I etapu",
+      "officialSourceUrl": "https://www.oai.edu.pl/edycje/ii-oai",
+      "availability": "official_public_partial_rows_prepared",
+      "verificationStatus": "source_verified_admin_review_pending",
+      "sourceIds": [
+        "poland-oai-2025"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "published participant name",
+        "points"
+      ],
+      "scoreMapping": "Published total/score only; original component fields stay in this sidecar or full official source. No recalculated scores/ranks.",
+      "rowCoverage": "selected rows, not full standings",
+      "published": false,
+      "notes": "Official selected score list; no numbered ranks. Preserve scores and null/unranked instead of deriving rank from list position."
+    },
+    {
+      "key": "poland-oai-2025-stage2",
+      "editionKey": "poland-oai-2025",
+      "stageGroup": "Qualification",
+      "exactStageLabel": "Wyniki 2 etapu",
+      "officialSourceUrl": "https://www.oai.edu.pl/edycje/ii-oai",
+      "availability": "official_public_partial_rows_prepared",
+      "verificationStatus": "source_verified_admin_review_pending",
+      "sourceIds": [
+        "poland-oai-2025"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "published participant name",
+        "points"
+      ],
+      "scoreMapping": "Published total/score only; original component fields stay in this sidecar or full official source. No recalculated scores/ranks.",
+      "rowCoverage": "selected rows, not full standings",
+      "published": false,
+      "notes": "Three equal scores are preserved. Source does not number ranks; do not infer first place."
+    },
+    {
+      "key": "iaio-2026-final",
+      "editionKey": "iaio-2026",
+      "stageGroup": "Final",
+      "exactStageLabel": "IAIO 2026 Competition Results",
+      "officialSourceUrl": "https://iaio-official.org/results2026/",
+      "availability": "official_public_partial_rows_prepared",
+      "verificationStatus": "source_verified_admin_review_pending",
+      "sourceIds": [
+        "iaio-2026-results"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "Place",
+        "Name",
+        "Country",
+        "Round 1",
+        "Round 2",
+        "Final Result"
+      ],
+      "scoreMapping": "Published total/score only; original component fields stay in this sidecar or full official source. No recalculated scores/ranks.",
+      "rowCoverage": "selected rows, not full standings",
+      "published": false,
+      "notes": "Round 1/2 components retained in stage catalog; not separate qualification/final events or independently ranked sets."
+    },
+    {
+      "key": "ioai-2024-practical",
+      "editionKey": "ioai-2024",
+      "stageGroup": "Other official stage/track",
+      "exactStageLabel": "Practical Round",
+      "officialSourceUrl": "https://ioai-official.org/bulgaria-2024/results/",
+      "availability": "official_public_link_only",
+      "verificationStatus": "source_verified",
+      "sourceIds": [
+        "ioai-2024-results"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "Team",
+        "Jury score",
+        "Peer voting score",
+        "Rank",
+        "Medal"
+      ],
+      "scoreMapping": null,
+      "rowCoverage": "no rows prepared",
+      "published": false,
+      "notes": "Two scoring dimensions: no invented combined total."
+    },
+    {
+      "key": "faio-2025-qualification",
+      "editionKey": "faio-2025",
+      "stageGroup": "Qualification",
+      "exactStageLabel": null,
+      "officialSourceUrl": null,
+      "availability": "source_not_verified",
+      "verificationStatus": "needs_review",
+      "sourceIds": [
+        "faio-2025"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [],
+      "scoreMapping": null,
+      "rowCoverage": "no rows prepared",
+      "published": false,
+      "notes": "September 28 verified; exact result label/URL/headers unverified."
+    },
+    {
+      "key": "faio-2026-qualification",
+      "editionKey": "faio-2026",
+      "stageGroup": "Qualification",
+      "exactStageLabel": "Рейтинг отборочного тура и приглашения в финал",
+      "officialSourceUrl": "https://www.faio.kz/results/",
+      "availability": "official_public_link_only",
+      "verificationStatus": "source_verified",
+      "sourceIds": [
+        "faio-2026-qualification"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "#",
+        "A: Who evaluated it?",
+        "B: Robot Walker",
+        "C: Stranded on an Unknown Planet",
+        "D: Inverse Text Normalization",
+        "E: Third of the Sum",
+        "БАЛЛ"
+      ],
+      "scoreMapping": null,
+      "rowCoverage": "no rows prepared",
+      "published": false,
+      "notes": "September 22 jury decision; 410 ranked teams. FINAL badge means invited, not final score. 37 exclusions explicitly organizer-stated, never color-inferred. Captain is not automatically team name."
+    },
+    {
+      "key": "faio-2026-final",
+      "editionKey": "faio-2026",
+      "stageGroup": "Final",
+      "exactStageLabel": null,
+      "officialSourceUrl": null,
+      "availability": "not_yet_held",
+      "verificationStatus": "not_available",
+      "sourceIds": [
+        "faio-2026-final"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [],
+      "scoreMapping": null,
+      "rowCoverage": "no rows prepared",
+      "published": false,
+      "notes": "Final contest October 27–28 future as of October 12; programme not standings."
+    },
+    {
+      "key": "neoai-2025-aggregate",
+      "editionKey": "neoai-2025",
+      "stageGroup": "Final",
+      "exactStageLabel": null,
+      "officialSourceUrl": null,
+      "availability": "aggregate_source_not_verified",
+      "verificationStatus": "needs_review",
+      "sourceIds": [
+        "neoai-2025",
+        "neoai-2025-platform"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [],
+      "scoreMapping": null,
+      "rowCoverage": "no rows prepared",
+      "published": false,
+      "notes": "Eight task leaderboards/late submissions are not aggregate audited final standings."
+    },
+    {
+      "key": "neoai-2026-aggregate",
+      "editionKey": "neoai-2026",
+      "stageGroup": "Final",
+      "exactStageLabel": null,
+      "officialSourceUrl": null,
+      "availability": "aggregate_source_not_verified",
+      "verificationStatus": "needs_review",
+      "sourceIds": [
+        "neoai-2026"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [],
+      "scoreMapping": null,
+      "rowCoverage": "no rows prepared",
+      "published": false,
+      "notes": "Practice/homework not official final ranking."
+    },
+    {
+      "key": "ai-olymp-2025-qualification",
+      "editionKey": "ai-olymp-2025",
+      "stageGroup": "Qualification",
+      "exactStageLabel": null,
+      "officialSourceUrl": null,
+      "availability": "source_not_supplied",
+      "verificationStatus": "pending_source",
+      "sourceIds": [
+        "ai-olymp-2025-government"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [],
+      "scoreMapping": null,
+      "rowCoverage": "no rows prepared",
+      "published": false,
+      "notes": "Exact label/scoring fields/results URL pending."
+    },
+    {
+      "key": "ai-olymp-2025-final",
+      "editionKey": "ai-olymp-2025",
+      "stageGroup": "Final",
+      "exactStageLabel": null,
+      "officialSourceUrl": null,
+      "availability": "screenshot_not_supplied",
+      "verificationStatus": "pending_source",
+      "sourceIds": [
+        "ai-olymp-2025-government"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [],
+      "scoreMapping": null,
+      "rowCoverage": "no rows prepared",
+      "published": false,
+      "notes": "User reports 38 finalists and stage-specific columns; screenshot NOT read. No guessed headers/rows. Red color never implies exclusion."
+    },
+    {
+      "key": "ai-olymp-2026-final",
+      "editionKey": "ai-olymp-2026",
+      "stageGroup": "Final",
+      "exactStageLabel": "Final Scores AI Olymp Final 2026",
+      "officialSourceUrl": null,
+      "availability": "public_user_source_provenance_pending",
+      "verificationStatus": "needs_review",
+      "sourceIds": [
+        "ai-olymp-2026-user-sheet"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "Rank",
+        "Username",
+        "First Name",
+        "Last Name",
+        "Total Score",
+        "Zhuldyzzhan's Detective Agency",
+        "Forgotten labels",
+        "Jimmy and Aibek brotherhood"
+      ],
+      "scoreMapping": null,
+      "rowCoverage": "no rows prepared",
+      "published": false,
+      "notes": "Self-label verified, official stage/publication not independently confirmed. Anonymous CSV 39 numeric-rank rows, totals equal three task sums; ties preserved. No awards/delegations/publication date stated, no rows promoted.",
+      "suppliedSourceUrl": "https://docs.google.com/spreadsheets/d/15ONxNRz7HBSHZigr6Fb0fteYC9SzR1YhMbYsWJTgvrw/edit?gid=132773358",
+      "observedTab": "leaderboard_final",
+      "observedRows": 39,
+      "anonymousAccessVerified": true,
+      "officialPublicationVerified": false
+    },
+    {
+      "key": "ai-olymp-2026-qualification",
+      "editionKey": "ai-olymp-2026",
+      "stageGroup": "Qualification",
+      "exactStageLabel": null,
+      "officialSourceUrl": null,
+      "availability": "source_not_verified",
+      "verificationStatus": "needs_review",
+      "sourceIds": [
+        "ai-olymp-2026-location"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [],
+      "scoreMapping": null,
+      "rowCoverage": "no rows prepared",
+      "published": false,
+      "notes": "Qualification known from institutional summary; final sheet not substitute."
+    },
+    {
+      "key": "ai-olymp-2026-round2",
+      "editionKey": "ai-olymp-2026",
+      "stageGroup": "Other official stage/track",
+      "exactStageLabel": "AI Olympiad 2026 Second Round",
+      "officialSourceUrl": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round",
+      "availability": "official_event_link_results_not_verified",
+      "verificationStatus": "event_verified_results_pending",
+      "sourceIds": [
+        "ai-olymp-2026-round2"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [],
+      "scoreMapping": null,
+      "rowCoverage": "no rows prepared",
+      "published": false,
+      "notes": "CPFED April 12 single round; not entire two-day final. Result headers/rows not transcribed."
+    },
+    {
+      "key": "onia-2026-local",
+      "editionKey": "onia-2026",
+      "stageGroup": "Qualification",
+      "exactStageLabel": null,
+      "officialSourceUrl": "https://www.olimpiada-ai.ro/en/rezultate/locala",
+      "availability": "organizer_link_pending_table_review",
+      "verificationStatus": "needs_review",
+      "sourceIds": [
+        "onia-2026-archive"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [],
+      "scoreMapping": null,
+      "rowCoverage": "no rows prepared",
+      "published": false,
+      "notes": "February 14 local stage; exact table label/fields uninspected; grade sections separate."
+    },
+    {
+      "key": "onia-2026-county",
+      "editionKey": "onia-2026",
+      "stageGroup": "Qualification",
+      "exactStageLabel": "Results – County Phase",
+      "officialSourceUrl": "https://www.olimpiada-ai.ro/en/rezultate/judeteana",
+      "availability": "official_public_link_only",
+      "verificationStatus": "source_verified",
+      "sourceIds": [
+        "onia-2026-archive"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "Total (MLCompete)",
+        "Final score"
+      ],
+      "scoreMapping": null,
+      "rowCoverage": "no rows prepared",
+      "published": false,
+      "notes": "March 14. Final score=Total×9/20+10. Grades 9–10 and 11–12 separate; no rows copied."
+    },
+    {
+      "key": "onia-2026-national",
+      "editionKey": "onia-2026",
+      "stageGroup": "Final",
+      "exactStageLabel": "Results – National Phase 2026",
+      "officialSourceUrl": "https://www.olimpiada-ai.ro/en/rezultate/nationala",
+      "availability": "official_public_link_only",
+      "verificationStatus": "source_verified",
+      "sourceIds": [
+        "onia-2026-national-results"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "Total (MLCompete)",
+        "Final score"
+      ],
+      "scoreMapping": null,
+      "rowCoverage": "no rows prepared",
+      "published": false,
+      "notes": "April 17–20 programme. Final score=Total×9/30+10. Grade sections need separately reviewed tables; no fabricated rows."
+    },
+    {
+      "key": "usaaio-2025-results",
+      "editionKey": "usaaio-2025",
+      "stageGroup": "Other official stage/track",
+      "exactStageLabel": "Round 2",
+      "officialSourceUrl": null,
+      "availability": "result_source_not_verified",
+      "verificationStatus": "needs_review",
+      "sourceIds": [
+        "usaaio-2025"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [],
+      "scoreMapping": null,
+      "rowCoverage": "no rows prepared",
+      "published": false,
+      "notes": "Round 2 metadata verified; official standings URL/headers unverified."
+    },
+    {
+      "key": "iaio-2026-round-components",
+      "editionKey": "iaio-2026",
+      "stageGroup": "Other official stage/track",
+      "exactStageLabel": "Round 1 / Round 2",
+      "officialSourceUrl": "https://iaio-official.org/results2026/",
+      "availability": "official_public_components_link_only",
+      "verificationStatus": "source_verified",
+      "sourceIds": [
+        "iaio-2026-results"
+      ],
+      "checkedAt": "2026-10-12",
+      "originalScoringFields": [
+        "Round 1",
+        "Round 2"
+      ],
+      "scoreMapping": null,
+      "rowCoverage": "no rows prepared",
+      "published": false,
+      "notes": "Components in final table, not qualification/final stages or independent ranks. Keep original precision."
+    }
+  ],
+  "selectedOriginalComponents": [
+    {
+      "resultSetKey": "faio-2025-final",
+      "originalScoringFields": [
+        "problem 1",
+        "problem 2",
+        "problem 3",
+        "problem 4",
+        "problem 5",
+        "total"
+      ],
+      "rows": [
+        {
+          "name": "Moscow_Andronov_Stanislav",
+          "values": [
+            "0,98941",
+            "0,16406",
+            "0,96821",
+            "0,40442",
+            "0,68518",
+            "3,21128"
+          ]
+        },
+        {
+          "name": "Sirius_Labzin_Kirill",
+          "values": [
+            "0,99092",
+            "0,11718",
+            "0,98288",
+            "0,36551",
+            "0,71225",
+            "3,16874"
+          ]
+        },
+        {
+          "name": "RusNovosibirsk_Artem_Goncharov",
+          "values": [
+            "0,98828",
+            "0,05468",
+            "0,96577",
+            "0,2648",
+            "0,75641",
+            "3,02994"
+          ]
+        },
+        {
+          "name": "Almaty_Shyngys_Sovetkhan",
+          "values": [
+            "0,97996",
+            "0,00781",
+            "0,85574",
+            "0,2611",
+            "0,82621",
+            "2,93082"
+          ]
+        }
+      ]
+    },
+    {
+      "resultSetKey": "iaio-2026-final",
+      "originalScoringFields": [
+        "Country",
+        "Round 1",
+        "Round 2",
+        "Final Result"
+      ],
+      "rows": [
+        {
+          "name": "Anango Prabhat",
+          "values": [
+            "GBR 2",
+            "96.77419355",
+            "99.1981876",
+            "97.98619057"
+          ]
+        },
+        {
+          "name": "Bryan Zhu",
+          "values": [
+            "CAN 3",
+            "87.09677419",
+            "96.85772158",
+            "91.97724789"
+          ]
+        },
+        {
+          "name": "Muyang Hou",
+          "values": [
+            "CHN 4",
+            "88.70967742",
+            "94.86891462",
+            "91.78929602"
+          ]
+        }
+      ]
+    }
+  ]
+}

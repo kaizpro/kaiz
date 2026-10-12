@@ -14,6 +14,8 @@ Everyone can prepare a content PR and preview files. Only an authenticated exist
 
 Use JSON shapes in `content/competitions/templates/`; the populated example is `content/competitions/2026-10-12/ready-batch.json`. `inventory.json` contains gaps, source links and held candidates excluded from the ready batch. Form fields reuse current admin names, not a new database model.
 
+The current Kazakhstan-first selection is documented in [curated review](curated-content-review.md): 15 metadata drafts (13 requested targets + 2 proposed replacements), 14 partial result sets / 49 rows. `stage-catalog.json` retains stage availability/original scoring fields; `secondary-backlog.json` excludes BWKI/future editions. The Kazakhstan 2025 screenshot template is pending-only; the 2026 public sheet is quarantined until organizer publication is independently confirmed. Neither can bypass this preview's verified-source requirements.
+
 ```sh
 npm ci
 node scripts/content/preview.mjs content/competitions/2026-10-12/ready-batch.json content/competitions/2026-10-12/public-snapshot.json
