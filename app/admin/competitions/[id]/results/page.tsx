@@ -18,7 +18,7 @@ export default async function CompetitionResultsAdmin({ params, searchParams }: 
   const supabase = await createClient();
   const [{ data: competition }, { data, error }] = await Promise.all([
     supabase.from("competitions").select("id,title,slug").eq("id", id).maybeSingle(),
-    supabase.from("competition_result_sets").select("id,name,status,source,source_label,source_url,published,competition_results(id,result_set_id,participant_type,participant_name,rank,score,score_display,country_code,award,result_status,external_participant_id,profiles:profiles!competition_results_user_id_fkey(username))").eq("competition_id", id).order("created_at", { ascending: false }).order("rank", { referencedTable: "competition_results", ascending: true, nullsFirst: false }),
+    supabase.from("competition_result_sets").select("id,name,status,source,source_label,source_url,published,presentation,competition_results(presentation,id,result_set_id,participant_type,participant_name,rank,score,score_display,country_code,award,result_status,external_participant_id,profiles:profiles!competition_results_user_id_fkey(username))").eq("competition_id", id).order("created_at", { ascending: false }).order("rank", { referencedTable: "competition_results", ascending: true, nullsFirst: false }),
   ]);
   if (!competition) notFound();
   if (error) throw new Error("Unable to load result management.");

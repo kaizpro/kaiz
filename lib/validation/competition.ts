@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { COMPETITION_CATEGORIES, COMPETITION_FORMATS, COMPETITION_STATUSES } from "@/lib/constants";
+import { editionPresentationSchema, presentationInput } from "@/lib/validation/competition-presentation";
 
 const optionalDate = z.preprocess(
   (value) => value === "" || value == null ? undefined : value,
@@ -12,6 +13,7 @@ const optionalHttpUrl = z.string().trim().url().refine(
 ).optional().or(z.literal(""));
 
 export const competitionSchema = z.object({
+  presentation: presentationInput(editionPresentationSchema),
   title: z.string().trim().min(3).max(140),
   slug: z.string().trim().toLowerCase().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
   description: z.string().trim().min(20).max(5000),

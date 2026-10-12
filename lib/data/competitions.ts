@@ -1,8 +1,10 @@
 import "server-only";
 import { createClient } from "@/lib/supabase/server";
 import { hasSupabaseEnv } from "@/lib/supabase/env";
+import type { EditionPresentation } from "@/lib/validation/competition-presentation";
 
 export type Competition = {
+  presentation?: EditionPresentation;
   id: string; title: string; slug: string; description: string; organizer: string; category: string;
   status: "upcoming" | "active" | "completed"; format: "online" | "offline" | "hybrid";
   start_date: string; end_date: string; registration_deadline: string | null; city: string | null;
@@ -28,4 +30,15 @@ export async function getCompetition(slug: string): Promise<Competition | null> 
   const { data, error } = await supabase.from("competitions").select("*").eq("slug", slug).maybeSingle();
   if (error) throw new Error("Unable to load this competition.");
   return data as Competition | null;
+}
+
+export async function listCompetitionEditions(seriesSlug?: string) {
+  if (!seriesSlug || !hasSupabaseEnv()) return [];
+  const supabase = await createClient();
+  const { data, error } = await supabase.from("competitions")
+    .select("id,title,slug,presentation")
+    .contains("presentation", { seriesSlug })
+    .order("start_date", { ascending: false });
+  if (error) throw new Error("Unable to load competition editions.");
+  return (data ?? []) as Pick<Competition, "id" | "title" | "slug" | "presentation">[];
 }

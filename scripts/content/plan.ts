@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { competitionSchema } from "@/lib/validation/competition";
 import { competitionResultSchema, resultSetSchema } from "@/lib/validation/competition-result";
+import { rowPresentationSchema } from "@/lib/validation/competition-presentation";
 
 const key = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).max(160);
 const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine((value) => {
@@ -18,6 +19,7 @@ const source = z.object({
 }).strict();
 const sources = z.array(key).min(1);
 const entry = z.object({
+  presentation: rowPresentationSchema.optional(),
   participantType: z.enum(["individual", "team"]), participantName: z.string().trim().min(1).max(160),
   countryCode: z.string().regex(/^[A-Z]{2,3}$/).nullable(), rank: z.number().int().positive().nullable(),
   score: z.number().finite().nullable(), scoreDisplay: z.string().max(80).nullable(),
@@ -77,6 +79,7 @@ const comparableEntry = (row: Entry) => Object.fromEntries(Object.entries(row).f
 // Conversion is explicit: null/zero/N/A are not conflated by HTML form coercion.
 export function entryForm(row: Entry, resultSetId: string): Record<string, unknown> {
   return {
+    ...(row.presentation === undefined ? {} : { presentation: JSON.stringify(row.presentation) }),
     resultSetId, participantType: row.participantType, participantName: row.participantName,
     linkedUsername: "", rank: row.rank ?? "", score: row.score ?? "",
     scoreDisplay: row.scoreDisplay ?? "", countryCode: row.countryCode ?? "",
@@ -217,6 +220,9 @@ export function prepareContentPlan(input: unknown, existing: unknown): ContentPl
     const form = validateSet(item.form, `${path}.form`, true);
     if (!form) return;
     if (!item.sourceIds.some((id) => sourceMap.get(id)?.url === form.sourceUrl)) error(`${path}.form.sourceUrl`, "Result URL must match a referenced verified source");
+    if (form.presentation?.coverage && form.presentation.coverage !== item.coverage) error(`${path}.form.presentation.coverage`, "Presentation coverage must match the reviewed dataset coverage");
+    if (form.presentation?.stageLabel && form.presentation.stageLabel !== item.division) error(`${path}.form.presentation.stageLabel`, "Presentation stage label must match the source division");
+    if (form.presentation?.availability === "NOT_FOUND" || form.presentation?.availability === "NOT_YET_PUBLISHED") error(`${path}.form.presentation.availability`, "Unavailable stages cannot contain prepared standings rows");
     if (item.coverage === "partial" && !/selected|partial/i.test(form.name)) error(`${path}.form.name`, "Partial result-set title must explicitly say selected or partial");
     const identity = `${item.competitionSlug}:${form.sourceUrl}:${form.name}`;
     if (batchSetKeys.has(item.key) || batchSetIdentities.has(identity)) error(path, "Duplicate result set in batch");
@@ -235,6 +241,8 @@ export function prepareContentPlan(input: unknown, existing: unknown): ContentPl
       checkSources(row.sourceIds, `${rowPath}.sourceIds`);
       if (row.sourceIds.some((id) => !item.sourceIds.includes(id))) error(`${rowPath}.sourceIds`, "Row provenance must belong to this result set's sources");
       validateEntry(row, rowPath);
+      const allowedColumns = new Set(form.presentation?.columns?.map((column) => column.key) ?? []);
+      if (Object.keys(row.presentation?.scores ?? {}).some((key) => !allowedColumns.has(key))) error(`${rowPath}.presentation.scores`, "Score fields must match the declared result-set columns");
       const key = entryIdentity(row);
       if (rowKeys.has(key)) error(rowPath, "Duplicate participant in result set; identical display names require manual disambiguation, not guessed IDs");
       rowKeys.add(key);

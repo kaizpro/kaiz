@@ -44,5 +44,36 @@
     "Do NOT interpret red-colored rows as exclusions. Only explicit organizer status supports exclusions.",
     "Do not infer total/rank/citizenship/awards or set missing scores to zero.",
     "Ali and Tima independently check transcription; convert to existing draft-set batch shape only after source approval."
-  ]
+  ],
+  "userReportedFinalColumns": [
+    "Final Rank",
+    "Surname",
+    "Name",
+    "City",
+    "Remote Stage Score",
+    "First Day Score",
+    "Second Day Score",
+    "Total Score"
+  ],
+  "headerVerification": "user_described_not_transcribed_from_image",
+  "finalPresentationTemplate": {
+    "availability": "OFFICIAL_STAGE_RESULTS",
+    "coverage": "unknown",
+    "stageLabel": "Final",
+    "columns": [
+      {
+        "key": "remote_stage",
+        "label": "Remote Stage Score"
+      },
+      {
+        "key": "day_1",
+        "label": "First Day Score"
+      },
+      {
+        "key": "day_2",
+        "label": "Second Day Score"
+      }
+    ],
+    "notes": "User-described columns; screenshot and organizer provenance not yet supplied. Do not publish this placeholder."
+  }
 }

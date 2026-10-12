@@ -7,6 +7,7 @@ import ts from "typescript";
 const require = createRequire(import.meta.url);
 const modules = {
   "@/lib/constants": "../../lib/constants.ts",
+  "@/lib/validation/competition-presentation": "../../lib/validation/competition-presentation.ts",
   "@/lib/validation/competition": "../../lib/validation/competition.ts",
   "@/lib/validation/competition-result": "../../lib/validation/competition-result.ts",
   "content-plan": "./plan.ts",
