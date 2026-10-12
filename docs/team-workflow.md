@@ -19,7 +19,7 @@ The normal Project flow is:
 - **In Progress:** assigned and actively being implemented on a task branch.
 - **Blocked:** waiting on another developer, a decision, credential, shared file, migration, or unresolved conflict. Record the blocker on the Issue.
 - **PR Review:** a pull request is open and awaiting CI, review, revisions, or merge.
-- **Done:** merged and verified; the linked Issue is closed.
+- **Done:** merged and release verification is complete; the linked Issue is closed.
 
 ## Issues and ownership
 
@@ -55,16 +55,24 @@ Never develop or push directly on `main`. Use one task per branch and keep branc
 
 ## Pull requests and CI
 
-Every integration into `main` requires a pull request. Link its Issue with GitHub closing syntax where applicable, for example `Closes #123` or `Fixes #123`. Document ownership and scope, checks, shared/hot files, migrations or configuration changes, and relevant conflicts or dependencies. Move the Issue or Project item to **PR Review** when the PR opens.
+Every integration into `main` requires a pull request. Use `Refs #123` while production verification or manual configuration remains outstanding; close the Issue only after those acceptance criteria pass. Closing syntax such as `Closes #123` is appropriate only when no post-merge work remains. Document ownership and scope, checks, shared/hot files, migrations or configuration changes, and relevant conflicts or dependencies. Move the Issue or Project item to **PR Review** when the PR opens.
 
 Before merge:
 
-- dependency installation, TypeScript, ESLint, and the production build must pass;
+- dependency installation, TypeScript, ESLint, fast auth/archive tests, and the production build must pass;
 - required GitHub CI must pass once configured;
 - the latest `main` must be accounted for; and
 - review conversations must be resolved.
 
-Do not bypass failing CI without explicit team discussion.
+The `CI` workflow runs on PRs targeting `main`, pushes to `main`, and manual dispatch. Its required check keeps the name `TypeScript, ESLint, and build`. It uses Node.js 24 and `npm ci`, with read-only repository permissions and no production credentials. The fast regression command is:
+
+```bash
+node --test tests/auth.test.mjs tests/problem-performances.test.mjs tests/problem-workflows.test.mjs
+```
+
+These tests isolate provider/database responses; they do not prove hosted SMTP or RLS behavior. Docker/local Supabase checks (`tests/problem-workflows.local.mjs` and `supabase/tests/problem_archive_security.test.sql`) stay outside routine PR CI and must run outside production when database behavior changes.
+
+Do not bypass failing CI. A post-merge CI run is additional verification, not a deployment gate: Vercel can start automatically when `main` changes.
 
 ## Shared and hot files
 
@@ -125,4 +133,32 @@ Nobody pushes directly to `main`.
 
 ## After merge
 
-Move the Issue or Project item to **Done**, let closing syntax close the Issue where possible, and delete the merged task branch when safe. Fetch and pull latest `main` before starting the next task.
+Follow the production release checklist below before closing the Issue or moving it to **Done**. Delete the merged task branch when safe. Fetch and pull latest `main` before starting the next task.
+
+## Production release checklist
+
+Tima / `Zhunussov` owns merges and production releases. Ali and Bekzhan contribute through reviewed task PRs; they do not independently change production Vercel, Supabase, DNS, or environment values. This is a team responsibility policy, not proof that dashboard access restrictions are configured.
+
+### Before Tima merges
+
+- [ ] Latest `main` is accounted for, required GitHub CI passes, another developer has approved the latest reviewable changes, and review conversations are resolved.
+- [ ] PR describes migration filenames/order (or explicitly says none), backward compatibility, rollback approach, and every **PRODUCTION ACTION REQUIRED**.
+- [ ] Preview QA uses an isolated test Supabase project and Preview-scoped values, never production writes. Follow [production auth guidance](production-auth.md) for redirects/email QA and [archive guidance](problem-archive.md) for archive/database checks.
+- [ ] Required dashboard/configuration work is confirmed by Tima; record outcomes without secret values. Do not merge app code with unmet production prerequisites.
+
+### If migrations are required, before app release
+
+- [ ] Test the exact unchanged migrations on local/test Supabase, including relevant RLS/permission checks.
+- [ ] Confirm hosted project identity, applied migration history, chronological dependencies, a reviewed dry run, and a recovery/backup plan. Stop for unexpected/destructive statements.
+- [ ] With explicit release-owner approval, apply only intended pending migrations in chronological order; never reset production or edit applied migrations.
+- [ ] Verify hosted migration history, schema, grants, RLS/publication boundaries, and preservation of existing data before merging app code that requires the new schema.
+
+Automatic Vercel Production deployment means migration-before-release usually means migration-before-merge. Only backward-compatible additive changes may precede the old app; incompatible changes require a separately coordinated rollout, not a routine merge. Do not assume the build applies database migrations.
+
+### After merge
+
+- [ ] Confirm GitHub CI on `main` passes and Vercel **Production** is **Ready** for the intended commit; confirm `https://kaizpro.com` serves it.
+- [ ] Smoke-check homepage, competitions/detail, discussions, problems/detail, and a public profile; verify affected routes and empty/error states.
+- [ ] Verify signup/email confirmation, Google sign-in, login/logout/session behavior, and recovery/password update as relevant; never put credentials or recovery links in the Issue.
+- [ ] Verify anonymous/member/admin boundaries, protected actions, and owner-only data for affected features. Do not weaken RLS or use real production data as disposable QA fixtures.
+- [ ] Record release/QA evidence and remaining actions in the Issue. Mark **Done** and close it only when all acceptance criteria, including manual configuration, are complete. A failed release stays open/blocked while Tima coordinates recovery.

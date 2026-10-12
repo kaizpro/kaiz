@@ -4,12 +4,16 @@ on:
   pull_request:
     branches:
       - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: ci-${{ github.event.pull_request.number }}
+  group: ci-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -36,6 +40,9 @@ jobs:
 
       - name: ESLint
         run: npm run lint
+
+      - name: Auth and archive regression tests
+        run: node --test tests/auth.test.mjs tests/problem-performances.test.mjs tests/problem-workflows.test.mjs
 
       - name: Production build
         run: npm run build
