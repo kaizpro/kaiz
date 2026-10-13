@@ -14,20 +14,20 @@ Media fields support reviewed public HTTPS logo/hero references, neutral identit
 
 `202610120001_competition_presentation.sql` adds an object-shaped, size-bounded JSONB `presentation` column to each of `competitions`, `competition_result_sets`, and `competition_results`. Defaults are empty objects. No existing rows, tables, RLS policies, grants, credentials or applied migration files are changed. Existing admin-only writes and published-set-only reads continue to govern these fields.
 
-**This migration has not been applied locally or to hosted Supabase.** The public/admin result queries now select the new column. A release owner must review migration ordering, apply it through the normal migration workflow, and perform real database/browser QA before deployment. Static migration contract tests are not a database execution or live RLS test. No production seeding, deployment or publication was performed.
+**This migration has executed on isolated PostgreSQL 17.7, but has not been applied to hosted Supabase.** The public/admin result queries now select the new column. See the [current release checkpoint](competition-release-checkpoint.md) for execution evidence, hosted drift, browser coverage and approval gates. No production seeding, deployment or publication was performed.
 
 The migration follows `202610070001_external_account_security.sql` and depends on the existing competition/results foundation. Object and 16,000-byte checks constrain the three new columns. Existing table-level SELECT/DML grants cover them, with unchanged RLS restricting writes to administrators and result reads to published parents (or administrators). No new index is required for correctness; existing edition date/result foreign-key indexes remain intact. Series lookup uses JSON containment; assess a matching index if the directory grows materially. Defaults preserve old application inserts and reads; applying the migration first does not require changing existing presentation data.
 
 Exact production release order (release owner only, not performed in this task):
 
-1. Review and merge the PR; keep automatic application deployment paused until the database prerequisite is satisfied.
-2. Compare hosted migration history with merged main and dry-run the normal Supabase migration procedure. Resolve any earlier missing migrations separately before this migration.
-3. Apply `202610120001_competition_presentation.sql` **before deploying the new application**. Never reset the hosted database or seed this research batch.
+1. Obtain independent review and Tima's explicit release approval; do not merge before the database prerequisite is satisfied when merging automatically deploys main.
+2. Compare hosted migration history and dry-run the normal Supabase migration procedure. The 2026-10-13 audit also found `202610070001_external_account_security.sql` missing; both must be explicitly approved.
+3. Apply the approved pending migrations chronologically, including `202610120001_competition_presentation.sql` **before merging/deploying the new application**. Never reset the hosted database or seed this research batch.
 4. Verify migration history, column defaults/checks, unchanged grants/RLS, published/draft visibility and the five existing competition records.
 5. Deploy the reviewed application version and run desktop/mobile, dark/light and anonymous/member/admin browser QA.
 6. Consider content entry/publication only through a separately approved workflow after the Kazakhstan source holds and media permissions are resolved.
 
-Local database execution requires Docker/PostgreSQL, neither available in this workspace. Static schema/publication contracts are tested; actual migration execution and live RLS remain a release gate, not a claimed pass.
+Docker remains unavailable. The native PostgreSQL harness now executes all migrations and SQL security suites; it provides minimal Supabase schema/role dependencies, not full Auth/PostgREST/Storage services. Hosted permission read-back and full deployed application QA remain release gates.
 
 ## Presentation fields in the existing admin workflow
 
