@@ -150,6 +150,9 @@ No major upgrade, dependency override or new dependency is introduced.
 ## Verification and remaining manual QA
 
 - `npm ci`, TypeScript, ESLint and optimized production build: pass.
+- Initial Linux CI caught Windows pruning of optional `@emnapi` lock entries.
+  Existing cross-platform metadata was restored from main; `npm ci` remains the
+  enforced install command, with no dependency downgrade or new dependency.
 - 167 regression tests: pass (auth, problem permissions/scoring,
   results, import validation, Learning and new pathfinder components).
 - New tests cover real topic IDs, resources, no simulated progress, prototype-safe
@@ -189,6 +192,9 @@ Implemented locally, ready for teammate review subject to CI; not merged,
 not deployed, no production writes/imports/publication. CI now includes the
 Learning/pathfinder suite alongside existing tests. Keep PR #24 separate.
 Request a teammate (not self) review; do not bypass main protection.
+The repository's existing Vercel integration automatically creates a PR preview
+on push. This is not a production release or a manually initiated deployment;
+production and Vercel settings remain unchanged.
 
 Owner gates: approve/remediate the external-account vulnerability and verify it;
 review/merge this PR and deploy the patched runtime only with separate approval;
