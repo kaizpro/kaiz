@@ -2,7 +2,8 @@
 
 The public `/learn` route is an open curriculum map, not a course or progress tracker.
 It has two equally discoverable tracks: Coding & AI (51 topics) and Mathematics
-(34 topics). All 85 topic destinations exist; their learning materials are empty.
+(34 topics). All 85 topic destinations exist; selected topics now link reviewed
+original publisher resources, while uncovered topics retain an honest empty state.
 No account, database table, migration or external service is required by Learning.
 
 ## Catalogue and navigation
@@ -41,7 +42,11 @@ return path. External return destinations are never accepted.
 
 Keep existing IDs stable and slugs unique. Add topics through `topics()` under
 the appropriate group. Reference real catalogue IDs for recommended foundations.
-Run the integrity tests when adding/reordering nodes or stages.
+Run the integrity tests when adding/reordering nodes or stages. Shared editorial
+resource defaults live in `lib/learning/resources.ts`; an explicit fifth-field
+resource array overrides those defaults. `/start` and `/start/[level]` reuse the
+same canonical topics without adding progress storage or prerequisite locks.
+See [v0.1 launch evidence](v0-1-launch.md) for journey connections and release gates.
 
 Each topic's `resources` accepts `{ id, title, kind, href }`, where `kind` is
 `article`, `video` or `exercise`. A topic entry is
@@ -61,7 +66,8 @@ strings can be added when the existing localization system has page-level routin
 
 `components/learning/` owns the tree, recursive branch disclosure, context-aware
 return link and locally scoped CSS. Existing KAIZ tokens, Geist fonts, Lucide icons
-and light/dark themes are reused. No shared global styles or navigation changed.
+and light/dark themes are reused. Global styles are unchanged. The Pathfinder
+sprint updates core navigation to Learn, Competitions, Problems and Discussions.
 
 CSS connectors follow their layout containers; no graph engine, absolute SVG
 geometry or scroll-time measurement is used. Desktop branches spread into lanes;
@@ -85,7 +91,8 @@ remain keyboard-accessible. Font sizes are relative for text enlargement.
 Server-rendered buttons remain disabled until hydration attaches their handlers;
 the roadmap exposes this brief initialization with `aria-busy`. Native topic links
 remain valid destinations. Topic pages reuse the same landmarks and interactive
-surfaces, with honest coming-soon copy and optional foundation recommendations.
+surfaces, with original resource links or honest coming-soon copy, optional
+foundation recommendations and roadmap/community navigation.
 
 ## Verification
 

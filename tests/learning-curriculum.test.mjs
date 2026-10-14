@@ -43,13 +43,20 @@ test("IDs, slugs, parent relationships and sibling ordering are stable and uniqu
   assert.equal(getPath("missing").length, 0);
 });
 
-test("every topic has an empty resource list and a navigable route", () => {
+test("every topic has reviewed external resources or an honest empty state and a navigable route", () => {
   const { getTopics, getTopicBySlug, topicHref } = load("curriculum");
   assert.equal(getTopics().length, 85);
   assert.equal(getTopics("coding-ai").length, 51);
   assert.equal(getTopics("mathematics").length, 34);
   for (const node of getTopics()) {
-    assert.equal(node.resources.length, 0);
+    assert.equal(new Set(node.resources.map(resource => resource.id)).size, node.resources.length);
+    for (const resource of node.resources) {
+      const url = new URL(resource.href);
+      assert.equal(url.protocol, "https:");
+      assert.equal(url.username + url.password, "");
+      assert.ok(resource.title.trim());
+      assert.ok(["article", "video", "exercise"].includes(resource.kind));
+    }
     assert.equal(node.children.length, 0);
     assert.equal(topicHref(node), `/learn/${node.slug}`);
     assert.equal(getTopicBySlug(node.slug)?.id, node.id);
@@ -57,6 +64,8 @@ test("every topic has an empty resource list and a navigable route", () => {
   }
   assert.equal(getTopicBySlug("programming"), undefined);
   assert.equal(getTopicBySlug("unknown"), undefined);
+  assert.ok(getTopics().some(node => node.resources.length > 0));
+  assert.ok(getTopics().some(node => node.resources.length === 0));
 });
 
 test("Python and C++ are independent and prerequisites exist without cycles", () => {

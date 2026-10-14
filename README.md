@@ -1,6 +1,8 @@
 # KAIZ
 
-Production-oriented foundation for Kazakhstan's competitive AI/ML community, built with Next.js 16 App Router, TypeScript, Tailwind CSS, shadcn-style primitives and Supabase.
+AI olympiad preparation and discovery for school students in Kazakhstan, built with Next.js 16 App Router, TypeScript, Tailwind CSS, shadcn-style primitives and Supabase.
+
+The v0.1 Pathfinder sprint adds `/start` and three curated roadmaps connected to Learn, original practice sources, competitions and discussions. See [v0.1 launch evidence and release gates](docs/v0-1-launch.md): implementation is not a production release, and public signup promotion is blocked until the hosted external-account trust vulnerability is fixed. Earlier milestone verification below is historical, not a current blanket security approval.
 
 ## Current implementation status
 

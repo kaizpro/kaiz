@@ -28,6 +28,7 @@ function renderRoadmap(query = "", { client = false } = {}) {
         if (name.endsWith(".module.css")) return { default: {} };
         if (name === "./roadmap-branch") return load("components/learning/roadmap-branch.tsx");
         if (name === "./curriculum") return load("lib/learning/curriculum.ts");
+        if (name === "./resources") return load("lib/learning/resources.ts");
         if (name.startsWith("@/lib/learning/")) return load(`${name.slice(2)}.ts`);
         if (name === "react" && client) return { ...React, useSyncExternalStore: (_subscribe, snapshot) => snapshot() };
         return require(name);
