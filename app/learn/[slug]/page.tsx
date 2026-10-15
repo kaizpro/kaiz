@@ -55,8 +55,8 @@ export default async function TopicPage({ params }: Props) {
           </div>
         ) : (
           <section aria-label="Learning materials">
-            <p className="mb-4 text-sm leading-6 text-muted-foreground">Selected external resources · this topic landing is not a full KAIZ lesson.</p>
-            <div className="grid gap-3 sm:grid-cols-2">{topic.resources.map(resource => <ResourceCard key={resource.id} resource={resource} topic={topic.title}/>)}</div>
+            <p className="mb-2 text-xs leading-6 text-muted-foreground">{topic.resources.length} external materials · not a full KAIZ lesson</p>
+            <div>{topic.resources.map(resource => <ResourceCard key={resource.id} resource={resource} topic={topic.title}/>)}</div>
             <Suspense><TopicRoadmapLink topicId={topic.id} /></Suspense>
           </section>
         )}

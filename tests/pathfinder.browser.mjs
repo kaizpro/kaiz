@@ -40,6 +40,7 @@ try {
       await page.getByRole("heading", { level: 1, name: `${level} AI Olympiad Roadmap` }).waitFor();
       await page.locator('a[href="/competitions/ioai-2026"]').waitFor();
       assert.equal(await page.getByRole("list", { name: "Ordered roadmap stages" }).locator(":scope > li").count(), 4);
+      for (const summary of await page.locator('summary').filter({ hasText: 'Goals & self-check' }).all()) await summary.click();
       assert.equal(await page.getByRole("heading", { name: "Milestone / self-check", exact: true }).count(), 4);
       await layout(level);
       await page.screenshot({ path: join(output, `${level.toLowerCase()}-${width}-${theme}.png`), fullPage: true });
@@ -52,7 +53,7 @@ try {
     assert.ok(await page.locator('a[href^="https://docs.python.org/"]').count() > 0);
     await layout("topic");
     await open("/problems");
-    await page.getByRole("heading", { name: "Practice at the original source", exact: true }).waitFor();
+    await page.getByRole("heading", { name: "Practice archive", exact: true }).waitFor();
     assert.ok(await page.locator('a[href="https://ioai-official.org/2024-tasks/"]').count() > 0);
     await layout("empty archive");
     await open("/competitions");

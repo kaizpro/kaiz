@@ -1,35 +1,24 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Filter, Search } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { CompetitionRow } from "@/components/competition-row";
-import { EmptyState } from "@/components/empty-state";
 import { COMPETITION_CATEGORIES, COMPETITION_FORMATS, COMPETITION_STATUSES } from "@/lib/constants";
 import { listCompetitions } from "@/lib/data/competitions";
+import styles from "@/components/training/catalog.module.css";
 
-export const metadata: Metadata = { title: "Competitions", description: "Verified AI, ML, algorithm, research and hackathon opportunities for students in Kazakhstan." };
-
+export const metadata: Metadata = { title: "Competitions", description: "Source-backed AI olympiad editions, official results and preparation tasks." };
 function normalizeFilter(value: string | string[] | undefined, allowed: readonly string[]) {
-  return typeof value === "string" && (value === "all" || allowed.includes(value)) ? value : "all";
+  return typeof value === "string" && allowed.includes(value) ? value : "all";
 }
-
-export default async function CompetitionsPage({ searchParams }: { searchParams: Promise<{ status?: string | string[]; category?: string | string[]; format?: string | string[] }> }) {
+export default async function CompetitionsPage({ searchParams }: { searchParams: Promise<{ status?: string; category?: string; format?: string }> }) {
   const query = await searchParams;
-  const status = normalizeFilter(query.status, COMPETITION_STATUSES);
-  const category = normalizeFilter(query.category, COMPETITION_CATEGORIES);
-  const format = normalizeFilter(query.format, COMPETITION_FORMATS);
+  const status = normalizeFilter(query.status, COMPETITION_STATUSES), category = normalizeFilter(query.category, COMPETITION_CATEGORIES), format = normalizeFilter(query.format, COMPETITION_FORMATS);
   const competitions = await listCompetitions(status, category, format);
-  return <div className="mx-auto max-w-[1440px] px-4 py-8 sm:px-6 lg:px-8">
-    <header className="flex flex-col justify-between gap-5 border-b pb-6 sm:flex-row sm:items-end"><div><p className="micro-label text-primary">Compete</p><h1 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl">Competition directory</h1><p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground sm:text-base">Verified AI, ML, research, algorithm and hackathon opportunities.</p></div><div className="font-mono text-xs uppercase tracking-wider text-muted-foreground">{competitions.length} listed</div></header>
-
-    <form className="my-5 grid grid-cols-[repeat(auto-fit,minmax(min(100%,12rem),1fr))] gap-3 border-b pb-5" method="get">
-      <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Status<select name="status" defaultValue={status} className="mt-1.5 min-h-11 min-w-0 w-full rounded-[4px] border bg-background px-3 text-sm normal-case tracking-normal text-foreground"><option value="all">All statuses</option><option value="upcoming">Upcoming</option><option value="active">Active</option><option value="completed">Completed</option></select></label>
-      <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Category<select name="category" defaultValue={category} className="mt-1.5 min-h-11 min-w-0 w-full rounded-[4px] border bg-background px-3 text-sm normal-case tracking-normal text-foreground"><option value="all">All categories</option>{COMPETITION_CATEGORIES.map((item) => <option key={item} value={item}>{item}</option>)}</select></label>
-      <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Format<select name="format" defaultValue={format} className="mt-1.5 min-h-11 min-w-0 w-full rounded-[4px] border bg-background px-3 text-sm normal-case tracking-normal text-foreground"><option value="all">All formats</option><option value="online">Online</option><option value="offline">Offline</option><option value="hybrid">Hybrid</option></select></label>
-      <Button className="h-auto min-h-11 self-end" size="sm"><Filter className="size-4"/>Apply</Button>
-    </form>
-
-    {competitions.length ? <div className="border bg-card">{competitions.map((competition) => <CompetitionRow key={competition.id} competition={competition}/>)}</div> : <EmptyState title="No competitions match these filters" description="Try a broader filter or return when verified competitions have been published."/>}
-    {(status !== "all" || category !== "all" || format !== "all") && <Button asChild variant="ghost" className="mt-4"><Link href="/competitions"><Search className="size-4"/>Clear filters</Link></Button>}
+  const fields = [["status", "Status", status, COMPETITION_STATUSES], ["category", "Category", category, COMPETITION_CATEGORIES], ["format", "Format", format, COMPETITION_FORMATS]] as const;
+  return <div className={styles.page}>
+    <header className={styles.intro}><div><p>Compete / editions</p><h1>Competition directory</h1><p>Browse editions, tasks and official results. Completed events remain useful preparation references.</p></div><Link href="/leaderboards" className={styles.action}>Official standings</Link></header>
+    <form className={styles.toolbar} method="get" aria-label="Competition filters">{fields.map(([name, label, value, options]) => <label key={name}>{label}<select name={name} aria-label={label} defaultValue={value} className={styles.control}><option value="all">All</option>{options.map(option => <option key={option}>{option}</option>)}</select></label>)}<button className={`${styles.action} ${styles.primary}`}>Apply filters</button></form>
+    <p className={styles.count}>{competitions.length} listed editions{(status !== "all" || category !== "all" || format !== "all") && <> · <Link href="/competitions" className="text-primary underline">Clear filters</Link></>}</p>
+    <div className={`${styles.rows} ${styles.competitionList}`}>{competitions.length ? competitions.map(competition => <CompetitionRow key={competition.id} competition={competition}/>) : <p className="px-3 py-6 text-sm text-muted-foreground">No competitions match these filters.</p>}</div>
+    <p className={styles.note}>Only database listings appear here. Research drafts are not published editions.</p>
   </div>;
 }

@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { CompetitionLeaderboard } from "@/components/competition-leaderboard";
 import { OfficialResultSource } from "@/components/official-result-source";
 import { listCompetitions } from "@/lib/data/competitions";
 import { getPublishedCompetitionResults } from "@/lib/data/competition-results";
 import { filterStandings, officialPublishedSets, olympiadName } from "@/lib/results/browse";
+import styles from "@/components/training/catalog.module.css";
 
-export const metadata: Metadata = { title: "Official Olympiad Leaderboards", description: "Browse published olympiad standings by edition and stage, with original sources. No invented global KAIZ ratings." };
+export const metadata: Metadata = { title: "Official Olympiad Leaderboards", description: "Published olympiad standings by edition and stage, with original scores and sources." };
 const one = (value: string | string[] | undefined) => typeof value === "string" ? value.slice(0, 100) : "";
 export default async function LeaderboardsPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
@@ -20,18 +20,28 @@ export default async function LeaderboardsPage({ searchParams }: { searchParams:
   const stage = sets.find(set => set.id === one(query.stage)) ?? sets[0];
   const q = one(query.q), country = one(query.country), award = one(query.award);
   const entries = stage ? filterStandings(stage.competition_results, q, country, award) : [];
-  const selectClass = "mt-2 min-h-11 w-full min-w-0 rounded-[4px] border bg-background px-3 text-sm";
-  return <div className="mx-auto min-w-0 max-w-[1200px] px-4 py-9 sm:px-6 lg:px-8">
-    <header className="max-w-3xl"><p className="micro-label text-primary">Competition results / source-backed</p><h1 className="mt-3 text-3xl font-black tracking-tight">Official leaderboards</h1><p className="mt-3 text-sm leading-7 text-muted-foreground">Explore published olympiad standings by edition and stage. These are organizer results, not a global KAIZ user rating. Qualification, finals, teams and other official tracks remain distinct.</p></header>
-    {!competitions.length ? <p className="mt-6 border p-5 text-sm text-muted-foreground">No competition editions are listed yet.</p> : <>
-      <form method="get" className="mt-6 grid items-end gap-3 border-b pb-5 sm:grid-cols-2 lg:grid-cols-4"><label className="min-w-0 text-sm font-medium">Olympiad<select name="olympiad" defaultValue={olympiad} className={selectClass}>{names.map(name => <option key={name}>{name}</option>)}</select></label><label className="min-w-0 text-sm font-medium">Edition / year<select name="edition" defaultValue={edition?.slug} className={selectClass}>{editions.map(competition => <option key={competition.id} value={competition.slug}>{competition.title}</option>)}</select></label><label className="min-w-0 text-sm font-medium">Official stage<select name="stage" defaultValue={stage?.id ?? ""} className={selectClass} disabled={!sets.length}>{!sets.length && <option value="">No published stages</option>}{sets.map(set => <option key={set.id} value={set.id}>{set.name}</option>)}</select></label><Button className="h-auto min-h-11 whitespace-normal">Apply selection</Button></form>
-      <p className="mt-3 text-xs leading-6 text-muted-foreground">When changing olympiad, apply the selection to load its editions and stages. Stage names retain their source coverage labels; do not assume a partial set is complete.</p>
-      {edition && <nav className="my-5 flex flex-wrap gap-3" aria-label="Edition actions"><Button asChild variant="outline" className="h-auto min-h-11 whitespace-normal"><Link href={`/competitions/${edition.slug}`}>Open competition details</Link></Button><Button asChild variant="outline"><Link href="/discussions">Discuss a result</Link></Button></nav>}
-      {stage && <form method="get" className="my-5 grid items-end gap-3 sm:grid-cols-2 lg:grid-cols-4"><input type="hidden" name="olympiad" value={olympiad}/><input type="hidden" name="edition" value={edition?.slug}/><input type="hidden" name="stage" value={stage.id}/><label className="min-w-0 text-sm font-medium">Participant or team<input name="q" defaultValue={q} maxLength={100} className={selectClass}/></label><label className="min-w-0 text-sm font-medium">Country<select name="country" defaultValue={country} className={selectClass}><option value="">All countries</option>{[...new Set(stage.competition_results.map(entry => entry.country_code).filter(value => value !== null))].sort().map(value => <option key={value}>{value}</option>)}</select></label><label className="min-w-0 text-sm font-medium">Award<select name="award" defaultValue={award} className={selectClass}><option value="">All awards</option>{[...new Set(stage.competition_results.map(entry => entry.award).filter(value => value !== null))].sort().map(value => <option key={value}>{value}</option>)}</select></label><Button variant="outline" className="h-auto min-h-11 whitespace-normal">Filter standings</Button></form>}
-      {stage && <p className="mb-4 text-sm text-muted-foreground">Showing {entries.length} of {stage.competition_results.length} published rows · ranks and scores are never recalculated.{!entries.length && " No rows match these filters."} <Link href={`/leaderboards?${new URLSearchParams({ olympiad: olympiad ?? "", edition: edition?.slug ?? "", stage: stage.id })}`} className="text-primary underline underline-offset-4">Clear row filters</Link></p>}
-      <div className="min-w-0 max-w-full"><CompetitionLeaderboard resultSets={stage ? [{ ...stage, competition_results: entries }] : []}/></div>
-      {edition && <div className="mt-6"><OfficialResultSource slug={edition.slug}/></div>}
-      <p className="mt-5 text-xs leading-6 text-muted-foreground">Only published official sets are shown here. Missing values are not zero; tied ranks and original display scores are preserved. Original task-level columns are not stored in the current production model; consult the official source for breakdowns. Detailed breakdowns require a separately verified presentation release.</p>
+  return <div className={styles.page}>
+    <header className={styles.intro}><div><p>Compete / published standings</p><h1>Official leaderboards</h1><p>Original olympiad ranks, medals and scores—not a global KAIZ rating.</p></div><Link href="/competitions" className={styles.action}>Competitions</Link></header>
+    {!competitions.length ? <p className={styles.note}>No competition editions are listed yet.</p> : <>
+      <form method="get" className={styles.toolbar} aria-label="Standings selection">
+        <label>Olympiad<select name="olympiad" aria-label="Olympiad" defaultValue={olympiad} className={styles.control}>{names.map(name => <option key={name}>{name}</option>)}</select></label>
+        <label>Edition<select name="edition" aria-label="Edition" defaultValue={edition?.slug} className={styles.control}>{editions.map(competition => <option key={competition.id} value={competition.slug}>{competition.title}</option>)}</select></label>
+        <label>Stage<select name="stage" aria-label="Stage" defaultValue={stage?.id ?? ""} className={styles.control} disabled={!sets.length}>{!sets.length && <option value="">No published stages</option>}{sets.map(set => <option key={set.id} value={set.id}>{set.name}</option>)}</select></label>
+        <button className={`${styles.action} ${styles.primary}`}>Apply selection</button>
+      </form>
+      <p className={styles.note}>Apply an olympiad selection to load its editions and stages.</p>
+      {edition && <div className={styles.actions}><h2 className="text-sm font-semibold">{edition.title}</h2><Link href={`/competitions/${edition.slug}`} className={styles.textAction} aria-label="Open competition details">Details</Link><Link href="/discussions" className={styles.textAction}>Discuss</Link></div>}
+      {stage && <form method="get" className={styles.toolbar} aria-label="Standings filters">
+        <input type="hidden" name="olympiad" value={olympiad}/><input type="hidden" name="edition" value={edition?.slug}/><input type="hidden" name="stage" value={stage.id}/>
+        <label>Participant / team<input name="q" aria-label="Participant or team" defaultValue={q} maxLength={100} className={styles.control}/></label>
+        <label>Country<select name="country" aria-label="Country" defaultValue={country} className={styles.control}><option value="">All</option>{[...new Set(stage.competition_results.map(entry => entry.country_code).filter(value => value !== null))].sort().map(value => <option key={value}>{value}</option>)}</select></label>
+        <label>Award<select name="award" aria-label="Award" defaultValue={award} className={styles.control}><option value="">All</option>{[...new Set(stage.competition_results.map(entry => entry.award).filter(value => value !== null))].sort().map(value => <option key={value}>{value}</option>)}</select></label>
+        <button className={styles.action}>Filter standings</button>
+      </form>}
+      {stage && <p className={styles.count}>Showing {entries.length} of {stage.competition_results.length} published rows{!entries.length && " · No rows match these filters"} · <Link href={`/leaderboards?${new URLSearchParams({ olympiad: olympiad ?? "", edition: edition?.slug ?? "", stage: stage.id })}`} className="text-primary underline">Clear row filters</Link></p>}
+      <div className={styles.standings}><CompetitionLeaderboard resultSets={stage ? [{ ...stage, competition_results: entries }] : []}/></div>
+      {edition && <div className={styles.sourceNote}><OfficialResultSource slug={edition.slug}/></div>}
+      <details className={styles.resourceDetails}><summary>Coverage &amp; scoring</summary><p>Only published official sets. Partial coverage stays labelled in the stage name. Missing scores are not zero; ties and original display scores are preserved. Task-level columns require the separate presentation release; consult the source for breakdowns.</p></details>
     </>}
   </div>;
 }
