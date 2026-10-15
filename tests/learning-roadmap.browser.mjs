@@ -202,7 +202,7 @@ try {
   for (const route of routes) {
     const response = await context.request.get(`${base.origin}${route}`);
     assert.equal(response.status(), 200, route);
-    assert.match(await response.text(), /Learning materials for this topic will be added soon/);
+    assert.match(await response.text(), /Learning materials for this topic will be added soon|aria-label="Learning materials"/);
   }
   assert.equal(routes.size, expectedRoutes, "all canonical topic routes checked");
   const unknown = await context.request.get(`${base.origin}/learn/not-a-real-topic`);

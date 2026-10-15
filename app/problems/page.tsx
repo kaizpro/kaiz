@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/empty-state";
 import { ProblemRow } from "@/components/problem-row";
 import { listProblems } from "@/lib/data/problems";
+import { PracticeSources } from "@/components/learning/practice-sources";
 
 export const metadata: Metadata = {
   title: "Problem archive",
@@ -37,8 +38,9 @@ export default async function ProblemsPage({ searchParams }: { searchParams: Pro
       ? <div className="border bg-card">{problems.map((problem) => <ProblemRow key={problem.id} problem={problem}/>)}</div>
       : <EmptyState
           title={filtered ? "No problems match these filters" : "No problems published yet"}
-          description={filtered ? "Try a broader search or clear the filters." : "Source-verified problems will appear after the archive migration is populated."}
+          description={filtered ? "Try a broader search or clear the filters." : "Reviewed tasks have not been published yet. Try the original-source exercises below or continue with your learning roadmap."}
         />}
+    {!problems.length && <PracticeSources/>}
     {filtered && <Button asChild variant="ghost" className="mt-4"><Link href="/problems"><Search className="size-4"/>Clear filters</Link></Button>}
   </div>;
 }

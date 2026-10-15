@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, ChevronRight, Compass } from "lucide-react";
 import { getChildren, getNode, getPath, getTopics, getTopicBySlug, topicHref } from "@/lib/learning/curriculum";
 import { roadmapForNode } from "@/lib/learning/navigation";
+import { journeysForTopic } from "@/lib/learning/journeys";
 import { TopicRoadmapLink } from "@/components/learning/topic-roadmap-link";
 import styles from "@/components/learning/learning.module.css";
 
@@ -25,6 +26,7 @@ export default async function TopicPage({ params }: Props) {
   const next = siblings[index + 1];
   const recommendedIds = [...new Set(path.flatMap((node) => node.prerequisites))];
   const recommendations = recommendedIds.map((id) => getNode(id)!).filter((node) => node.id !== topic.id);
+  const journeys = journeysForTopic(topic.id);
 
   return (
     <section className={`${styles.page} ${styles.detail}`} aria-labelledby="topic-title">
@@ -70,6 +72,14 @@ export default async function TopicPage({ params }: Props) {
           </li>)}</ul>}
         </aside>
       </div>
+      <section className="mt-7 border-t pt-5" aria-label="Continue your journey">
+        <h2 className="text-base font-bold">Connect this topic to your preparation</h2>
+        <nav className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm [&_a]:inline-flex [&_a]:min-h-11 [&_a]:items-center" aria-label="Roadmaps and community">
+          {journeys.length ? journeys.map(path => <Link key={path.level} href={`/start/${path.level}`} className="text-primary underline underline-offset-4">{path.title} roadmap</Link>) : <Link href="/start" className="text-primary underline underline-offset-4">Choose a roadmap</Link>}
+          <Link href="/problems" className="text-primary underline underline-offset-4">Browse published problems</Link>
+          <Link href="/discussions?category=help" className="text-primary underline underline-offset-4">Ask a question</Link>
+        </nav>
+      </section>
       <nav className={styles.siblingNav} aria-label="Adjacent topics">
         {previous && <Link data-direction="previous" href={topicHref(previous)}><ArrowLeft size={16} aria-hidden="true" /><span><small className={styles.eyebrow}>Previous topic</small>{previous.title}</span></Link>}
         {next && <Link href={topicHref(next)}><span><small className={styles.eyebrow}>Next topic</small>{next.title}</span><ArrowRight size={16} aria-hidden="true" /></Link>}

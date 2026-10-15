@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button";
 import { StatusBadge } from "@/components/status-badge";
 import { UnavailablePanel } from "@/components/unavailable-panel";
 import { CompetitionLeaderboard } from "@/components/competition-leaderboard";
+import { OfficialResultSource } from "@/components/official-result-source";
 import { CompetitionDiscussions } from "@/components/competition-discussions";
 import { CompetitionProblems } from "@/components/competition-problems";
+import { PreparationLinks } from "@/components/learning/preparation-links";
 import { getCurrentUser } from "@/lib/auth";
 import { getCompetition } from "@/lib/data/competitions";
 import { getPublishedCompetitionResults } from "@/lib/data/competition-results";
@@ -46,6 +48,8 @@ export default async function CompetitionDetail({ params }: { params: Promise<{ 
         {!!competition.tags.length && <section className="border-t py-6"><p className="micro-label text-muted-foreground">Tags</p><div className="mt-3 flex flex-wrap gap-2">{competition.tags.map((tag) => <Badge key={tag}>{tag}</Badge>)}</div></section>}
         <CompetitionProblems problems={problems}/>
         <CompetitionLeaderboard resultSets={resultSets}/>
+        <OfficialResultSource slug={competition.slug}/>
+        <PreparationLinks category={competition.category}/>
         <CompetitionDiscussions competitionId={competition.id} posts={discussionResult.posts} signedIn={Boolean(user)}/>
         <section className="border-t pt-8"><UnavailablePanel title="Participant directory unavailable" description="Registration data will appear here."/></section>
       </main>

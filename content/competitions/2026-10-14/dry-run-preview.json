@@ -1,0 +1,1487 @@
+{
+  "mode": "dry-run",
+  "writes": 0,
+  "valid": true,
+  "approvalReady": false,
+  "errors": [],
+  "warnings": [
+    "Snapshot and batch dates differ. Refresh inventory before approval."
+  ],
+  "actions": [
+    {
+      "path": "competitions.0",
+      "action": "create_competition",
+      "target": "ioai-2024",
+      "route": "/admin/competitions/new",
+      "form": {
+        "title": "International Olympiad in Artificial Intelligence 2024",
+        "slug": "ioai-2024",
+        "description": "First IOAI edition; separate Scientific and Practical team rounds. The dedicated retrospective dates are used rather than broader planning/travel ranges.",
+        "organizer": "LERAI Foundation",
+        "officialWebsite": "https://ioai-official.org/bulgaria-2024/",
+        "registrationUrl": "",
+        "startDate": "2024-08-09",
+        "endDate": "2024-08-15",
+        "registrationDeadline": "",
+        "city": "Burgas",
+        "country": "Bulgaria",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "High-school national teams under the IOAI framework.",
+        "tags": "AI, Machine Learning, Olympiad, IOAI, 2024",
+        "verified": false
+      },
+      "reason": "Competition creation is immediately public, even when verified=false. Explicit admin approval of the complete metadata is required before Save."
+    },
+    {
+      "path": "competitions.1",
+      "action": "skip",
+      "target": "ioai-2026",
+      "route": "/admin/competitions/45fa3bfb-6e3b-43e0-927e-ea0ee617b9ba/edit",
+      "changedFields": [],
+      "reason": "Existing metadata is never overwritten automatically; review only the listed fields."
+    },
+    {
+      "path": "competitions.2",
+      "action": "skip",
+      "target": "neoai-2026",
+      "route": "/admin/competitions/4e4f151a-c541-41d8-a845-8106bf70d438/edit",
+      "changedFields": [],
+      "reason": "Existing metadata is never overwritten automatically; review only the listed fields."
+    },
+    {
+      "path": "competitions.3",
+      "action": "review_metadata",
+      "target": "apoai-2026",
+      "route": "/admin/competitions/4f0dc01c-c6cc-49b1-8333-2d17f2d096d4/edit",
+      "changedFields": [
+        "title",
+        "eligibility"
+      ],
+      "form": {
+        "title": "Asia-Pacific Olympiad in Artificial Intelligence 2026",
+        "eligibility": "High-school students selected through participating national/local organizers; no individual registration. Each delegation may send up to 8 participants."
+      },
+      "reason": "Existing metadata is never overwritten automatically; review only the listed fields."
+    },
+    {
+      "path": "competitions.4",
+      "action": "skip",
+      "target": "euroai-2026",
+      "route": "/admin/competitions/663f286e-b6b6-479a-9350-55caf31343b9/edit",
+      "changedFields": [],
+      "reason": "Existing metadata is never overwritten automatically; review only the listed fields."
+    },
+    {
+      "path": "competitions.5",
+      "action": "review_metadata",
+      "target": "ioai-2025",
+      "route": "/admin/competitions/6f9d4073-366b-47f1-8859-f0fc83c36afb/edit",
+      "changedFields": [
+        "organizer"
+      ],
+      "form": {
+        "organizer": "Beijing National Day School (BNDS) and ITCCC"
+      },
+      "reason": "Existing metadata is never overwritten automatically; review only the listed fields."
+    },
+    {
+      "path": "competitions.6",
+      "action": "create_competition",
+      "target": "faio-2025",
+      "route": "/admin/competitions/new",
+      "form": {
+        "title": "Fizmat AI Olympiad 2025",
+        "slug": "faio-2025",
+        "description": "International school-student AI olympiad in Kazakhstan. Online qualification and Almaty offline final are distinct stages; the date span is the season, not continuous competition.",
+        "organizer": "Fizmat AI Olympiad (FAIO)",
+        "officialWebsite": "https://www.faio.kz/2025/",
+        "registrationUrl": "",
+        "startDate": "2025-09-28",
+        "endDate": "2025-10-31",
+        "registrationDeadline": "",
+        "city": "Almaty",
+        "country": "Kazakhstan",
+        "format": "hybrid",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "School students; consult archived rules for edition-specific entry conditions.",
+        "tags": "AI, Machine Learning, Olympiad, FAIO, 2025",
+        "verified": false
+      },
+      "reason": "Competition creation is immediately public, even when verified=false. Explicit admin approval of the complete metadata is required before Save."
+    },
+    {
+      "path": "competitions.7",
+      "action": "create_competition",
+      "target": "faio-2026",
+      "route": "/admin/competitions/new",
+      "form": {
+        "title": "Fizmat AI Olympiad 2026",
+        "slug": "faio-2026",
+        "description": "International AI olympiad organized by Fizmat. Online qualification precedes October 27–28 final contest rounds in Almaty. October 26–30 is arrival/departure programme, not contest duration.",
+        "organizer": "Fizmat (National School of Physics and Math)",
+        "officialWebsite": "https://www.faio.kz/",
+        "registrationUrl": "",
+        "startDate": "2026-09-20",
+        "endDate": "2026-10-28",
+        "registrationDeadline": "",
+        "city": "Almaty",
+        "country": "Kazakhstan",
+        "format": "hybrid",
+        "status": "active",
+        "category": "Machine Learning",
+        "eligibility": "School students; free participation and supporting theory provided.",
+        "tags": "AI, Machine Learning, Olympiad, FAIO, 2026",
+        "verified": false
+      },
+      "reason": "Competition creation is immediately public, even when verified=false. Explicit admin approval of the complete metadata is required before Save."
+    },
+    {
+      "path": "competitions.8",
+      "action": "create_competition",
+      "target": "iaio-2026",
+      "route": "/admin/competitions/new",
+      "form": {
+        "title": "International Winter AI Olympiad 2026",
+        "slug": "iaio-2026",
+        "description": "The International Winter AI Olympiad 2026 was held in Ljubljana and organized by IRCAI at the Jožef Stefan Institute. This is an IAIO edition, not IOAI 2026.",
+        "organizer": "International Research Centre on Artificial Intelligence (IRCAI), Jožef Stefan Institute",
+        "officialWebsite": "https://iaio-official.org/olympiad-2026/",
+        "registrationUrl": "",
+        "startDate": "2026-02-23",
+        "endDate": "2026-02-27",
+        "registrationDeadline": "",
+        "city": "Ljubljana",
+        "country": "Slovenia",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "National delegations; consult the edition's competition requirements.",
+        "tags": "AI, Machine Learning, IAIO, 2026",
+        "verified": false
+      },
+      "reason": "Competition creation is immediately public, even when verified=false. Explicit admin approval of the complete metadata is required before Save."
+    },
+    {
+      "path": "competitions.9",
+      "action": "create_competition",
+      "target": "neoai-2025",
+      "route": "/admin/competitions/new",
+      "form": {
+        "title": "Northern Eurasia Olympiad in Artificial Intelligence 2025",
+        "slug": "neoai-2025",
+        "description": "Regional school-student AI olympiad, on-site at SberUniversity and online, including Kazakhstan. The official retrospective identifies eight main-round challenges.",
+        "organizer": "Central University and AI Alliance",
+        "officialWebsite": "https://www.kaggle.com/competitions/neoai-2025/overview",
+        "registrationUrl": "",
+        "startDate": "2025-05-06",
+        "endDate": "2025-05-11",
+        "registrationDeadline": "",
+        "city": "",
+        "country": "Russia",
+        "format": "hybrid",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "Northern Eurasia school students; on-site participation restricted to international olympiad training programme.",
+        "tags": "AI, Machine Learning, Olympiad, NEOAI, 2025",
+        "verified": false
+      },
+      "reason": "Competition creation is immediately public, even when verified=false. Explicit admin approval of the complete metadata is required before Save."
+    },
+    {
+      "path": "competitions.10",
+      "action": "create_competition",
+      "target": "usaaio-2025",
+      "route": "/admin/competitions/new",
+      "form": {
+        "title": "USA–North America AI Olympiad 2025 — Round 2",
+        "slug": "usaaio-2025",
+        "description": "The 2025 USA–North America AI Olympiad Round 2 was held at MIT. This listing covers that round only; Round 1 and the subsequent selection camp belong to the same annual edition.",
+        "organizer": "USA AI Olympiad (USAAIO)",
+        "officialWebsite": "https://ioai-official.org/the-usa-north-america-ai-olympiad-is-organized-by-the-usa-ai-olympiad-usaaio/",
+        "registrationUrl": "",
+        "startDate": "2025-04-27",
+        "endDate": "2025-04-27",
+        "registrationDeadline": "",
+        "city": "Cambridge",
+        "country": "United States",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "Top scorers invited from Round 1; primarily U.S. students with North American participation.",
+        "tags": "AI, Machine Learning, USAAIO, 2025",
+        "verified": false
+      },
+      "reason": "Competition creation is immediately public, even when verified=false. Explicit admin approval of the complete metadata is required before Save."
+    },
+    {
+      "path": "competitions.11",
+      "action": "create_competition",
+      "target": "poland-oai-2025",
+      "route": "/admin/competitions/new",
+      "form": {
+        "title": "Olimpiada Sztucznej Inteligencji 2025 — II OAI",
+        "slug": "poland-oai-2025",
+        "description": "Second Polish AI Olympiad: online qualification, April 26–27 regional contests and Wrocław final May 30–June 2. Separate stage results preserve distinct scoring.",
+        "organizer": "Fundacja Edukacji i Rozwoju Sztucznej Inteligencji",
+        "officialWebsite": "https://www.oai.edu.pl/edycje/ii-oai",
+        "registrationUrl": "",
+        "startDate": "2025-02-17",
+        "endDate": "2025-06-02",
+        "registrationDeadline": "",
+        "city": "",
+        "country": "Poland",
+        "format": "hybrid",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "Primary and secondary school students under the Polish Olympiad rules.",
+        "tags": "AI, Machine Learning, Olympiad, POLAND, 2025",
+        "verified": false
+      },
+      "reason": "Competition creation is immediately public, even when verified=false. Explicit admin approval of the complete metadata is required before Save."
+    },
+    {
+      "path": "competitions.12",
+      "action": "create_competition",
+      "target": "onia-2026",
+      "route": "/admin/competitions/new",
+      "form": {
+        "title": "Romanian National Artificial Intelligence Olympiad 2026 — National Stage",
+        "slug": "onia-2026",
+        "description": "Third ONIA edition's national programme at Politehnica Bucharest. Local/county stages and team-selection camps remain distinct result records; national sections grades 9–10 and 11–12 are separate.",
+        "organizer": "Romanian Computer Science Teachers' Union (UPIR)",
+        "officialWebsite": "https://www.olimpiada-ai.ro/en/editii/2026",
+        "registrationUrl": "",
+        "startDate": "2026-04-17",
+        "endDate": "2026-04-20",
+        "registrationDeadline": "",
+        "city": "Bucharest",
+        "country": "Romania",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "County-stage qualifiers in grades 9–10 and 11–12; special guests separate.",
+        "tags": "AI, Machine Learning, Olympiad, ONIA, 2026",
+        "verified": false
+      },
+      "reason": "Competition creation is immediately public, even when verified=false. Explicit admin approval of the complete metadata is required before Save."
+    },
+    {
+      "path": "competitions.13",
+      "action": "create_competition",
+      "target": "iaio-2024",
+      "route": "/admin/competitions/new",
+      "form": {
+        "title": "International Artificial Intelligence Olympiad 2024",
+        "slug": "iaio-2024",
+        "description": "The first IAIO edition took place in Riyadh, with theory and practical AI competition. IAIO is distinct from the International Olympiad in Artificial Intelligence (IOAI).",
+        "organizer": "IRCAI and International Center for AI Research and Ethics (ICAIRE)",
+        "officialWebsite": "https://iaio-official.org/olympiad-2024/",
+        "registrationUrl": "",
+        "startDate": "2024-09-08",
+        "endDate": "2024-09-12",
+        "registrationDeadline": "",
+        "city": "Riyadh",
+        "country": "Saudi Arabia",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "National delegations; consult the edition's competition requirements before inferring individual eligibility.",
+        "tags": "AI, Machine Learning, IAIO, 2024",
+        "verified": false
+      },
+      "reason": "Competition creation is immediately public, even when verified=false. Explicit admin approval of the complete metadata is required before Save."
+    },
+    {
+      "path": "competitions.14",
+      "action": "create_competition",
+      "target": "usaaio-2026",
+      "route": "/admin/competitions/new",
+      "form": {
+        "title": "USA–North America AI Olympiad 2026 — Round 2",
+        "slug": "usaaio-2026",
+        "description": "The organizer reports Round 2 at Harvard and MIT during April 4–6. The contest sessions took place April 4–5; the listed window includes the Round 2 event programme, not the subsequent camp.",
+        "organizer": "USA AI Olympiad (USAAIO)",
+        "officialWebsite": "https://www.usaaio.org/",
+        "registrationUrl": "",
+        "startDate": "2026-04-04",
+        "endDate": "2026-04-06",
+        "registrationDeadline": "",
+        "city": "Cambridge",
+        "country": "United States",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "Invited Round 2 qualifiers from the annual USA–North America AI Olympiad.",
+        "tags": "AI, Machine Learning, USAAIO, 2026",
+        "verified": false
+      },
+      "reason": "Competition creation is immediately public, even when verified=false. Explicit admin approval of the complete metadata is required before Save."
+    },
+    {
+      "path": "resultSets.0",
+      "action": "create_draft_set",
+      "target": "ioai-2025-individual",
+      "route": "/admin/competitions/6f9d4073-366b-47f1-8859-f0fc83c36afb/results",
+      "form": {
+        "name": "Individual contest 2025 — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://ioai-official.org/china-2025/results-2025/",
+        "published": false
+      },
+      "reason": "Check ALL admin-visible sets for alternate titles/sources first; create unpublished only. Save its real UUID before adding rows."
+    },
+    {
+      "path": "resultSets.0.entries.0",
+      "action": "add_draft_row",
+      "target": "ioai-2025-individual/display:individual:krzysztof rojek:PL",
+      "route": "/admin/competitions/6f9d4073-366b-47f1-8859-f0fc83c36afb/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Krzysztof Rojek",
+        "linkedUsername": "",
+        "rank": 1,
+        "score": 542.05,
+        "scoreDisplay": "542.05",
+        "countryCode": "PL",
+        "award": "Gold",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.0.entries.1",
+      "action": "add_draft_row",
+      "target": "ioai-2025-individual/display:individual:kieran chai kai ren:SG",
+      "route": "/admin/competitions/6f9d4073-366b-47f1-8859-f0fc83c36afb/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Kieran Chai Kai Ren",
+        "linkedUsername": "",
+        "rank": 2,
+        "score": 465.71,
+        "scoreDisplay": "465.71",
+        "countryCode": "SG",
+        "award": "Gold",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.0.entries.2",
+      "action": "add_draft_row",
+      "target": "ioai-2025-individual/display:individual:wang jiayu:SG",
+      "route": "/admin/competitions/6f9d4073-366b-47f1-8859-f0fc83c36afb/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Wang Jiayu",
+        "linkedUsername": "",
+        "rank": 3,
+        "score": 463.17,
+        "scoreDisplay": "463.17",
+        "countryCode": "SG",
+        "award": "Gold",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.0.entries.3",
+      "action": "add_draft_row",
+      "target": "ioai-2025-individual/display:individual:kanabek abu:KZ",
+      "route": "/admin/competitions/6f9d4073-366b-47f1-8859-f0fc83c36afb/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Kanabek Abu",
+        "linkedUsername": "",
+        "rank": 9,
+        "score": 400.09,
+        "scoreDisplay": "400.09",
+        "countryCode": "KZ",
+        "award": "Gold",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.0.entries.4",
+      "action": "add_draft_row",
+      "target": "ioai-2025-individual/display:individual:issatay sultanbi:KZ",
+      "route": "/admin/competitions/6f9d4073-366b-47f1-8859-f0fc83c36afb/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Issatay Sultanbi",
+        "linkedUsername": "",
+        "rank": 15,
+        "score": 380.37,
+        "scoreDisplay": "380.37",
+        "countryCode": "KZ",
+        "award": "Gold",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.0.entries.5",
+      "action": "add_draft_row",
+      "target": "ioai-2025-individual/display:individual:kassymkan zhanibek:KZ",
+      "route": "/admin/competitions/6f9d4073-366b-47f1-8859-f0fc83c36afb/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Kassymkan Zhanibek",
+        "linkedUsername": "",
+        "rank": 22,
+        "score": 359.39,
+        "scoreDisplay": "359.39",
+        "countryCode": "KZ",
+        "award": "Gold",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.1",
+      "action": "create_draft_set",
+      "target": "ioai-2025-team-final",
+      "route": "/admin/competitions/6f9d4073-366b-47f1-8859-f0fc83c36afb/results",
+      "form": {
+        "name": "Final Round of Team Challenge 2025 — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://ioai-official.org/china-2025/results-2025/",
+        "published": false
+      },
+      "reason": "Check ALL admin-visible sets for alternate titles/sources first; create unpublished only. Save its real UUID before adding rows."
+    },
+    {
+      "path": "resultSets.1.entries.0",
+      "action": "add_draft_row",
+      "target": "ioai-2025-team-final/display:team:poland team 1:PL",
+      "route": "/admin/competitions/6f9d4073-366b-47f1-8859-f0fc83c36afb/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "team",
+        "participantName": "Poland Team 1",
+        "linkedUsername": "",
+        "rank": 1,
+        "score": 212.3,
+        "scoreDisplay": "212.3",
+        "countryCode": "PL",
+        "award": "First Place Trophy",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.1.entries.1",
+      "action": "add_draft_row",
+      "target": "ioai-2025-team-final/display:team:russia team 1:RU",
+      "route": "/admin/competitions/6f9d4073-366b-47f1-8859-f0fc83c36afb/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "team",
+        "participantName": "Russia Team 1",
+        "linkedUsername": "",
+        "rank": 2,
+        "score": 212.2,
+        "scoreDisplay": "212.2",
+        "countryCode": "RU",
+        "award": "Second Place Trophy",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.1.entries.2",
+      "action": "add_draft_row",
+      "target": "ioai-2025-team-final/display:team:poland team 2:PL",
+      "route": "/admin/competitions/6f9d4073-366b-47f1-8859-f0fc83c36afb/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "team",
+        "participantName": "Poland Team 2",
+        "linkedUsername": "",
+        "rank": 3,
+        "score": 210.89,
+        "scoreDisplay": "210.89",
+        "countryCode": "PL",
+        "award": "Third Place Trophy",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.2",
+      "action": "create_draft_set",
+      "target": "ioai-2025-gaite",
+      "route": "/admin/competitions/6f9d4073-366b-47f1-8859-f0fc83c36afb/results",
+      "form": {
+        "name": "GAITE contest 2025 — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://ioai-official.org/china-2025/results-2025/",
+        "published": false
+      },
+      "reason": "Check ALL admin-visible sets for alternate titles/sources first; create unpublished only. Save its real UUID before adding rows."
+    },
+    {
+      "path": "resultSets.2.entries.0",
+      "action": "add_draft_row",
+      "target": "ioai-2025-gaite/display:individual:kabel cisse:ML",
+      "route": "/admin/competitions/6f9d4073-366b-47f1-8859-f0fc83c36afb/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Kabel Cisse",
+        "linkedUsername": "",
+        "rank": 1,
+        "score": 423.96,
+        "scoreDisplay": "423.96",
+        "countryCode": "ML",
+        "award": "First Level",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.2.entries.1",
+      "action": "add_draft_row",
+      "target": "ioai-2025-gaite/display:individual:ariana rivera ferraiuoli:PR",
+      "route": "/admin/competitions/6f9d4073-366b-47f1-8859-f0fc83c36afb/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Ariana Rivera Ferraiuoli",
+        "linkedUsername": "",
+        "rank": 2,
+        "score": 390.93,
+        "scoreDisplay": "390.93",
+        "countryCode": "PR",
+        "award": "First Level",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.3",
+      "action": "create_draft_set",
+      "target": "ioai-2026-individual",
+      "route": "/admin/competitions/45fa3bfb-6e3b-43e0-927e-ea0ee617b9ba/results",
+      "form": {
+        "name": "Individual contest 2026 — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+        "published": false
+      },
+      "reason": "Check ALL admin-visible sets for alternate titles/sources first; create unpublished only. Save its real UUID before adding rows."
+    },
+    {
+      "path": "resultSets.3.entries.0",
+      "action": "add_draft_row",
+      "target": "ioai-2026-individual/display:individual:artem gorokhov:RU",
+      "route": "/admin/competitions/45fa3bfb-6e3b-43e0-927e-ea0ee617b9ba/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Artem Gorokhov",
+        "linkedUsername": "",
+        "rank": 1,
+        "score": 428.4866,
+        "scoreDisplay": "428,4866",
+        "countryCode": "RU",
+        "award": "Gold + 1st Place 🏆",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.3.entries.1",
+      "action": "add_draft_row",
+      "target": "ioai-2026-individual/display:individual:dauzhan beketov:KZ",
+      "route": "/admin/competitions/45fa3bfb-6e3b-43e0-927e-ea0ee617b9ba/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Dauzhan Beketov",
+        "linkedUsername": "",
+        "rank": 2,
+        "score": 405.5759,
+        "scoreDisplay": "405,5759",
+        "countryCode": "KZ",
+        "award": "Gold + 2nd Place 🏆",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.3.entries.2",
+      "action": "add_draft_row",
+      "target": "ioai-2026-individual/display:individual:shao zixi:CN",
+      "route": "/admin/competitions/45fa3bfb-6e3b-43e0-927e-ea0ee617b9ba/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Shao Zixi",
+        "linkedUsername": "",
+        "rank": 3,
+        "score": 375.4507,
+        "scoreDisplay": "375,4507",
+        "countryCode": "CN",
+        "award": "Gold + 3rd Place 🏆",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.4",
+      "action": "create_draft_set",
+      "target": "ioai-2026-gaite",
+      "route": "/admin/competitions/45fa3bfb-6e3b-43e0-927e-ea0ee617b9ba/results",
+      "form": {
+        "name": "GAITE contest 2026 — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+        "published": false
+      },
+      "reason": "Check ALL admin-visible sets for alternate titles/sources first; create unpublished only. Save its real UUID before adding rows."
+    },
+    {
+      "path": "resultSets.4.entries.0",
+      "action": "add_draft_row",
+      "target": "ioai-2026-gaite/display:individual:kadanga essognim elisee:TG",
+      "route": "/admin/competitions/45fa3bfb-6e3b-43e0-927e-ea0ee617b9ba/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Kadanga Essognim Elisee",
+        "linkedUsername": "",
+        "rank": 1,
+        "score": 108.8463,
+        "scoreDisplay": "108,8463",
+        "countryCode": "TG",
+        "award": "Level 1 Award",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.4.entries.1",
+      "action": "add_draft_row",
+      "target": "ioai-2026-gaite/display:individual:solevo essaie henoc winner:TG",
+      "route": "/admin/competitions/45fa3bfb-6e3b-43e0-927e-ea0ee617b9ba/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Solevo Essaie Henoc Winner",
+        "linkedUsername": "",
+        "rank": 2,
+        "score": 83.5054,
+        "scoreDisplay": "83,5054",
+        "countryCode": "TG",
+        "award": "Level 1 Award",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.5",
+      "action": "create_draft_set",
+      "target": "apoai-2026-individual",
+      "route": "/admin/competitions/4f0dc01c-c6cc-49b1-8333-2d17f2d096d4/results",
+      "form": {
+        "name": "APOAI 2026 final standings — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://www.apoai.org/apoai2026",
+        "published": false
+      },
+      "reason": "Check ALL admin-visible sets for alternate titles/sources first; create unpublished only. Save its real UUID before adding rows."
+    },
+    {
+      "path": "resultSets.5.entries.0",
+      "action": "add_draft_row",
+      "target": "apoai-2026-individual/display:individual:bat-erdene budkhand:MN",
+      "route": "/admin/competitions/4f0dc01c-c6cc-49b1-8333-2d17f2d096d4/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Bat-Erdene Budkhand",
+        "linkedUsername": "",
+        "rank": 1,
+        "score": 340.3075,
+        "scoreDisplay": "340.3075",
+        "countryCode": "MN",
+        "award": "Gold",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.5.entries.1",
+      "action": "add_draft_row",
+      "target": "apoai-2026-individual/display:individual:gorokhov artem:RU",
+      "route": "/admin/competitions/4f0dc01c-c6cc-49b1-8333-2d17f2d096d4/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Gorokhov Artem",
+        "linkedUsername": "",
+        "rank": 2,
+        "score": 314.9089,
+        "scoreDisplay": "314.9089",
+        "countryCode": "RU",
+        "award": "Gold",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.5.entries.2",
+      "action": "add_draft_row",
+      "target": "apoai-2026-individual/display:individual:zachary justin tang:AU",
+      "route": "/admin/competitions/4f0dc01c-c6cc-49b1-8333-2d17f2d096d4/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Zachary Justin Tang",
+        "linkedUsername": "",
+        "rank": 122,
+        "score": 37.5151,
+        "scoreDisplay": "37.5151",
+        "countryCode": "AU",
+        "award": "",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.5.entries.3",
+      "action": "add_draft_row",
+      "target": "apoai-2026-individual/display:individual:chen, yi heng:HK",
+      "route": "/admin/competitions/4f0dc01c-c6cc-49b1-8333-2d17f2d096d4/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "CHEN, Yi Heng",
+        "linkedUsername": "",
+        "rank": 122,
+        "score": 37.5151,
+        "scoreDisplay": "37.5151",
+        "countryCode": "HK",
+        "award": "",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.5.entries.4",
+      "action": "add_draft_row",
+      "target": "apoai-2026-individual/display:individual:tan yu xuan:MY",
+      "route": "/admin/competitions/4f0dc01c-c6cc-49b1-8333-2d17f2d096d4/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Tan Yu Xuan",
+        "linkedUsername": "",
+        "rank": 125,
+        "score": 0,
+        "scoreDisplay": "0.0000",
+        "countryCode": "MY",
+        "award": "",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.5.entries.5",
+      "action": "add_draft_row",
+      "target": "apoai-2026-individual/display:individual:ho, yau tong princeton:HK",
+      "route": "/admin/competitions/4f0dc01c-c6cc-49b1-8333-2d17f2d096d4/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "HO, Yau Tong Princeton",
+        "linkedUsername": "",
+        "rank": 125,
+        "score": "",
+        "scoreDisplay": "N/A",
+        "countryCode": "HK",
+        "award": "",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.6",
+      "action": "create_draft_set",
+      "target": "euroai-2026-members",
+      "route": "/admin/competitions/663f286e-b6b6-479a-9350-55caf31343b9/results",
+      "form": {
+        "name": "EUROAI 2026 Member standings — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://euroai-official.org/2026/results/",
+        "published": false
+      },
+      "reason": "Check ALL admin-visible sets for alternate titles/sources first; create unpublished only. Save its real UUID before adding rows."
+    },
+    {
+      "path": "resultSets.6.entries.0",
+      "action": "add_draft_row",
+      "target": "euroai-2026-members/display:individual:roman mielamud:UA",
+      "route": "/admin/competitions/663f286e-b6b6-479a-9350-55caf31343b9/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Roman Mielamud",
+        "linkedUsername": "",
+        "rank": 1,
+        "score": 323,
+        "scoreDisplay": "323",
+        "countryCode": "UA",
+        "award": "Gold",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.6.entries.1",
+      "action": "add_draft_row",
+      "target": "euroai-2026-members/display:individual:lovmar teo:SE",
+      "route": "/admin/competitions/663f286e-b6b6-479a-9350-55caf31343b9/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Lovmar Teo",
+        "linkedUsername": "",
+        "rank": 2,
+        "score": 293,
+        "scoreDisplay": "293",
+        "countryCode": "SE",
+        "award": "Gold",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.6.entries.2",
+      "action": "add_draft_row",
+      "target": "euroai-2026-members/display:individual:persson holm simon:SE",
+      "route": "/admin/competitions/663f286e-b6b6-479a-9350-55caf31343b9/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Persson Holm Simon",
+        "linkedUsername": "",
+        "rank": 8,
+        "score": 234,
+        "scoreDisplay": "234",
+        "countryCode": "SE",
+        "award": "Silver",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.6.entries.3",
+      "action": "add_draft_row",
+      "target": "euroai-2026-members/display:individual:rekhviashvili mate:GE",
+      "route": "/admin/competitions/663f286e-b6b6-479a-9350-55caf31343b9/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Rekhviashvili Mate",
+        "linkedUsername": "",
+        "rank": 8,
+        "score": 234,
+        "scoreDisplay": "234",
+        "countryCode": "GE",
+        "award": "Silver",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.7",
+      "action": "create_draft_set",
+      "target": "euroai-2026-remote",
+      "route": "/admin/competitions/663f286e-b6b6-479a-9350-55caf31343b9/results",
+      "form": {
+        "name": "EUROAI 2026 Remote awards — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer standings (selected)",
+        "sourceUrl": "https://euroai-official.org/2026/results/",
+        "published": false
+      },
+      "reason": "Check ALL admin-visible sets for alternate titles/sources first; create unpublished only. Save its real UUID before adding rows."
+    },
+    {
+      "path": "resultSets.7.entries.0",
+      "action": "add_draft_row",
+      "target": "euroai-2026-remote/display:individual:kanabek abu:KZ",
+      "route": "/admin/competitions/663f286e-b6b6-479a-9350-55caf31343b9/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Kanabek Abu",
+        "linkedUsername": "",
+        "rank": "",
+        "score": 286,
+        "scoreDisplay": "286",
+        "countryCode": "KZ",
+        "award": "Gold",
+        "resultStatus": "unranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.7.entries.1",
+      "action": "add_draft_row",
+      "target": "euroai-2026-remote/display:individual:beketov dauzhan:KZ",
+      "route": "/admin/competitions/663f286e-b6b6-479a-9350-55caf31343b9/results",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Beketov Dauzhan",
+        "linkedUsername": "",
+        "rank": "",
+        "score": 253,
+        "scoreDisplay": "253",
+        "countryCode": "KZ",
+        "award": "Silver",
+        "resultStatus": "unranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.8",
+      "action": "create_draft_set",
+      "target": "ioai-2024-scientific",
+      "form": {
+        "name": "Scientific Round 2024 — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer publication; selected rows, full table linked",
+        "sourceUrl": "https://ioai-official.org/bulgaria-2024/results/",
+        "published": false
+      },
+      "reason": "Check ALL admin-visible sets for alternate titles/sources first; create unpublished only. Save its real UUID before adding rows."
+    },
+    {
+      "path": "resultSets.8.entries.0",
+      "action": "add_draft_row",
+      "target": "ioai-2024-scientific/display:team:letovo:",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "team",
+        "participantName": "Letovo",
+        "linkedUsername": "",
+        "rank": 1,
+        "score": 99.04457078,
+        "scoreDisplay": "99.04457078",
+        "countryCode": "",
+        "award": "Gold",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.8.entries.1",
+      "action": "add_draft_row",
+      "target": "ioai-2024-scientific/display:team:poland 1:",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "team",
+        "participantName": "Poland 1",
+        "linkedUsername": "",
+        "rank": 2,
+        "score": 75.93371728,
+        "scoreDisplay": "75.93371728",
+        "countryCode": "",
+        "award": "Gold",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.8.entries.2",
+      "action": "add_draft_row",
+      "target": "ioai-2024-scientific/display:team:singapore 2:",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "team",
+        "participantName": "Singapore 2",
+        "linkedUsername": "",
+        "rank": 3,
+        "score": 68.30534503,
+        "scoreDisplay": "68.30534503",
+        "countryCode": "",
+        "award": "Gold",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.9",
+      "action": "create_draft_set",
+      "target": "faio-2025-final",
+      "form": {
+        "name": "FAIO 2025 Final Results — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer publication; selected rows, full table linked",
+        "sourceUrl": "https://docs.google.com/spreadsheets/d/10Rj9aCxwFR5EoTQUo9ChunzffX7Xgxb3fy3zDGNjlrQ/edit?usp=sharing",
+        "published": false
+      },
+      "reason": "Check ALL admin-visible sets for alternate titles/sources first; create unpublished only. Save its real UUID before adding rows."
+    },
+    {
+      "path": "resultSets.9.entries.0",
+      "action": "add_draft_row",
+      "target": "faio-2025-final/display:team:moscow_andronov_stanislav:RU",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "team",
+        "participantName": "Moscow_Andronov_Stanislav",
+        "linkedUsername": "",
+        "rank": 1,
+        "score": 3.21128,
+        "scoreDisplay": "3,21128",
+        "countryCode": "RU",
+        "award": "",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.9.entries.1",
+      "action": "add_draft_row",
+      "target": "faio-2025-final/display:team:sirius_labzin_kirill:RU",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "team",
+        "participantName": "Sirius_Labzin_Kirill",
+        "linkedUsername": "",
+        "rank": 2,
+        "score": 3.16874,
+        "scoreDisplay": "3,16874",
+        "countryCode": "RU",
+        "award": "",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.9.entries.2",
+      "action": "add_draft_row",
+      "target": "faio-2025-final/display:team:rusnovosibirsk_artem_goncharov:RU",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "team",
+        "participantName": "RusNovosibirsk_Artem_Goncharov",
+        "linkedUsername": "",
+        "rank": 3,
+        "score": 3.02994,
+        "scoreDisplay": "3,02994",
+        "countryCode": "RU",
+        "award": "",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.9.entries.3",
+      "action": "add_draft_row",
+      "target": "faio-2025-final/display:team:almaty_shyngys_sovetkhan:KZ",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "team",
+        "participantName": "Almaty_Shyngys_Sovetkhan",
+        "linkedUsername": "",
+        "rank": 4,
+        "score": 2.93082,
+        "scoreDisplay": "2,93082",
+        "countryCode": "KZ",
+        "award": "",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.10",
+      "action": "create_draft_set",
+      "target": "poland-oai-2025-final",
+      "form": {
+        "name": "Wyniki Finału II Olimpiady Sztucznej Inteligencji — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer publication; selected rows, full table linked",
+        "sourceUrl": "https://www.oai.edu.pl/edycje/ii-oai",
+        "published": false
+      },
+      "reason": "Check ALL admin-visible sets for alternate titles/sources first; create unpublished only. Save its real UUID before adding rows."
+    },
+    {
+      "path": "resultSets.10.entries.0",
+      "action": "add_draft_row",
+      "target": "poland-oai-2025-final/display:individual:dawid kot:",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Dawid Kot",
+        "linkedUsername": "",
+        "rank": 1,
+        "score": 374,
+        "scoreDisplay": "374",
+        "countryCode": "",
+        "award": "Laureaci I stopnia",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.10.entries.1",
+      "action": "add_draft_row",
+      "target": "poland-oai-2025-final/display:individual:tymoteusz stępkowski:",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Tymoteusz Stępkowski",
+        "linkedUsername": "",
+        "rank": 2,
+        "score": 366,
+        "scoreDisplay": "366",
+        "countryCode": "",
+        "award": "Laureaci I stopnia",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.10.entries.2",
+      "action": "add_draft_row",
+      "target": "poland-oai-2025-final/display:individual:krzysztof rojek:",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Krzysztof Rojek",
+        "linkedUsername": "",
+        "rank": 3,
+        "score": 338,
+        "scoreDisplay": "338",
+        "countryCode": "",
+        "award": "Laureaci I stopnia",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.10.entries.3",
+      "action": "add_draft_row",
+      "target": "poland-oai-2025-final/display:individual:marcel kosmala:",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Marcel Kosmala",
+        "linkedUsername": "",
+        "rank": 15,
+        "score": 127,
+        "scoreDisplay": "127",
+        "countryCode": "",
+        "award": "Laureaci II stopnia",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.10.entries.4",
+      "action": "add_draft_row",
+      "target": "poland-oai-2025-final/display:individual:kamil grzesło:",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Kamil Grzesło",
+        "linkedUsername": "",
+        "rank": 15,
+        "score": 127,
+        "scoreDisplay": "127",
+        "countryCode": "",
+        "award": "Laureaci II stopnia",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.11",
+      "action": "create_draft_set",
+      "target": "poland-oai-2025-stage1",
+      "form": {
+        "name": "Wyniki I etapu — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer publication; selected rows, full table linked",
+        "sourceUrl": "https://www.oai.edu.pl/edycje/ii-oai",
+        "published": false
+      },
+      "reason": "Check ALL admin-visible sets for alternate titles/sources first; create unpublished only. Save its real UUID before adding rows."
+    },
+    {
+      "path": "resultSets.11.entries.0",
+      "action": "add_draft_row",
+      "target": "poland-oai-2025-stage1/display:individual:kamil grzesło:",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Kamil Grzesło",
+        "linkedUsername": "",
+        "rank": "",
+        "score": 495,
+        "scoreDisplay": "495",
+        "countryCode": "",
+        "award": "",
+        "resultStatus": "unranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.11.entries.1",
+      "action": "add_draft_row",
+      "target": "poland-oai-2025-stage1/display:individual:krzysztof rojek:",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Krzysztof Rojek",
+        "linkedUsername": "",
+        "rank": "",
+        "score": 480,
+        "scoreDisplay": "480",
+        "countryCode": "",
+        "award": "",
+        "resultStatus": "unranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.11.entries.2",
+      "action": "add_draft_row",
+      "target": "poland-oai-2025-stage1/display:individual:wojciech machel:",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Wojciech Machel",
+        "linkedUsername": "",
+        "rank": "",
+        "score": 478,
+        "scoreDisplay": "478",
+        "countryCode": "",
+        "award": "",
+        "resultStatus": "unranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.12",
+      "action": "create_draft_set",
+      "target": "poland-oai-2025-stage2",
+      "form": {
+        "name": "Wyniki 2 etapu — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer publication; selected rows, full table linked",
+        "sourceUrl": "https://www.oai.edu.pl/edycje/ii-oai",
+        "published": false
+      },
+      "reason": "Check ALL admin-visible sets for alternate titles/sources first; create unpublished only. Save its real UUID before adding rows."
+    },
+    {
+      "path": "resultSets.12.entries.0",
+      "action": "add_draft_row",
+      "target": "poland-oai-2025-stage2/display:individual:jan kociszewski:",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Jan Kociszewski",
+        "linkedUsername": "",
+        "rank": "",
+        "score": 400,
+        "scoreDisplay": "400",
+        "countryCode": "",
+        "award": "",
+        "resultStatus": "unranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.12.entries.1",
+      "action": "add_draft_row",
+      "target": "poland-oai-2025-stage2/display:individual:krzysztof rojek:",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Krzysztof Rojek",
+        "linkedUsername": "",
+        "rank": "",
+        "score": 400,
+        "scoreDisplay": "400",
+        "countryCode": "",
+        "award": "",
+        "resultStatus": "unranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.12.entries.2",
+      "action": "add_draft_row",
+      "target": "poland-oai-2025-stage2/display:individual:bartosz trojan:",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Bartosz Trojan",
+        "linkedUsername": "",
+        "rank": "",
+        "score": 400,
+        "scoreDisplay": "400",
+        "countryCode": "",
+        "award": "",
+        "resultStatus": "unranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.13",
+      "action": "create_draft_set",
+      "target": "iaio-2026-final",
+      "form": {
+        "name": "IAIO 2026 Competition Results — selected rows",
+        "status": "official",
+        "source": "official_import",
+        "sourceLabel": "Official organizer publication; selected rows, full table linked",
+        "sourceUrl": "https://iaio-official.org/results2026/",
+        "published": false
+      },
+      "reason": "Check ALL admin-visible sets for alternate titles/sources first; create unpublished only. Save its real UUID before adding rows."
+    },
+    {
+      "path": "resultSets.13.entries.0",
+      "action": "add_draft_row",
+      "target": "iaio-2026-final/display:individual:anango prabhat:GB",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Anango Prabhat",
+        "linkedUsername": "",
+        "rank": 1,
+        "score": 97.98619057,
+        "scoreDisplay": "97.98619057",
+        "countryCode": "GB",
+        "award": "Gold Medal",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.13.entries.1",
+      "action": "add_draft_row",
+      "target": "iaio-2026-final/display:individual:bryan zhu:CA",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Bryan Zhu",
+        "linkedUsername": "",
+        "rank": 2,
+        "score": 91.97724789,
+        "scoreDisplay": "91.97724789",
+        "countryCode": "CA",
+        "award": "Gold Medal",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    },
+    {
+      "path": "resultSets.13.entries.2",
+      "action": "add_draft_row",
+      "target": "iaio-2026-final/display:individual:muyang hou:CN",
+      "form": {
+        "resultSetId": "ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET",
+        "participantType": "individual",
+        "participantName": "Muyang Hou",
+        "linkedUsername": "",
+        "rank": 3,
+        "score": 91.78929602,
+        "scoreDisplay": "91.78929602",
+        "countryCode": "CN",
+        "award": "Gold Medal",
+        "resultStatus": "ranked",
+        "externalParticipantId": ""
+      },
+      "reason": "No automatic KAIZ account/team linking. Preserve original values; never infer missing ranks or scores."
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+import { resourcesByTopic } from "./resources";
+
 export type TrackId = "coding-ai" | "mathematics";
 export type LearningResource = {
   id: string;
@@ -23,7 +25,7 @@ type Outline = Pick<CurriculumNode, "id" | "title" | "description" | "kind" | "p
 type TopicEntry = readonly [id: string, title: string, description: string, prerequisites?: readonly string[], resources?: readonly LearningResource[]];
 
 function topics(entries: readonly TopicEntry[]): Outline[] {
-  return entries.map(([id, title, description, prerequisites = [], resources = []]) => ({ id, title, description, prerequisites, kind: "topic", resources, children: [] }));
+  return entries.map(([id, title, description, prerequisites = [], resources = resourcesByTopic[id] ?? []]) => ({ id, title, description, prerequisites, kind: "topic", resources, children: [] }));
 }
 function group(id: string, title: string, description: string, children: readonly Outline[], prerequisites: readonly string[] = []): Outline {
   return { id, title, description, children, prerequisites, kind: "group", resources: [] };
