@@ -36,7 +36,7 @@ try{
   await page.getByLabel('Search topics',{exact:true}).fill('HuBERT');await page.getByRole('button',{name:'Apply filters'}).click();
   await page.getByRole('heading',{name:'Pre-trained Audio Encoders: HuBERT',exact:true}).waitFor();
   assert.equal(await page.getByRole('heading',{name:'Python Basics (Loops, Functions, etc.)',exact:true}).count(),0);
-  await page.goto(base.origin+'/problems');await page.locator('select[name="competition"]').selectOption('NEOAI 2025');await page.getByRole('button',{name:'Filter external practice'}).click();
+  await page.goto(base.origin+'/problems');await page.locator('select[name="competition"]').selectOption('NEOAI 2025');await page.getByRole('button',{name:'Apply filters'}).click();
   await page.waitForURL(url=>url.searchParams.get('competition')==='NEOAI 2025');
   await page.locator('#practice-sources article').first().waitFor();
   assert.equal(await page.locator('#practice-sources article').count(),8);

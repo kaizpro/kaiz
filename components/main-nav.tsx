@@ -9,7 +9,7 @@ const isActive = (path: string, href: string) => path === href || path.startsWit
 
 export function MainNav() {
   const pathname = usePathname();
-  return <nav className="hidden min-h-14 flex-wrap items-center xl:flex" aria-label="Primary navigation">{links.map(([label, href]) => { const active = isActive(pathname, href); return <Link aria-current={active ? "page" : undefined} className={cn("flex min-h-14 items-center border-b-2 px-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-primary", active ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:border-border hover:text-foreground")} href={href} key={href}>{label}</Link>; })}</nav>;
+  return <nav className="hidden min-h-14 flex-wrap items-center gap-x-2 2xl:gap-x-4 xl:flex" aria-label="Primary navigation">{links.map(([label, href]) => { const active = isActive(pathname, href); return <Link aria-current={active ? "page" : undefined} className={cn("flex min-h-14 items-center border-b-2 px-3 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-primary", active ? "border-primary bg-primary/5 font-semibold text-foreground" : "border-transparent font-medium text-muted-foreground hover:border-border hover:text-foreground")} href={href} key={href}>{label}</Link>; })}</nav>;
 }
 
 export function MobileNav() {

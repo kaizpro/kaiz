@@ -21,6 +21,7 @@ function modules(overrides = {}) {
     vm.runInNewContext(compiled, { exports, URL, URLSearchParams, require: name => {
       if (name in overrides) return overrides[name];
       if (name === "next/link") return { default: ({ children, ...props }) => React.createElement("a", props, children) };
+      if (name.endsWith(".module.css")) return { default: new Proxy({}, { get: (_target, key) => String(key) }) };
       if (name.startsWith("@/content/") && name.endsWith(".json")) return { default: JSON.parse(readFileSync(new URL(`../${name.slice(2)}`, import.meta.url), "utf8")) };
       if (name.startsWith("@/")) { const ext = name.startsWith("@/components/") ? ".tsx" : ".ts"; return load(name.slice(2) + ext); }
       if (name.startsWith("./")) return load(posix.join(dirname(file).replaceAll("\\", "/"), name) + ".ts");
@@ -87,8 +88,10 @@ test("practice catalog models contests, preserves parents and withholds capabili
   }
   assert.equal(filterPracticeSources({ competition: "NEOAI 2025", topic: "NLP" }).length, 3);
   assert.equal(filterPracticeSources({ search: "__proto__" }).length, 0);
-  const html = renderToStaticMarkup(React.createElement(load("components/learning/practice-catalog.tsx").PracticeCatalog, { filters: { competition: "FAIO", level: "Beginner (source label)" } }));
-  assert.match(html, /Held · public link needed/); assert.doesNotMatch(html, /\/t\/|Open contest/);
+  const { buildPracticeArchive, filterPracticeArchive } = load("lib/learning/unified-archive.ts");
+  const items = filterPracticeArchive(buildPracticeArchive([]), { competition: "FAIO", difficulty: "Beginner (source label)" });
+  const html = renderToStaticMarkup(React.createElement(load("components/learning/archive-list.tsx").ArchiveList, { items }));
+  assert.match(html, /Link held/); assert.doesNotMatch(html, /\/t\/|href=/);
 });
 
 test("official directory filters out private/provisional data and never rewrites scores or ties", () => {
@@ -105,6 +108,45 @@ test("official directory filters out private/provisional data and never rewrites
   assert.equal(filterStandings(rows, "beta", "", "")[0].rank, 1);
   assert.equal(filterStandings(rows, "", "KZ", "Silver").length, 0);
   assert.equal(olympiadName({ title: "International AI Olympiad 2026" }), "International AI Olympiad");
+});
+
+test("unified archive combines published tasks and collections without exposing drafts or private scores", () => {
+  const load = modules();
+  const { buildPracticeArchive, filterPracticeArchive } = load("lib/learning/unified-archive.ts");
+  const problem = { id: "fixture-task", slug: "fixture-task", title: "Fixture classification", published: true, category: "Machine Learning", tags: ["tabular"], source_label: "Kaggle", source_provider: "kaggle", source_url: "https://example.test/source", difficulty_status: "unrated", difficulty_rating: null, metric_name: "Accuracy", metric_direction: "higher_is_better", competition: { title: "Fixture Olympiad" }, statistics: { sample_size: 7 }, private_score: 99999 };
+  const items = buildPracticeArchive([problem, { ...problem, id: "draft", title: "PRIVATE DRAFT", published: false }]);
+  assert.equal(items.length, 32);
+  assert.equal(items.filter(item => !item.external).length, 1);
+  assert.equal(items.filter(item => item.availability === "held").length, 3);
+  assert.equal(filterPracticeArchive(items, { source: "Kaggle", tag: "Machine Learning" }).some(item => !item.external), true);
+  assert.equal(filterPracticeArchive(items, { type: "KAIZ task", difficulty: "unrated", availability: "public" }).length, 1);
+  assert.equal(filterPracticeArchive(items, { competition: "NEOAI 2025", tag: "NLP" }).length, 3);
+  assert.equal(filterPracticeArchive(items, { direction: "higher_is_better" }).length, 1);
+  assert.equal(filterPracticeArchive(items, { availability: "__proto__" }).length, 0);
+  const html = renderToStaticMarkup(React.createElement(load("components/learning/archive-list.tsx").ArchiveList, { items }));
+  assert.match(html, /\/problems\/fixture-task/); assert.match(html, /View task/); assert.match(html, /Account required/); assert.match(html, /7 samples/);
+  assert.doesNotMatch(html, /PRIVATE DRAFT|99999|\/t\/[a-f0-9]{32}/);
+  const rated = buildPracticeArchive([{ ...problem, difficulty_status: "rated", difficulty_rating: 1420.4 }]);
+  assert.equal(filterPracticeArchive(rated, { difficulty: "rated" }).length, 1);
+  assert.match(renderToStaticMarkup(React.createElement(load("components/learning/archive-list.tsx").ArchiveList, { items: rated })), /1420 rated/);
+});
+
+test("one archive page applies the same source filter to internal and external items", async () => {
+  const problem = { id: "fixture-task", slug: "fixture-task", title: "Fixture classification", published: true, category: "Machine Learning", tags: [], source_label: "Kaggle", source_provider: "kaggle", difficulty_status: "unrated", difficulty_rating: null, metric_name: "Accuracy", metric_direction: "higher_is_better", competition: null, statistics: null };
+  const Page = modules({ "@/lib/data/problems": { listProblems: async () => [problem] } })("app/problems/page.tsx").default;
+  const html = renderToStaticMarkup(await Page({ searchParams: Promise.resolve({ source: "Kaggle" }) }));
+  assert.match(html, /Fixture classification/); assert.match(html, /Northern Eurasia OAI 2025/);
+  assert.equal((html.match(/<form/g) ?? []).length, 1);
+  assert.doesNotMatch(html, /Filter external practice|No problems published yet|Kazakhstan-oriented practice/);
+  const filtered = renderToStaticMarkup(await Page({ searchParams: Promise.resolve({ type: "KAIZ task" }) }));
+  assert.match(filtered, /Fixture classification/); assert.doesNotMatch(filtered, /Northern Eurasia OAI 2025/);
+});
+
+test("topic rows keep source order, unspecified levels and resource disclosure without fabricated lessons", () => {
+  const load = modules(); const { SourceTopicRow } = load("components/learning/source-topic-row.tsx");
+  const html = renderToStaticMarkup(React.createElement(SourceTopicRow, { entry: sourceTopics.topics[0] }));
+  assert.match(html, /<details/); assert.match(html, /Level not supplied/); assert.match(html, /Topics!B4/); assert.match(html, /\/learn\/vectors/);
+  assert.match(html, /materials/); assert.doesNotMatch(html, /\d+%|lesson complete/i);
 });
 
 test("official directory renders shared table and GET filters using only published official sets", async () => {
