@@ -1,0 +1,487 @@
+[
+  {
+    "url": "https://www.kaggle.com/learn/python",
+    "status": 200,
+    "title": "Learn Python Tutorials | Kaggle",
+    "finalUrl": "https://www.kaggle.com/learn/python",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/learn/pandas",
+    "status": 200,
+    "title": "Learn Pandas Tutorials | Kaggle",
+    "finalUrl": "https://www.kaggle.com/learn/pandas",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab",
+    "status": 200,
+    "title": "Vectors | Chapter 1, Essence of linear algebra - YouTube",
+    "finalUrl": "https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/learn/data-visualization",
+    "status": 200,
+    "title": "Learn Data Visualization Tutorials | Kaggle",
+    "finalUrl": "https://www.kaggle.com/learn/data-visualization",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr&index=1",
+    "status": 200,
+    "title": "The essence of calculus - YouTube",
+    "finalUrl": "https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr&index=1",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "source": "Source A / Problems",
+    "url": null,
+    "availability": "login-required invitation; original withheld",
+    "status": 200,
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://contest.yandex.ru/contest/79046/problems/",
+    "status": 200,
+    "title": "FAIO 2025 Warmup: Absolute beginners — Яндекс Контест",
+    "finalUrl": "https://contest.yandex.ru/contest/79046/enter/?retPage=",
+    "availability": "login required",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "source": "Source A / Problems",
+    "url": null,
+    "availability": "login-required invitation; original withheld",
+    "status": 200,
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://contest.yandex.ru/contest/79622/problems/",
+    "status": 200,
+    "title": "FAIO 2025 Warmup 2: Contest for learning — Яндекс Контест",
+    "finalUrl": "https://contest.yandex.ru/contest/79622/enter/?retPage=",
+    "availability": "login required",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://contest.yandex.ru/contest/71291/problems",
+    "status": 200,
+    "title": "FAIO 2024 ОТБОР Дорешка — Яндекс Контест",
+    "finalUrl": "https://contest.yandex.ru/contest/71291/enter/?retPage=",
+    "availability": "login required",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "source": "Source A / Problems",
+    "url": null,
+    "availability": "login-required invitation; original withheld",
+    "status": 200,
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://contest.yandex.ru/contest/83288/problems",
+    "status": 200,
+    "title": "FAIO Qualification 2025: Upsolving — Яндекс Контест",
+    "finalUrl": "https://contest.yandex.ru/contest/83288/enter/?retPage=",
+    "availability": "login required",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://contest.yandex.ru/contest/69765/problems",
+    "status": 200,
+    "title": "Fizmat AI Olympiad 2024 — Яндекс Контест",
+    "finalUrl": "https://contest.yandex.ru/contest/69765/enter/?retPage=",
+    "availability": "login required",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/competitions/problem-3-republic-olymp-tst-homework",
+    "status": 404,
+    "title": "Kaggle: Your Home for Data Science",
+    "finalUrl": "https://www.kaggle.com/competitions/problem-3-republic-olymp-tst-homework",
+    "availability": "unavailable",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://contest.yandex.ru/contest/76971/enter",
+    "status": 200,
+    "title": "AI olymp online(upsolving) — Яндекс Контест",
+    "finalUrl": "https://contest.yandex.ru/contest/76971/enter",
+    "availability": "login required",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/competitions/kazakhstan-respa-final-day-2-late-competition",
+    "status": 200,
+    "title": "Kazakhstan Respa Final - Day 2 (afterparty) | Kaggle",
+    "finalUrl": "https://www.kaggle.com/competitions/kazakhstan-respa-final-day-2-late-competition",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/competitions/mnist-rotation",
+    "status": 200,
+    "title": "Mnist rotation | Kaggle",
+    "finalUrl": "https://www.kaggle.com/competitions/mnist-rotation",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/competitions/ai-olympiad-nationals-2025-task-1-corgi",
+    "status": 404,
+    "title": "Kaggle: Your Home for Data Science",
+    "finalUrl": "https://www.kaggle.com/competitions/ai-olympiad-nationals-2025-task-1-corgi",
+    "availability": "unavailable",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/competitions/kazakhstan-ai-respa-take-home",
+    "status": 404,
+    "title": "Kaggle: Your Home for Data Science",
+    "finalUrl": "https://www.kaggle.com/competitions/kazakhstan-ai-respa-take-home",
+    "availability": "unavailable",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/competitions/kazakhstan-tst/overview",
+    "status": 200,
+    "title": "Kazakhstan TST | Kaggle",
+    "finalUrl": "https://www.kaggle.com/competitions/kazakhstan-tst/overview",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/competitions/up-solving-tst-day-1",
+    "status": 200,
+    "title": "Upsolving TST Day 1 | Kaggle",
+    "finalUrl": "https://www.kaggle.com/competitions/up-solving-tst-day-1",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/competitions/tst-day-2-upsolving",
+    "status": 200,
+    "title": "TST day2 Upsolving | Kaggle",
+    "finalUrl": "https://www.kaggle.com/competitions/tst-day-2-upsolving",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/competitions/tst-day-3-upsolving",
+    "status": 200,
+    "title": "TST Day3 Upsolving | Kaggle",
+    "finalUrl": "https://www.kaggle.com/competitions/tst-day-3-upsolving",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/competitions/tst-day-4-upsolving",
+    "status": 200,
+    "title": "TST Day4 Upsolving | Kaggle",
+    "finalUrl": "https://www.kaggle.com/competitions/tst-day-4-upsolving",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/competitions/neoai-2025",
+    "status": 200,
+    "title": "Northern Eurasia OAI 2025 | Kaggle",
+    "finalUrl": "https://www.kaggle.com/competitions/neoai-2025",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/competitions/neoai-2025-tricy-table-data",
+    "status": 200,
+    "title": "NEOAI 2025: Tricy Table Data | Kaggle",
+    "finalUrl": "https://www.kaggle.com/competitions/neoai-2025-tricy-table-data",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/competitions/neoai-2025-underfitting-cv",
+    "status": 200,
+    "title": "NEOAI 2025: Underfitting CV | Kaggle",
+    "finalUrl": "https://www.kaggle.com/competitions/neoai-2025-underfitting-cv",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/competitions/neoai-2025-evading-generated-text-detection",
+    "status": 200,
+    "title": "NEOAI 2025: Evading AI-Generated Text Detection | Kaggle",
+    "finalUrl": "https://www.kaggle.com/competitions/neoai-2025-evading-generated-text-detection",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/competitions/neoai-2025-cluster-pictures",
+    "status": 200,
+    "title": "NEOAI 2025: Cluster pictures | Kaggle",
+    "finalUrl": "https://www.kaggle.com/competitions/neoai-2025-cluster-pictures",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/competitions/neoai-2025-broken-bert",
+    "status": 200,
+    "title": "NEOAI 2025: Broken BERT | Kaggle",
+    "finalUrl": "https://www.kaggle.com/competitions/neoai-2025-broken-bert",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/competitions/neoai-2025-hogspell-challenge",
+    "status": 200,
+    "title": "NEOAI 2025: The Hogspell Challenge | Kaggle",
+    "finalUrl": "https://www.kaggle.com/competitions/neoai-2025-hogspell-challenge",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/competitions/neoai-2025-cuties-segmentation",
+    "status": 200,
+    "title": "NEOAI 2025: Cuties segmentation | Kaggle",
+    "finalUrl": "https://www.kaggle.com/competitions/neoai-2025-cuties-segmentation",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.khanacademy.org/math/ap-calculus-bc",
+    "status": 200,
+    "title": "Client Challenge",
+    "finalUrl": "https://www.khanacademy.org/math/ap-calculus-bc",
+    "availability": "browser challenge",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://teach-in.ru/course/mathematics-for-schoolchildren-kanunnikov",
+    "status": 200,
+    "title": "Математика для школьников | Открытые видеолекции учебных курсов МГУ",
+    "finalUrl": "https://teach-in.ru/course/mathematics-for-schoolchildren-kanunnikov",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/",
+    "status": 200,
+    "title": "Single Variable Calculus | Mathematics | MIT OpenCourseWare",
+    "finalUrl": "https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/2.-partial-derivatives/",
+    "status": 200,
+    "title": "2. Partial Derivatives | Multivariable Calculus | Mathematics | MIT OpenCourseWare",
+    "finalUrl": "https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/2.-partial-derivatives/",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/1.-vectors-and-matrices/",
+    "status": 200,
+    "title": "1. Vectors and Matrices | Multivariable Calculus | Mathematics | MIT OpenCourseWare",
+    "finalUrl": "https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/1.-vectors-and-matrices/",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=Be4x5IPo9Ic&list=PLBP4Q3FNSLK3dd-3lHjPij-dMSgNskoF6",
+    "status": 200,
+    "title": "►1. ЗНАКОМСТВО с Numpy | Курс по Numpy. - YouTube",
+    "finalUrl": "https://www.youtube.com/watch?v=Be4x5IPo9Ic&list=PLBP4Q3FNSLK3dd-3lHjPij-dMSgNskoF6",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=HemPVRvVm40&list=PLBP4Q3FNSLK2EujXiPUeTIOVnydZS8YJk",
+    "status": 200,
+    "title": "✅ 1. ЗНАКОМСТВО С PANDAS. Типы данных. | Курс по Pandas - YouTube",
+    "finalUrl": "https://www.youtube.com/watch?v=HemPVRvVm40&list=PLBP4Q3FNSLK2EujXiPUeTIOVnydZS8YJk",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=vStJoetOxJg&list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI",
+    "status": 200,
+    "title": "#1 Machine Learning Specialization [Course 1, Week 1, Lesson 1] - YouTube",
+    "finalUrl": "https://www.youtube.com/watch?v=vStJoetOxJg&list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=VMj-3S1tku0&list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ",
+    "status": 200,
+    "title": "The spelled-out intro to neural networks and backpropagation: building micrograd - YouTube",
+    "finalUrl": "https://www.youtube.com/watch?v=VMj-3S1tku0&list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://stepik.org/lesson/820523/step/1?unit=823905",
+    "status": 502,
+    "title": "Stepik временно недоступен",
+    "finalUrl": "https://stepik.org/lesson/820523/step/1?unit=823905",
+    "availability": "temporarily unavailable",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://cu.ru/olympiad/events/ai-course",
+    "status": 200,
+    "title": "Бесплатная подготовка к Всероссийской олимпиаде школьников по ИИ",
+    "finalUrl": "https://cu.ru/olympiad/events/ai-course",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://stepik.org/course/125587/syllabus",
+    "status": 502,
+    "title": "Stepik временно недоступен",
+    "finalUrl": "https://stepik.org/course/125587/syllabus",
+    "availability": "temporarily unavailable",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://stepik.org/course/125587/",
+    "status": 502,
+    "title": "Stepik временно недоступен",
+    "finalUrl": "https://stepik.org/course/125587/",
+    "availability": "temporarily unavailable",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://github.com/rougier/numpy-100",
+    "status": 200,
+    "title": "GitHub - rougier/numpy-100: 100 numpy exercises (with solutions) · GitHub",
+    "finalUrl": "https://github.com/rougier/numpy-100",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/learn/intro-to-machine-learning",
+    "status": 200,
+    "title": "Learn Intro to Machine Learning Tutorials | Kaggle",
+    "finalUrl": "https://www.kaggle.com/learn/intro-to-machine-learning",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.deep-ml.com/problems",
+    "status": 200,
+    "title": "Practice Problems | Deep-ML",
+    "finalUrl": "https://www.deep-ml.com/problems",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.kaggle.com/learn/intermediate-machine-learning",
+    "status": 200,
+    "title": "Learn Intermediate Machine Learning Tutorials | Kaggle",
+    "finalUrl": "https://www.kaggle.com/learn/intermediate-machine-learning",
+    "availability": "public title only; account required for participation",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://stepik.org/lesson/1909531/",
+    "status": 502,
+    "title": "Stepik временно недоступен",
+    "finalUrl": "https://stepik.org/lesson/1909531/",
+    "availability": "temporarily unavailable",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://github.com/yandexdataschool/nlp_course",
+    "status": 200,
+    "title": "GitHub - yandexdataschool/nlp_course: YSDA course in Natural Language Processing · GitHub",
+    "finalUrl": "https://github.com/yandexdataschool/nlp_course",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://www.youtube.com/@cv-gml",
+    "status": 200,
+    "title": "Computer Vision - YouTube",
+    "finalUrl": "https://www.youtube.com/@cv-gml",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://web.stanford.edu/class/cs224n/",
+    "status": 200,
+    "title": "Stanford CS 224N | Natural Language Processing with Deep Learning",
+    "finalUrl": "https://web.stanford.edu/class/cs224n/",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://cs231n.stanford.edu/",
+    "status": 200,
+    "title": "Stanford University CS231n: Deep Learning for Computer Vision",
+    "finalUrl": "https://cs231n.stanford.edu/",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://github.com/fedor-erin/YSDA-Courses/tree/main/3.%20CV",
+    "status": 200,
+    "title": "YSDA-Courses/3. CV at main · fedor-erin/YSDA-Courses · GitHub",
+    "finalUrl": "https://github.com/fedor-erin/YSDA-Courses/tree/main/3.%20CV",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://faio.kz/faio2024archive.html",
+    "status": 200,
+    "title": "Страница переехала",
+    "finalUrl": "https://faio.kz/faio2024archive.html",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://lena-voita.github.io/nlp_course.html",
+    "status": 200,
+    "title": "NLP Course | For You",
+    "finalUrl": "https://lena-voita.github.io/nlp_course.html",
+    "availability": "public page",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://stepik.org/course/186169/syllabus",
+    "status": 502,
+    "title": "Stepik временно недоступен",
+    "finalUrl": "https://stepik.org/course/186169/syllabus",
+    "availability": "temporarily unavailable",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://stepik.org/course/272087/syllabus",
+    "status": 502,
+    "title": "Stepik временно недоступен",
+    "finalUrl": "https://stepik.org/course/272087/syllabus",
+    "availability": "temporarily unavailable",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://stepik.org/course/272073/syllabus",
+    "status": 502,
+    "title": "Stepik временно недоступен",
+    "finalUrl": "https://stepik.org/course/272073/syllabus",
+    "availability": "temporarily unavailable",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "url": "https://stepik.org/course/58852/syllabus?search=9380649731",
+    "status": 502,
+    "title": "Stepik временно недоступен",
+    "finalUrl": "https://stepik.org/course/58852/syllabus?search=9380649731",
+    "availability": "temporarily unavailable",
+    "checkedOn": "2026-10-15"
+  }
+]

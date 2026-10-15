@@ -10,7 +10,7 @@ export function PreparationLinks({ category }: { category: string }) {
     <p className="mt-2 text-sm leading-6 text-muted-foreground">Editorial suggestions, not required prerequisites or an official syllabus.</p>
     <div className="mt-3 flex flex-wrap gap-x-5 gap-y-3 text-sm">{topics.map(topic => <Link key={topic.id} href={`/learn/${topic.slug}`} className="text-primary underline underline-offset-4">{topic.title}</Link>)}</div>
     <nav className="mt-4 flex flex-wrap gap-x-5 gap-y-3 text-sm" aria-label="Continue preparing">
-      <Link href="/start" className="font-semibold hover:text-primary">Choose a roadmap</Link>
+      <Link href="/roadmaps" className="font-semibold hover:text-primary">Choose a roadmap</Link>
       <Link href="/problems" className="font-semibold hover:text-primary">Browse published problems</Link>
       <Link href="/discussions?category=help" className="font-semibold hover:text-primary">Ask the community</Link>
     </nav>

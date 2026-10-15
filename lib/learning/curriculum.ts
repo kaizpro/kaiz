@@ -4,8 +4,14 @@ export type TrackId = "coding-ai" | "mathematics";
 export type LearningResource = {
   id: string;
   title: string;
-  kind: "article" | "video" | "exercise";
+  kind: "article" | "video" | "exercise" | "course" | "documentation" | "notebook";
   href: string;
+  provider?: string;
+  description?: string;
+  account?: string;
+  availability?: "available" | "unavailable" | "challenge";
+  provenance?: string;
+  difficulty?: string;
 };
 export interface CurriculumNode {
   readonly id: string;

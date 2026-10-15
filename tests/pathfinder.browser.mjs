@@ -47,7 +47,7 @@ try {
       await page.getByRole("heading", { level: 1 }).waitFor();
     }
     await open("/start/beginner");
-    await page.locator('a[href="/learn/python-fundamentals"]').click();
+    await page.locator('a[href="/learn/python-fundamentals"]').first().click();
     await page.getByRole("heading", { level: 1, name: "Python Fundamentals" }).waitFor();
     assert.ok(await page.locator('a[href^="https://docs.python.org/"]').count() > 0);
     await layout("topic");

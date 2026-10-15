@@ -8,6 +8,7 @@ import { roadmapForNode } from "@/lib/learning/navigation";
 import { journeysForTopic } from "@/lib/learning/journeys";
 import { TopicRoadmapLink } from "@/components/learning/topic-roadmap-link";
 import styles from "@/components/learning/learning.module.css";
+import { ResourceCard } from "@/components/learning/resource-card";
 
 type Props = { params: Promise<{ slug: string }> };
 export function generateStaticParams() { return getTopics().map((node) => ({ slug: node.slug })); }
@@ -54,12 +55,8 @@ export default async function TopicPage({ params }: Props) {
           </div>
         ) : (
           <section aria-label="Learning materials">
-            <ul className={styles.resourceList}>{topic.resources.filter((resource) => /^https?:\/\//.test(resource.href)).map((resource) => (
-              <li key={resource.id}><a href={resource.href} target="_blank" rel="noopener noreferrer">
-                <span><span className={styles.eyebrow}>{resource.kind}</span><br />{resource.title}</span><ArrowUpRight size={16} aria-hidden="true" />
-                <span className={styles.srOnly}>opens in a new tab</span>
-              </a></li>
-            ))}</ul>
+            <p className="mb-4 text-sm leading-6 text-muted-foreground">Selected external resources · this topic landing is not a full KAIZ lesson.</p>
+            <div className="grid gap-3 sm:grid-cols-2">{topic.resources.map(resource => <ResourceCard key={resource.id} resource={resource} topic={topic.title}/>)}</div>
             <Suspense><TopicRoadmapLink topicId={topic.id} /></Suspense>
           </section>
         )}
@@ -75,7 +72,8 @@ export default async function TopicPage({ params }: Props) {
       <section className="mt-7 border-t pt-5" aria-label="Continue your journey">
         <h2 className="text-base font-bold">Connect this topic to your preparation</h2>
         <nav className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm [&_a]:inline-flex [&_a]:min-h-11 [&_a]:items-center" aria-label="Roadmaps and community">
-          {journeys.length ? journeys.map(path => <Link key={path.level} href={`/start/${path.level}`} className="text-primary underline underline-offset-4">{path.title} roadmap</Link>) : <Link href="/start" className="text-primary underline underline-offset-4">Choose a roadmap</Link>}
+          {journeys.length ? journeys.map(path => <Link key={path.level} href={`/roadmaps/${path.level}`} className="text-primary underline underline-offset-4">{path.title} roadmap</Link>) : <Link href="/roadmaps" className="text-primary underline underline-offset-4">Choose a roadmap</Link>}
+          <Link href="/learn/topics" className="text-primary underline underline-offset-4">AI Topics inventory</Link>
           <Link href="/problems" className="text-primary underline underline-offset-4">Browse published problems</Link>
           <Link href="/discussions?category=help" className="text-primary underline underline-offset-4">Ask a question</Link>
         </nav>

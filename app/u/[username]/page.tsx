@@ -32,7 +32,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ userna
     <header className="grid gap-6 border-b pb-7 md:grid-cols-[auto_1fr_auto] md:items-end">
       <div className="grid size-20 place-items-center border bg-card font-mono text-xl font-black text-primary sm:size-24">{profile.display_name.slice(0,2).toUpperCase()}</div>
       <div><div className="flex flex-wrap items-center gap-2"><p className="micro-label text-primary">Competitor profile</p>{profile.country === "Kazakhstan" && <Badge>KZ</Badge>}</div><h1 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl">@{profile.username}</h1><p className="mt-1 text-base text-muted-foreground">{profile.display_name}</p></div>
-      {isOwner ? <Button asChild variant="outline"><Link href="/settings/profile"><Pencil className="size-4"/>Edit profile</Link></Button> : <Button variant="outline" disabled>Social features · Milestone 5</Button>}
+      {isOwner ? <Button asChild variant="outline"><Link href="/settings/profile"><Pencil className="size-4"/>Edit profile</Link></Button> : <Button variant="outline" className="h-auto min-h-9 max-w-full whitespace-normal" disabled>Social features · Milestone 5</Button>}
     </header>
 
     <div className="grid gap-8 py-8 lg:grid-cols-[17rem_minmax(0,1fr)]">

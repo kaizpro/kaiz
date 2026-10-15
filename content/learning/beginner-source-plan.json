@@ -1,0 +1,452 @@
+{
+  "source": "https://docs.google.com/spreadsheets/d/1kWZ9_5tsj1GjHygU0-IDvtDroL4BcSuKfA-eYPxekek/edit?gid=0",
+  "worksheet": "Лист1",
+  "checkedOn": "2026-10-15",
+  "interpretation": "Two parallel maths and programming/ML lanes. Left-to-right order is retained; month labels are the original planning aid, not a prescribed start date. Yes/No flags describe theory/practice coverage, not completion. V:Y has no month label.",
+  "cells": [
+    {
+      "cell": "B1",
+      "value": "June"
+    },
+    {
+      "cell": "F1",
+      "value": "July"
+    },
+    {
+      "cell": "J1",
+      "value": "August"
+    },
+    {
+      "cell": "N1",
+      "value": "September"
+    },
+    {
+      "cell": "R1",
+      "value": "October"
+    },
+    {
+      "cell": "B2",
+      "value": "1w"
+    },
+    {
+      "cell": "C2",
+      "value": "2w"
+    },
+    {
+      "cell": "D2",
+      "value": "3w"
+    },
+    {
+      "cell": "E2",
+      "value": "4w"
+    },
+    {
+      "cell": "F2",
+      "value": "1w"
+    },
+    {
+      "cell": "G2",
+      "value": "2w"
+    },
+    {
+      "cell": "H2",
+      "value": "3w"
+    },
+    {
+      "cell": "I2",
+      "value": "4w"
+    },
+    {
+      "cell": "J2",
+      "value": "1w"
+    },
+    {
+      "cell": "K2",
+      "value": "2w"
+    },
+    {
+      "cell": "L2",
+      "value": "3w"
+    },
+    {
+      "cell": "M2",
+      "value": "4w"
+    },
+    {
+      "cell": "N2",
+      "value": "1w"
+    },
+    {
+      "cell": "O2",
+      "value": "2w"
+    },
+    {
+      "cell": "P2",
+      "value": "3w"
+    },
+    {
+      "cell": "Q2",
+      "value": "4w"
+    },
+    {
+      "cell": "R2",
+      "value": "1w"
+    },
+    {
+      "cell": "S2",
+      "value": "2w"
+    },
+    {
+      "cell": "T2",
+      "value": "3w"
+    },
+    {
+      "cell": "U2",
+      "value": "4w"
+    },
+    {
+      "cell": "V2",
+      "value": "1w"
+    },
+    {
+      "cell": "W2",
+      "value": "2w"
+    },
+    {
+      "cell": "X2",
+      "value": "3w"
+    },
+    {
+      "cell": "Y2",
+      "value": "4w"
+    },
+    {
+      "cell": "A3",
+      "value": "Математика"
+    },
+    {
+      "cell": "B3",
+      "value": "Алгебра",
+      "url": "https://teach-in.ru/course/mathematics-for-schoolchildren-kanunnikov"
+    },
+    {
+      "cell": "C3",
+      "value": "Алгебра",
+      "url": "https://teach-in.ru/course/mathematics-for-schoolchildren-kanunnikov"
+    },
+    {
+      "cell": "D3",
+      "value": "Limits и 1.A ->",
+      "url": "https://www.khanacademy.org/math/ap-calculus-bc"
+    },
+    {
+      "cell": "E3",
+      "value": "1.A, B, Exam",
+      "url": "https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/"
+    },
+    {
+      "cell": "F3",
+      "value": "2.A, B",
+      "url": "https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/"
+    },
+    {
+      "cell": "G3",
+      "value": "2.C, Exam",
+      "url": "https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/"
+    },
+    {
+      "cell": "H3",
+      "value": "3.A, B",
+      "url": "https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/"
+    },
+    {
+      "cell": "I3",
+      "value": "3.C, Exam",
+      "url": "https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/"
+    },
+    {
+      "cell": "J3",
+      "value": "4.A, B",
+      "url": "https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/"
+    },
+    {
+      "cell": "K3",
+      "value": "4.C, Exam",
+      "url": "https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/"
+    },
+    {
+      "cell": "L3",
+      "value": "5.A, B",
+      "url": "https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/"
+    },
+    {
+      "cell": "M3",
+      "value": "Final Exam",
+      "url": "https://ocw.mit.edu/courses/18-01sc-single-variable-calculus-fall-2010/"
+    },
+    {
+      "cell": "N3",
+      "value": "1.A, B",
+      "url": "https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/1.-vectors-and-matrices/"
+    },
+    {
+      "cell": "O3",
+      "value": "1.C, Exam",
+      "url": "https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/1.-vectors-and-matrices/"
+    },
+    {
+      "cell": "P3",
+      "value": "2.A, B",
+      "url": "https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/1.-vectors-and-matrices/"
+    },
+    {
+      "cell": "Q3",
+      "value": "2.C, Exam",
+      "url": "https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/2.-partial-derivatives/"
+    },
+    {
+      "cell": "A5",
+      "value": "Прог/ML"
+    },
+    {
+      "cell": "B5",
+      "value": "Питон 1-8",
+      "url": "https://stepik.org/course/58852/syllabus?search=9380649731"
+    },
+    {
+      "cell": "C5",
+      "value": "Питон 9-16",
+      "url": "https://stepik.org/course/58852/syllabus?search=9380649731"
+    },
+    {
+      "cell": "D5",
+      "value": "Numpy",
+      "url": "https://www.youtube.com/watch?v=Be4x5IPo9Ic&list=PLBP4Q3FNSLK3dd-3lHjPij-dMSgNskoF6"
+    },
+    {
+      "cell": "E5",
+      "value": "Pandas",
+      "url": "https://www.youtube.com/watch?v=HemPVRvVm40&list=PLBP4Q3FNSLK2EujXiPUeTIOVnydZS8YJk"
+    },
+    {
+      "cell": "F5",
+      "value": "Andrew Ng 1-40",
+      "url": "https://www.youtube.com/watch?v=vStJoetOxJg&list=PLkDaE6sCZn6FNC6YRfRQc_FbeQrF8BwGI"
+    },
+    {
+      "cell": "G5",
+      "value": "Micrograd one video",
+      "url": "https://www.youtube.com/watch?v=VMj-3S1tku0&list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ"
+    },
+    {
+      "cell": "H5",
+      "value": "AI Course 6-10",
+      "url": "https://cu.ru/olympiad/events/ai-course"
+    },
+    {
+      "cell": "I5",
+      "value": "AI Course 11-15",
+      "url": "https://cu.ru/olympiad/events/ai-course"
+    },
+    {
+      "cell": "J5",
+      "value": "AI Course 16-19",
+      "url": "https://cu.ru/olympiad/events/ai-course"
+    },
+    {
+      "cell": "K5",
+      "value": "PyTorch",
+      "url": "https://stepik.org/course/186169/syllabus"
+    },
+    {
+      "cell": "L5",
+      "value": "DLS 1 CV"
+    },
+    {
+      "cell": "N5",
+      "value": "Computer Vision and Natural Language Processing"
+    },
+    {
+      "cell": "C6",
+      "value": "Kaggle Python",
+      "url": "https://www.kaggle.com/learn/python"
+    },
+    {
+      "cell": "D6",
+      "value": "100 problems",
+      "url": "https://github.com/rougier/numpy-100"
+    },
+    {
+      "cell": "E6",
+      "value": "Kaggle Pandas",
+      "url": "https://www.kaggle.com/learn/pandas"
+    },
+    {
+      "cell": "F6",
+      "value": "Kaggle ML Intro",
+      "url": "https://www.kaggle.com/learn/intro-to-machine-learning"
+    },
+    {
+      "cell": "G6",
+      "value": "AI Course 1, 2.4, 3-5",
+      "url": "https://cu.ru/olympiad/events/ai-course"
+    },
+    {
+      "cell": "H6",
+      "value": "Deep-ML",
+      "url": "https://www.deep-ml.com/problems"
+    },
+    {
+      "cell": "I6",
+      "value": "Deep-ML",
+      "url": "https://www.deep-ml.com/problems"
+    },
+    {
+      "cell": "J6",
+      "value": "Deep-ML",
+      "url": "https://www.deep-ml.com/problems"
+    },
+    {
+      "cell": "D7",
+      "value": "^ Тут задачи"
+    },
+    {
+      "cell": "F7",
+      "value": "Kaggle ML Interm",
+      "url": "https://www.kaggle.com/learn/intermediate-machine-learning"
+    },
+    {
+      "cell": "G7",
+      "value": "Deep-ML",
+      "url": "https://www.deep-ml.com/problems"
+    },
+    {
+      "cell": "P7",
+      "value": "Theory"
+    },
+    {
+      "cell": "Q7",
+      "value": "Practice"
+    },
+    {
+      "cell": "U7",
+      "value": "Theory"
+    },
+    {
+      "cell": "V7",
+      "value": "Practice"
+    },
+    {
+      "cell": "N8",
+      "value": "CV:"
+    },
+    {
+      "cell": "O8",
+      "value": "DLS 1 CV",
+      "url": "https://stepik.org/course/272073/syllabus"
+    },
+    {
+      "cell": "P8",
+      "value": "Yes"
+    },
+    {
+      "cell": "Q8",
+      "value": "Yes"
+    },
+    {
+      "cell": "S8",
+      "value": "NLP:"
+    },
+    {
+      "cell": "T8",
+      "value": "DLS 2 NLP",
+      "url": "https://stepik.org/course/272087/syllabus"
+    },
+    {
+      "cell": "U8",
+      "value": "Yes"
+    },
+    {
+      "cell": "V8",
+      "value": "Yes"
+    },
+    {
+      "cell": "O9",
+      "value": "CS 231N",
+      "url": "https://cs231n.stanford.edu/"
+    },
+    {
+      "cell": "P9",
+      "value": "Yes"
+    },
+    {
+      "cell": "Q9",
+      "value": "Yes (assignments)"
+    },
+    {
+      "cell": "T9",
+      "value": "ШАД",
+      "url": "https://github.com/yandexdataschool/nlp_course"
+    },
+    {
+      "cell": "U9",
+      "value": "Yes"
+    },
+    {
+      "cell": "V9",
+      "value": "Yes"
+    },
+    {
+      "cell": "O10",
+      "value": "CV-gml",
+      "url": "https://www.youtube.com/@cv-gml"
+    },
+    {
+      "cell": "P10",
+      "value": "Yes"
+    },
+    {
+      "cell": "Q10",
+      "value": "No"
+    },
+    {
+      "cell": "T10",
+      "value": "CS 224N",
+      "url": "https://web.stanford.edu/class/cs224n/"
+    },
+    {
+      "cell": "U10",
+      "value": "Yes"
+    },
+    {
+      "cell": "V10",
+      "value": "Yes (assignments)"
+    },
+    {
+      "cell": "O11",
+      "value": "ШАД дз",
+      "url": "https://github.com/fedor-erin/YSDA-Courses/tree/main/3.%20CV"
+    },
+    {
+      "cell": "P11",
+      "value": "No"
+    },
+    {
+      "cell": "Q11",
+      "value": "Yes"
+    },
+    {
+      "cell": "T11",
+      "value": "NLP Course",
+      "url": "https://lena-voita.github.io/nlp_course.html"
+    },
+    {
+      "cell": "U11",
+      "value": "Yes"
+    },
+    {
+      "cell": "V11",
+      "value": "Yes"
+    }
+  ]
+}

@@ -1,1 +1,2 @@
-import type { Metadata } from "next";import { MilestonePlaceholder } from "@/components/milestone-placeholder";export const metadata:Metadata={title:"Leaderboard"};export default function Page(){return <MilestonePlaceholder title="Leaderboards" milestone={3} description="Global, Kazakhstan, city, school, grade and discipline rankings will appear after verified score synchronization is active."/>}
+import { redirect } from "next/navigation";
+export default function LeaderboardAlias() { redirect("/leaderboards"); }

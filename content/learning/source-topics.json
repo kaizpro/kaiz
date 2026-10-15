@@ -1,0 +1,845 @@
+{
+  "source": "https://docs.google.com/spreadsheets/d/1PfrqDrAo2SIm56mshWIsmfwutA6VSO0QDB8gmh8a3ME/edit?gid=0",
+  "worksheet": "Topics",
+  "checkedOn": "2026-10-15",
+  "note": "Темы останутся, но материалы будут дополняться",
+  "topics": [
+    {
+      "id": "source-a-4",
+      "group": "Math",
+      "title": "Linear algebra essentials",
+      "cell": "B4",
+      "mode": "Theory",
+      "topicIds": [
+        "vectors",
+        "matrices",
+        "linear-transformations"
+      ],
+      "match": "broader",
+      "resources": [
+        {
+          "cell": "D4",
+          "title": "Модуль 6",
+          "url": "https://stepik.org/course/125587/syllabus"
+        },
+        {
+          "cell": "D5",
+          "title": "Linear Algebra ",
+          "url": "https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab"
+        }
+      ]
+    },
+    {
+      "id": "source-a-6",
+      "group": "Math",
+      "title": "Calculus essentials",
+      "cell": "B6",
+      "mode": "Theory",
+      "topicIds": [
+        "limits",
+        "derivatives",
+        "integrals"
+      ],
+      "match": "broader",
+      "resources": [
+        {
+          "cell": "D6",
+          "title": "Модули 15, 16",
+          "url": "https://stepik.org/course/125587/syllabus"
+        },
+        {
+          "cell": "D7",
+          "title": "Calculus",
+          "url": "https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr&index=1"
+        }
+      ]
+    },
+    {
+      "id": "source-a-8",
+      "group": "Math",
+      "title": "Probability and statistics essentials",
+      "cell": "B8",
+      "mode": "Theory",
+      "topicIds": [
+        "basic-probability",
+        "descriptive-statistics"
+      ],
+      "match": "broader",
+      "resources": [
+        {
+          "cell": "D8",
+          "title": "Модуль 9",
+          "url": "https://stepik.org/course/125587/syllabus"
+        }
+      ]
+    },
+    {
+      "id": "source-a-9",
+      "group": "Programming Fundamentals",
+      "title": "Python Basics (Loops, Functions, etc.)",
+      "cell": "B9",
+      "mode": "Practice",
+      "topicIds": [
+        "python-fundamentals",
+        "python-control-flow",
+        "python-functions"
+      ],
+      "match": "broader",
+      "resources": [
+        {
+          "cell": "D9",
+          "title": "Модули 2, 3, 4, 5",
+          "url": "https://stepik.org/course/125587/"
+        },
+        {
+          "cell": "D10",
+          "title": "Learn Python | Kaggle",
+          "url": "https://www.kaggle.com/learn/python"
+        }
+      ]
+    },
+    {
+      "id": "source-a-11",
+      "group": "Programming Fundamentals",
+      "title": "NumPy for Data Handling",
+      "cell": "B11",
+      "mode": "Practice",
+      "topicIds": [
+        "numpy"
+      ],
+      "match": "direct",
+      "resources": [
+        {
+          "cell": "D11",
+          "title": "Модули 7, 8",
+          "url": "https://stepik.org/course/125587/"
+        }
+      ]
+    },
+    {
+      "id": "source-a-12",
+      "group": "Programming Fundamentals",
+      "title": "Pandas for Data Handling",
+      "cell": "B12",
+      "mode": "Practice",
+      "topicIds": [
+        "pandas"
+      ],
+      "match": "direct",
+      "resources": [
+        {
+          "cell": "D12",
+          "title": "Модули 10, 11",
+          "url": "https://stepik.org/lesson/820523/step/1?unit=823905"
+        },
+        {
+          "cell": "D13",
+          "title": "Learn Pandas | Kaggle",
+          "url": "https://www.kaggle.com/learn/pandas"
+        }
+      ]
+    },
+    {
+      "id": "source-a-14",
+      "group": "Programming Fundamentals",
+      "title": "Matplotlib and Seaborn for Visualization",
+      "cell": "B14",
+      "mode": "Practice",
+      "topicIds": [
+        "data-visualization"
+      ],
+      "match": "direct",
+      "resources": [
+        {
+          "cell": "D14",
+          "title": "Модули 10, 11",
+          "url": "https://stepik.org/course/125587/syllabus"
+        },
+        {
+          "cell": "D15",
+          "title": "Learn Data Visualization | Kaggle",
+          "url": "https://www.kaggle.com/learn/data-visualization"
+        }
+      ]
+    },
+    {
+      "id": "source-a-16",
+      "group": "Programming Fundamentals",
+      "title": "Scikit-learn for ML",
+      "cell": "B16",
+      "mode": "Practice",
+      "topicIds": [
+        "ml-fundamentals"
+      ],
+      "match": "broader",
+      "resources": [
+        {
+          "cell": "D16",
+          "title": "https://stepik.org/lesson/1909531/",
+          "url": "https://stepik.org/lesson/1909531/"
+        }
+      ]
+    },
+    {
+      "id": "source-a-17",
+      "group": "Programming Fundamentals",
+      "title": "PyTorch Basics",
+      "cell": "B17",
+      "mode": "Practice",
+      "topicIds": [
+        "pytorch"
+      ],
+      "match": "direct",
+      "resources": []
+    },
+    {
+      "id": "source-a-18",
+      "group": "Programming Fundamentals",
+      "title": "Tensor (Multi-dimensional Array) Manipulation",
+      "cell": "B18",
+      "mode": "Practice",
+      "topicIds": [
+        "numpy",
+        "pytorch"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-19",
+      "group": "Programming Fundamentals",
+      "title": "Training Models on CPU and GPU",
+      "cell": "B19",
+      "mode": "Practice",
+      "topicIds": [
+        "pytorch"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-20",
+      "group": "Supervised Learning",
+      "title": "Linear Regression",
+      "cell": "B20",
+      "mode": "Both",
+      "topicIds": [
+        "regression"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-21",
+      "group": "Supervised Learning",
+      "title": "Logistic Regression",
+      "cell": "B21",
+      "mode": "Both",
+      "topicIds": [
+        "classification"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-22",
+      "group": "Supervised Learning",
+      "title": "L1 & L2 Regularization",
+      "cell": "B22",
+      "mode": "Both",
+      "topicIds": [
+        "training-regularization"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-23",
+      "group": "Supervised Learning",
+      "title": "K-Nearest Neighbors (K-NN)",
+      "cell": "B23",
+      "mode": "Both",
+      "topicIds": [
+        "classification"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-24",
+      "group": "Supervised Learning",
+      "title": "Decision Trees",
+      "cell": "B24",
+      "mode": "Both",
+      "topicIds": [
+        "classification"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-25",
+      "group": "Supervised Learning",
+      "title": "Model Ensembles (Gradient Boosting, Bagging, Random Forest)",
+      "cell": "B25",
+      "mode": "Practice",
+      "topicIds": [
+        "ensemble-methods"
+      ],
+      "match": "direct",
+      "resources": []
+    },
+    {
+      "id": "source-a-26",
+      "group": "Supervised Learning",
+      "title": "Support Vector Machines (SVM)",
+      "cell": "B26",
+      "mode": "Both",
+      "topicIds": [
+        "classification"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-27",
+      "group": "Unsupervised Learning",
+      "title": "K-Means Clustering",
+      "cell": "B27",
+      "mode": "Both",
+      "topicIds": [
+        "unsupervised-learning"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-28",
+      "group": "Unsupervised Learning",
+      "title": "Principal Component Analysis (PCA)",
+      "cell": "B28",
+      "mode": "Both",
+      "topicIds": [
+        "unsupervised-learning"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-29",
+      "group": "Unsupervised Learning",
+      "title": "t-SNE, UMAP",
+      "cell": "B29",
+      "mode": "Practice",
+      "topicIds": [
+        "unsupervised-learning"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-30",
+      "group": "Unsupervised Learning",
+      "title": "DBSCAN, Hierarchical & Spectral Clustering",
+      "cell": "B30",
+      "mode": "Practice",
+      "topicIds": [
+        "unsupervised-learning"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-31",
+      "group": "Data Science Fundamentals",
+      "title": "Model Evaluation Metrics (Accuracy, Precision, Recall, F1-Score, etc.)",
+      "cell": "B31",
+      "mode": "Both",
+      "topicIds": [
+        "model-evaluation"
+      ],
+      "match": "direct",
+      "resources": []
+    },
+    {
+      "id": "source-a-32",
+      "group": "Data Science Fundamentals",
+      "title": "Underfitting, Overfitting",
+      "cell": "B32",
+      "mode": "Theory",
+      "topicIds": [
+        "training-regularization"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-33",
+      "group": "Data Science Fundamentals",
+      "title": "Hyperparameter Tuning",
+      "cell": "B33",
+      "mode": "Practice",
+      "topicIds": [
+        "hyperparameter-tuning"
+      ],
+      "match": "direct",
+      "resources": []
+    },
+    {
+      "id": "source-a-34",
+      "group": "Data Science Fundamentals",
+      "title": "Cross-Validation",
+      "cell": "B34",
+      "mode": "Practice",
+      "topicIds": [
+        "cross-validation"
+      ],
+      "match": "direct",
+      "resources": []
+    },
+    {
+      "id": "source-a-35",
+      "group": "Data Science Fundamentals",
+      "title": "Confusion Matrix and ROC Curves",
+      "cell": "B35",
+      "mode": "Both",
+      "topicIds": [
+        "model-evaluation"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-36",
+      "group": "Data Science Fundamentals",
+      "title": "Feature Engineering *",
+      "cell": "B36",
+      "mode": "Practice",
+      "topicIds": [
+        "feature-engineering"
+      ],
+      "match": "direct",
+      "resources": []
+    },
+    {
+      "id": "source-a-37",
+      "group": "Data Science Fundamentals",
+      "title": "Data Processing **",
+      "cell": "B37",
+      "mode": "Practice",
+      "topicIds": [
+        "data-processing"
+      ],
+      "match": "direct",
+      "resources": []
+    },
+    {
+      "id": "source-a-38",
+      "group": "Neural Networks",
+      "title": "Perceptron Basics",
+      "cell": "B38",
+      "mode": "Both",
+      "topicIds": [
+        "neural-networks"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-39",
+      "group": "Neural Networks",
+      "title": "Gradient Descent",
+      "cell": "B39",
+      "mode": "Both",
+      "topicIds": [
+        "gradient-descent"
+      ],
+      "match": "direct",
+      "resources": []
+    },
+    {
+      "id": "source-a-40",
+      "group": "Neural Networks",
+      "title": "Backpropagation",
+      "cell": "B40",
+      "mode": "Both",
+      "topicIds": [
+        "backpropagation"
+      ],
+      "match": "direct",
+      "resources": []
+    },
+    {
+      "id": "source-a-41",
+      "group": "Neural Networks",
+      "title": "Activation Functions (ReLU, Sigmoid, Tanh)",
+      "cell": "B41",
+      "mode": "Both",
+      "topicIds": [
+        "neural-networks"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-42",
+      "group": "Neural Networks",
+      "title": "Loss Functions (MSE, MAE, Cross Entropy, etc.)",
+      "cell": "B42",
+      "mode": "Both",
+      "topicIds": [
+        "neural-networks"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-43",
+      "group": "Deep Learning",
+      "title": "Multi-Layer Perceptrons (MLP)",
+      "cell": "B43",
+      "mode": "Both",
+      "topicIds": [
+        "neural-networks"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-44",
+      "group": "Deep Learning",
+      "title": "Data Embeddings (text, image, audio)",
+      "cell": "B44",
+      "mode": "Both",
+      "topicIds": [
+        "embeddings"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-45",
+      "group": "Deep Learning",
+      "title": "Pooling Techniques (Max, Average)",
+      "cell": "B45",
+      "mode": "Both",
+      "topicIds": [
+        "convolutional-networks"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-46",
+      "group": "Deep Learning",
+      "title": "Attention Mechanism",
+      "cell": "B46",
+      "mode": "Both",
+      "topicIds": [
+        "attention"
+      ],
+      "match": "direct",
+      "resources": []
+    },
+    {
+      "id": "source-a-47",
+      "group": "Deep Learning",
+      "title": "Transformers (theory needed only for text and image)",
+      "cell": "B47",
+      "mode": "Both",
+      "topicIds": [
+        "transformers"
+      ],
+      "match": "direct",
+      "resources": []
+    },
+    {
+      "id": "source-a-48",
+      "group": "Deep Learning",
+      "title": "Autoencoders",
+      "cell": "B48",
+      "mode": "Practice",
+      "topicIds": [],
+      "match": "missing",
+      "resources": []
+    },
+    {
+      "id": "source-a-49",
+      "group": "Deep Learning",
+      "title": "SGD, Mini-Batch Gradient Descent",
+      "cell": "B49",
+      "mode": "Both",
+      "topicIds": [
+        "gradient-descent"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-50",
+      "group": "Deep Learning",
+      "title": "Momentum Methods (Adam, AdamW)",
+      "cell": "B50",
+      "mode": "Practice",
+      "topicIds": [
+        "optimization-methods"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-51",
+      "group": "Deep Learning",
+      "title": "Convergence and Learning Rates",
+      "cell": "B51",
+      "mode": "Practice",
+      "topicIds": [
+        "training-regularization"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-52",
+      "group": "Deep Learning",
+      "title": "Regularization: Dropout, Early Stopping, Weight Decay",
+      "cell": "B52",
+      "mode": "Practice",
+      "topicIds": [
+        "training-regularization"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-53",
+      "group": "Deep Learning",
+      "title": "Weight Initialization",
+      "cell": "B53",
+      "mode": "Practice",
+      "topicIds": [
+        "neural-networks"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-54",
+      "group": "Deep Learning",
+      "title": "Batch Normalization",
+      "cell": "B54",
+      "mode": "Practice",
+      "topicIds": [
+        "neural-networks"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-55",
+      "group": "Deep Learning",
+      "title": "Model Finetuning (full and parameter-efficient)",
+      "cell": "B55",
+      "mode": "Practice",
+      "topicIds": [
+        "training-regularization"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-56",
+      "group": "Fundamentals (Computer Vision)",
+      "title": "Convolutional Layers",
+      "cell": "B56",
+      "mode": "Both",
+      "topicIds": [
+        "convolutional-networks"
+      ],
+      "match": "direct",
+      "resources": []
+    },
+    {
+      "id": "source-a-57",
+      "group": "Fundamentals (Computer Vision)",
+      "title": "Image Classification",
+      "cell": "B57",
+      "mode": "Practice",
+      "topicIds": [
+        "image-classification"
+      ],
+      "match": "direct",
+      "resources": []
+    },
+    {
+      "id": "source-a-58",
+      "group": "Fundamentals (Computer Vision)",
+      "title": "Object Detection (YOLO, SSD, DERT)",
+      "cell": "B58",
+      "mode": "Practice",
+      "topicIds": [
+        "object-detection"
+      ],
+      "match": "direct",
+      "resources": []
+    },
+    {
+      "id": "source-a-59",
+      "group": "Fundamentals (Computer Vision)",
+      "title": "Image Segmentation (U-Net)",
+      "cell": "B59",
+      "mode": "Practice",
+      "topicIds": [
+        "image-segmentation"
+      ],
+      "match": "direct",
+      "resources": []
+    },
+    {
+      "id": "source-a-60",
+      "group": "Fundamentals (Computer Vision)",
+      "title": "Pre-trained Vision Encoders (e.g. ResNet)",
+      "cell": "B60",
+      "mode": "Practice",
+      "topicIds": [
+        "convolutional-networks"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-61",
+      "group": "Fundamentals (Computer Vision)",
+      "title": "Image Augmentation",
+      "cell": "B61",
+      "mode": "Practice",
+      "topicIds": [
+        "image-processing"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-62",
+      "group": "Fundamentals (Computer Vision)",
+      "title": "Generating Images with GANs",
+      "cell": "B62",
+      "mode": "Practice",
+      "topicIds": [],
+      "match": "missing",
+      "resources": []
+    },
+    {
+      "id": "source-a-63",
+      "group": "Fundamentals (Computer Vision)",
+      "title": "Self-Supervised Learning for Vision",
+      "cell": "B63",
+      "mode": "Practice",
+      "topicIds": [],
+      "match": "missing",
+      "resources": []
+    },
+    {
+      "id": "source-a-64",
+      "group": "Fundamentals (Computer Vision)",
+      "title": "Vision-text Encoders (e.g. CLIP)",
+      "cell": "B64",
+      "mode": "Practice",
+      "topicIds": [],
+      "match": "missing",
+      "resources": []
+    },
+    {
+      "id": "source-a-65",
+      "group": "Fundamentals (Computer Vision)",
+      "title": "Diffusion Models",
+      "cell": "B65",
+      "mode": "Practice",
+      "topicIds": [],
+      "match": "missing",
+      "resources": []
+    },
+    {
+      "id": "source-a-67",
+      "group": "NLP",
+      "title": "Text Classification",
+      "cell": "B67",
+      "mode": "Practice",
+      "topicIds": [
+        "text-processing",
+        "classification"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-68",
+      "group": "NLP",
+      "title": "Pre-trained Text Encoders (e.g. BERT)",
+      "cell": "B68",
+      "mode": "Both",
+      "topicIds": [
+        "embeddings",
+        "transformers"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-69",
+      "group": "NLP",
+      "title": "Language Modeling",
+      "cell": "B69",
+      "mode": "Both",
+      "topicIds": [
+        "llm-fundamentals"
+      ],
+      "match": "direct",
+      "resources": []
+    },
+    {
+      "id": "source-a-70",
+      "group": "NLP",
+      "title": "Encoder-Decoder Models (e.g. for Machine Translation or Vision-Language Modeling)",
+      "cell": "B70",
+      "mode": "Practice",
+      "topicIds": [
+        "transformers"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-71",
+      "group": "NLP",
+      "title": "Pre-trained Language Models (open-source and API-based ones)",
+      "cell": "B71",
+      "mode": "Practice",
+      "topicIds": [
+        "llm-fundamentals"
+      ],
+      "match": "broader",
+      "resources": []
+    },
+    {
+      "id": "source-a-72",
+      "group": "Audio Processing",
+      "title": "Pre-trained Audio Encoders: HuBERT",
+      "cell": "B72",
+      "mode": "Practice",
+      "topicIds": [],
+      "match": "missing",
+      "resources": []
+    },
+    {
+      "id": "source-a-73",
+      "group": "Audio Processing",
+      "title": "Audio Models: Qwen-Audio, Whisper, Voxtral",
+      "cell": "B73",
+      "mode": "Practice",
+      "topicIds": [],
+      "match": "missing",
+      "resources": []
+    }
+  ]
+}

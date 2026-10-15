@@ -55,7 +55,7 @@ test("every topic has reviewed external resources or an honest empty state and a
       assert.equal(url.protocol, "https:");
       assert.equal(url.username + url.password, "");
       assert.ok(resource.title.trim());
-      assert.ok(["article", "video", "exercise"].includes(resource.kind));
+      assert.ok(["article", "video", "exercise", "course", "documentation", "notebook"].includes(resource.kind));
     }
     assert.equal(node.children.length, 0);
     assert.equal(topicHref(node), `/learn/${node.slug}`);
