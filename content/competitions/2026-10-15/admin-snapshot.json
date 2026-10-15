@@ -1,0 +1,123 @@
+{
+  "checkedAt": "2026-10-15",
+  "competitions": [
+    {
+      "editionKey": "apoai-2026",
+      "form": {
+        "category": "Machine Learning",
+        "city": "",
+        "country": "China",
+        "description": "The 2026 Asia Pacific Olympiad in Artificial Intelligence (APOAI), a regional artificial intelligence olympiad operating under the supervision of the International Olympiad in Artificial Intelligence. It provides a regional competition and preparation pathway aligned with IOAI standards.",
+        "eligibility": "High school students",
+        "endDate": "2026-06-13",
+        "format": "hybrid",
+        "officialWebsite": "https://www.apoai.org/apoai2026",
+        "organizer": "NOAI Organizing Committee (China)",
+        "registrationDeadline": "",
+        "registrationUrl": "",
+        "slug": "apoai-2026",
+        "startDate": "2026-06-13",
+        "status": "completed",
+        "tags": "AI, Asia Pacific, International, Regional, Olympiad, High School, APOAI, IOAI",
+        "title": "Asia Pacific Olympiad in Artificial Intelligence 2026",
+        "verified": true
+      },
+      "id": "4f0dc01c-c6cc-49b1-8333-2d17f2d096d4"
+    },
+    {
+      "editionKey": "euroai-2026",
+      "form": {
+        "category": "Machine Learning",
+        "city": "Cluj-Napoca",
+        "country": "Romania",
+        "description": "The 2026 European Olympiad in Artificial Intelligence (EUROAI), initially launched as the Central European Olympiad in Artificial Intelligence (CEOAI) before being renamed ahead of its first edition. The regional AI olympiad brings together secondary-school students for theoretical and practical artificial intelligence competition.",
+        "eligibility": "High school students",
+        "endDate": "2026-07-19",
+        "format": "offline",
+        "officialWebsite": "https://euroai-official.org/",
+        "organizer": "EUROAI International Committee",
+        "registrationDeadline": "",
+        "registrationUrl": "",
+        "slug": "euroai-2026",
+        "startDate": "2026-07-14",
+        "status": "completed",
+        "tags": "AI, Machine Learning, Europe, International, Regional, Olympiad, High School, EUROAI, CEOAI, IOAI",
+        "title": "European Olympiad in Artificial Intelligence 2026",
+        "verified": true
+      },
+      "id": "663f286e-b6b6-479a-9350-55caf31343b9"
+    },
+    {
+      "editionKey": "ioai-2025",
+      "form": {
+        "category": "Machine Learning",
+        "city": "Beijing",
+        "country": "China",
+        "description": "The second International Olympiad in Artificial Intelligence (IOAI), hosted in Beijing, China. High-school students representing countries and territories around the world competed in artificial intelligence through individual and team activities.",
+        "eligibility": "High school students",
+        "endDate": "2025-08-09",
+        "format": "offline",
+        "officialWebsite": "https://ioai-official.org/china-2025/",
+        "organizer": "Beijing National Day School (BNDS)",
+        "registrationDeadline": "",
+        "registrationUrl": "",
+        "slug": "ioai-2025",
+        "startDate": "2025-08-02",
+        "status": "completed",
+        "tags": "AI, Machine Learning, International, Olympiad, High School, China, IOAI",
+        "title": "International Olympiad in Artificial Intelligence 2025",
+        "verified": true
+      },
+      "id": "6f9d4073-366b-47f1-8859-f0fc83c36afb"
+    },
+    {
+      "editionKey": "ioai-2026",
+      "form": {
+        "category": "Machine Learning",
+        "city": "Astana",
+        "country": "Kazakhstan",
+        "description": "The third International Olympiad in Artificial Intelligence (IOAI), hosted in Astana, Kazakhstan. IOAI is an international artificial intelligence olympiad for high-school students, bringing together national delegations for individual and team-based AI competition and international collaboration.",
+        "eligibility": "High school students",
+        "endDate": "2026-08-08",
+        "format": "offline",
+        "officialWebsite": "https://ioai-official.org/republic-of-kazakhstan/",
+        "organizer": "Competitive Programming Federation of Kazakhstan (CPFED)",
+        "registrationDeadline": "",
+        "registrationUrl": "",
+        "slug": "ioai-2026",
+        "startDate": "2026-08-02",
+        "status": "completed",
+        "tags": "AI, Machine Learning, International, Olympiad, High School, Kazakhstan, IOAI",
+        "title": "International Olympiad in Artificial Intelligence 2026",
+        "verified": true
+      },
+      "id": "45fa3bfb-6e3b-43e0-927e-ea0ee617b9ba"
+    },
+    {
+      "editionKey": "neoai-2026",
+      "form": {
+        "category": "Machine Learning",
+        "city": "",
+        "country": "Russia",
+        "description": "The Northern Eurasia Olympiad in Artificial Intelligence is an international AI olympiad for high-school students from Northern Eurasia and partner countries. The competition uses a practice-oriented format with challenges in areas including machine learning, computer vision, natural language processing, data analysis, and algorithmic thinking. Participants from Russia compete onsite at the official venue, while international participants can compete remotely or at local partner venues.",
+        "eligibility": "High school students",
+        "endDate": "2026-05-04",
+        "format": "hybrid",
+        "officialWebsite": "https://cu.ru/olympiad/events/neoai",
+        "organizer": "Central University",
+        "registrationDeadline": "",
+        "registrationUrl": "",
+        "slug": "neoai-2026",
+        "startDate": "2026-05-03",
+        "status": "completed",
+        "tags": "AI, Machine Learning, Computer Vision, NLP, Data Analysis, Olympiad, High School, NEOAI",
+        "title": "Northern Eurasia Olympiad in Artificial Intelligence 2026",
+        "verified": true
+      },
+      "id": "4e4f151a-c541-41d8-a845-8106bf70d438"
+    }
+  ],
+  "resultSets": [],
+  "scope": "admin_complete",
+  "version": 1
+}
