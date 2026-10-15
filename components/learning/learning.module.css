@@ -4,7 +4,7 @@
 .page button { cursor: pointer; }
 .page button:disabled { cursor: wait; }
 .eyebrow { font-family: var(--font-mono), monospace; font-size: .6875rem; font-weight: 500; letter-spacing: .1em; line-height: 1.7; text-transform: uppercase; color: var(--muted-foreground); }
-.intro { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 32px; }
+.intro { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 32px; }
 .intro h1 { font-size: clamp(1.75rem, 3vw, 2.5rem); letter-spacing: -.045em; font-weight: 650; line-height: 1.15; margin: 10px 0 12px; text-wrap: balance; }
 .intro > div > p:last-child { color: var(--muted-foreground); font-size: .875rem; line-height: 1.65; }
 .availability { font-size: .6875rem; color: var(--muted-foreground); white-space: nowrap; padding-bottom: 6px; }

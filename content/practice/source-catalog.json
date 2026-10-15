@@ -1,0 +1,534 @@
+[
+  {
+    "id": "source-a-problem-1",
+    "sourceLabel": "FAIO warmup absolute beginners",
+    "title": "FAIO 2025 Warmup: Absolute beginners",
+    "url": "https://contest.yandex.ru/contest/79046/problems/",
+    "source": "Yandex Contest",
+    "type": "upsolving contest",
+    "competition": "FAIO",
+    "parent": null,
+    "availability": "available",
+    "login": "Yandex account required",
+    "difficulty": "Beginner (publisher title)",
+    "topics": [
+      "Python"
+    ],
+    "description": "A source-linked contest collection. Its title is visible, but tasks redirect to sign-in; individual statements, metrics and availability after login are not verified.",
+    "provenance": "Source A · Problems!A1:B1",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-2",
+    "sourceLabel": "FAIO warmup beginner",
+    "title": "FAIO warmup beginner",
+    "url": null,
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "FAIO",
+    "parent": null,
+    "availability": "held",
+    "login": "Invitation and account required",
+    "difficulty": "Beginner (source label)",
+    "topics": [
+      "Machine Learning"
+    ],
+    "description": "Source-supplied invitation requires login; the public canonical destination is not verified. Link withheld, not accepted or published.",
+    "provenance": "Source A · Problems!A2:B2",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-3",
+    "sourceLabel": "FAIO warmup 2 easy",
+    "title": "FAIO 2025 Warmup 2: Contest for learning",
+    "url": "https://contest.yandex.ru/contest/79622/problems/",
+    "source": "Yandex Contest",
+    "type": "upsolving contest",
+    "competition": "FAIO",
+    "parent": null,
+    "availability": "available",
+    "login": "Yandex account required",
+    "difficulty": "Easy (source label)",
+    "topics": [
+      "Python"
+    ],
+    "description": "A source-linked contest collection. Its title is visible, but tasks redirect to sign-in; individual statements, metrics and availability after login are not verified.",
+    "provenance": "Source A · Problems!A3:B3",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-4",
+    "sourceLabel": "FAIO warmup 2 middle",
+    "title": "FAIO warmup 2 middle",
+    "url": null,
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "FAIO",
+    "parent": null,
+    "availability": "held",
+    "login": "Invitation and account required",
+    "difficulty": "Middle (source label)",
+    "topics": [
+      "Machine Learning"
+    ],
+    "description": "Source-supplied invitation requires login; the public canonical destination is not verified. Link withheld, not accepted or published.",
+    "provenance": "Source A · Problems!A4:B4",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-5",
+    "sourceLabel": "FAIO warmup 2 hard",
+    "title": "FAIO warmup 2 hard",
+    "url": null,
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "FAIO",
+    "parent": null,
+    "availability": "held",
+    "login": "Invitation and account required",
+    "difficulty": "Hard (source label)",
+    "topics": [
+      "Machine Learning"
+    ],
+    "description": "Source-supplied invitation requires login; the public canonical destination is not verified. Link withheld, not accepted or published.",
+    "provenance": "Source A · Problems!A5:B5",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-6",
+    "sourceLabel": "FAIO 2024 qual",
+    "title": "FAIO 2024 ОТБОР Дорешка",
+    "url": "https://contest.yandex.ru/contest/71291/problems",
+    "source": "Yandex Contest",
+    "type": "upsolving contest",
+    "competition": "FAIO",
+    "parent": null,
+    "availability": "available",
+    "login": "Yandex account required",
+    "difficulty": "Unrated",
+    "topics": [
+      "Machine Learning"
+    ],
+    "description": "A source-linked contest collection. Its title is visible, but tasks redirect to sign-in; individual statements, metrics and availability after login are not verified.",
+    "provenance": "Source A · Problems!A6:B6",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-7",
+    "sourceLabel": "FAIO 2024 final",
+    "title": "Fizmat AI Olympiad 2024",
+    "url": "https://contest.yandex.ru/contest/69765/problems",
+    "source": "Yandex Contest",
+    "type": "upsolving contest",
+    "competition": "FAIO",
+    "parent": null,
+    "availability": "available",
+    "login": "Yandex account required",
+    "difficulty": "Unrated",
+    "topics": [
+      "Machine Learning"
+    ],
+    "description": "A source-linked contest collection. Its title is visible, but tasks redirect to sign-in; individual statements, metrics and availability after login are not verified.",
+    "provenance": "Source A · Problems!A7:B7",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-8",
+    "sourceLabel": "FAIO 2025 qual",
+    "title": "FAIO Qualification 2025: Upsolving",
+    "url": "https://contest.yandex.ru/contest/83288/problems",
+    "source": "Yandex Contest",
+    "type": "upsolving contest",
+    "competition": "FAIO",
+    "parent": null,
+    "availability": "available",
+    "login": "Yandex account required",
+    "difficulty": "Unrated",
+    "topics": [
+      "Machine Learning"
+    ],
+    "description": "A source-linked contest collection. Its title is visible, but tasks redirect to sign-in; individual statements, metrics and availability after login are not verified.",
+    "provenance": "Source A · Problems!A8:B8",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-9",
+    "sourceLabel": "AI Olymp - Qual",
+    "title": "AI olymp online(upsolving)",
+    "url": "https://contest.yandex.ru/contest/76971/enter",
+    "source": "Yandex Contest",
+    "type": "upsolving contest",
+    "competition": "AI Olymp Kazakhstan",
+    "parent": null,
+    "availability": "available",
+    "login": "Yandex account required",
+    "difficulty": "Unrated",
+    "topics": [
+      "Machine Learning"
+    ],
+    "description": "A source-linked contest collection. Its title is visible, but tasks redirect to sign-in; individual statements, metrics and availability after login are not verified.",
+    "provenance": "Source A · Problems!A9:B9",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-10",
+    "sourceLabel": "AI Olymp - Med classification",
+    "title": "Kaggle: Your Home for Data Science",
+    "url": "https://www.kaggle.com/competitions/problem-3-republic-olymp-tst-homework",
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "Kazakhstan TST",
+    "parent": null,
+    "availability": "unavailable",
+    "login": "Kaggle account required for participation",
+    "difficulty": "Unrated",
+    "topics": [
+      "Machine Learning"
+    ],
+    "description": "The supplied endpoint returned 404 on October 15. It may be private, moved or unavailable; no replacement task or objective is assumed.",
+    "provenance": "Source A · Problems!A10:B10",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-11",
+    "sourceLabel": "AI Olymp - paper earlier",
+    "title": "Kazakhstan Respa Final - Day 2 (afterparty)",
+    "url": "https://www.kaggle.com/competitions/kazakhstan-respa-final-day-2-late-competition",
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "AI Olymp Kazakhstan",
+    "parent": null,
+    "availability": "available",
+    "login": "Kaggle account required for participation",
+    "difficulty": "Unrated",
+    "topics": [
+      "Machine Learning"
+    ],
+    "description": "Public competition title verified. This is a contest page, not an individual KAIZ task; task objectives, datasets, metrics and current entry access are not independently verified.",
+    "provenance": "Source A · Problems!A11:B11",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-12",
+    "sourceLabel": "AI Olymp - mnist rotation",
+    "title": "Mnist rotation",
+    "url": "https://www.kaggle.com/competitions/mnist-rotation",
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "AI Olymp Kazakhstan",
+    "parent": null,
+    "availability": "available",
+    "login": "Kaggle account required for participation",
+    "difficulty": "Unrated",
+    "topics": [
+      "Computer Vision"
+    ],
+    "description": "Public competition title verified. This is a contest page, not an individual KAIZ task; task objectives, datasets, metrics and current entry access are not independently verified.",
+    "provenance": "Source A · Problems!A12:B12",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-13",
+    "sourceLabel": "AI Olymp - corgi classification",
+    "title": "Kaggle: Your Home for Data Science",
+    "url": "https://www.kaggle.com/competitions/ai-olympiad-nationals-2025-task-1-corgi",
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "AI Olymp Kazakhstan",
+    "parent": null,
+    "availability": "unavailable",
+    "login": "Kaggle account required for participation",
+    "difficulty": "Unrated",
+    "topics": [
+      "Computer Vision"
+    ],
+    "description": "The supplied endpoint returned 404 on October 15. It may be private, moved or unavailable; no replacement task or objective is assumed.",
+    "provenance": "Source A · Problems!A13:B13",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-14",
+    "sourceLabel": "AI Olymp - homework",
+    "title": "Kaggle: Your Home for Data Science",
+    "url": "https://www.kaggle.com/competitions/kazakhstan-ai-respa-take-home",
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "AI Olymp Kazakhstan",
+    "parent": null,
+    "availability": "unavailable",
+    "login": "Kaggle account required for participation",
+    "difficulty": "Unrated",
+    "topics": [
+      "Machine Learning"
+    ],
+    "description": "The supplied endpoint returned 404 on October 15. It may be private, moved or unavailable; no replacement task or objective is assumed.",
+    "provenance": "Source A · Problems!A14:B14",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-15",
+    "sourceLabel": "TST",
+    "title": "Kazakhstan TST",
+    "url": "https://www.kaggle.com/competitions/kazakhstan-tst/overview",
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "Kazakhstan TST",
+    "parent": null,
+    "availability": "available",
+    "login": "Kaggle account required for participation",
+    "difficulty": "Unrated",
+    "topics": [
+      "Machine Learning"
+    ],
+    "description": "Public competition title verified. This is a contest page, not an individual KAIZ task; task objectives, datasets, metrics and current entry access are not independently verified.",
+    "provenance": "Source A · Problems!A15:B15",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-16",
+    "sourceLabel": "TST day 1",
+    "title": "Upsolving TST Day 1",
+    "url": "https://www.kaggle.com/competitions/up-solving-tst-day-1",
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "Kazakhstan TST",
+    "parent": null,
+    "availability": "available",
+    "login": "Kaggle account required for participation",
+    "difficulty": "Unrated",
+    "topics": [
+      "Machine Learning"
+    ],
+    "description": "Public competition title verified. This is a contest page, not an individual KAIZ task; task objectives, datasets, metrics and current entry access are not independently verified.",
+    "provenance": "Source A · Problems!A16:B16",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-17",
+    "sourceLabel": "TST day 2",
+    "title": "TST day2 Upsolving",
+    "url": "https://www.kaggle.com/competitions/tst-day-2-upsolving",
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "Kazakhstan TST",
+    "parent": null,
+    "availability": "available",
+    "login": "Kaggle account required for participation",
+    "difficulty": "Unrated",
+    "topics": [
+      "Machine Learning"
+    ],
+    "description": "Public competition title verified. This is a contest page, not an individual KAIZ task; task objectives, datasets, metrics and current entry access are not independently verified.",
+    "provenance": "Source A · Problems!A17:B17",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-18",
+    "sourceLabel": "TST day 3",
+    "title": "TST Day3 Upsolving",
+    "url": "https://www.kaggle.com/competitions/tst-day-3-upsolving",
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "Kazakhstan TST",
+    "parent": null,
+    "availability": "available",
+    "login": "Kaggle account required for participation",
+    "difficulty": "Unrated",
+    "topics": [
+      "Machine Learning"
+    ],
+    "description": "Public competition title verified. This is a contest page, not an individual KAIZ task; task objectives, datasets, metrics and current entry access are not independently verified.",
+    "provenance": "Source A · Problems!A18:B18",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-19",
+    "sourceLabel": "TST day 4",
+    "title": "TST Day4 Upsolving",
+    "url": "https://www.kaggle.com/competitions/tst-day-4-upsolving",
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "Kazakhstan TST",
+    "parent": null,
+    "availability": "available",
+    "login": "Kaggle account required for participation",
+    "difficulty": "Unrated",
+    "topics": [
+      "Machine Learning"
+    ],
+    "description": "Public competition title verified. This is a contest page, not an individual KAIZ task; task objectives, datasets, metrics and current entry access are not independently verified.",
+    "provenance": "Source A · Problems!A19:B19",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-20",
+    "sourceLabel": "NEOAI",
+    "title": "Northern Eurasia OAI 2025",
+    "url": "https://www.kaggle.com/competitions/neoai-2025",
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "NEOAI 2025",
+    "parent": null,
+    "availability": "available",
+    "login": "Kaggle account required for participation",
+    "difficulty": "Unrated",
+    "topics": [
+      "Machine Learning"
+    ],
+    "description": "Public competition title verified. This is a contest page, not an individual KAIZ task; task objectives, datasets, metrics and current entry access are not independently verified.",
+    "provenance": "Source A · Problems!A20:B20",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-21",
+    "sourceLabel": "Task 1",
+    "title": "NEOAI 2025: Tricy Table Data",
+    "url": "https://www.kaggle.com/competitions/neoai-2025-tricy-table-data",
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "NEOAI 2025",
+    "parent": "source-a-problem-20",
+    "availability": "available",
+    "login": "Kaggle account required for participation",
+    "difficulty": "Unrated",
+    "topics": [
+      "Machine Learning"
+    ],
+    "description": "Public competition title verified. This is a contest page, not an individual KAIZ task; task objectives, datasets, metrics and current entry access are not independently verified.",
+    "provenance": "Source A · Problems!A21:B21",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-22",
+    "sourceLabel": "Task 2",
+    "title": "NEOAI 2025: Underfitting CV",
+    "url": "https://www.kaggle.com/competitions/neoai-2025-underfitting-cv",
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "NEOAI 2025",
+    "parent": "source-a-problem-20",
+    "availability": "available",
+    "login": "Kaggle account required for participation",
+    "difficulty": "Unrated",
+    "topics": [
+      "Computer Vision"
+    ],
+    "description": "Public competition title verified. This is a contest page, not an individual KAIZ task; task objectives, datasets, metrics and current entry access are not independently verified.",
+    "provenance": "Source A · Problems!A22:B22",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-23",
+    "sourceLabel": "Task 3",
+    "title": "NEOAI 2025: Evading AI-Generated Text Detection",
+    "url": "https://www.kaggle.com/competitions/neoai-2025-evading-generated-text-detection",
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "NEOAI 2025",
+    "parent": "source-a-problem-20",
+    "availability": "available",
+    "login": "Kaggle account required for participation",
+    "difficulty": "Unrated",
+    "topics": [
+      "NLP"
+    ],
+    "description": "Public competition title verified. This is a contest page, not an individual KAIZ task; task objectives, datasets, metrics and current entry access are not independently verified.",
+    "provenance": "Source A · Problems!A23:B23",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-24",
+    "sourceLabel": "Task 4",
+    "title": "NEOAI 2025: Cluster pictures",
+    "url": "https://www.kaggle.com/competitions/neoai-2025-cluster-pictures",
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "NEOAI 2025",
+    "parent": "source-a-problem-20",
+    "availability": "available",
+    "login": "Kaggle account required for participation",
+    "difficulty": "Unrated",
+    "topics": [
+      "Computer Vision"
+    ],
+    "description": "Public competition title verified. This is a contest page, not an individual KAIZ task; task objectives, datasets, metrics and current entry access are not independently verified.",
+    "provenance": "Source A · Problems!A24:B24",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-25",
+    "sourceLabel": "Task 5",
+    "title": "NEOAI 2025: Broken BERT",
+    "url": "https://www.kaggle.com/competitions/neoai-2025-broken-bert",
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "NEOAI 2025",
+    "parent": "source-a-problem-20",
+    "availability": "available",
+    "login": "Kaggle account required for participation",
+    "difficulty": "Unrated",
+    "topics": [
+      "NLP"
+    ],
+    "description": "Public competition title verified. This is a contest page, not an individual KAIZ task; task objectives, datasets, metrics and current entry access are not independently verified.",
+    "provenance": "Source A · Problems!A25:B25",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-26",
+    "sourceLabel": "Task 6",
+    "title": "NEOAI 2025: The Hogspell Challenge",
+    "url": "https://www.kaggle.com/competitions/neoai-2025-hogspell-challenge",
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "NEOAI 2025",
+    "parent": "source-a-problem-20",
+    "availability": "available",
+    "login": "Kaggle account required for participation",
+    "difficulty": "Unrated",
+    "topics": [
+      "NLP"
+    ],
+    "description": "Public competition title verified. This is a contest page, not an individual KAIZ task; task objectives, datasets, metrics and current entry access are not independently verified.",
+    "provenance": "Source A · Problems!A26:B26",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "source-a-problem-27",
+    "sourceLabel": "Task 7",
+    "title": "NEOAI 2025: Cuties segmentation",
+    "url": "https://www.kaggle.com/competitions/neoai-2025-cuties-segmentation",
+    "source": "Kaggle",
+    "type": "competition page",
+    "competition": "NEOAI 2025",
+    "parent": "source-a-problem-20",
+    "availability": "available",
+    "login": "Kaggle account required for participation",
+    "difficulty": "Unrated",
+    "topics": [
+      "Computer Vision"
+    ],
+    "description": "Public competition title verified. This is a contest page, not an individual KAIZ task; task objectives, datasets, metrics and current entry access are not independently verified.",
+    "provenance": "Source A · Problems!A27:B27",
+    "checkedOn": "2026-10-15"
+  },
+  {
+    "id": "faio-archive",
+    "sourceLabel": "FAIO 2024 archive",
+    "title": "FAIO 2024 organizer archive",
+    "url": "https://faio.kz/2024/",
+    "source": "FAIO",
+    "type": "task collection",
+    "competition": "FAIO",
+    "parent": null,
+    "availability": "available",
+    "login": "Public organizer page; linked contests may require accounts",
+    "difficulty": "Unrated",
+    "topics": [
+      "Machine Learning"
+    ],
+    "description": "The supplied legacy archive points to this organizer page. It provides edition context and learning links; individual tasks must be verified separately.",
+    "provenance": "User-supplied FAIO archive URL → /2024/; official page read",
+    "checkedOn": "2026-10-15"
+  }
+]

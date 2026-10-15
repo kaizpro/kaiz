@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { LearningRoadmap } from "@/components/learning/learning-roadmap";
 import styles from "@/components/learning/learning.module.css";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Learning Tree",
@@ -19,7 +20,7 @@ export default function Page() {
           <h1 id="learning-title">A map for your next idea.</h1>
           <p>Find the foundations. Follow your curiosity. Build something that matters.</p>
         </div>
-        <div className="space-y-2"><span className={styles.availability}>Curriculum map <span aria-hidden="true">·</span> Selected official resources</span><Link href="/start" className="block text-sm font-semibold text-primary underline underline-offset-4">Start Your Journey — choose a roadmap</Link></div>
+        <div className="space-y-3"><span className={styles.availability}>Curriculum map <span aria-hidden="true">·</span> Selected external resources</span><nav className="flex flex-wrap gap-2" aria-label="Learning discovery"><Button asChild><Link href="/roadmaps">Choose a roadmap</Link></Button><Button asChild variant="outline"><Link href="/learn/topics">Explore AI topics</Link></Button></nav></div>
       </header>
       <Suspense fallback={<div className={styles.loading} role="status">Opening the learning tree…</div>}>
         <LearningRoadmap />

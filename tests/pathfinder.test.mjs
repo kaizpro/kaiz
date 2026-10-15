@@ -9,6 +9,8 @@ import ts from "typescript";
 const nativeRequire = createRequire(import.meta.url);
 const React = nativeRequire("react");
 const { renderToStaticMarkup } = nativeRequire("react-dom/server");
+const sourceTopics = JSON.parse(readFileSync(new URL("../content/learning/source-topics.json", import.meta.url), "utf8"));
+const sourcePlan = JSON.parse(readFileSync(new URL("../content/learning/beginner-source-plan.json", import.meta.url), "utf8"));
 function modules(overrides = {}) {
   const cache = new Map();
   function load(file) {
@@ -19,6 +21,7 @@ function modules(overrides = {}) {
     vm.runInNewContext(compiled, { exports, URL, URLSearchParams, require: name => {
       if (name in overrides) return overrides[name];
       if (name === "next/link") return { default: ({ children, ...props }) => React.createElement("a", props, children) };
+      if (name.startsWith("@/content/") && name.endsWith(".json")) return { default: JSON.parse(readFileSync(new URL(`../${name.slice(2)}`, import.meta.url), "utf8")) };
       if (name.startsWith("@/")) { const ext = name.startsWith("@/components/") ? ".tsx" : ".ts"; return load(name.slice(2) + ext); }
       if (name.startsWith("./")) return load(posix.join(dirname(file).replaceAll("\\", "/"), name) + ".ts");
       return nativeRequire(name);
@@ -27,6 +30,95 @@ function modules(overrides = {}) {
   }
   return load;
 }
+
+test("all 64 source topics retain order, groups, mode and honest canonical matches", () => {
+  const load = modules(); const { getTopics, getTopicBySlug } = load("lib/learning/curriculum.ts");
+  assert.equal(getTopics().length, 85);
+  assert.equal(sourceTopics.topics.length, 64);
+  assert.equal(new Set(sourceTopics.topics.map(t => t.group)).size, 10);
+  assert.equal(sourceTopics.topics.filter(t => t.match === "missing").length, 7);
+  let previous = 0;
+  for (const topic of sourceTopics.topics) {
+    assert.ok(Number(topic.cell.slice(1)) > previous); previous = Number(topic.cell.slice(1));
+    assert.ok(["Theory", "Practice", "Both"].includes(topic.mode));
+    for (const id of topic.topicIds) assert.ok(getTopicBySlug(id), id);
+    assert.equal(topic.match === "missing", topic.topicIds.length === 0);
+  }
+  const { filterSourceTopics } = load("lib/learning/source-inventory.ts");
+  assert.equal(filterSourceTopics("HuBERT", "Audio Processing").length, 1);
+  assert.equal(filterSourceTopics("NumPy", "Math").length, 0);
+  assert.equal(filterSourceTopics("", "__proto__").length, 0);
+});
+
+test("beginner source preserves all cells, parallel lanes, section repeats and provenance", () => {
+  assert.equal(sourcePlan.cells.length, 100);
+  assert.equal(sourcePlan.cells.filter(c => c.url).length, 44);
+  assert.equal(sourcePlan.cells.find(c => c.cell === "B3").value, "Алгебра");
+  assert.equal(sourcePlan.cells.find(c => c.cell === "B5").value, "Питон 1-8");
+  const path = modules()("lib/learning/journeys.ts").getJourney("beginner");
+  assert.ok(path.steps[1].topics.includes("numpy") && path.steps[1].topics.includes("pandas"));
+  assert.ok(path.steps[2].topics.includes("building-baselines"));
+  assert.ok(path.steps[3].topics.includes("backpropagation"));
+  assert.match(path.steps[1].goal, /parallel/);
+});
+
+test("resource cards expose useful types/accounts and block unsafe or unavailable actions", () => {
+  const { ResourceCard } = modules()("components/learning/resource-card.tsx");
+  const resource = { id: "fixture", title: "MIT course", href: "https://ocw.mit.edu/course/", kind: "course", provider: "MIT", description: "Optional selected chapters.", account: "Public reading" };
+  const html = renderToStaticMarkup(React.createElement(ResourceCard, { resource }));
+  assert.match(html, /Open material/); assert.match(html, /Course/); assert.match(html, /Public reading/); assert.match(html, /noopener noreferrer/);
+  for (const href of ["javascript:alert(1)", "https://user:pass@example.com", "http://example.com"]) assert.equal(renderToStaticMarkup(React.createElement(ResourceCard, { resource: { ...resource, href } })), "");
+  const held = renderToStaticMarkup(React.createElement(ResourceCard, { resource: { ...resource, availability: "unavailable" } }));
+  assert.match(held, /Temporarily unavailable/); assert.doesNotMatch(held, /href=/);
+});
+
+test("practice catalog models contests, preserves parents and withholds capability links", () => {
+  const load = modules(); const { practiceCatalog, filterPracticeSources } = load("lib/learning/practice-catalog.ts");
+  assert.equal(practiceCatalog.length, 28);
+  assert.equal(practiceCatalog.filter(entry => entry.availability === "held").length, 3);
+  assert.equal(practiceCatalog.filter(entry => entry.availability === "unavailable").length, 3);
+  assert.equal(practiceCatalog.filter(entry => entry.parent).length, 7);
+  for (const entry of practiceCatalog) {
+    assert.ok(entry.description && entry.provenance && entry.login);
+    assert.notEqual(entry.type, "individual task");
+    if (entry.parent) assert.ok(practiceCatalog.find(parent => parent.id === entry.parent));
+    if (entry.availability === "held") assert.equal(entry.url, null);
+    if (entry.url) { assert.equal(new URL(entry.url).protocol, "https:"); assert.doesNotMatch(entry.url, /\/t\/[a-f0-9]{32}/); }
+  }
+  assert.equal(filterPracticeSources({ competition: "NEOAI 2025", topic: "NLP" }).length, 3);
+  assert.equal(filterPracticeSources({ search: "__proto__" }).length, 0);
+  const html = renderToStaticMarkup(React.createElement(load("components/learning/practice-catalog.tsx").PracticeCatalog, { filters: { competition: "FAIO", level: "Beginner (source label)" } }));
+  assert.match(html, /Held · public link needed/); assert.doesNotMatch(html, /\/t\/|Open contest/);
+});
+
+test("official directory filters out private/provisional data and never rewrites scores or ties", () => {
+  const { officialPublishedSets, filterStandings, olympiadName } = modules()("lib/results/browse.ts");
+  const rows = [
+    { id: "a", participant_name: "Team Alpha", participant_type: "team", rank: 1, score: 0, score_display: "0.000", country_code: "KZ", award: "Gold", profiles: null },
+    { id: "b", participant_name: "Beta", rank: 1, score: null, country_code: "RO", award: null, profiles: { username: "beta" } },
+  ];
+  const sets = [ { id: "public", published: true, status: "official", competition_results: rows }, { id: "draft", published: false, status: "official" }, { id: "live", published: true, status: "provisional" } ];
+  assert.equal(officialPublishedSets(sets).length, 1);
+  assert.equal(officialPublishedSets(sets)[0], sets[0]);
+  assert.equal(filterStandings(rows, "ALPHA", "KZ", "Gold")[0], rows[0]);
+  assert.equal(filterStandings(rows, "", "", "")[1].score, null);
+  assert.equal(filterStandings(rows, "beta", "", "")[0].rank, 1);
+  assert.equal(filterStandings(rows, "", "KZ", "Silver").length, 0);
+  assert.equal(olympiadName({ title: "International AI Olympiad 2026" }), "International AI Olympiad");
+});
+
+test("official directory renders shared table and GET filters using only published official sets", async () => {
+  const edition = { id: "fixture-edition", slug: "fixture-2026", title: "Fixture Olympiad 2026" };
+  const row = { id: "fixture-row", participant_name: "Fixture team", participant_type: "team", rank: 1, score: 0, score_display: "0.000", country_code: "KZ", award: "Gold", profiles: null, result_status: "ranked" };
+  const base = { id: "fixture-set", name: "Final — selected rows", status: "official", published: true, source: "manual", source_label: "Organizer", source_url: "https://example.test/results", competition_results: [row] };
+  const Page = modules({ "@/lib/data/competitions": { listCompetitions: async () => [edition] }, "@/lib/data/competition-results": { getPublishedCompetitionResults: async () => [base, { ...base, id: "private", name: "PRIVATE DRAFT", published: false }] } })("app/leaderboards/page.tsx").default;
+  const html = renderToStaticMarkup(await Page({ searchParams: Promise.resolve({ q: "fixture", country: "KZ" }) }));
+  for (const text of ["Fixture team", "0.000", "Final — selected rows", "https://example.test/results", "Showing 1 of 1", "Open competition details"]) assert.ok(html.includes(text), text);
+  assert.doesNotMatch(html, /PRIVATE DRAFT/);
+  assert.match(html, /overflow-x-auto/); assert.match(html, /<table/);
+  const empty = renderToStaticMarkup(await Page({ searchParams: Promise.resolve({ country: "RO" }) }));
+  assert.match(empty, /No rows match/); assert.doesNotMatch(empty, /Fixture team/);
+});
 
 test("three editorial paths have ordered goals, real topics, publisher resources and self-checks", () => {
   const load = modules(); const { journeys, getJourney } = load("lib/learning/journeys.ts");
@@ -45,7 +137,7 @@ test("three editorial paths have ordered goals, real topics, publisher resources
 test("curated resources attach only to real topics and original HTTPS publishers", () => {
   const load = modules(); const { resourcesByTopic } = load("lib/learning/resources.ts");
   const { getTopicBySlug } = load("lib/learning/curriculum.ts");
-  const hosts = new Set(["docs.python.org", "developers.google.com", "ocw.mit.edu", "numpy.org", "pandas.pydata.org", "scikit-learn.org", "docs.pytorch.org"]);
+  const hosts = new Set(["docs.python.org", "developers.google.com", "ocw.mit.edu", "numpy.org", "pandas.pydata.org", "scikit-learn.org", "docs.pytorch.org", "www.kaggle.com", "www.youtube.com", "github.com", "teach-in.ru", "cu.ru", "cs231n.stanford.edu", "web.stanford.edu", "lena-voita.github.io", "stepik.org"]);
   for (const [id, resources] of Object.entries(resourcesByTopic)) {
     assert.ok(getTopicBySlug(id));
     for (const resource of resources) { const url = new URL(resource.href); assert.equal(url.protocol, "https:"); assert.ok(hosts.has(url.hostname)); assert.equal(url.username + url.password, ""); }
@@ -55,8 +147,8 @@ test("curated resources attach only to real topics and original HTTPS publishers
 test("level choice renders exactly three real roadmap links without ratings or simulated progress", () => {
   const { JourneyChoices } = modules()("components/learning/journey-choices.tsx");
   const html = renderToStaticMarkup(React.createElement(JourneyChoices));
-  assert.equal((html.match(/href="\/start\//g) ?? []).length, 3);
-  for (const level of ["beginner", "intermediate", "advanced"]) assert.ok(html.includes(`/start/${level}`));
+  assert.equal((html.match(/href="\/roadmaps\//g) ?? []).length, 3);
+  for (const level of ["beginner", "intermediate", "advanced"]) assert.ok(html.includes(`/roadmaps/${level}`));
   assert.doesNotMatch(html, /\d+%|rating|completed/i);
 });
 
@@ -68,7 +160,7 @@ test("topic membership and category suggestions are editorial, valid and prototy
   for (const category of ["Machine Learning", "Computer Vision", "NLP", "LLM", "Algorithms"]) for (const id of preparationTopics(category)) assert.ok(getTopicBySlug(id));
   assert.equal(preparationTopics("__proto__").length, 0);
   const html = renderToStaticMarkup(React.createElement(load("components/learning/preparation-links.tsx").PreparationLinks, { category: "Machine Learning" }));
-  assert.match(html, /Editorial suggestions/); assert.match(html, /\/start/); assert.match(html, /\/learn\/ml-fundamentals/); assert.match(html, /\/discussions\?category=help/);
+  assert.match(html, /Editorial suggestions/); assert.match(html, /\/roadmaps/); assert.match(html, /\/learn\/ml-fundamentals/); assert.match(html, /\/discussions\?category=help/);
 });
 
 test("competition recommendations show only actual listed records, not unimported research", async () => {

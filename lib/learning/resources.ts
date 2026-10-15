@@ -1,8 +1,12 @@
 import type { LearningResource } from "./curriculum";
+import { sheetResourcesByTopic } from "./sheet-resources";
 
 // Editorial links, checked against their publishers on 2026-10-14.
 // Link original materials; KAIZ does not claim to host or assess these courses.
-const article = (id: string, title: string, href: string): LearningResource => ({ id, title, href, kind: "article" });
+const article = (id: string, title: string, href: string): LearningResource => ({ id, title, href,
+  kind: href.includes("ocw.mit.edu") || id === "google-ml" ? "course" : id === "sklearn-examples" ? "notebook" : "documentation",
+  description: href.includes("ocw.mit.edu") ? "Open university course materials for deeper study. Select the relevant section; finishing the entire course is not required by this roadmap." : "Original publisher material. Read the relevant section, then test your understanding with a small example of your own.",
+  account: "Public reading; no KAIZ account needed", provenance: "KAIZ editorial selection" });
 const pythonIntro = article("python-intro", "Python documentation: your first expressions and programs", "https://docs.python.org/3/tutorial/introduction.html");
 const pythonFlow = article("python-flow", "Python documentation: conditions, loops and functions", "https://docs.python.org/3/tutorial/controlflow.html");
 const foundations = article("ml-prerequisites", "Google ML Crash Course: mathematics prerequisites and prework", "https://developers.google.com/machine-learning/crash-course/prereqs-and-prework");
@@ -15,7 +19,7 @@ const pitfalls = article("sklearn-pitfalls", "scikit-learn: leakage and common p
 const pytorch = article("pytorch-basics", "PyTorch: tensors, models and training loops", "https://docs.pytorch.org/tutorials/beginner/basics/intro.html");
 const examples = article("sklearn-examples", "scikit-learn: worked examples to reproduce", "https://scikit-learn.org/stable/auto_examples/index.html");
 
-export const resourcesByTopic: Readonly<Record<string, readonly LearningResource[]>> = {
+const originalResources: Readonly<Record<string, readonly LearningResource[]>> = {
   "python-fundamentals": [pythonIntro], "python-control-flow": [pythonFlow], "python-functions": [pythonFlow],
   "python-collections": [article("python-collections", "Python documentation: lists, dictionaries and sets", "https://docs.python.org/3/tutorial/datastructures.html")],
   algebra: [foundations], "math-functions": [foundations], "basic-probability": [foundations], "descriptive-statistics": [foundations],
@@ -29,3 +33,10 @@ export const resourcesByTopic: Readonly<Record<string, readonly LearningResource
   "ensemble-methods": [article("sklearn-ensembles", "scikit-learn: ensemble methods", "https://scikit-learn.org/stable/modules/ensemble.html")],
   "hyperparameter-tuning": [article("sklearn-tuning", "scikit-learn: tuning model parameters", "https://scikit-learn.org/stable/modules/grid_search.html")],
 };
+
+// Preserve existing selections and add source-backed material, deduplicated by URL.
+export const resourcesByTopic: Readonly<Record<string, readonly LearningResource[]>> = Object.fromEntries(
+  [...new Set([...Object.keys(originalResources), ...Object.keys(sheetResourcesByTopic)])].map(id => [id,
+    [...new Map([...(originalResources[id] ?? []), ...(sheetResourcesByTopic[id] ?? [])].map(resource => [resource.href, resource])).values()],
+  ]),
+);
