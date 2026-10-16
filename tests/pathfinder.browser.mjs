@@ -1,4 +1,6 @@
 // Opt-in, read-only localhost smoke test. No login, writes or new dependencies.
+// Requires the existing public ioai-2026 edition and timatema profile via the
+// local server's configured backend. Use compact-ux for backend-disabled QA.
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
 import { join } from "node:path";
@@ -16,7 +18,7 @@ try {
   for (const width of [375, 768, 1024, 1440]) for (const theme of ["dark", "light"]) {
     const context = await browser.newContext({ viewport: { width, height: 1000 }, colorScheme: theme });
     await context.addInitScript((value) => localStorage.setItem("theme", value), theme);
-    await context.route("**/*", (route) => new URL(route.request().url()).origin === base.origin ? route.continue() : route.abort());
+    await context.route("**/*", (route) => new URL(route.request().url()).origin === base.origin && ["GET", "HEAD"].includes(route.request().method()) ? route.continue() : route.abort());
     const page = await context.newPage();
     page.on("pageerror", error => errors.push(error.message));
     const open = async path => {
@@ -40,6 +42,7 @@ try {
       await page.getByRole("heading", { level: 1, name: `${level} AI Olympiad Roadmap` }).waitFor();
       await page.locator('a[href="/competitions/ioai-2026"]').waitFor();
       assert.equal(await page.getByRole("list", { name: "Ordered roadmap stages" }).locator(":scope > li").count(), 4);
+      for (const unit of await page.locator('details[data-course-module]').all()) if (await unit.getAttribute('open') === null) await unit.locator(':scope > summary').click();
       for (const summary of await page.locator('summary').filter({ hasText: 'Goals & self-check' }).all()) await summary.click();
       assert.equal(await page.getByRole("heading", { name: "Milestone / self-check", exact: true }).count(), 4);
       await layout(level);
@@ -70,6 +73,7 @@ try {
       await layout(path);
     }
     await page.goto(`${base.origin}/admin`);
+    await page.waitForURL(url => url.pathname === "/auth/login");
     assert.equal(new URL(page.url()).pathname, "/auth/login", "anonymous admin access redirects to login");
     const missing = await page.goto(`${base.origin}/start/not-a-level`);
     assert.equal(missing.status(), 404);
