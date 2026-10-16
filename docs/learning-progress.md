@@ -72,9 +72,9 @@ pgTAP and does not emulate GoTrue, PostgREST or Storage services.
 375/1440px, both themes, 100/200% root text size, keyboard disclosures, 40 lesson
 routes, unknown lessons and the dashboard login gate. Backend values are empty
 only in QA process environment. The existing compact 240-view browser suite is
-retained. Authenticated component state is unit-tested; **a real Supabase
-login/completion/refresh/logout-login/cross-device browser flow is a separate
-pre-release gate**, not claimed by local SQL/component tests.
+retained. Authenticated component state is unit-tested. Real Supabase Auth,
+completion, reload and independent-browser-session verification is recorded
+below; it is separate evidence, not inferred from SQL/component fixtures.
 
 Interruption recovery verification (2026-10-15): all 40 actual lesson routes
 passed after fixing single decoding of encoded stable lesson IDs. Roadmap →
@@ -98,6 +98,67 @@ and profile records via anonymous reads. It requires that public data (unlike
 backend-disabled layout QA); requests are restricted to GET/HEAD, with no login,
 submissions, fixture inserts or production mutations.
 
+## Managed Supabase authenticated QA — 2026-10-16
+
+With explicit owner approval, a separate **Free-plan** project named
+`KAIZ Release A QA` (`venniccblkybvfbxyhug`) was provisioned in the verified
+Free-plan organization. No paid add-ons, production users, production rows or
+Vercel configuration were copied/changed. The local optimized application ran
+at `http://localhost:3106` with process-only QA environment values. Existing
+`.env.local` and the production CLI link were left unchanged. Private QA credentials
+are Windows-user encrypted in a restricted directory outside Git, never in
+this document, browser screenshots or the application client.
+
+A separate frozen CLI workdir was linked only to QA. Its reviewed dry run and
+application contained exactly the seven current `main` migrations through
+`202610070001_external_account_security.sql`, followed by
+`202610150001_learning_progress.sql`. All eight versions were verified in QA
+history. **`202610120001_competition_presentation.sql` was excluded.** No hosted
+production migrations were applied.
+
+`tests/learning-progress.supabase.mjs` is an opt-in real-service/browser test.
+It accepts only this explicitly approved QA API origin and localhost:3106;
+requests to other origins are blocked. Its environment inputs are
+`KAIZ_QA_SUPABASE_URL`, `KAIZ_QA_ANON_KEY`, `KAIZ_QA_SERVICE_KEY`,
+`KAIZ_LEARNING_URL`, and an installed `KAIZ_PLAYWRIGHT_MODULE`. The service key
+is used only for disposable fixture provisioning/cleanup; actual RLS checks
+use anonymous/member clients and actual Supabase-issued sessions. Browser login
+uses the real login form, not cookie/token injection. Never supply production
+keys. Confirm project identity and permissions before rerunning this opt-in test.
+
+Verified in real Chrome against the optimized local app:
+
+- Two independently authenticated disposable users; email confirmation stayed
+  enabled. Test accounts were provisioned confirmed through the QA Admin API;
+  SMTP/email-delivery verification was not part of this test.
+- Beginner lesson 1.1 completion: 1/15 lessons, 6%, 10 Learning XP; the next
+  lesson is 1.2. Reload, logout/login and a separate cookie-isolated browser
+  session retain that real saved state. This was two sessions on one computer,
+  not a physical second-device test.
+- Replayed completion preserves one row, its timestamp and 10 XP. Undo from
+  the second session returns both sessions/dashboard to 0% / 0 XP after reload.
+- User B cannot read, update or insert User A's progress; User B's own saved
+  state is independent. Anonymous reads/writes/RPC are permission-denied while
+  roadmap browsing remains available with no fictional saved progress.
+- Private dashboard, progress bars, Continue Learning, empty practice history
+  and a synthetic existing practice row render correctly. User B cannot see
+  User A's private practice history. Desktop dark/mobile light screenshots
+  were inspected for layout and overflow.
+
+This found a genuine PostgREST `PGRST201` error in the dashboard's practice
+join: `problem_performances` has both a simple problem FK and a composite
+official-result context FK. The DAL now selects
+`problems!problem_performances_problem_id_fkey` explicitly. A unit assertion and
+real-service/browser checks cover the relationship and rendered history. No
+schema, RLS or Auth-policy change was needed.
+
+Disposable users, practice rows and task metadata were cleaned up. Read-only
+QA metadata verification confirmed zero Auth users/profiles/progress/competitions/
+problems/performances, 40 registry keys, enabled RLS, three owner policies,
+security-invoker RPC, member RPC/completion grants and denied anonymous RPC /
+member timestamp grants. Managed Auth audit logs can retain synthetic events.
+The isolated Free project is retained for subsequent QA, not production use.
+
 ## Controlled deployment
 
 No hosted migration, data write, merge, deployment or content import is part of
@@ -108,10 +169,15 @@ review the exact single-file migration/dry run and approve its controlled apply
 before merging code into automatic production deployment. Old app remains
 compatible with the additive schema.
 
-First verify on an isolated Supabase project: registry/RPC grants, anonymous and
-other-user/admin denial, real saved completion/undo, new sessions/devices, 10-XP
-idempotency, schema cache and private dashboard. Then follow normal owner release
-approval and production read-back. Source publication and PR #24 stay separate.
+The isolated managed-service checks above supplement native SQL security tests
+(including authenticated-admin cross-owner denial). Obtain teammate approval
+and re-check exact hosted production history, migration dry run and recovery
+plan before separately authorizing the learning migration and application merge.
+Source publication and PR #24 stay separate. If the earlier-dated presentation
+migration is released after learning progress, its release needs an explicit
+reviewed older-version/backfill plan; never rename applied migrations or let a
+generic push silently include that file. Neither migration is automatically
+authorized by a successful QA run.
 
 Rollback: revert application PR; retain additive tables and saved progress. Do
 not drop user progress during a UI rollback. Release B notebook infrastructure

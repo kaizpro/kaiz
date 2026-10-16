@@ -81,6 +81,7 @@ test('dashboard practice reads only the authenticated owner and preserves unavai
  const {getOwnRecentPractice}=loadTypescript({'@/lib/auth':{getCurrentUser:async()=>signedIn?{id:'owner'}:null},'@/lib/supabase/server':{createClient:async()=>({from(table){calls.push(['from',table]);return query;}})}})('lib/data/personal-practice.ts');
  assert.equal((await getOwnRecentPractice()).count,0);assert.equal(calls.length,0);
  signedIn=true;assert.equal((await getOwnRecentPractice()).error,null);
+ assert.ok(calls.some(c=>c[0]==='select'&&c[1].includes('problems!problem_performances_problem_id_fkey(')),'Disambiguate the simple problem FK from the official-result composite context FK');
  assert.ok(calls.some(c=>c[0]==='eq'&&c[1]==='user_id'&&c[2]==='owner'));
  assert.ok(calls.some(c=>c[0]==='eq'&&c[1]==='attempt_type'&&c[2]==='practice'));
  assert.ok(calls.some(c=>c[0]==='limit'&&c[1]===20));
