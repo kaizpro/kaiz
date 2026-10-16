@@ -1,6 +1,20 @@
 .summary { padding-block: 14px; border-block: 1px solid var(--border); margin-block: 16px; }
 .summary p { font-size: .8125rem; line-height: 1.7; }
 .bar { display: block; width: min(100%,30rem); height: 6px; margin-block: 10px; accent-color: var(--primary); }
+.bar { appearance: none; border: 0; border-radius: 2px; overflow: hidden; background: var(--muted); }
+.bar::-webkit-progress-bar { background: var(--muted); }
+.bar::-webkit-progress-value { background: var(--primary); }
+.bar::-moz-progress-bar { background: var(--primary); }
+.roadmap { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr) auto; align-items: center; gap: 16px 24px; padding-block: 20px; border-bottom: 1px solid var(--border); }
+.roadmap .bar { width: 100%; }
+.progressLabel { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: .75rem; }
+.status { font-size: .75rem; color: var(--muted-foreground); }
+.totals { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; margin-bottom: 16px; }
+.totals dt { color: var(--muted-foreground); font-size: .75rem; }
+.totals dd { font-size: 1.125rem; font-weight: 650; margin-top: 5px; overflow-wrap: anywhere; }
+.moduleMeter { display: inline-flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.moduleMeter .bar { width: 64px; margin: 0; }
+@media (max-width:640px) { .roadmap { grid-template-columns: minmax(0,1fr) auto; } .roadmap > div:nth-child(2) { grid-column: 1 / -1; grid-row: 2; } .totals { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 .module { border-bottom: 1px solid var(--border); padding-block: 5px; min-width: 0; }
 .module > summary { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; cursor: pointer; min-height: 52px; font-size: .875rem; font-weight: 650; }
 .module > summary > span:last-child { font-size: .75rem; font-weight: 400; color: var(--muted-foreground); }

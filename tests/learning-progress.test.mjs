@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 import React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {loadTypescript} from './helpers/load-typescript.mjs';
-const load=loadTypescript();
+const load=loadTypescript({'next/navigation':{useRouter:()=>({refresh(){}})}});
 const {journeys}=load('lib/learning/journeys.ts');
 const {courseFor,getCourseLesson,courseProgress,learningSummary,lessonHref,courseLessonFromSegment}=load('lib/learning/course.ts');
 const row=(path,lesson,completed=true)=>({roadmap_id:path,lesson_id:lesson,completed_at:completed?'2026-10-15T01:00:00Z':null,started_at:'2026-10-15T00:00:00Z',updated_at:'2026-10-15T01:00:00Z'});
@@ -41,7 +41,7 @@ test('guest/error summaries never claim saved percentage, XP or completion',()=>
  const render=props=>renderToStaticMarkup(React.createElement(CourseProgress,{path:journeys[0],records:[],...props}));
  assert.match(render({signedIn:false,error:null}),/Sign in to save/);assert.doesNotMatch(render({signedIn:false,error:null}),/\d+%|\d+ Learning XP|<progress/);
  assert.doesNotMatch(render({signedIn:true,error:'Unavailable'}),/\d+%|\d+ Learning XP|<progress/);
- const saved=render({signedIn:true,error:null});assert.match(saved,/0 Learning XP/);assert.match(saved,/Continue Learning/);assert.match(saved,/<progress/);
+ const saved=render({signedIn:true,error:null});assert.match(saved,/0 Learning XP/);assert.match(saved,/Start Learning/);assert.match(saved,/<progress/);
 });
 test('action validates current curriculum, strips owner/counters, and handles failed writes',async()=>{
  let writes=[],invalidations=[];

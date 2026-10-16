@@ -10,6 +10,7 @@ export async function setLessonCompletion(roadmap: string, lesson: string, _: Co
   if (!parsed.success || !getCourseLesson(roadmap, lesson)) return { error: "This lesson is not part of the current roadmap." };
   const result = await writeOwnCompletion(roadmap, lesson, parsed.data.completed === "true");
   if (result.success) {
+    revalidatePath("/roadmaps"); revalidatePath("/start");
     revalidatePath(`/roadmaps/${roadmap}`); revalidatePath(`/start/${roadmap}`);
     revalidatePath(lessonHref(roadmap, lesson)); revalidatePath("/dashboard");
   }
