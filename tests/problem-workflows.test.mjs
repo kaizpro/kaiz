@@ -51,7 +51,7 @@ test("practice accepts zero/negative decimal scores and UTC times, never NaN or 
 });
 
 // A stateful database boundary, not a mock of application business logic.
-function environment({ user = "owner", admin = true, error = null, published = true, reviewed = false } = {}) {
+function environment({ user = "owner", admin = true, error = null, published = true, reviewed = false, metric = "Custom signed metric", provenance = {} } = {}) {
   const problems = new Map();
   const attempts = new Map();
   attempts.set("60000000-0000-4000-8000-000000000001", {
@@ -71,7 +71,7 @@ function environment({ user = "owner", admin = true, error = null, published = t
       then(resolve) {
         if (error && operation !== "read") return Promise.resolve({ data: null, error }).then(resolve);
         if (table === "problems" && operation === "read") return Promise.resolve({
-          data: published ? { id: "50000000-0000-4000-8000-000000000001", slug: "source-problem", competition_id: null, published: true } : null, error: null,
+          data: published ? { id: "50000000-0000-4000-8000-000000000001", slug: "source-problem", competition_id: null, published: true, metric_name: metric, source_provenance: provenance } : null, error: null,
         }).then(resolve);
         if (table === "competitions") return Promise.resolve({ data: null, error: null }).then(resolve);
         const records = table === "problems" ? problems : attempts;
@@ -158,6 +158,14 @@ test("practice create derives owner and strips every trusted field", async () =>
   assert.equal(row.user_id, "owner");
   assert.equal(row.attempt_type, "practice");
   for (const field of ["normalized_performance", "status", "source_provider", "source_provenance", "source_external_id", "competition_result_id", "created_by"]) assert.equal(field in row, false);
+});
+
+test("practice actions reject incompatible scores before any insert, not only in browser fields", async () => {
+  for (const [metric, raw_score, provenance] of [["F1", "1.1", {}], ["Accuracy", "-1", {}], ["RMSE", "-0.1", {}], ["Points", "101", {score_bounds:{max:100}}]]) {
+    const env=environment({metric,provenance});
+    const result=await env.practiceActions.createPracticeAttempt(problemId,{},form({raw_score,attempted_at:"2026-10-01T10:00:00Z"}));
+    assert.ok(result.error);assert.ok(result.fields.raw_score);assert.equal(env.attempts.has("new"),false);
+  }
 });
 test("unpublished problem cannot receive application practice submissions", async () => {
   const env = environment({ published: false });

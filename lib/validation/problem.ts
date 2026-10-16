@@ -50,6 +50,32 @@ export const practiceSchema = z.object({
     .refine((value) => Date.parse(value) <= Date.now(), "Attempt time cannot be in the future")),
 });
 
+export function practiceScoreBounds(metric: string, provenance?: Record<string, unknown>) {
+  const name = metric.trim().toLowerCase();
+  let min: number | undefined, max: number | undefined;
+  if (/^(accuracy|f1([ _-]?(score|macro|micro|weighted))?|auc|roc[ _-]?auc)([ ]*\(%\)|[ ]*%|[ ]+percent)?$/.test(name)) {
+    min = 0; max = /%|percent/.test(name) ? 100 : 1;
+  } else if (["rmse", "root mean squared error", "mse", "mae", "log loss", "logloss", "point", "points"].includes(name)) min = 0;
+  const supplied = provenance?.score_bounds;
+  if (supplied !== undefined) {
+    if (!supplied || typeof supplied !== "object" || Array.isArray(supplied)) return { error: "Task score limits require review." };
+    const bounds = supplied as Record<string, unknown>;
+    for (const key of ["min", "max"]) if (key in bounds && (typeof bounds[key] !== "number" || !Number.isFinite(bounds[key]))) return { error: "Task score limits require review." };
+    if (typeof bounds.min === "number") min = bounds.min;
+    if (typeof bounds.max === "number") max = bounds.max;
+  }
+  if (min !== undefined && max !== undefined && min > max) return { error: "Task score limits require review." };
+  return { min, max };
+}
+
+export function validatePracticeScore(score: string, metric: string, provenance?: Record<string, unknown>) {
+  const bounds = practiceScoreBounds(metric, provenance);
+  if (bounds.error) return bounds.error;
+  const value = Number(score);
+  return !Number.isFinite(value) || bounds.min !== undefined && value < bounds.min || bounds.max !== undefined && value > bounds.max
+    ? `Enter a ${metric} score${bounds.min !== undefined ? ` ≥ ${bounds.min}` : ""}${bounds.max !== undefined ? ` ≤ ${bounds.max}` : ""}.` : null;
+}
+
 export type ProblemActionState = { error?: string; fields?: Record<string, string[] | undefined>; success?: string };
 export function problemValidationError(error: z.ZodError): ProblemActionState {
   return { error: "Check the highlighted fields.", fields: z.flattenError(error).fieldErrors };
