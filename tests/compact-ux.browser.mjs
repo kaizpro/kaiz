@@ -48,6 +48,7 @@ try{
   await page.getByRole('link',{name:/Open material: NumPy: the absolute basics/}).waitFor();
   await page.goto(base.origin+'/roadmaps/beginner');
   assert.equal(await page.getByRole('list',{name:'Ordered roadmap stages'}).locator(':scope > li').count(),4);
+  for(const unit of await page.locator('details[data-course-module]').all())if(await unit.getAttribute('open')===null)await unit.locator(':scope > summary').click();
   for(const summary of await page.locator('summary').filter({hasText:'Goals & self-check'}).all())await summary.click();
   assert.equal(await page.getByRole('heading',{name:'Milestone / self-check',exact:true}).count(),4);
   await page.goto(base.origin+'/roadmaps');
