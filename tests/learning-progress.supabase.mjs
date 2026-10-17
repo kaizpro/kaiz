@@ -75,7 +75,9 @@ try{
  assert.equal(await a.page.getByText(/Private practice is unavailable/).count(),0);
  step='existing private practice history';
  const problem=check(await service.from('problems').insert({title:'Temporary Release A QA task',slug:'release-a-qa-'+randomUUID(),category:'AI',metric_name:'F1',metric_direction:'higher_is_better',source_provider:'manual',published:true}).select('id').single());problems.push(problem.id);
- check(await owner.client.from('problem_performances').insert({problem_id:problem.id,user_id:owner.id,attempt_type:'practice',raw_score:0.842,attempted_at:new Date().toISOString()}));
+ // A deliberately past fixture avoids a client/DB clock-boundary race under
+ // the additive practice migration's future-time protection.
+ check(await owner.client.from('problem_performances').insert({problem_id:problem.id,user_id:owner.id,attempt_type:'practice',raw_score:0.842,attempted_at:new Date(Date.now()-60000).toISOString()}));
  await a.page.reload();await a.page.getByText(/1 private self-reported attempts/).waitFor();
  await a.page.getByRole('link',{name:'Temporary Release A QA task',exact:true}).waitFor();
  await a.page.getByText(/0\.842 F1 · Self-reported/).waitFor();
