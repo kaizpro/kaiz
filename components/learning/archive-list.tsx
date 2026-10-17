@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import { archiveAvailability, type ArchiveItem } from "@/lib/learning/unified-archive";
 import styles from "@/components/training/catalog.module.css";
 import type { PersonalProblem } from "@/lib/data/problem-progress";
@@ -12,11 +11,11 @@ export function ArchiveList({ items, personal }: { items: readonly ArchiveItem[]
     {!items.length && <p className="px-3 py-6 text-sm text-muted-foreground">No practice items match. Clear the filters or try a broader search.</p>}
     {items.map(item => <article key={item.id} className={`${styles.row} ${personalStyles.row}`} data-status={!item.external && personal ? states.get(item.id)?.status ?? "unattempted" : undefined} data-archive-kind={item.external ? "external" : "internal"}>
       <div className={styles.archiveRow}>
-        <div className={styles.archiveTitle}><h2 className={styles.rowTitle}>{item.title}</h2><div className={styles.meta}><span>{item.competition}</span><span>{item.tags.join(" · ")}</span></div><details className={styles.resourceDetails}><summary>Source &amp; access</summary><p>{item.details}</p><p>{item.account}</p><p>{item.provenance}</p><p>{item.external ? "External collection or contest; not an individual scored KAIZ task." : "Published KAIZ task. Practice remains owner-private and self-reported."}</p></details></div>
+        <div className={styles.archiveTitle}><h2 className={styles.rowTitle}><Link href={item.href!} className="hover:text-primary hover:underline">{item.title}</Link></h2><div className={styles.meta}><span>{item.competition}</span><span>{item.tags.join(" · ")}</span></div><details className={styles.resourceDetails}><summary className="my-1 rounded-sm border px-2">View source details</summary><p>{item.details}</p><p>{item.account}</p><p>{item.provenance}</p><p>{item.external ? "External collection or contest; not an individual scored KAIZ task." : "Published KAIZ task. Practice remains owner-private and self-reported."}</p></details></div>
         <div className={styles.meta}><span>{item.source}</span><span>{item.type}</span></div>
         <span className={styles.meta}>{item.difficultyLabel ?? item.difficulty}</span>
         <div><span className={styles.meta}>{archiveAvailability[item.availability]}</span>{!item.external && personal && <><p className={personalStyles.status} data-status={states.get(item.id)?.status ?? "unattempted"}>{states.get(item.id)?.status === "solved" ? "✓ Solved — Self-reported" : states.has(item.id) ? "Attempted" : "Unattempted"}</p>{states.get(item.id)?.latest_score != null && <p className="mt-1 text-xs">Latest: {states.get(item.id)!.latest_score} {states.get(item.id)!.metric_name} · Self-reported</p>}</>}</div>
-        {item.href ? item.external ? <a href={item.href} target="_blank" rel="noopener noreferrer" className={styles.textAction} aria-label={`Open source: ${item.title} (new tab)`}>Open<ArrowUpRight className="size-3 shrink-0" aria-hidden="true"/></a> : <Link href={item.href} className={styles.textAction} aria-label={`View task: ${item.title}`}>View task</Link> : <span className="py-2 text-xs text-muted-foreground">{item.availability === "held" ? "Link held" : "Unavailable"}</span>}
+        <div className="flex flex-wrap gap-2"><Link href={item.href!} className={styles.action} aria-label={`View details: ${item.title}`}>View details</Link>{item.originalHref && <a href={item.originalHref} target="_blank" rel="noopener noreferrer" className={styles.action} aria-label={`Open original ${item.external ? "collection" : "task"}: ${item.title} (new tab)`}>{item.external ? "Browse collection" : "Open original task"} ↗</a>}</div>
       </div>
     </article>)}
   </div>;

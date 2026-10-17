@@ -91,7 +91,7 @@ test("practice catalog models contests, preserves parents and withholds capabili
   const { buildPracticeArchive, filterPracticeArchive } = load("lib/learning/unified-archive.ts");
   const items = filterPracticeArchive(buildPracticeArchive([]), { competition: "FAIO", difficulty: "Beginner (source label)" });
   const html = renderToStaticMarkup(React.createElement(load("components/learning/archive-list.tsx").ArchiveList, { items }));
-  assert.match(html, /Link held/); assert.doesNotMatch(html, /\/t\/|href=/);
+  assert.match(html, /Held/); assert.match(html, /\/problems\/sources\/source-a-problem-2/); assert.doesNotMatch(html, /\/t\/|href="https:/);
 });
 
 test("official directory filters out private/provisional data and never rewrites scores or ties", () => {
@@ -124,7 +124,7 @@ test("unified archive combines published tasks and collections without exposing 
   assert.equal(filterPracticeArchive(items, { direction: "higher_is_better" }).length, 1);
   assert.equal(filterPracticeArchive(items, { availability: "__proto__" }).length, 0);
   const html = renderToStaticMarkup(React.createElement(load("components/learning/archive-list.tsx").ArchiveList, { items }));
-  assert.match(html, /\/problems\/fixture-task/); assert.match(html, /View task/); assert.match(html, /Account required/); assert.match(html, /7 samples/);
+  assert.match(html, /\/problems\/fixture-task/); assert.match(html, /View details/); assert.match(html, /Account required/); assert.match(html, /7 samples/);
   assert.doesNotMatch(html, /PRIVATE DRAFT|99999|\/t\/[a-f0-9]{32}/);
   const rated = buildPracticeArchive([{ ...problem, difficulty_status: "rated", difficulty_rating: 1420.4 }]);
   assert.equal(filterPracticeArchive(rated, { difficulty: "rated" }).length, 1);

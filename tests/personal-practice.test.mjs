@@ -5,6 +5,23 @@ import {renderToStaticMarkup} from 'react-dom/server';
 import {loadTypescript} from './helpers/load-typescript.mjs';
 const load=loadTypescript();
 const {practiceScoreBounds,validatePracticeScore}=load('lib/validation/problem.ts');
+
+test('every catalogued source has a stable internal detail route, including held and unavailable sources',async()=>{
+ const {buildPracticeArchive,getArchiveSource}=load('lib/learning/unified-archive.ts');
+ const items=buildPracticeArchive([]);assert.equal(items.length,31);assert.equal(new Set(items.map(i=>i.href)).size,31);
+ for(const item of items){assert.match(item.href,/^\/problems\/sources\//);assert.equal(getArchiveSource(encodeURIComponent(item.id)).id,item.id);}
+ for(const id of ['__proto__','missing','%GG','publisher%253Abeginner'])assert.equal(getArchiveSource(id),undefined);
+ const Page=load('app/problems/sources/[id]/page.tsx').default;
+ for(const id of ['source-a-problem-2','source-a-problem-10']){const html=renderToStaticMarkup(await Page({params:Promise.resolve({id})}));assert.match(html,/Back to archive/);assert.match(html,/detail page remains available/);assert.doesNotMatch(html,/href="https:|Mark Solved|Raw score/);}
+ const parent=renderToStaticMarkup(await Page({params:Promise.resolve({id:'source-a-problem-20'})}));assert.match(parent,/Catalogued source entries/);assert.match(parent,/source-a-problem-27/);assert.match(parent,/Browse collection/);
+});
+test('generic error-page titles and unsafe source URLs never become active task links',()=>{
+ const {buildPracticeArchive,publicExternalUrl}=load('lib/learning/unified-archive.ts');
+ const items=buildPracticeArchive([]);assert.ok(items.every(i=>!i.title.includes('Your Home for Data Science')));
+ for(const item of items.filter(i=>['held','unavailable'].includes(i.availability)))assert.equal(item.originalHref,null);
+ for(const href of ['javascript:alert(1)','http://example.test','https://user:pass@example.test','https://www.kaggle.com/t/private-capability'])assert.equal(publicExternalUrl(href),null);
+ const {hasStatementPermission}=load('lib/learning/problem-detail.ts');assert.equal(hasStatementPermission({}),false);assert.equal(hasStatementPermission(null),false);assert.equal(hasStatementPermission({statement_permission:'granted'}),true);assert.equal(hasStatementPermission({statement_license:'CC-BY-4.0'}),true);
+});
 test('metric-aware scores preserve direction, zero, signed metrics and source-backed maximums',()=>{
  for(const metric of ['Accuracy','F1','F1 macro','AUC','ROC-AUC']){assert.equal(validatePracticeScore('0',metric),null);assert.equal(validatePracticeScore('1',metric),null);assert.ok(validatePracticeScore('1.01',metric));assert.ok(validatePracticeScore('-0.1',metric));}
  assert.equal(validatePracticeScore('99','Accuracy (%)'),null);assert.ok(validatePracticeScore('101','Accuracy (%)'));
