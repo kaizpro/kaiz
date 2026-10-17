@@ -173,7 +173,7 @@
   {
     "id": "source-a-problem-10",
     "sourceLabel": "AI Olymp - Med classification",
-    "title": "Kaggle: Your Home for Data Science",
+    "title": "AI Olymp - Med classification (source label)",
     "url": "https://www.kaggle.com/competitions/problem-3-republic-olymp-tst-homework",
     "source": "Kaggle",
     "type": "competition page",
@@ -230,7 +230,7 @@
   {
     "id": "source-a-problem-13",
     "sourceLabel": "AI Olymp - corgi classification",
-    "title": "Kaggle: Your Home for Data Science",
+    "title": "AI Olymp - corgi classification (source label)",
     "url": "https://www.kaggle.com/competitions/ai-olympiad-nationals-2025-task-1-corgi",
     "source": "Kaggle",
     "type": "competition page",
@@ -249,7 +249,7 @@
   {
     "id": "source-a-problem-14",
     "sourceLabel": "AI Olymp - homework",
-    "title": "Kaggle: Your Home for Data Science",
+    "title": "AI Olymp - homework (source label)",
     "url": "https://www.kaggle.com/competitions/kazakhstan-ai-respa-take-home",
     "source": "Kaggle",
     "type": "competition page",

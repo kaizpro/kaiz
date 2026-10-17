@@ -1,0 +1,15 @@
+{
+  "checkedOn": "2026-10-17",
+  "scope": "28 existing source-catalog entries, anonymous public requests only; no invitation acceptance or task statements copied",
+  "correctedDestinationUrls": 0,
+  "correctedGenericErrorPageTitles": 3,
+  "matchingPublicLandingPages": 22,
+  "held": ["source-a-problem-2", "source-a-problem-4", "source-a-problem-5"],
+  "unavailable": ["source-a-problem-10", "source-a-problem-13", "source-a-problem-14"],
+  "unavailableEvidence": "Each exact existing Kaggle URL returned HTTP 404 and the generic Kaggle homepage/error title. Display names now explicitly use original supplied source labels; no replacement URL was verified.",
+  "kazakhstanTst": "source-a-problem-15: existing exact /competitions/kazakhstan-tst/overview returned HTTP 200, title Kazakhstan TST | Kaggle. Account required for participation. Do not misclassify this parent page as one of the three unavailable task pages.",
+  "yandex": "Six existing exact contest URLs returned their matching contest titles and redirected to entry/login. Task statements and post-login access were not inspected.",
+  "heldEvidence": "The three entries have no verified canonical public URL. Organizer FAIO preparation guidance does not establish matching destinations. No invitation URLs are exposed and no substitute contest is inferred.",
+  "organizerReference": "https://www.faio.kz/2025/advices.html",
+  "copyright": "Source metadata and short summaries only. A reachable landing page does not establish task reproduction permission, scoring rules or publication approval."
+}

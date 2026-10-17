@@ -4,6 +4,7 @@ import { listProblems } from "@/lib/data/problems";
 import { buildPracticeArchive, filterPracticeArchive, archiveAvailability, type ArchiveFilters } from "@/lib/learning/unified-archive";
 import { ArchiveList } from "@/components/learning/archive-list";
 import styles from "@/components/training/catalog.module.css";
+import { getOwnProblemProgress } from "@/lib/data/problem-progress";
 
 export const metadata: Metadata = { title: "Practice archive", description: "One searchable archive of published KAIZ tasks and original olympiad practice, contests and collections." };
 const one = (value: string | string[] | undefined) => typeof value === "string" ? value.slice(0, 100) : "";
@@ -17,7 +18,11 @@ export default async function ProblemsPage({ searchParams }: { searchParams: Pro
     source: one(query.source), type: one(query.type), tag: one(query.tag) || one(query.topic),
     availability: one(query.availability), competition: one(query.competition), direction: one(query.direction),
   };
-  const visible = filterPracticeArchive(items, filters);
+  const personal = await getOwnProblemProgress(items.filter(item=>!item.external).map(item=>item.id.slice(8)));
+  const myStatus = ["unattempted","attempted","solved"].includes(one(query.status)) ? one(query.status) : "";
+  const byId = new Map(personal.items.map(item=>["problem:"+item.problem_id,item.status]));
+  const filtered = filterPracticeArchive(items, filters);
+  const visible = myStatus && personal.signedIn && !personal.error ? filtered.filter(item=>!item.external && (byId.get(item.id)??"unattempted")===myStatus) : filtered;
   const fields = [
     ["source", "Source", [...new Set(items.map(item => item.source))]],
     ["type", "Type", [...new Set(items.map(item => item.type))]],
@@ -32,10 +37,13 @@ export default async function ProblemsPage({ searchParams }: { searchParams: Pro
       {fields.map(([name, label, options]) => <label key={name}>{label}<select name={name} aria-label={label} defaultValue={filters[name]} className={styles.control}><option value="">All</option>{[...options].sort().map(value => <option key={value}>{value}</option>)}</select></label>)}
       <label>Availability<select name="availability" aria-label="Availability" defaultValue={filters.availability} className={styles.control}><option value="">All</option>{Object.entries(archiveAvailability).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
       {filters.direction && <input type="hidden" name="direction" value={filters.direction}/>}
+      {personal.signedIn && !personal.error && <label>My status<select name="status" aria-label="My status" defaultValue={myStatus} className={styles.control}><option value="">All items</option><option value="unattempted">Unattempted tasks</option><option value="attempted">Attempted, not solved</option><option value="solved">Solved — Self-reported</option></select></label>}
       <button className={`${styles.action} ${styles.primary}`}>Apply filters</button>
     </form>
     <p className={styles.count}>{visible.length} of {items.length} items · {items.filter(item => !item.external).length} published KAIZ tasks{Object.values(filters).some(Boolean) && <> · <Link href="/problems" className="text-primary underline underline-offset-4">Clear filters</Link></>}</p>
-    <ArchiveList items={visible}/>
+    {!items.some(item=>!item.external) && <p className={styles.note}>No individual scored KAIZ problems are published yet. The source collections below have internal detail pages, but cannot be marked solved or assigned a collection-wide score.</p>}
+    {personal.error ? <p role="alert" className={styles.note}>{personal.error} Personal filters are not applied. Refresh to retry.</p> : personal.signedIn && <p className={styles.note} aria-label="Personal task totals">{personal.attempted} attempted individual tasks · {personal.solved} solved — Self-reported · private account totals across published KAIZ tasks. <Link className="text-primary underline" href="/dashboard">My learning</Link>{myStatus && <> · <Link className="text-primary underline" href="/problems">Clear personal filter</Link></>}</p>}
+    <ArchiveList items={visible} personal={personal.signedIn&&!personal.error?personal.items:undefined}/>
     <p className={styles.note}>External items are not KAIZ submissions. Source difficulty labels are retained; Unrated is not a difficulty estimate. Open “Source &amp; access” for provenance and requirements.</p>
   </div>;
 }
