@@ -8,4 +8,5 @@
 .action { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 10px; font-size: .75rem; border: 1px solid var(--border); border-radius: 3px; color: var(--primary); }
 .action:disabled { opacity: .6; }
 .action:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+.solve { min-height: 48px; min-width: 144px; padding: 12px 24px; font-size: .875rem; font-weight: 700; }
 @media(pointer:coarse) { .action { min-height: 44px; } }
