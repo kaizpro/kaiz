@@ -4,12 +4,15 @@ import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import test from "node:test";
 import { loadContentModule } from "../scripts/content/load.mjs";
+import {validatePublicationManifest,preparePublicationPlan} from '../scripts/content/publication-plan.mjs';
+import {groupOfficialTables} from '../scripts/content/official-table-review.mjs';
 
 const { prepareContentPlan, entryForm } = loadContentModule();
 const file = (name) => JSON.parse(readFileSync(new URL(`../content/competitions/2026-10-12/${name}.json`, import.meta.url), "utf8"));
 const batch = () => file("ready-batch");
 const snapshot = () => file("public-snapshot");
 const uuid = (n) => `90000000-0000-4000-8000-${String(n).padStart(12, "0")}`;
+const publication=()=>JSON.parse(readFileSync(new URL('../content/competitions/2026-10-17/publication-manifest.json',import.meta.url),'utf8'));
 function existingSet({ published = false, verified = false } = {}) {
   const b = batch(); const s = snapshot();
   const prepared = b.resultSets[0];
@@ -192,6 +195,36 @@ test("CLI refuses apply/credentials flags and defaults to dry-run without readin
   assert.equal(refused.status, 2); assert.match(refused.stderr, /forbidden/);
   const text = readFileSync(new URL("../scripts/content/preview.mjs", import.meta.url), "utf8");
   assert.doesNotMatch(text, /process\.env|fetch\(|createClient\(|dotenv/);
+});
+
+test('publication manifest has 15 true priorities, 809 rows, five full IOAI source tables and no Kazakhstan names',()=>{
+ const m=validatePublicationManifest(publication());assert.equal(m.editions.length,15);assert.equal(m.stages.length,14);assert.equal(m.stages.reduce((n,s)=>n+s.rows.length,0),809);
+ assert.deepEqual(m.stages.filter(s=>s.completeness==='complete_source_table').map(s=>s.rows.length),[284,10,16,440,26]);
+ assert.equal(m.editions.filter(e=>e.status.includes('blocked')).length,2);assert.ok(m.editions.filter(e=>e.edition_id.startsWith('ai-olymp-kazakhstan')).every(e=>e.metadata===null&&e.results.length===0));
+ assert.ok(m.stages.every(s=>!s.published&&s.publication_authorization.status==='owner_approval_pending'));
+ assert.equal(m.stages.filter(s=>s.completeness==='partial').length,9);
+});
+test('HTML continuation tables preserve first participant and do not merge stages',()=>{
+ const groups=groupOfficialTables([{heading:'Individual',headers:['Rank','Name'],rows:[]},{heading:'Individual',headers:['1','First'],rows:[['2','Second']]},{heading:'Team',headers:['Rank','Team'],rows:[['1','Synthetic team']]}]);
+ assert.deepEqual(groups[0].rows,[['1','First'],['2','Second']]);assert.equal(groups.length,2);
+ assert.throws(()=>groupOfficialTables([{heading:'Missing header',headers:['1','First'],rows:[]}]))
+});
+test('publication validation blocks duplicate participants, source/stage mismatch and premature publication',()=>{
+ for(const change of [m=>m.stages[0].rows.push(m.stages[0].rows[0]),m=>m.stages[0].rows[0].provenance.source_stage='Wrong',m=>m.stages[0].published=true,m=>m.stages[0].rows[0].score=Infinity,m=>m.stages[0].rows[0].score_columns.unknown='10']){const m=publication();change(m);assert.throws(()=>validatePublicationManifest(m));}
+});
+test('new full dataset uses existing validator and freezes five existing UUIDs; approval still blocked',()=>{
+ const old=JSON.parse(readFileSync(new URL('../content/competitions/2026-10-15/admin-snapshot.json',import.meta.url),'utf8'));
+ const p=preparePublicationPlan(publication(),batch(),old);assert.equal(p.valid,true);assert.equal(p.writes,0);assert.equal(p.approvalReady,false);assert.equal(p.publicationBlocked,true);
+ assert.equal(p.actions.filter(a=>a.action==='create_competition').length,8);assert.equal(p.actions.filter(a=>a.action==='add_draft_row').length,809);
+ assert.equal(p.batch.competitions.filter(c=>c.expectedId).length,5);assert.equal(p.batch.competitions.some(c=>c.editionKey==='iaio-2024'||c.editionKey==='usaaio-2026'),false);
+ for(const c of p.batch.competitions.filter(c=>c.expectedId))assert.equal(c.expectedId,old.competitions.find(x=>x.editionKey===c.editionKey).id);
+});
+test('complete manifest re-import is a no-op and a changed row is a conflict',()=>{
+ const m=publication();const first=preparePublicationPlan(m,batch(),snapshot());const b=first.batch;
+ const s={version:1,checkedAt:b.checkedAt,scope:'admin_complete',competitions:b.competitions.map((c,index)=>({id:c.expectedId??uuid(index+100),editionKey:c.editionKey,form:c.form})),resultSets:[]};
+ s.resultSets=b.resultSets.map((set,index)=>({id:uuid(index+200),competitionId:s.competitions.find(c=>c.form.slug===set.competitionSlug).id,form:set.form,entries:set.entries.map((data,n)=>({id:uuid(index*5000+n+1000),verified:false,data}))}));
+ const replay=preparePublicationPlan(m,batch(),s);assert.equal(replay.valid,true);assert.ok(replay.actions.every(a=>a.action==='skip'));
+ m.stages[0].rows[0].score=999;assert.equal(preparePublicationPlan(m,batch(),s).valid,false);
 });
 
 test("all fifteen requested targets stay visible, with two explicit replacement proposals", () => {

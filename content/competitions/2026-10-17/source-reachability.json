@@ -1,0 +1,257 @@
+{
+  "checked_at": "2026-10-17T14:08:47.455Z",
+  "anonymous": true,
+  "production_writes": 0,
+  "records": [
+    {
+      "url": "https://cu.ru/olympiad/events/neoai",
+      "status": 200,
+      "final_url": "https://cu.ru/olympiad/events/neoai",
+      "bytes": 640522,
+      "sha256": "1389bf5b491d3329e6021d47c8a3ed6d8e0076a40e3ded3770c8e1f155b305c9",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://docs.google.com/spreadsheets/d/10Rj9aCxwFR5EoTQUo9ChunzffX7Xgxb3fy3zDGNjlrQ/edit?usp=sharing",
+      "status": 200,
+      "final_url": "https://docs.google.com/spreadsheets/d/10Rj9aCxwFR5EoTQUo9ChunzffX7Xgxb3fy3zDGNjlrQ/edit?usp=sharing",
+      "bytes": 284284,
+      "sha256": "8dd0727577d0a3327abfc7472b34bdbffa607c9a376a3e2eafe08a7621ea349c",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://euroai-official.org/",
+      "status": 200,
+      "final_url": "https://euroai-official.org/",
+      "bytes": 50998,
+      "sha256": "f04797b4fa46f30ff3fdfe7d72d1605a7c39ca44bb4481eaf6aae0b4594d7dab",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://euroai-official.org/2026/results/",
+      "status": 200,
+      "final_url": "https://euroai-official.org/2026/results/",
+      "bytes": 158949,
+      "sha256": "3dd350836d25a03917f0037b028074e580b408d8f2bbd3734977a164bbde839c",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://iaio-official.org/olympiad-2026/",
+      "status": 200,
+      "final_url": "https://iaio-official.org/olympiad-2026/",
+      "bytes": 531412,
+      "sha256": "12499db99442dad2a065acce0310f5556c70157e99777c19c23b29f59bf50a47",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://iaio-official.org/results2026/",
+      "status": 200,
+      "final_url": "https://iaio-official.org/results2026/",
+      "bytes": 159002,
+      "sha256": "861007f311364132c8d10a7ad756fa3b3e78a91ddd3e8aa0eaed49f3bd718de0",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://ioai-official.org/2025-press-release-1/",
+      "status": 200,
+      "final_url": "https://ioai-official.org/2025-press-release-1/",
+      "bytes": 219819,
+      "sha256": "b213b3fe835561a13ecc1a7e99a48f9b5e1174afb62206760275cb3040d47355",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://ioai-official.org/bulgaria-2024/",
+      "status": 200,
+      "final_url": "https://ioai-official.org/bulgaria-2024/",
+      "bytes": 289570,
+      "sha256": "848dbe6abafc37ece6e207e82830e832b078b6b37f4417dff7cc2211acfd4541",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://ioai-official.org/bulgaria-2024/2024-team/",
+      "status": 200,
+      "final_url": "https://ioai-official.org/bulgaria-2024/2024-team/",
+      "bytes": 333809,
+      "sha256": "4d70c8afd8285b30db9361262965ebf69e7711546c51893b3131cab407fe7f9e",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://ioai-official.org/bulgaria-2024/results/",
+      "status": 200,
+      "final_url": "https://ioai-official.org/bulgaria-2024/results/",
+      "bytes": 221255,
+      "sha256": "2a662abd397fcdb47d8bb6a3ab7cb5cce4bdb03b1dbcb9d46db95cfa69607016",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://ioai-official.org/china-2025/",
+      "status": 200,
+      "final_url": "https://ioai-official.org/china-2025/",
+      "bytes": 295910,
+      "sha256": "9f64237509cb52d3c163cb9713bb5425869a7193f5ecb5215f37f64b2cff5d9f",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://ioai-official.org/china-2025/results-2025/",
+      "status": 200,
+      "final_url": "https://ioai-official.org/china-2025/results-2025/",
+      "bytes": 244258,
+      "sha256": "caf4f16b5f711229eca11d8d862de4659853eebc839be6460171bc37170f09dc",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://ioai-official.org/northern-eurasia-oai-2025/",
+      "status": 200,
+      "final_url": "https://ioai-official.org/northern-eurasia-oai-2025/",
+      "bytes": 227743,
+      "sha256": "307beba470ac5122e7af529b4c6926f8d7af283d9ebad794ecff1a1e8f55b50d",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://ioai-official.org/republic-of-kazakhstan/",
+      "status": 200,
+      "final_url": "https://ioai-official.org/republic-of-kazakhstan/",
+      "bytes": 233498,
+      "sha256": "9f740bae5c14fc3f5efb889f7b782c7979013f891d2442e3ff2ac671e7aca7e7",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+      "status": 200,
+      "final_url": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+      "bytes": 504353,
+      "sha256": "9efe4b8f5d14bf503a50176f5296cdc48883ec2acbce181bea9accf13ab53ea2",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://ioai-official.org/the-usa-north-america-ai-olympiad-is-organized-by-the-usa-ai-olympiad-usaaio/",
+      "status": 200,
+      "final_url": "https://ioai-official.org/the-usa-north-america-ai-olympiad-is-organized-by-the-usa-ai-olympiad-usaaio/",
+      "bytes": 251166,
+      "sha256": "4e44b185cc5955bb952d4eb95a9d7b9f867927d09ab60a887147630c48fb03ee",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://www.apoai.org/apoai2026",
+      "status": 200,
+      "final_url": "https://www.apoai.org/apoai2026",
+      "bytes": 162011,
+      "sha256": "8bd30156f375ef863d4681af1e2d54cc481285546ae0ffcdd9fd2e1396d16b7f",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://www.faio.kz/",
+      "status": 200,
+      "final_url": "https://www.faio.kz/",
+      "bytes": 84542,
+      "sha256": "edb8e1756665522ef33ec9d88e795465b87b3e1d663116428a2aeca076a4861f",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://www.faio.kz/2025/",
+      "status": 200,
+      "final_url": "https://www.faio.kz/2025/",
+      "bytes": 33166,
+      "sha256": "e50f83797e0e3c24d158a6ac3aaa84162098c5a4cbc7c3a448caf14aa73a9110",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://www.faio.kz/final/",
+      "status": 200,
+      "final_url": "https://www.faio.kz/final/",
+      "bytes": 36038,
+      "sha256": "3d03b0a4c952d2cd833fa9cff33323c9df2ab1c1741707f063f0e8e76692f337",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://www.kaggle.com/competitions/neoai-2025/overview",
+      "status": 200,
+      "final_url": "https://www.kaggle.com/competitions/neoai-2025/overview",
+      "bytes": 5870,
+      "sha256": "111c92ba5e40fec8c04e2b21e584d54b66c2cad660b7ad573ee01e0b322d4ec0",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://www.oai.edu.pl/edycje/ii-oai",
+      "status": 200,
+      "final_url": "https://www.oai.edu.pl/edycje/ii-oai",
+      "bytes": 397464,
+      "sha256": "14836ca8a76690a7201a1d86de15aedb635cd651acabc1ebc9045e8813ef28d0",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://www.oai.edu.pl/regulamin-iioai",
+      "status": 200,
+      "final_url": "https://www.oai.edu.pl/regulamin-iioai",
+      "bytes": 213284,
+      "sha256": "8c7e1355ce25b1d94fe97ce66503d802335d0fa5780efe2167dd133623ce3c93",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://www.olimpiada-ai.ro/en/editii/2026",
+      "status": 200,
+      "final_url": "https://www.olimpiada-ai.ro/en/editii/2026",
+      "bytes": 123375,
+      "sha256": "10e9b276e3766f439b43287c212b11a851572f03686cecb2da0a4ac0ab633360",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    },
+    {
+      "url": "https://www.olimpiada-ai.ro/en/news/comunicat-nationala-2026",
+      "status": 200,
+      "final_url": "https://www.olimpiada-ai.ro/en/news/comunicat-nationala-2026",
+      "bytes": 105439,
+      "sha256": "8de167e46eeb4de0d2b4ae9e990efe6a1cd44a2ac9fdca6ca03e789c57a5feb6",
+      "reachable": true,
+      "accuracy": "Not independently established by HTTP status",
+      "permission": "Not established by reachability"
+    }
+  ]
+}
