@@ -5,8 +5,10 @@ import { Suspense } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, ChevronRight, Compass } from "lucide-react";
 import { getChildren, getNode, getPath, getTopics, getTopicBySlug, topicHref } from "@/lib/learning/curriculum";
 import { roadmapForNode } from "@/lib/learning/navigation";
+import { journeysForTopic } from "@/lib/learning/journeys";
 import { TopicRoadmapLink } from "@/components/learning/topic-roadmap-link";
 import styles from "@/components/learning/learning.module.css";
+import { ResourceCard } from "@/components/learning/resource-card";
 
 type Props = { params: Promise<{ slug: string }> };
 export function generateStaticParams() { return getTopics().map((node) => ({ slug: node.slug })); }
@@ -25,6 +27,7 @@ export default async function TopicPage({ params }: Props) {
   const next = siblings[index + 1];
   const recommendedIds = [...new Set(path.flatMap((node) => node.prerequisites))];
   const recommendations = recommendedIds.map((id) => getNode(id)!).filter((node) => node.id !== topic.id);
+  const journeys = journeysForTopic(topic.id);
 
   return (
     <section className={`${styles.page} ${styles.detail}`} aria-labelledby="topic-title">
@@ -52,12 +55,8 @@ export default async function TopicPage({ params }: Props) {
           </div>
         ) : (
           <section aria-label="Learning materials">
-            <ul className={styles.resourceList}>{topic.resources.filter((resource) => /^https?:\/\//.test(resource.href)).map((resource) => (
-              <li key={resource.id}><a href={resource.href} target="_blank" rel="noopener noreferrer">
-                <span><span className={styles.eyebrow}>{resource.kind}</span><br />{resource.title}</span><ArrowUpRight size={16} aria-hidden="true" />
-                <span className={styles.srOnly}>opens in a new tab</span>
-              </a></li>
-            ))}</ul>
+            <p className="mb-2 text-xs leading-6 text-muted-foreground">{topic.resources.length} external materials · not a full KAIZ lesson</p>
+            <div>{topic.resources.map(resource => <ResourceCard key={resource.id} resource={resource} topic={topic.title}/>)}</div>
             <Suspense><TopicRoadmapLink topicId={topic.id} /></Suspense>
           </section>
         )}
@@ -70,6 +69,15 @@ export default async function TopicPage({ params }: Props) {
           </li>)}</ul>}
         </aside>
       </div>
+      <section className="mt-7 border-t pt-5" aria-label="Continue your journey">
+        <h2 className="text-base font-bold">Connect this topic to your preparation</h2>
+        <nav className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm [&_a]:inline-flex [&_a]:min-h-11 [&_a]:items-center" aria-label="Roadmaps and community">
+          {journeys.length ? journeys.map(path => <Link key={path.level} href={`/roadmaps/${path.level}`} className="text-primary underline underline-offset-4">{path.title} roadmap</Link>) : <Link href="/roadmaps" className="text-primary underline underline-offset-4">Choose a roadmap</Link>}
+          <Link href="/learn/topics" className="text-primary underline underline-offset-4">AI Topics inventory</Link>
+          <Link href="/problems" className="text-primary underline underline-offset-4">Browse published problems</Link>
+          <Link href="/discussions?category=help" className="text-primary underline underline-offset-4">Ask a question</Link>
+        </nav>
+      </section>
       <nav className={styles.siblingNav} aria-label="Adjacent topics">
         {previous && <Link data-direction="previous" href={topicHref(previous)}><ArrowLeft size={16} aria-hidden="true" /><span><small className={styles.eyebrow}>Previous topic</small>{previous.title}</span></Link>}
         {next && <Link href={topicHref(next)}><span><small className={styles.eyebrow}>Next topic</small>{next.title}</span><ArrowRight size={16} aria-hidden="true" /></Link>}

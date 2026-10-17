@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import Link from "next/link";
 import { LearningRoadmap } from "@/components/learning/learning-roadmap";
 import styles from "@/components/learning/learning.module.css";
+import catalog from "@/components/training/catalog.module.css";
 
 export const metadata: Metadata = {
   title: "Learning Tree",
@@ -14,11 +16,11 @@ export default function Page() {
       <a className={styles.skip} href="#roadmap">Skip to learning tree</a>
       <header className={styles.intro}>
         <div>
-          <p className={styles.eyebrow}>LEARN / EXPLORE / CONNECT</p>
-          <h1 id="learning-title">A map for your next idea.</h1>
-          <p>Find the foundations. Follow your curiosity. Build something that matters.</p>
+          <p className={styles.eyebrow}>LEARN / FOUNDATIONS</p>
+          <h1 id="learning-title">Learning Tree</h1>
+          <p>85 connected topics in coding, AI and mathematics.</p>
         </div>
-        <span className={styles.availability}>Curriculum map <span aria-hidden="true">·</span> Materials coming soon</span>
+        <nav className={catalog.actions} aria-label="Learning discovery"><Link href="/roadmaps" className={catalog.action}>Roadmaps</Link><Link href="/learn/topics" className={catalog.action}>AI Topics</Link><Link href="/problems" className={catalog.action}>Practice</Link></nav>
       </header>
       <Suspense fallback={<div className={styles.loading} role="status">Opening the learning tree…</div>}>
         <LearningRoadmap />

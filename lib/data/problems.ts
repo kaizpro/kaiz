@@ -46,6 +46,7 @@ export type Problem = {
   source_label: string | null;
   source_url: string | null;
   source_external_id: string | null;
+  source_provenance?: Record<string, unknown>;
   published: boolean;
   sort_order: number;
   created_at: string;
@@ -65,7 +66,7 @@ export type ProblemPerformance = {
 const problemSelect = `
   id,competition_id,title,slug,problem_code,summary,statement_markdown,statement_url,
   category,tags,metric_name,metric_direction,reference_score,difficulty_status,
-  difficulty_rating,source_provider,source_label,source_url,source_external_id,
+  difficulty_rating,source_provider,source_label,source_url,source_external_id,source_provenance,
   published,sort_order,created_at,
   competition:competitions(id,title,slug)
 `;

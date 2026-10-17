@@ -202,7 +202,7 @@ try {
   for (const route of routes) {
     const response = await context.request.get(`${base.origin}${route}`);
     assert.equal(response.status(), 200, route);
-    assert.match(await response.text(), /Learning materials for this topic will be added soon/);
+    assert.match(await response.text(), /Learning materials for this topic will be added soon|aria-label="Learning materials"/);
   }
   assert.equal(routes.size, expectedRoutes, "all canonical topic routes checked");
   const unknown = await context.request.get(`${base.origin}/learn/not-a-real-topic`);
@@ -236,11 +236,8 @@ try {
   await page.waitForFunction(() => getComputedStyle(document.documentElement).fontSize === "32px");
   const largeFont = await page.locator("#node-vectors").evaluate((element) => parseFloat(getComputedStyle(element).fontSize));
   assert.equal(largeFont, normalFont * 2, "text enlargement actually doubles topic text");
-  await checkLayout({ featureOnly: true });
+  await checkLayout();
   await page.screenshot({ path: join(output, "mobile-enlarged-text.png"), fullPage: true });
-  if (await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)) {
-    console.log("OUT-OF-SCOPE: existing shared site header overflows at 375px with 200% root text size; Learning bounds pass. Shared header is unchanged.");
-  }
   assert.deepEqual(errors, [], "browser runtime errors");
   assert.deepEqual(unexpectedRequests, [], "non-local network requests attempted");
   console.log(`PASS: keyboard, disclosures/inert, focus, track selection, back/forward, contextual navigation, rapid toggles, connector anchors, active path, empty states, cross-track recommendations, reduced motion, 200% text size, ${routes.size} routes, 16 tree + 8 detail theme/viewport layouts. Screenshots: ${output}`);

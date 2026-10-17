@@ -1,0 +1,27 @@
+.page { max-width: 980px; margin-inline: auto; padding: 24px; min-width: 0; overflow-wrap: anywhere; }
+.page h1 { font-size: clamp(1.4rem,3vw,2rem); font-weight: 750; letter-spacing: -.035em; line-height: 1.3; }
+.page h2 { font-size: .9375rem; font-weight: 700; margin-bottom: 12px; }
+.page :is(p,li) { font-size: .8125rem; line-height: 1.8; }
+.header { padding-block: 20px; border-bottom: 1px solid var(--border); }
+.eyebrow { font-size: .6875rem !important; color: var(--muted-foreground); margin-bottom: 7px; }
+.section { padding-block: 22px; border-bottom: 1px solid var(--border); min-width: 0; }
+.columns { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+.ordered { margin-left: 1.2rem; list-style: decimal; }
+.ordered li { padding-left: .3rem; margin-block: 6px; }
+.materials { margin-left: 12px; padding-left: 16px; border-left: 2px solid var(--border); display: grid; gap: 10px; }
+.material { padding: 14px; border: 1px solid var(--border); background: var(--card); min-width: 0; }
+.material h3 { font-size: .8125rem; font-weight: 650; line-height: 1.6; }
+.material p { font-size: .75rem; color: var(--muted-foreground); }
+.meta { display: flex; flex-wrap: wrap; gap: 5px 12px; font-size: .6875rem; color: var(--muted-foreground); margin-block: 5px 10px; }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 38px; padding: 6px 12px; max-width: 100%; border: 1px solid var(--border); border-radius: 3px; font-size: .75rem; font-weight: 600; line-height: 1.5; text-align: center; }
+.button:hover { background: var(--muted); }
+.actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.details { font-size: .75rem; line-height: 1.8; margin-top: 12px; color: var(--muted-foreground); }
+.details summary { cursor: pointer; }
+.check { padding: 18px; border-left: 3px solid var(--primary); background: var(--muted); }
+.completion { padding: 20px; margin-block: 24px; border: 1px solid var(--border); background: var(--card); }
+.completion form { margin-block: 12px; }
+.progress { display: grid; gap: 6px; max-width: 28rem; margin-top: 12px; color: var(--muted-foreground); }
+.progress progress { display: block; width: 100%; height: 5px; accent-color: var(--primary); }
+.page :is(a,button,summary):focus-visible { outline: 2px solid var(--ring); outline-offset: 4px; }
+@media(max-width:640px) { .page { padding: 20px 16px; } .columns { grid-template-columns: minmax(0,1fr); gap: 12px; } .materials { margin-left: 4px; padding-left: 10px; } .button { min-height: 44px; } }
