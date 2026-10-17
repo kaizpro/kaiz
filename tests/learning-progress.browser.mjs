@@ -34,6 +34,10 @@ try{
    await page.getByRole('heading',{level:1,name:'1.1 '+lessons[0].topic.title,exact:true}).waitFor();
    await page.evaluate(value=>document.documentElement.style.fontSize=value+'%',size);
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+   const completion=page.getByRole('region',{name:'Lesson completion',exact:true});assert.equal(await completion.count(),1);await completion.getByRole('link',{name:'Sign in to save progress',exact:true}).waitFor();
+   assert.ok(await page.evaluate(()=>{const materials=document.querySelector('ol[aria-label="Ordered learning materials"]'),panel=document.querySelector('section[aria-label="Lesson completion"]');return !!(materials.compareDocumentPosition(panel)&Node.DOCUMENT_POSITION_FOLLOWING);}));
+   const disclosure=page.getByText('About these resources',{exact:true});await disclosure.focus();await page.keyboard.press('Enter');assert.ok(await disclosure.evaluate(el=>el.parentElement.open));
+   if(size===100){await page.evaluate(()=>window.scrollTo(0,0));await page.screenshot({path:join(output,`lesson-${path.level}-${width}-${theme}.png`),fullPage:true});}
    await page.reload();assert.equal(await page.getByRole('button',{name:/Mark completed/}).count(),0);
    await page.getByRole('link',{name:path.title+' roadmap',exact:true}).click();
    await page.waitForURL(base.origin+'/roadmaps/'+path.level);
