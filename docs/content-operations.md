@@ -1,6 +1,6 @@
 # Competition and official-results content operations
 
-This is an **offline, manual-assisted import workflow**, not an automated bulk-write endpoint: structured JSON → existing application validation → duplicate/conflict preview → admin review → explicitly approved entry using the current admin forms → separate publication. No hosted data is seeded/synchronized, no migration is needed, and the script has no apply mode.
+This is an **offline, manual-assisted import workflow**, not an automated bulk-write endpoint: structured JSON → existing application validation → duplicate/conflict preview → admin review → explicitly approved entry using the current admin forms → separate publication. No hosted data is seeded/synchronized and the script has no apply mode. The [competition experience follow-up](competition-experience.md) introduces one unapplied additive migration for optional presentation fields; it must precede running the new database-backed results pages.
 
 ## Team ownership
 
@@ -49,7 +49,7 @@ The preview checks UUID/slug references, set→competition foreign keys, source 
 6. **Draft results entry.** In `/admin/competitions/[real-id]/results`, check for duplicate sets again; create the set with publication unchecked. Use its real selected UUID for each row. Preview's `ADMIN_MUST_SELECT_THE_REAL_DRAFT_SET` is a reminder, never a UUID to submit. Preserve source labels/links/values, leave linked username blank unless separate verified ownership review exists. External team names do not require KAIZ teams. Do not insert external standings contestants into `competition_participants`, which represents registered KAIZ users. Refresh snapshot/preview after entry: identical rows must skip.
 7. **Separate publication and QA.** Reconcile draft counts/values with the approved selection and check teams, ties, null/N/A, zero and awards. Only then explicitly publish. Existing set publication and row verification update in separate requests, not an atomic bulk transaction; stop/reconcile both states on an error. Signed-out users must see published sets only. Check the detail set switcher/source link, directory filters, existing five competitions, and any separately reviewed account/problem links. Never delete/replace previously verified results silently.
 
-Large full leaderboards can remain official links initially. Do not copy task materials or introduce new schema/write tooling without a separate proposal. This task stops before production entry/publication.
+Large full leaderboards can remain official links initially. Do not copy task materials. Presentation JSON supports original score columns without an automated write endpoint; see the follow-up guide for schemas, source holds and release prerequisites. This task stops before production entry/publication.
 
 ## Test boundaries
 

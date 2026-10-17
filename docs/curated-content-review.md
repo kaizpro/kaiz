@@ -1,6 +1,6 @@
 # Kazakhstan-first content review — PR #22
 
-Checked 2026-10-12. Continuation of Issue #21 on `feature/competition-results-population`; no new issue/branch/PR, application changes, migrations, hosted writes, merge or deployment.
+Research checked 2026-10-12. Continuation of Issue #21 on `feature/competition-results-population`; no new issue/branch/PR, hosted writes, merge or deployment. The subsequent [competition experience implementation](competition-experience.md) adds UI/presentation support and one unapplied additive migration; the research-only statements below describe the original curation pass.
 
 ## Selection and limits
 

@@ -408,7 +408,22 @@
         "category": "Machine Learning",
         "eligibility": "High-school national teams under the IOAI framework.",
         "tags": "AI, Machine Learning, Olympiad, IOAI, 2024",
-        "verified": false
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "ioai",
+          "year": 2024,
+          "sourceNotes": "Earlier general regulations say August 8–15. Dedicated retrospective explicitly states August 9–15; retain date-scope distinction for approval.",
+          "expectedStages": [
+            {
+              "name": "Scientific Round 2024",
+              "availability": "OFFICIAL_STAGE_RESULTS"
+            },
+            {
+              "name": "Practical Round",
+              "availability": "OFFICIAL_STAGE_RESULTS"
+            }
+          ]
+        }
       }
     },
     {
@@ -582,7 +597,18 @@
         "category": "Machine Learning",
         "eligibility": "School students; consult archived rules for edition-specific entry conditions.",
         "tags": "AI, Machine Learning, Olympiad, FAIO, 2025",
-        "verified": false
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "faio",
+          "year": 2025,
+          "sourceNotes": "September 28 qualification through October 30–31 final contest",
+          "expectedStages": [
+            {
+              "name": "FAIO 2025 Final Results",
+              "availability": "OFFICIAL_STAGE_RESULTS"
+            }
+          ]
+        }
       }
     },
     {
@@ -611,7 +637,18 @@
         "category": "Machine Learning",
         "eligibility": "School students; free participation and supporting theory provided.",
         "tags": "AI, Machine Learning, Olympiad, FAIO, 2026",
-        "verified": false
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "faio",
+          "year": 2026,
+          "sourceNotes": "Final results not yet available October 12; programme preliminary, recheck before entry.",
+          "expectedStages": [
+            {
+              "name": "Рейтинг отборочного тура и приглашения в финал",
+              "availability": "OFFICIAL_STAGE_RESULTS"
+            }
+          ]
+        }
       }
     },
     {
@@ -639,7 +676,18 @@
         "category": "Machine Learning",
         "eligibility": "National delegations; consult the edition's competition requirements.",
         "tags": "AI, Machine Learning, IAIO, 2026",
-        "verified": false
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "iaio",
+          "year": 2026,
+          "sourceNotes": "Full international event",
+          "expectedStages": [
+            {
+              "name": "IAIO 2026 Competition Results",
+              "availability": "OFFICIAL_STAGE_RESULTS"
+            }
+          ]
+        }
       }
     },
     {
@@ -668,7 +716,13 @@
         "category": "Machine Learning",
         "eligibility": "Northern Eurasia school students; on-site participation restricted to international olympiad training programme.",
         "tags": "AI, Machine Learning, Olympiad, NEOAI, 2025",
-        "verified": false
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "neoai",
+          "year": 2025,
+          "sourceNotes": "Russia is organizing/on-site country, not every contestant location. City unestablished; late submissions are not final aggregate standings.",
+          "expectedStages": []
+        }
       }
     },
     {
@@ -696,7 +750,18 @@
         "category": "Machine Learning",
         "eligibility": "Top scorers invited from Round 1; primarily U.S. students with North American participation.",
         "tags": "AI, Machine Learning, USAAIO, 2025",
-        "verified": false
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "usaaio",
+          "year": 2025,
+          "sourceNotes": "Cambridge is the MIT venue's city; do not treat this date as the entire season.",
+          "expectedStages": [
+            {
+              "name": "Round 2",
+              "availability": "NOT_FOUND"
+            }
+          ]
+        }
       }
     },
     {
@@ -725,7 +790,26 @@
         "category": "Machine Learning",
         "eligibility": "Primary and secondary school students under the Polish Olympiad rules.",
         "tags": "AI, Machine Learning, Olympiad, POLAND, 2025",
-        "verified": false
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "poland-oai",
+          "year": 2025,
+          "sourceNotes": "No single city for season; Wrocław is final venue. Country not assumed contestant citizenship.",
+          "expectedStages": [
+            {
+              "name": "Wyniki Finału II Olimpiady Sztucznej Inteligencji",
+              "availability": "OFFICIAL_STAGE_RESULTS"
+            },
+            {
+              "name": "Wyniki I etapu",
+              "availability": "OFFICIAL_STAGE_RESULTS"
+            },
+            {
+              "name": "Wyniki 2 etapu",
+              "availability": "OFFICIAL_STAGE_RESULTS"
+            }
+          ]
+        }
       }
     },
     {
@@ -754,7 +838,22 @@
         "category": "Machine Learning",
         "eligibility": "County-stage qualifiers in grades 9–10 and 11–12; special guests separate.",
         "tags": "AI, Machine Learning, Olympiad, ONIA, 2026",
-        "verified": false
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "onia",
+          "year": 2026,
+          "sourceNotes": "National programme April 17–20; contest April 18; camps excluded",
+          "expectedStages": [
+            {
+              "name": "Results – County Phase",
+              "availability": "OFFICIAL_STAGE_RESULTS"
+            },
+            {
+              "name": "Results – National Phase 2026",
+              "availability": "OFFICIAL_STAGE_RESULTS"
+            }
+          ]
+        }
       }
     },
     {
@@ -831,7 +930,14 @@
         "source": "official_import",
         "sourceLabel": "Official organizer standings (selected)",
         "sourceUrl": "https://ioai-official.org/china-2025/results-2025/",
-        "published": false
+        "published": false,
+        "presentation": {
+          "availability": "OFFICIAL_STAGE_RESULTS",
+          "coverage": "partial",
+          "stageLabel": "Individual contest",
+          "displayOrder": 0,
+          "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null."
+        }
       },
       "entries": [
         {
@@ -936,7 +1042,14 @@
         "source": "official_import",
         "sourceLabel": "Official organizer standings (selected)",
         "sourceUrl": "https://ioai-official.org/china-2025/results-2025/",
-        "published": false
+        "published": false,
+        "presentation": {
+          "availability": "OFFICIAL_STAGE_RESULTS",
+          "coverage": "partial",
+          "stageLabel": "Final Round of Team Challenge",
+          "displayOrder": 1,
+          "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null."
+        }
       },
       "entries": [
         {
@@ -999,7 +1112,14 @@
         "source": "official_import",
         "sourceLabel": "Official organizer standings (selected)",
         "sourceUrl": "https://ioai-official.org/china-2025/results-2025/",
-        "published": false
+        "published": false,
+        "presentation": {
+          "availability": "OFFICIAL_STAGE_RESULTS",
+          "coverage": "partial",
+          "stageLabel": "GAITE contest",
+          "displayOrder": 2,
+          "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null."
+        }
       },
       "entries": [
         {
@@ -1048,7 +1168,14 @@
         "source": "official_import",
         "sourceLabel": "Official organizer standings (selected)",
         "sourceUrl": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
-        "published": false
+        "published": false,
+        "presentation": {
+          "availability": "OFFICIAL_STAGE_RESULTS",
+          "coverage": "partial",
+          "stageLabel": "Individual contest",
+          "displayOrder": 3,
+          "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null."
+        }
       },
       "entries": [
         {
@@ -1111,7 +1238,14 @@
         "source": "official_import",
         "sourceLabel": "Official organizer standings (selected)",
         "sourceUrl": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
-        "published": false
+        "published": false,
+        "presentation": {
+          "availability": "OFFICIAL_STAGE_RESULTS",
+          "coverage": "partial",
+          "stageLabel": "GAITE contest",
+          "displayOrder": 4,
+          "notes": "Selected public rows only; full standings remain at the source. Publication date was not established; keep it null."
+        }
       },
       "entries": [
         {
@@ -1160,7 +1294,14 @@
         "source": "official_import",
         "sourceLabel": "Official organizer standings (selected)",
         "sourceUrl": "https://www.apoai.org/apoai2026",
-        "published": false
+        "published": false,
+        "presentation": {
+          "availability": "OFFICIAL_STAGE_RESULTS",
+          "coverage": "partial",
+          "stageLabel": "Individual contest",
+          "displayOrder": 5,
+          "notes": "Partial selection intentionally retains official ties at 122/125, a real zero score and a ranked N/A score. Publication date remains unknown; tentative release date is not evidence of actual release."
+        }
       },
       "entries": [
         {
@@ -1265,7 +1406,14 @@
         "source": "official_import",
         "sourceLabel": "Official organizer standings (selected)",
         "sourceUrl": "https://euroai-official.org/2026/results/",
-        "published": false
+        "published": false,
+        "presentation": {
+          "availability": "OFFICIAL_STAGE_RESULTS",
+          "coverage": "partial",
+          "stageLabel": "Member",
+          "displayOrder": 6,
+          "notes": "Member-country standings only. Preserve the official shared rank 8. Remote and Guest entries are not assigned row-position ranks."
+        }
       },
       "entries": [
         {
@@ -1342,7 +1490,14 @@
         "source": "official_import",
         "sourceLabel": "Official organizer standings (selected)",
         "sourceUrl": "https://euroai-official.org/2026/results/",
-        "published": false
+        "published": false,
+        "presentation": {
+          "availability": "OFFICIAL_STAGE_RESULTS",
+          "coverage": "partial",
+          "stageLabel": "Remote",
+          "displayOrder": 7,
+          "notes": "Remote category, not Member ranks. Official blank ranks become null/unranked, NOT an invented placement. Preserve public source spelling; no automatic profile matching."
+        }
       },
       "entries": [
         {
@@ -1391,7 +1546,14 @@
         "source": "official_import",
         "sourceLabel": "Official organizer publication; selected rows, full table linked",
         "sourceUrl": "https://ioai-official.org/bulgaria-2024/results/",
-        "published": false
+        "published": false,
+        "presentation": {
+          "availability": "OFFICIAL_STAGE_RESULTS",
+          "coverage": "partial",
+          "stageLabel": "Scientific Round 2024",
+          "displayOrder": 8,
+          "notes": "Country left null: team label is not proof of participant citizenship."
+        }
       },
       "entries": [
         {
@@ -1454,7 +1616,36 @@
         "source": "official_import",
         "sourceLabel": "Official organizer publication; selected rows, full table linked",
         "sourceUrl": "https://docs.google.com/spreadsheets/d/10Rj9aCxwFR5EoTQUo9ChunzffX7Xgxb3fy3zDGNjlrQ/edit?usp=sharing",
-        "published": false
+        "published": false,
+        "presentation": {
+          "availability": "OFFICIAL_STAGE_RESULTS",
+          "coverage": "partial",
+          "stageLabel": "FAIO 2025 Final Results",
+          "displayOrder": 9,
+          "notes": "Original team-on-Kaggle labels; not KAIZ profiles. No inferred awards, member details or color-based exclusions.",
+          "columns": [
+            {
+              "key": "problem_1",
+              "label": "problem 1"
+            },
+            {
+              "key": "problem_2",
+              "label": "problem 2"
+            },
+            {
+              "key": "problem_3",
+              "label": "problem 3"
+            },
+            {
+              "key": "problem_4",
+              "label": "problem 4"
+            },
+            {
+              "key": "problem_5",
+              "label": "problem 5"
+            }
+          ]
+        }
       },
       "entries": [
         {
@@ -1469,7 +1660,16 @@
           "externalParticipantId": null,
           "sourceIds": [
             "faio-2025-results"
-          ]
+          ],
+          "presentation": {
+            "scores": {
+              "problem_1": "0,98941",
+              "problem_2": "0,16406",
+              "problem_3": "0,96821",
+              "problem_4": "0,40442",
+              "problem_5": "0,68518"
+            }
+          }
         },
         {
           "participantType": "team",
@@ -1483,7 +1683,16 @@
           "externalParticipantId": null,
           "sourceIds": [
             "faio-2025-results"
-          ]
+          ],
+          "presentation": {
+            "scores": {
+              "problem_1": "0,99092",
+              "problem_2": "0,11718",
+              "problem_3": "0,98288",
+              "problem_4": "0,36551",
+              "problem_5": "0,71225"
+            }
+          }
         },
         {
           "participantType": "team",
@@ -1497,7 +1706,16 @@
           "externalParticipantId": null,
           "sourceIds": [
             "faio-2025-results"
-          ]
+          ],
+          "presentation": {
+            "scores": {
+              "problem_1": "0,98828",
+              "problem_2": "0,05468",
+              "problem_3": "0,96577",
+              "problem_4": "0,2648",
+              "problem_5": "0,75641"
+            }
+          }
         },
         {
           "participantType": "team",
@@ -1511,7 +1729,16 @@
           "externalParticipantId": null,
           "sourceIds": [
             "faio-2025-results"
-          ]
+          ],
+          "presentation": {
+            "scores": {
+              "problem_1": "0,97996",
+              "problem_2": "0,00781",
+              "problem_3": "0,85574",
+              "problem_4": "0,2611",
+              "problem_5": "0,82621"
+            }
+          }
         }
       ]
     },
@@ -1531,7 +1758,14 @@
         "source": "official_import",
         "sourceLabel": "Official organizer publication; selected rows, full table linked",
         "sourceUrl": "https://www.oai.edu.pl/edycje/ii-oai",
-        "published": false
+        "published": false,
+        "presentation": {
+          "availability": "OFFICIAL_STAGE_RESULTS",
+          "coverage": "partial",
+          "stageLabel": "Wyniki Finału II Olimpiady Sztucznej Inteligencji",
+          "displayOrder": 10,
+          "notes": "Source explicitly numbers final ranks including tied 15. Do not convert Polish award categories into medals."
+        }
       },
       "entries": [
         {
@@ -1622,7 +1856,14 @@
         "source": "official_import",
         "sourceLabel": "Official organizer publication; selected rows, full table linked",
         "sourceUrl": "https://www.oai.edu.pl/edycje/ii-oai",
-        "published": false
+        "published": false,
+        "presentation": {
+          "availability": "OFFICIAL_STAGE_RESULTS",
+          "coverage": "partial",
+          "stageLabel": "Wyniki I etapu",
+          "displayOrder": 11,
+          "notes": "Official selected score list; no numbered ranks. Preserve scores and null/unranked instead of deriving rank from list position."
+        }
       },
       "entries": [
         {
@@ -1685,7 +1926,14 @@
         "source": "official_import",
         "sourceLabel": "Official organizer publication; selected rows, full table linked",
         "sourceUrl": "https://www.oai.edu.pl/edycje/ii-oai",
-        "published": false
+        "published": false,
+        "presentation": {
+          "availability": "OFFICIAL_STAGE_RESULTS",
+          "coverage": "partial",
+          "stageLabel": "Wyniki 2 etapu",
+          "displayOrder": 12,
+          "notes": "Three equal scores are preserved. Source does not number ranks; do not infer first place."
+        }
       },
       "entries": [
         {
@@ -1748,7 +1996,24 @@
         "source": "official_import",
         "sourceLabel": "Official organizer publication; selected rows, full table linked",
         "sourceUrl": "https://iaio-official.org/results2026/",
-        "published": false
+        "published": false,
+        "presentation": {
+          "availability": "OFFICIAL_STAGE_RESULTS",
+          "coverage": "partial",
+          "stageLabel": "IAIO 2026 Competition Results",
+          "displayOrder": 13,
+          "notes": "Round 1/2 components retained in stage catalog; not separate qualification/final events or independently ranked sets.",
+          "columns": [
+            {
+              "key": "round_1",
+              "label": "Round 1"
+            },
+            {
+              "key": "round_2",
+              "label": "Round 2"
+            }
+          ]
+        }
       },
       "entries": [
         {
@@ -1763,7 +2028,13 @@
           "externalParticipantId": null,
           "sourceIds": [
             "iaio-2026-results"
-          ]
+          ],
+          "presentation": {
+            "scores": {
+              "round_1": "96.77419355",
+              "round_2": "99.1981876"
+            }
+          }
         },
         {
           "participantType": "individual",
@@ -1777,7 +2048,13 @@
           "externalParticipantId": null,
           "sourceIds": [
             "iaio-2026-results"
-          ]
+          ],
+          "presentation": {
+            "scores": {
+              "round_1": "87.09677419",
+              "round_2": "96.85772158"
+            }
+          }
         },
         {
           "participantType": "individual",
@@ -1791,7 +2068,13 @@
           "externalParticipantId": null,
           "sourceIds": [
             "iaio-2026-results"
-          ]
+          ],
+          "presentation": {
+            "scores": {
+              "round_1": "88.70967742",
+              "round_2": "94.86891462"
+            }
+          }
         }
       ]
     }

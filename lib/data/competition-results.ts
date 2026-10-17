@@ -1,7 +1,9 @@
 import "server-only";
 import { createClient } from "@/lib/supabase/server";
+import type { RowPresentation, SetPresentation } from "@/lib/validation/competition-presentation";
 
 export type CompetitionResultEntry = {
+  presentation?: RowPresentation;
   id: string;
   participant_type: "individual" | "team";
   participant_name: string;
@@ -17,6 +19,7 @@ export type CompetitionResultEntry = {
 };
 
 export type CompetitionResultSet = {
+  presentation?: SetPresentation;
   id: string;
   name: string;
   status: "official" | "provisional";
@@ -32,10 +35,10 @@ export type CompetitionResultSet = {
 };
 
 const resultSetSelect = `
-  id,name,status,source,source_label,source_url,published,
+  id,name,status,source,source_label,source_url,published,presentation,
   fetched_at,imported_at,verified_at,created_at,
   competition_results(
-    id,participant_type,participant_name,rank,score,score_display,
+    id,participant_type,participant_name,rank,score,score_display,presentation,
     country_code,award,result_status,external_participant_id,user_id,
     profiles:profiles!competition_results_user_id_fkey(username,display_name)
   )

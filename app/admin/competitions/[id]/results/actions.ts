@@ -26,6 +26,7 @@ async function linkedUserId(username: string | undefined) {
 
 function resultSetRow(data: z.infer<typeof resultSetSchema>) {
   return {
+    ...(data.presentation === undefined ? {} : { presentation: data.presentation }),
     name: data.name,
     status: data.status,
     source: data.source,
@@ -81,6 +82,7 @@ async function resultEntryRow(data: z.infer<typeof competitionResultSchema>, com
   const { data: resultSet, error } = await supabase.from("competition_result_sets").select("id,status,published").eq("id", data.resultSetId).eq("competition_id", competitionId).maybeSingle();
   if (error || !resultSet) return { error: "The selected result set does not belong to this competition." };
   return { row: {
+    ...(data.presentation === undefined ? {} : { presentation: data.presentation }),
     competition_id: competitionId,
     result_set_id: resultSet.id,
     participant_type: data.participantType,
