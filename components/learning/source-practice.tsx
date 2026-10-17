@@ -1,0 +1,48 @@
+"use client";
+import {useActionState,useId,useState,type ChangeEvent} from "react";
+import Link from "next/link";
+import {Button} from "@/components/ui/button";
+import {Input} from "@/components/ui/input";
+import {saveSourcePractice} from "@/app/problems/sources/actions";
+import {archiveSourceHref} from "@/lib/learning/unified-archive";
+import {safePracticeUrl} from "@/lib/validation/source-practice";
+import type {SourceAttempt,SourceSummary} from "@/lib/data/source-practice";
+import type {ProblemActionState} from "@/lib/validation/problem";
+function Feedback({state}:{state:ProblemActionState}){return <>{state.error&&<div role="alert" className="text-sm text-destructive"><p>{state.error}</p>{state.fields&&<ul>{Object.entries(state.fields).map(([key,values])=><li key={key}>{values?.join(" ")}</li>)}</ul>}</div>}{state.success&&<p role="status" className="text-sm text-success">{state.success}</p>}</>;}
+function Status({catalogId,status}:{catalogId:string;status:string|null}){
+ const [state,action,pending]=useActionState(saveSourcePractice.bind(null,catalogId,"status",null),{});
+ return <form action={action} className="mt-3 flex flex-wrap gap-2" aria-busy={pending}>{[["practiced","Practiced / Participated"],["finished","Finished — Self-reported"],["clear","Clear manual status"]].map(([value,label])=><Button key={value} size="sm" variant="outline" name="status" value={value} disabled={pending||status===value}>{label}</Button>)}<div className="w-full"><Feedback state={state}/></div></form>;
+}
+function AttemptForm({catalogId,attempt}:{catalogId:string;attempt?:SourceAttempt}){
+ const id=useId();
+ const initial={practice_outcome:attempt?.practice_outcome??"practiced",attempted_at:attempt?.attempted_at?new Date(attempt.attempted_at).toISOString().slice(0,19):"",raw_score:String(attempt?.raw_score??""),practice_metric:attempt?.practice_metric??"",practice_direction:attempt?.practice_direction??"",practice_task_title:attempt?.practice_task_title??"",practice_task_url:attempt?.practice_task_url??"",practice_notes:attempt?.practice_notes??""};
+ const [draft,setDraft]=useState(initial);
+ const field=(name:keyof typeof draft)=>({value:draft[name],onChange:(event:ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>)=>setDraft(current=>({...current,[name]:event.target.value}))});
+ const [state,action,pending]=useActionState(async(previous:ProblemActionState,form:FormData)=>{
+  const result=await saveSourcePractice(catalogId,attempt?"update":"create",attempt?.id??null,previous,form);
+  if(result.success&&!attempt)setDraft(initial);
+  return result;
+ },{});
+ return <form action={action} className="mt-4 space-y-4" aria-busy={pending}><fieldset disabled={pending} className="grid min-w-0 gap-4 sm:grid-cols-2 [&>label]:min-w-0 [&_input]:min-w-0 [&_input]:max-w-full"><legend className="sr-only">{attempt?"Edit private source attempt":"Record private source attempt"}</legend>
+  <div className="min-w-0 text-sm"><label htmlFor={id+"-outcome"}>Outcome</label><select id={id+"-outcome"} name="practice_outcome" {...field("practice_outcome")} className="mt-2 min-h-11 w-full rounded-sm border bg-background px-3"><option value="practiced">Practiced</option><option value="participated">Participated</option><option value="finished">Finished — Self-reported</option><option value="solved">Solved an individual task — Self-reported</option></select></div>
+  <label className="text-sm" htmlFor={id+"-time"}>Practice date (UTC)<Input id={id+"-time"} type="datetime-local" name="attempted_at" step="1" className="mt-2" {...field("attempted_at")} required/></label>
+  <label className="text-sm" htmlFor={id+"-score"}>Personal score (optional)<Input id={id+"-score"} type="number" step="any" name="raw_score" {...field("raw_score")} className="mt-2"/></label>
+  <label className="text-sm" htmlFor={id+"-metric"}>Metric / unit<Input id={id+"-metric"} name="practice_metric" maxLength={80} placeholder="Accuracy, accuracy %, points, RMSE…" {...field("practice_metric")} className="mt-2"/></label>
+  <div className="min-w-0 text-sm"><label htmlFor={id+"-direction"}>Score direction</label><select id={id+"-direction"} name="practice_direction" {...field("practice_direction")} className="mt-2 min-h-11 w-full rounded-sm border bg-background px-3"><option value="">Not specified</option><option value="higher_is_better">Higher is better</option><option value="lower_is_better">Lower is better</option></select></div>
+  <label className="text-sm" htmlFor={id+"-title"}>Individual task title (optional)<Input id={id+"-title"} name="practice_task_title" maxLength={180} {...field("practice_task_title")} className="mt-2"/></label>
+  <label className="text-sm sm:col-span-2" htmlFor={id+"-url"}>Original individual task URL (optional)<Input id={id+"-url"} name="practice_task_url" type="url" maxLength={2000} {...field("practice_task_url")} placeholder="https://…" className="mt-2"/></label>
+  <div className="text-sm sm:col-span-2"><label htmlFor={id+"-notes"}>Private notes</label><textarea id={id+"-notes"} name="practice_notes" maxLength={2000} rows={3} {...field("practice_notes")} className="mt-2 w-full rounded-sm border bg-background p-3"/></div>
+ </fieldset><p className="text-xs text-muted-foreground">Optional score, original unit and direction. No guessed maximum, judge verification or competitive XP. Name an individual task before reporting it solved.</p><Feedback state={state}/><Button disabled={pending}>{pending?"Saving…":attempt?"Save private changes":"Save practice result"}</Button></form>;
+}
+function DeleteAttempt({catalogId,id}:{catalogId:string;id:string}){
+ const [state,action,pending]=useActionState(saveSourcePractice.bind(null,catalogId,"delete",id),{});
+ return <form action={action} className="mt-4 space-y-3 border-t pt-3"><label className="flex min-h-11 items-center gap-2 text-sm"><input type="checkbox" name="confirm" value="true" required/>Delete this private attempt permanently</label><Feedback state={state}/><Button variant="danger" size="sm" disabled={pending}>Delete private attempt</Button></form>;
+}
+export function SourcePractice({catalogId,signedIn,error,summary,attempts,count,page,initiallyOpen=false}:{catalogId:string;signedIn:boolean;error:string|null;summary?:SourceSummary;attempts:SourceAttempt[];count:number;page:number;initiallyOpen?:boolean}){
+ const [open,setOpen]=useState(initiallyOpen);
+ return <section id="source-practice" aria-label="My source practice" className="min-w-0 border-y py-5 [overflow-wrap:anywhere]"><div className="flex flex-wrap items-start justify-between gap-3"><div><h2 className="text-lg font-semibold">My Practice</h2><p className="mt-1 text-sm text-muted-foreground">Private · Self-reported · Collection progress is not a judge-verified solved problem.</p></div>{signedIn&&!error&&<Button variant="outline" onClick={()=>setOpen(v=>!v)} aria-expanded={open} aria-controls="record-source-result">Record result</Button>}</div>
+  {error?<p role="alert" className="mt-3 text-sm text-muted-foreground">{error}</p>:!signedIn?<Link href={`/auth/login?next=${encodeURIComponent(archiveSourceHref(catalogId))}`} className="mt-3 inline-flex min-h-11 items-center rounded-sm border px-4 text-sm font-semibold">Sign in to record practice</Link>:<><div className="mt-3 flex flex-wrap gap-4 text-sm"><p><strong>Status:</strong> {summary?.status==="finished"?"✓ Finished — Self-reported":summary?"Practiced / Participated":"Not started"}</p><p><strong>My score:</strong> {summary?.latest_score!=null?`${summary.latest_score} ${summary.metric??""} · Self-reported`:"No score recorded"}</p>{summary?.last_practiced_at&&<p>Last practice: {new Date(summary.last_practiced_at).toISOString().slice(0,10)} UTC</p>}</div><Status catalogId={catalogId} status={summary?.status??null}/>
+   {open&&<div id="record-source-result" className="mt-4 border bg-card p-4"><h3 className="font-semibold">Record practice result</h3><AttemptForm catalogId={catalogId}/></div>}
+   <details className="mt-5"><summary className="cursor-pointer py-2 text-sm font-semibold">Previous attempts ({count})</summary><div className="mt-2 space-y-3">{attempts.map(attempt=><article key={attempt.id} className="border bg-card p-4 text-sm"><p className="font-semibold">{attempt.practice_task_title??"Collection practice"} · {attempt.practice_outcome??"practiced"} — Self-reported</p><p className="mt-1">{attempt.raw_score!=null?`${attempt.raw_score} ${attempt.practice_metric??""}`:"No numeric score"} · {attempt.practice_direction?.replaceAll("_"," ")??"Direction not specified"} · {new Date(attempt.attempted_at).toISOString().replace("T"," ").slice(0,19)} UTC</p>{attempt.practice_notes&&<p className="mt-2 whitespace-pre-wrap">{attempt.practice_notes}</p>}{attempt.practice_task_url&&safePracticeUrl(attempt.practice_task_url)&&<a className="mt-2 inline-flex rounded-sm border px-3 py-2" href={attempt.practice_task_url} target="_blank" rel="noopener noreferrer">Open original individual task ↗</a>}{attempt.editable&&<details className="mt-2"><summary className="cursor-pointer py-2 font-semibold">Edit or delete private attempt</summary><AttemptForm catalogId={catalogId} attempt={attempt}/><DeleteAttempt catalogId={catalogId} id={attempt.id}/></details>}</article>)}{!attempts.length&&<p className="text-sm text-muted-foreground">No recorded attempts.</p>}</div><nav className="mt-3 flex gap-3 text-sm" aria-label="Source practice history">{page>1&&<Link href={`${archiveSourceHref(catalogId)}?practicePage=${page-1}#source-practice`}>Previous</Link>}<span>Page {page}</span>{page*20<count&&<Link href={`${archiveSourceHref(catalogId)}?practicePage=${page+1}#source-practice`}>Next</Link>}</nav></details></>}
+ </section>;
+}

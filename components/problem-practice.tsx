@@ -16,9 +16,10 @@ function PracticeEntryForm({ action, metric, attempt, onSuccess, limits }: {
   const prefix = useId();
   const [score, setScore] = useState(attempt ? String(attempt.raw_score) : "");
   const [time, setTime] = useState(attempt?.attempted_at ? new Date(attempt.attempted_at).toISOString().slice(0, -1) : "");
+  const [notes,setNotes]=useState(attempt?.practice_notes??"");
   const [state, formAction, pending] = useActionState(async (previous: ProblemActionState, data: FormData) => {
     const result = await action(previous, data);
-    if (result.success) { onSuccess(result.success); if (!attempt) { setScore(""); setTime(""); } }
+    if (result.success) { onSuccess(result.success); if (!attempt) { setScore(""); setTime(""); setNotes(""); } }
     return result;
   }, {});
   return <form action={formAction} className="space-y-4" aria-busy={pending}>
@@ -28,6 +29,7 @@ function PracticeEntryForm({ action, metric, attempt, onSuccess, limits }: {
       <div><label htmlFor={`${prefix}-raw_score`} className="text-sm font-medium">Raw score ({metric})</label><Input id={`${prefix}-raw_score`} name="raw_score" type="number" step="any" min={limits?.min} max={limits?.max} value={score} onChange={(event) => setScore(event.target.value)} className="mt-2 h-11" required aria-invalid={Boolean(state.fields?.raw_score)} aria-describedby={`${prefix}-raw_score-error`}/><span id={`${prefix}-raw_score-error`} className="mt-1 block text-sm text-destructive">{state.fields?.raw_score?.join(" ")}</span></div>
       <div><label htmlFor={`${prefix}-attempted_at`} className="text-sm font-medium">Attempt time (UTC)</label><Input id={`${prefix}-attempted_at`} name="attempted_at" type="datetime-local" step="0.001" value={time} onChange={(event) => setTime(event.target.value)} className="mt-2 h-11" required aria-invalid={Boolean(state.fields?.attempted_at)} aria-describedby={`${prefix}-attempted_at-error`}/><span id={`${prefix}-attempted_at-error`} className="mt-1 block text-sm text-destructive">{state.fields?.attempted_at?.join(" ")}</span></div>
     </fieldset>
+    <label className="block text-sm" htmlFor={`${prefix}-notes`}>Private notes<textarea id={`${prefix}-notes`} name="practice_notes" maxLength={2000} rows={3} value={notes} onChange={event=>setNotes(event.target.value)} className="mt-2 w-full rounded-sm border bg-background p-3"/></label>
     <Button disabled={pending} className="min-h-11">{pending ? "Saving…" : attempt ? "Save changes" : "Add practice result"}</Button>
   </form>;
 }
@@ -66,6 +68,7 @@ export function ProblemPractice({ problemId, slug, metric, direction, best, atte
     <div className="mt-3 border bg-card">{attempts.length ? attempts.map((attempt) => <article key={attempt.id} className="border-b p-4 last:border-0">
       <div className="flex flex-wrap items-start justify-between gap-3"><p className="tabular break-words font-mono font-semibold">{score(attempt.raw_score)} {metric}</p><time className="text-sm text-muted-foreground" dateTime={attempt.attempted_at}>{new Date(attempt.attempted_at).toISOString().replace("T", " ").replace(".000Z", " UTC")}</time></div>
       <p className="mt-2 text-sm text-muted-foreground">{attempt.status} · {attempt.editable ? "Self-reported" : "Reviewed / administrator-managed — read-only"}</p>
+      {attempt.practice_notes&&<p className="mt-2 whitespace-pre-wrap text-sm">{attempt.practice_notes}</p>}
       {attempt.editable && <details className="mt-3"><summary className="min-h-11 cursor-pointer py-3 text-sm font-semibold text-primary">Edit or delete this attempt</summary><PracticeEntryForm action={updatePracticeAttempt.bind(null, problemId, attempt.id)} metric={metric} limits={limits} attempt={attempt} onSuccess={setNotice}/><DeletePracticeForm action={deletePracticeAttempt.bind(null, problemId, attempt.id)} onSuccess={setNotice}/></details>}
     </article>) : <p className="p-4 text-sm text-muted-foreground">No attempts on this page.</p>}</div>
     <nav aria-label="Practice history pages" className="mt-4 flex flex-wrap items-center gap-4">{page > 1 && <Link className="underline" href={`/problems/${slug}?practicePage=${page - 1}#practice`}>Previous</Link>}<span className="text-sm">Page {page}</span>{page * 20 < count && <Link className="underline" href={`/problems/${slug}?practicePage=${page + 1}#practice`}>Next</Link>}</nav>

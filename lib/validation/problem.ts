@@ -41,6 +41,7 @@ export const problemSchema = z.object({
 
 export const practiceSchema = z.object({
   raw_score: decimal,
+  practice_notes: optionalText(2000).optional(),
   attempted_at: z.preprocess((value) => {
     // The visible datetime-local field is explicitly labeled UTC.
     if (typeof value === "string" && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d{1,3})?)?$/.test(value))

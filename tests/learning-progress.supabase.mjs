@@ -90,14 +90,14 @@ try{
  fault('RestoreRead');faultActive=false;
  step='retry restored database read';await a.page.getByRole('button',{name:'Retry saved progress',exact:true}).click();await a.page.getByRole('button',{name:'Retry saved progress',exact:true}).waitFor({state:'detached'});await progress(a.page,1);}
  await a.page.getByRole('heading',{name:'My practice',exact:true}).waitFor();
- await a.page.getByText(/0 private self-reported attempts/).waitFor();
+ await a.page.getByText(/0 private individual-task attempts/).waitFor();
  assert.equal(await a.page.getByText(/Private practice is unavailable/).count(),0);
  step='existing private practice history';
  const problem=check(await service.from('problems').insert({title:'Temporary Release A QA task',slug:'release-a-qa-'+randomUUID(),category:'AI',metric_name:'F1',metric_direction:'higher_is_better',source_provider:'manual',published:true}).select('id').single());problems.push(problem.id);
  // A deliberately past fixture avoids a client/DB clock-boundary race under
  // the additive practice migration's future-time protection.
  check(await owner.client.from('problem_performances').insert({problem_id:problem.id,user_id:owner.id,attempt_type:'practice',raw_score:0.842,attempted_at:new Date(Date.now()-60000).toISOString()}));
- await a.page.reload();await a.page.getByText(/1 private self-reported attempts/).waitFor();
+ await a.page.reload();await a.page.getByText(/1 private individual-task attempts/).waitFor();
  await a.page.getByRole('link',{name:'Temporary Release A QA task',exact:true}).waitFor();
  await a.page.getByText(/0\.842 F1 · Self-reported/).waitFor();
  await a.page.screenshot({path:'work/learning-progress/auth-screenshots/dashboard-desktop-dark.png',fullPage:true});
@@ -108,7 +108,7 @@ try{
  await second.page.screenshot({path:'work/learning-progress/auth-screenshots/roadmap-mobile-light.png',fullPage:true});
  for(const route of ['/roadmaps','/dashboard','/roadmaps/beginner',lessonPath]){await second.page.goto(base.origin+route);await second.page.evaluate(()=>document.documentElement.style.fontSize='200%');assert.ok(await second.page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));}
  step='cross-user real Auth and RLS';const b=await context();await login(b.page,other);await progress(b.page,0);
- await b.page.goto(base.origin+'/dashboard');await b.page.getByText(/0 private self-reported attempts/).waitFor();
+ await b.page.goto(base.origin+'/dashboard');await b.page.getByText(/0 private individual-task attempts/).waitFor();
  assert.equal(await b.page.getByRole('link',{name:'Temporary Release A QA task',exact:true}).count(),0);
  assert.deepEqual(check(await other.client.from('problem_performances').select('id').eq('user_id',owner.id)),[]);
  assert.deepEqual(check(await other.client.from('learning_progress').select('lesson_id').eq('user_id',owner.id)),[]);

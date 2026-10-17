@@ -77,13 +77,14 @@ test('migration protects ownership and trusted timestamps without competitive co
 
 test('dashboard practice reads only the authenticated owner and preserves unavailable state',async()=>{
  let signedIn=false,fail=false;const calls=[];
- const query={select(...args){calls.push(['select',...args]);return this;},eq(...args){calls.push(['eq',...args]);return this;},order(...args){calls.push(['order',...args]);return this;},limit(n){calls.push(['limit',n]);return Promise.resolve({data:[],count:fail?null:0,error:fail?{}:null});}};
+ const query={select(...args){calls.push(['select',...args]);return this;},eq(...args){calls.push(['eq',...args]);return this;},not(...args){calls.push(['not',...args]);return this;},order(...args){calls.push(['order',...args]);return this;},limit(n){calls.push(['limit',n]);return Promise.resolve({data:[],count:fail?null:0,error:fail?{}:null});}};
  const {getOwnRecentPractice}=loadTypescript({'@/lib/auth':{getCurrentUser:async()=>signedIn?{id:'owner'}:null},'@/lib/supabase/server':{createClient:async()=>({from(table){calls.push(['from',table]);return query;}})}})('lib/data/personal-practice.ts');
  assert.equal((await getOwnRecentPractice()).count,0);assert.equal(calls.length,0);
  signedIn=true;assert.equal((await getOwnRecentPractice()).error,null);
  assert.ok(calls.some(c=>c[0]==='select'&&c[1].includes('problems!problem_performances_problem_id_fkey(')),'Disambiguate the simple problem FK from the official-result composite context FK');
  assert.ok(calls.some(c=>c[0]==='eq'&&c[1]==='user_id'&&c[2]==='owner'));
  assert.ok(calls.some(c=>c[0]==='eq'&&c[1]==='attempt_type'&&c[2]==='practice'));
+ assert.ok(calls.some(c=>c[0]==='not'&&c[1]==='problem_id'&&c[2]==='is'&&c[3]===null),'Source attempts are summarized separately, never mistaken for individual scored tasks');
  assert.ok(calls.some(c=>c[0]==='limit'&&c[1]===20));
  fail=true;assert.match((await getOwnRecentPractice()).error,/No empty history is assumed/);
 });
