@@ -48,7 +48,7 @@ jobs:
         run: node --test tests/content-import.test.mjs tests/competition-results.test.mjs
 
       - name: Learning and pathfinder regression tests
-        run: node --test tests/learning-curriculum.test.mjs tests/learning-presentation.test.mjs tests/pathfinder.test.mjs tests/learning-progress.test.mjs
+        run: node --test tests/learning-curriculum.test.mjs tests/learning-presentation.test.mjs tests/pathfinder.test.mjs tests/learning-progress.test.mjs tests/progress-experience.test.mjs
 
       - name: Production build
         run: npm run build
