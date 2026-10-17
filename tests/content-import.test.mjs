@@ -219,6 +219,7 @@ test('new full dataset uses existing validator and freezes five existing UUIDs; 
  assert.equal(p.batch.competitions.filter(c=>c.expectedId).length,5);assert.equal(p.batch.competitions.some(c=>c.editionKey==='iaio-2024'||c.editionKey==='usaaio-2026'),false);
  for(const c of p.batch.competitions.filter(c=>c.expectedId))assert.equal(c.expectedId,old.competitions.find(x=>x.editionKey===c.editionKey).id);
  const wrong=publication();wrong.stages[0].source_url='https://example.test/results';for(const row of wrong.stages[0].rows)row.provenance.source_url=wrong.stages[0].source_url;assert.throws(()=>preparePublicationPlan(wrong,batch(),old),'Changing all row URLs cannot bypass the reviewed official adapter');
+ const presentationBatch=batch();for(const set of presentationBatch.resultSets)set.form.presentation={coverage:'partial',stageLabel:set.division};const adapted=preparePublicationPlan(publication(),presentationBatch,old).batch.resultSets[0];assert.equal(adapted.form.presentation.coverage,'complete');assert.equal(adapted.form.presentation.stageLabel,adapted.division);assert.equal(adapted.form.presentation.columns.length,6);assert.equal(Object.keys(adapted.entries[0].presentation.scores).length,6);
 });
 test('complete manifest re-import is a no-op and a changed row is a conflict',()=>{
  const m=publication();const first=preparePublicationPlan(m,batch(),snapshot());const b=first.batch;

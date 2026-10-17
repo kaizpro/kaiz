@@ -114,6 +114,8 @@ Only a disposable local database is used, never a connection URL or hosted accou
    metadata, then **draft** result sets, then their source-backed rows. Use the adapter
    forms plus matching `standingsPresentation` fields. Retain stable participant IDs,
    original columns, source and row provenance; do not bypass RLS with ad-hoc SQL.
+   Per-row provenance is retained in the versioned review manifest keyed by the
+   stable participant ID; the existing admin form does not edit raw row metadata.
 6. Compare draft counts and sample rows (first/middle/last, ties/zero/missing/awards)
    to the source. Re-run preview against the saved inventory to ensure no duplicates.
 7. Obtain the owner's explicit per-stage publication authorization, then publish
