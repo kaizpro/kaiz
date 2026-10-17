@@ -6,7 +6,7 @@ import {join} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {randomBytes,createHash} from 'node:crypto';
 import {existsSync} from 'node:fs';
-import {preparePublicationPlan} from '../scripts/content/publication-plan.mjs';
+import {preparePublicationPlan,sourceCountryCode} from '../scripts/content/publication-plan.mjs';
 import {loadContentModule} from '../scripts/content/load.mjs';
 assert.ok(process.env.KAIZ_EMBEDDED_POSTGRES_MODULE&&process.env.KAIZ_PRESENTATION_MIGRATION,'Provide disposable PG17 runtime and exact reviewed PR24 migration file');
 const presentation=await readFile(process.env.KAIZ_PRESENTATION_MIGRATION);
@@ -39,7 +39,7 @@ try{
  for(const edition of manifest.editions.filter(e=>e.metadata&&!ids.has(e.edition_id)))ids.set(edition.edition_id,await competition(edition.metadata.form));
  const sets=[];
  for(const stage of manifest.stages){const original=plan.batch.resultSets.find(s=>s.key===stage.stage_id),p=plan.standingsPresentation.find(s=>s.key===stage.stage_id);const set=(await client.query('insert into public.competition_result_sets(competition_id,name,status,source,source_label,source_url,published,presentation) values($1,$2,$3,$4,$5,$6,false,$7) returning id',[ids.get(stage.edition_id),original.form.name,original.form.status,original.form.source,original.form.sourceLabel,stage.source_url,p.set])).rows[0].id;sets.push({id:set,count:stage.rows.length});
-  for(let repeat=0;repeat<2;repeat++)for(const row of stage.rows)await client.query('insert into public.competition_results(competition_id,result_set_id,participant_name,participant_type,rank,score,score_display,country_code,award,result_status,external_participant_id,presentation,metadata,verified) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,false) on conflict(result_set_id,external_participant_id) where external_participant_id is not null do nothing',[ids.get(stage.edition_id),set,row.display_name,row.participant_type,row.rank,row.score,row.score_display,/^[A-Z]{2,3}$/.test(row.country_or_region??'')?row.country_or_region:null,row.award,row.result_status,row.participant_id,p.rows.find(r=>r.participantId===row.participant_id).presentation,{provenance:row.provenance,publication_authorization:stage.publication_authorization}]);
+  for(let repeat=0;repeat<2;repeat++)for(const row of stage.rows)await client.query('insert into public.competition_results(competition_id,result_set_id,participant_name,participant_type,rank,score,score_display,country_code,award,result_status,external_participant_id,presentation,metadata,verified) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,false) on conflict(result_set_id,external_participant_id) where external_participant_id is not null do nothing',[ids.get(stage.edition_id),set,row.display_name,row.participant_type,row.rank,row.score,row.score_display,sourceCountryCode(stage,row),row.award,row.result_status,row.participant_id,p.rows.find(r=>r.participantId===row.participant_id).presentation,{provenance:row.provenance,publication_authorization:stage.publication_authorization}]);
  }
  assert.deepEqual(await fingerprints(),before,'Five existing competition records preserved byte-for-byte');
  assert.equal(Number((await client.query('select count(*) n from public.competition_results')).rows[0].n),809);
