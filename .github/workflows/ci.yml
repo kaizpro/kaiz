@@ -42,7 +42,7 @@ jobs:
         run: npm run lint
 
       - name: Auth and archive regression tests
-        run: node --test tests/auth.test.mjs tests/problem-performances.test.mjs tests/problem-workflows.test.mjs tests/personal-practice.test.mjs
+        run: node --test tests/auth.test.mjs tests/problem-performances.test.mjs tests/problem-workflows.test.mjs tests/personal-practice.test.mjs tests/external-practice.test.mjs
 
       - name: Content import and competition results regression tests
         run: node --test tests/content-import.test.mjs tests/competition-results.test.mjs

@@ -11,9 +11,9 @@ test('every catalogued source has a stable internal detail route, including held
  const items=buildPracticeArchive([]);assert.equal(items.length,31);assert.equal(new Set(items.map(i=>i.href)).size,31);
  for(const item of items){assert.match(item.href,/^\/problems\/sources\//);assert.equal(getArchiveSource(encodeURIComponent(item.id)).id,item.id);}
  for(const id of ['__proto__','missing','%GG','publisher%253Abeginner'])assert.equal(getArchiveSource(id),undefined);
- const Page=load('app/problems/sources/[id]/page.tsx').default;
- for(const id of ['source-a-problem-2','source-a-problem-10']){const html=renderToStaticMarkup(await Page({params:Promise.resolve({id})}));assert.match(html,/Back to archive/);assert.match(html,/detail page remains available/);assert.doesNotMatch(html,/href="https:|Mark Solved|Raw score/);}
- const parent=renderToStaticMarkup(await Page({params:Promise.resolve({id:'source-a-problem-20'})}));assert.match(parent,/Catalogued source entries/);assert.match(parent,/source-a-problem-27/);assert.match(parent,/Browse collection/);
+ const Page=loadTypescript({'@/lib/data/source-practice':{getOwnSourcePractice:async()=>({signedIn:false,error:null,items:[],attempts:[],attemptCount:0})}})('app/problems/sources/[id]/page.tsx').default;
+ for(const id of ['source-a-problem-2','source-a-problem-10']){const html=renderToStaticMarkup(await Page({params:Promise.resolve({id}),searchParams:Promise.resolve({})}));assert.match(html,/Back to archive/);assert.match(html,/Record practice/);assert.match(html,/Sign in to record practice/);assert.doesNotMatch(html,/href="https:|Mark Solved|Raw score/);}
+ const parent=renderToStaticMarkup(await Page({params:Promise.resolve({id:'source-a-problem-20'}),searchParams:Promise.resolve({})}));assert.match(parent,/Related catalogued contests/);assert.match(parent,/source-a-problem-27/);assert.match(parent,/SOLVE ↗/);
 });
 test('generic error-page titles and unsafe source URLs never become active task links',()=>{
  const {buildPracticeArchive,publicExternalUrl}=load('lib/learning/unified-archive.ts');
