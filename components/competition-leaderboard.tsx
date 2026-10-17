@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { ExternalLink, Medal, Trophy } from "lucide-react";
+import { ExternalLink, Trophy } from "lucide-react";
+import { CompetitionStandings } from "@/components/competition-standings";
 import { Badge } from "@/components/ui/badge";
 import { CompetitionResultSwitcher } from "@/components/competition-result-switcher";
 import type { CompetitionResultSet } from "@/lib/data/competition-results";
@@ -19,25 +19,10 @@ export function ResultTable({ resultSet }: { resultSet: CompetitionResultSet }) 
         {resultSet.verified_at && <p className="mt-1 text-xs text-muted-foreground">Last verified: {resultSet.verified_at.slice(0, 10)}</p>}
       </div><span className="shrink-0 font-mono text-xs text-muted-foreground">{resultSet.competition_results.length} entries</span>
     </div>
-    {resultSet.competition_results.length ? <div className="overflow-x-auto"><table className="w-full min-w-[38rem] border-collapse text-sm">
-      <caption className="sr-only">{resultSet.name}; {presentation.coverage === "complete" ? "complete" : "coverage limited or unverified"}</caption>
-      <thead><tr className="border-b bg-muted/40 text-left">{["Rank", "Participant", "Country", ...columns.map((column) => column.label), "Total / score", "Award"].map((label, index) => <th key={index} scope="col" className="whitespace-nowrap px-4 py-3 text-xs font-medium text-muted-foreground">{label}</th>)}</tr></thead>
-      <tbody>{resultSet.competition_results.map((entry) => {
+    {resultSet.competition_results.length ? <CompetitionStandings name={resultSet.name} columns={columns} rows={resultSet.competition_results.map((entry) => {
         const details = rowPresentationSchema.safeParse(entry.presentation ?? {}).data ?? {};
-        return <tr key={entry.id} className="border-b last:border-b-0">
-          <td className="tabular px-4 py-3 font-mono font-bold">{entry.rank ?? "—"}</td>
-          <td className="px-4 py-3"><div className="flex items-center gap-2"><span className="font-semibold">{entry.profiles?.username ? <Link href={`/u/${entry.profiles.username}`} className="hover:text-primary">{entry.participant_name}</Link> : entry.participant_name}</span>{entry.participant_type === "team" && <Badge>Team</Badge>}</div>
-            {(details.city || details.school || details.team) && <p className="mt-1 text-xs text-muted-foreground">{[details.city, details.school, details.team].filter(Boolean).join(" · ")}</p>}
-            {entry.result_status !== "ranked" && <p className="mt-1 text-xs capitalize text-muted-foreground">{entry.result_status}</p>}
-            {details.comments && <p className="mt-1 text-xs text-muted-foreground">{details.comments}</p>}
-          </td>
-          <td className="px-4 py-3 font-mono text-muted-foreground">{entry.country_code || "—"}</td>
-          {columns.map((column) => <td key={column.key} className="tabular whitespace-nowrap px-4 py-3 font-mono">{details.scores?.[column.key] ?? "—"}</td>)}
-          <td className="tabular whitespace-nowrap px-4 py-3 font-mono font-semibold">{entry.score_display ?? entry.score ?? "—"}</td>
-          <td className="px-4 py-3">{entry.award ? <Badge><Medal className="mr-1 size-3"/>{entry.award}</Badge> : "—"}</td>
-        </tr>;
-      })}</tbody>
-    </table></div> : <MissingResults/>}
+        return {id:entry.id,rank:entry.rank,name:entry.participant_name,username:entry.profiles?.username,team:entry.participant_type==="team",country:entry.country_code,detail:[details.city,details.school,details.team].filter(Boolean).join(" · "),status:entry.result_status,comments:details.comments,scores:details.scores??{},total:entry.score_display??entry.score,award:entry.award};
+      })}/> : <MissingResults/>}
   </section>;
 }
 

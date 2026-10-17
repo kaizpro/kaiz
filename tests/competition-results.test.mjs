@@ -157,10 +157,12 @@ function renderedLeaderboard(sets, expectedStages = []) {
     react: React, "react/jsx-runtime": jsxRuntime, "lucide-react": icons,
     "next/link": { default: ({ children, ...props }) => React.createElement("a", props, children) },
     "@/components/ui/badge": { Badge: ({ children, ...props }) => React.createElement("span", props, children) },
+    "@/components/ui/button": { Button: ({ children, disabled, onClick }) => React.createElement("button", {disabled,onClick}, children) },
     "@/lib/results/provider": { RESULT_SOURCE_LABELS: { official_import: "Organizer" } },
     "@/lib/validation/competition-presentation": presentation,
   };
   imports["@/components/competition-result-switcher"] = load("components/competition-result-switcher.tsx", imports);
+  imports["@/components/competition-standings"] = load("components/competition-standings.tsx", imports);
   const { CompetitionLeaderboard } = load("components/competition-leaderboard.tsx", imports);
   return renderToStaticMarkup(React.createElement(CompetitionLeaderboard, { resultSets: sets, expectedStages }));
 }
@@ -180,4 +182,14 @@ test("results SSR smoke: missing sets show an honest empty state and winners sta
   assert.match(html, /Official winners \/ medalists only/); assert.match(html, /Results are not available yet/);
   const secondary = renderedLeaderboard([{ id: setId, name: "Selected entries", status: "official", source: "official_import", presentation: { availability: "SECONDARY_RESULTS_ONLY", coverage: "partial" }, competition_results: [] }]);
   assert.match(secondary, /Secondary source/); assert.doesNotMatch(secondary, /Official results/);
+});
+
+test("standings search and awards preserve original order, tied ranks, missing and zero scores",()=>{
+ const imports={react:React,"react/jsx-runtime":jsxRuntime,"next/link":{default:()=>null},"@/components/ui/badge":{Badge:()=>null},"@/components/ui/button":{Button:()=>null}};
+ const {filterStandings}=load('components/competition-standings.tsx',imports);
+ const rows=[{id:'a',name:'First',rank:2,award:'Gold',total:0,country:'KZ',detail:'Almaty'},{id:'b',name:'Second',rank:2,award:null,total:null,country:null,detail:''}];
+ assert.deepEqual(Array.from(filterStandings(rows,'almaty','Gold')).map(row=>row.id),['a']);
+ assert.deepEqual(Array.from(filterStandings(rows,'','')).map(row=>row.rank),[2,2]);
+ assert.equal(filterStandings(rows,'Second','')[0].total,null);
+ assert.equal(filterStandings(rows,'','Gold')[0].total,0);
 });
