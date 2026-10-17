@@ -36,11 +36,13 @@ export function courseProgress(path: Journey, records: readonly LessonProgress[]
   const completed = new Set(records.filter(row => row.roadmap_id === path.level && row.completed_at !== null).map(row => row.lesson_id));
   const lessons = modules.flatMap(module => module.lessons);
   const count = lessons.filter(lesson => completed.has(lesson.id)).length;
-  return { modules, completed, total: lessons.length, count, percent: lessons.length ? Math.floor(count / lessons.length * 100) : 0, xp: count * 10, next: lessons.find(lesson => !completed.has(lesson.id)) };
+  return { modules, completed, total: lessons.length, count, percent: lessons.length ? Math.floor(count / lessons.length * 100) : 0, xp: count * 10, status: count === lessons.length ? "Completed" : count ? "In progress" : "Not started", action: count === lessons.length ? "Review" : count ? "Continue" : "Start", next: lessons.find(lesson => !completed.has(lesson.id)) };
 }
 export function learningSummary(records: readonly LessonProgress[]) {
   const paths = journeys.map(path => ({ path, ...courseProgress(path, records) }));
   const known = records.filter(row => getCourseLesson(row.roadmap_id, row.lesson_id));
   const recent = [...known].sort((a, b) => b.updated_at.localeCompare(a.updated_at))[0];
-  return { paths, xp: paths.reduce((sum, path) => sum + path.xp, 0), active: paths.find(path => path.path.level === recent?.roadmap_id) };
+  const count = paths.reduce((sum, path) => sum + path.count, 0);
+  const total = paths.reduce((sum, path) => sum + path.total, 0);
+  return { paths, count, total, percent: total ? Math.floor(count / total * 100) : 0, activeCount: paths.filter(path => path.count > 0 && path.count < path.total).length, xp: count * 10, active: paths.find(path => path.path.level === recent?.roadmap_id) };
 }
