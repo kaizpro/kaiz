@@ -1,0 +1,37 @@
+import {z} from 'zod';
+import {loadContentModule} from './load.mjs';
+const key=z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).max(160);
+const publicUrl=z.string().url().refine(value=>{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password&&![...u.searchParams.keys()].some(key=>/token|secret|password|code|key/i.test(key));});
+const regionNames=new Intl.DisplayNames(['en'],{type:'region'});
+const regionCodes='AL AM AU AT AZ BD BE BG BO BR CA CH CL CN CO CY CZ DE DK DZ EE EG ES FI FR GB GE GH GR HK HR HU ID IE IL IN IR IS IT JM JO JP KE KG KR KZ LB LK LT LU LV MA MD ME MK MN MO MX MY NG NL NO NP NZ OM PE PH PK PL PT QA RO RS RU SA SE SG SI SK TH TN TR TW UA US UZ VN ZA'.split(' ');
+const sourceRegions=new Map(regionCodes.map(code=>[regionNames.of(code),code]));
+for(const [label,code]of[['Turkiye','TR'],['Hong Kong, China','HK'],['Macao, China','MO']])sourceRegions.set(label,code);
+export function sourceCountryCode(stage,row){
+ const label=row.country_or_region??'';
+ if(/^[A-Z]{2,3}$/.test(label))return label;
+ // Only an explicitly labelled country/region column, never a parsed team name,
+ // guessed citizenship, contestant location, school or participant name.
+ return stage.original_fields[2]==='Country Or Region'?sourceRegions.get(label)??null:null;
+}
+const row=z.object({participant_id:z.string().min(1).max(200),display_name:z.string().trim().min(1).max(160),participant_type:z.enum(['individual','team']),rank:z.number().int().positive().nullable(),score:z.number().finite().nullable(),score_display:z.string().max(80).nullable(),country_or_region:z.string().max(160).nullable(),score_columns:z.record(z.string().regex(/^[a-z][a-z0-9_]{0,39}$/),z.string().max(100).nullable()),award:z.string().max(80).nullable(),result_status:z.enum(['ranked','unranked','disqualified']),provenance:z.object({source_url:publicUrl,source_stage:z.string().min(1).max(120),source_row:z.number().int().positive().nullable(),review:z.string().max(200).optional()}).strict()}).strict();
+const stage=z.object({edition_id:key,stage_id:key,stage_label:z.string().min(1).max(120),source_title:z.string().min(2).max(200),source_url:publicUrl,source_verified:z.literal(true),publication_authorization:z.object({status:z.literal('owner_approval_pending'),evidence:z.string().max(500)}).strict(),completeness:z.enum(['complete_source_table','partial']),scope:z.string().min(1).max(500),original_fields:z.array(z.string().max(120)).min(1).max(30),columns:z.array(z.object({key:z.string().regex(/^[a-z][a-z0-9_]{0,39}$/),label:z.string().min(1).max(100)}).strict()).max(20),rows:z.array(row).min(1).max(5000),arithmetic_differences:z.object({source_rows:z.array(z.number().int().positive()),action:z.string().max(300)}).strict().optional(),published:z.literal(false)}).strict();
+export function validatePublicationManifest(input){
+ const manifest=z.object({version:z.literal(1),checked_at:z.literal('2026-10-17'),mode:z.literal('review_only'),production_writes:z.literal(0),editions:z.array(z.object({edition_id:key,metadata:z.unknown().nullable(),status:z.enum(['metadata_draft','organizer_metadata_and_publication_blocked']),results:z.array(key),notes:z.string().nullable()}).strict()).length(15),stages:z.array(stage).max(200),source_checks:z.array(z.object({edition:key,url:publicUrl,checked_at:z.string(),html_sha256:z.string().regex(/^[a-f0-9]{64}$/),stages:z.array(z.object({label:z.string(),rows:z.number().int().nonnegative()}).strict())}).strict()),excluded_secondary:z.array(key),original_draft:z.object({sets:z.literal(14),rows:z.literal(49),reused_partial_sets:z.number().int()}).strict()}).strict().parse(input);
+ const ids=new Set(),editions=new Map();
+ for(const edition of manifest.editions){if(editions.has(edition.edition_id))throw Error('Duplicate edition');editions.set(edition.edition_id,edition);if(edition.status.includes('blocked')&&(edition.metadata!==null||edition.results.length))throw Error('Held Kazakhstan material must stay outside the import manifest');}
+ for(const set of manifest.stages){if(ids.has(set.stage_id)||!editions.get(set.edition_id)?.results.includes(set.stage_id))throw Error('Duplicate or unmapped stage');ids.add(set.stage_id);const participants=new Set(),columns=set.columns.map(c=>c.key);if(new Set(columns).size!==columns.length)throw Error('Duplicate column');for(const row of set.rows){if(participants.has(row.participant_id))throw Error('Duplicate participant');participants.add(row.participant_id);if(row.provenance.source_url!==set.source_url||row.provenance.source_stage!==set.stage_label)throw Error('Row source/stage mismatch');if(row.result_status==='ranked'&&row.rank===null)throw Error('Missing published rank');if(Object.keys(row.score_columns).some(key=>!columns.includes(key)))throw Error('Undeclared score column');}}
+ return manifest;
+}
+export function preparePublicationPlan(input,originalBatch,snapshot){
+ const manifest=validatePublicationManifest(input),sets=new Map(originalBatch.resultSets.map(set=>[set.key,set]));
+ const setPresentation=stage=>({stageLabel:stage.stage_label,coverage:stage.completeness==='partial'?'partial':'complete',availability:stage.completeness==='partial'?'OFFICIAL_STAGE_RESULTS':'FULL_OFFICIAL_STANDINGS',columns:stage.columns,notes:stage.scope});
+ const rowPresentation=row=>({scores:row.score_columns,...(row.country_or_region?{comments:`Original country / region / team: ${row.country_or_region}`}:{})});
+ const batch={...originalBatch,competitions:manifest.editions.filter(e=>e.metadata!==null).map(e=>e.metadata),resultSets:manifest.stages.map(stage=>{
+  const original=sets.get(stage.stage_id);if(!original)throw Error('Stage has no reviewed form adapter');
+  if(stage.source_url!==original.form.sourceUrl||manifest.editions.find(e=>e.edition_id===stage.edition_id)?.metadata?.form.slug!==original.competitionSlug)throw Error('Stage source or edition differs from its reviewed adapter');
+  const hasPresentation=Object.hasOwn(original.form,'presentation');
+  return {...original,division:stage.stage_label,coverage:stage.completeness==='partial'?'partial':'complete',notes:stage.scope,form:{...original.form,name:stage.completeness==='partial'?original.form.name:stage.stage_label,sourceLabel:stage.completeness==='partial'?original.form.sourceLabel:'Official organizer standings',published:false,...(hasPresentation?{presentation:setPresentation(stage)}:{})},entries:stage.rows.map(row=>({participantType:row.participant_type,participantName:row.display_name,countryCode:sourceCountryCode(stage,row),rank:row.rank,score:row.score,scoreDisplay:row.score_display,award:row.award,resultStatus:row.result_status,externalParticipantId:row.participant_id,sourceIds:original.sourceIds,...(hasPresentation?{presentation:rowPresentation(row)}:{})}))};})};
+ const {prepareContentPlan}=loadContentModule();const plan=prepareContentPlan(batch,snapshot);
+ // This is deliberately never a publication authorization, even for public sources.
+ return {...plan,approvalReady:false,publicationBlocked:true,manifestStages:manifest.stages.length,manifestRows:manifest.stages.reduce((n,s)=>n+s.rows.length,0),batch,standingsPresentation:manifest.stages.map(stage=>({key:stage.stage_id,set:setPresentation(stage),rows:stage.rows.map(row=>({participantId:row.participant_id,presentation:rowPresentation(row)}))}))};
+}
