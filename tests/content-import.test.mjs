@@ -218,6 +218,7 @@ test('new full dataset uses existing validator and freezes five existing UUIDs; 
  assert.equal(p.actions.filter(a=>a.action==='create_competition').length,8);assert.equal(p.actions.filter(a=>a.action==='add_draft_row').length,809);
  assert.equal(p.batch.competitions.filter(c=>c.expectedId).length,5);assert.equal(p.batch.competitions.some(c=>c.editionKey==='iaio-2024'||c.editionKey==='usaaio-2026'),false);
  for(const c of p.batch.competitions.filter(c=>c.expectedId))assert.equal(c.expectedId,old.competitions.find(x=>x.editionKey===c.editionKey).id);
+ const wrong=publication();wrong.stages[0].source_url='https://example.test/results';for(const row of wrong.stages[0].rows)row.provenance.source_url=wrong.stages[0].source_url;assert.throws(()=>preparePublicationPlan(wrong,batch(),old),'Changing all row URLs cannot bypass the reviewed official adapter');
 });
 test('complete manifest re-import is a no-op and a changed row is a conflict',()=>{
  const m=publication();const first=preparePublicationPlan(m,batch(),snapshot());const b=first.batch;

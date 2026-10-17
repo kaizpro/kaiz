@@ -5,6 +5,7 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {randomBytes,createHash} from 'node:crypto';
+import {existsSync} from 'node:fs';
 import {preparePublicationPlan} from '../scripts/content/publication-plan.mjs';
 import {loadContentModule} from '../scripts/content/load.mjs';
 assert.ok(process.env.KAIZ_EMBEDDED_POSTGRES_MODULE&&process.env.KAIZ_PRESENTATION_MIGRATION,'Provide disposable PG17 runtime and exact reviewed PR24 migration file');
@@ -20,6 +21,11 @@ try{
  await client.query(await readFile('tests/fixtures/disposable-supabase.sql','utf8'));
  const files=(await readdir('supabase/migrations')).filter(f=>f.endsWith('.sql')).sort();
  for(const file of files){if(file>'202610120001'&&!files.some(f=>f.startsWith('202610120001'))&&!files.slice(0,files.indexOf(file)).some(f=>f>'202610120001'))await client.query(presentation.toString());await client.query(await readFile('supabase/migrations/'+file,'utf8'));}
+ if(existsSync('supabase/tests/competition_presentation_security.test.sql')){
+  const sql=(await readFile('supabase/tests/competition_presentation_security.test.sql','utf8')).replace('create extension if not exists pgtap with schema extensions;','');
+  const results=await client.query(sql);const assertions=results.flatMap(r=>r.rows??[]).filter(row=>Object.values(row).some(v=>typeof v==='string'&&v.startsWith('ok: '))).length;
+  console.log(JSON.stringify({suite:'competition_presentation_security.test.sql',assertions,status:'PASS'}));
+ }
  const read=async path=>JSON.parse(await readFile(path,'utf8'));
  const manifest=await read('content/competitions/2026-10-17/publication-manifest.json'),batch=await read('content/competitions/2026-10-12/ready-batch.json'),snapshot=await read('content/competitions/2026-10-15/admin-snapshot.json');
  const plan=preparePublicationPlan(manifest,batch,snapshot);assert.equal(plan.valid,true);
