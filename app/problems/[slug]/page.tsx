@@ -16,6 +16,7 @@ import { practiceScoreBounds } from "@/lib/validation/problem";
 import { publicExternalUrl } from "@/lib/learning/unified-archive";
 import { hasStatementPermission } from "@/lib/learning/problem-detail";
 import catalog from "@/components/training/catalog.module.css";
+import practiceStyles from "@/components/learning/personal-practice.module.css";
 
 function formatNumber(value: number | null) {
   return value === null ? "—" : new Intl.NumberFormat("en", { maximumFractionDigits: 6 }).format(value);
@@ -67,7 +68,7 @@ export default async function ProblemDetailPage({ params, searchParams }: {
       {problem.problem_code&&<p className="mt-4 font-mono text-xs font-semibold uppercase tracking-wider text-primary">Problem {problem.problem_code}</p>}
       <h1 className="mt-3 max-w-5xl text-2xl font-bold leading-tight tracking-[-.035em] sm:text-3xl">{problem.title}</h1>
       <p className="mt-2 max-w-3xl text-sm leading-7 text-muted-foreground">{problem.summary??"Consult the original source for the task requirements."}</p>
-      <div className="mt-4 flex flex-wrap items-center gap-3">{original&&<a className={`${catalog.action} ${catalog.primary} min-h-12 px-6 font-bold`} href={original} target="_blank" rel="noopener noreferrer">SOLVE ↗ <ExternalLink className="size-3"/></a>}<a href="#practice" className={catalog.action}>Record result</a><span className="text-xs text-muted-foreground">{original?"Publisher account or registration requirements may apply.":"Original URL unavailable; private recording remains available."}</span></div>
+      <div className="mt-4 flex flex-wrap items-center gap-3">{original&&<a className={`${catalog.action} ${catalog.primary} ${practiceStyles.solve}`} href={original} target="_blank" rel="noopener noreferrer">SOLVE ↗ <ExternalLink className="size-3"/></a>}<a href="#practice" className={catalog.action}>Record result</a><span className="text-xs text-muted-foreground">{original?"Publisher account or registration requirements may apply.":"Original URL unavailable; private recording remains available."}</span></div>
     </header>
 
     <div className="grid gap-8 py-8 lg:grid-cols-[minmax(0,1fr)_21rem]">
