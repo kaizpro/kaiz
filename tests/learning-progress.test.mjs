@@ -41,7 +41,7 @@ test('guest/error summaries never claim saved percentage, XP or completion',()=>
  const render=props=>renderToStaticMarkup(React.createElement(CourseProgress,{path:journeys[0],records:[],...props}));
  assert.match(render({signedIn:false,error:null}),/Sign in to save/);assert.doesNotMatch(render({signedIn:false,error:null}),/\d+%|\d+ Learning XP|<progress/);
  assert.doesNotMatch(render({signedIn:true,error:'Unavailable'}),/\d+%|\d+ Learning XP|<progress/);
- const saved=render({signedIn:true,error:null});assert.match(saved,/0 Learning XP/);assert.match(saved,/Start Learning/);assert.match(saved,/<progress/);
+ const saved=render({signedIn:true,error:null});assert.match(saved,/0 Learning XP/);assert.match(saved,/Start first lesson/);assert.match(saved,/<progress/);
 });
 test('action validates current curriculum, strips owner/counters, and handles failed writes',async()=>{
  let writes=[],invalidations=[];

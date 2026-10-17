@@ -13,6 +13,6 @@ export function CourseProgress({ path, records, signedIn, error }: { path: Journ
     <p><strong>{progress.percent}%</strong> · {progress.count} / {progress.total} lessons · <strong>{progress.xp} Learning XP</strong></p>
     <progress className={styles.bar} max={progress.total} value={progress.count} aria-label={`${path.title} completion`}/>
     <p className="text-muted-foreground">Learning XP: 10 per completed lesson in this roadmap, not a competitive rating or verified result.</p>
-    {progress.next ? <Link className={styles.smallAction} href={lessonHref(path.level, progress.next.id)}>{progress.count ? "Continue Learning" : "Start Learning"} · {progress.next.number} {progress.next.topic.title}</Link> : <p className="font-semibold">All {progress.total} lessons completed. You can revisit or undo any completion.</p>}
+    {progress.next ? <Link className={styles.smallAction} href={lessonHref(path.level, progress.next.id)}>{progress.count ? "Continue with next lesson" : "Start first lesson"} · {progress.next.number} {progress.next.topic.title}</Link> : <p className="font-semibold">All {progress.total} lessons completed. You can revisit or undo any completion.</p>}
   </section>;
 }
