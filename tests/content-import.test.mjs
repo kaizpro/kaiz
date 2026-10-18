@@ -291,3 +291,33 @@ test("original FAIO and IAIO component values reconcile with imported totals wit
   assert.deepEqual(practical.originalScoringFields, ["Team", "Jury score", "Peer voting score", "Rank", "Medal"]);
   assert.equal(practical.rowCoverage, "no rows prepared");
 });
+
+test("presentation companion keeps all fifteen priorities including Kazakhstan holds", () => {
+  const draft = file("presentation-draft");
+  assert.equal(draft.importAllowed, false);
+  assert.deepEqual(draft.editions.map((edition) => edition.editionKey), file("inventory").curatedTargets.map((target) => target.editionKey));
+  assert.ok(draft.editions.filter((edition) => edition.editionKey.startsWith("ai-olymp-")).every((edition) => edition.status === "needs_review" && edition.metadata === null));
+  const template = JSON.parse(readFileSync(new URL("../content/competitions/templates/ai-olymp-kazakhstan-2025.json", import.meta.url), "utf8"));
+  assert.deepEqual(template.userReportedFinalColumns, ["Final Rank", "Surname", "Name", "City", "Remote Stage Score", "First Day Score", "Second Day Score", "Total Score"]);
+  assert.equal(template.headerVerification, "user_described_not_transcribed_from_image");
+});
+test("original component strings reach draft forms without rounding or zero/missing coercion", () => {
+  for (const group of file("stage-catalog").selectedOriginalComponents) {
+    const set = batch().resultSets.find((item) => item.key === group.resultSetKey);
+    for (const original of group.rows) {
+      const entry = set.entries.find((row) => row.participantName === original.name);
+      const values = original.values.slice(group.resultSetKey.startsWith("iaio-") ? 1 : 0, -1);
+      assert.deepEqual(set.form.presentation.columns.map((column) => entry.presentation.scores[column.key]), values);
+    }
+  }
+  const b = batch(); b.resultSets.find((set) => set.key === "faio-2025-final").entries[0].presentation.scores.unknown_column = "0";
+  assert.ok(prepareContentPlan(b, snapshot()).errors.some((error) => /declared result-set columns/.test(error.message)));
+});
+test("stage presentation cannot relabel qualification or claim complete partial coverage", () => {
+  let b = batch(); b.resultSets[0].form.presentation.coverage = "complete";
+  assert.ok(prepareContentPlan(b, snapshot()).errors.some((error) => /coverage must match/.test(error.message)));
+  b = batch(); b.resultSets[0].form.presentation.stageLabel = "Made up final";
+  assert.ok(prepareContentPlan(b, snapshot()).errors.some((error) => /stage label must match/.test(error.message)));
+  b = batch(); b.resultSets[0].form.presentation.availability = "NOT_YET_PUBLISHED";
+  assert.ok(prepareContentPlan(b, snapshot()).errors.some((error) => /Unavailable stages/.test(error.message)));
+});

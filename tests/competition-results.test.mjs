@@ -5,6 +5,10 @@ import vm from "node:vm";
 import ts from "typescript";
 import { PostgrestClient } from "@supabase/postgrest-js";
 import { z } from "zod";
+import * as React from "react";
+import * as jsxRuntime from "react/jsx-runtime";
+import { renderToStaticMarkup } from "react-dom/server";
+import * as icons from "lucide-react";
 import { loadContentModule } from "../scripts/content/load.mjs";
 
 const competitionId = "80000000-0000-4000-8000-000000000001";
@@ -13,7 +17,7 @@ const resultId = "80000000-0000-4000-8000-000000000003";
 const validation = loadContentModule("@/lib/validation/competition-result");
 function load(file, imports) {
   const source = readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
-  const compiled = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 } }).outputText;
+  const compiled = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.ReactJSX } }).outputText;
   const exports = {};
   vm.runInNewContext(compiled, { exports, Date, Object, FormData, URL, require: (name) => {
     if (!(name in imports)) throw new Error(`Unexpected import: ${name}`);
@@ -121,4 +125,71 @@ test("migration contract retains draft/public read boundary, admin writes, compo
   assert.equal((sql.match(/with check \(public\.is_admin\(\)\)/g) ?? []).length, 4);
   assert.match(sql, /foreign key \(result_set_id, competition_id\)/);
   assert.doesNotMatch(sql, /unique[^;]*\(result_set_id, rank\)/i);
+});
+
+const presentation = loadContentModule("@/lib/validation/competition-presentation");
+test("presentation validates source-safe media, bounded score fields and unique columns", () => {
+  assert.equal(presentation.editionPresentationSchema.safeParse({ logoUrl: "https://example.org/logo.png", year: 2026 }).success, true);
+  for (const logoUrl of ["javascript:alert(1)", "https://user:private@example.org/logo", "https://example.org/logo?token=private"]) assert.equal(presentation.editionPresentationSchema.safeParse({ logoUrl }).success, false);
+  assert.equal(presentation.setPresentationSchema.safeParse({ columns: [{ key: "day_1", label: "Day 1" }, { key: "day_1", label: "Duplicate" }] }).success, false);
+  assert.equal(presentation.editionPresentationSchema.safeParse({ expectedStages: [{ name: "Final", availability: "NOT_FOUND" }, { name: "Final", availability: "NOT_FOUND" }] }).success, false);
+  assert.equal(presentation.rowPresentationSchema.safeParse({ scores: { day_1: 0, day_2: null, remote: "N/A" } }).success, true);
+  assert.equal(presentation.rowPresentationSchema.safeParse({ scores: { day_1: { html: "not a scalar" } } }).success, false);
+  assert.equal(validation.competitionResultSchema.safeParse({ ...Object.fromEntries(rowForm()), presentation: "{broken" }).success, false);
+});
+test("admin stores validated stage/score presentation and legacy form callers do not erase it", async () => {
+  const { actions, calls } = environment();
+  const data = rowForm({ presentation: JSON.stringify({ scores: { day_1: "0.000", day_2: null }, city: "Almaty" }) });
+  assert.ok((await actions.createResult(competitionId, {}, data)).success);
+  const saved = calls.find((call) => call.operation === "insert").payload;
+  assert.equal(saved.presentation.scores.day_1, "0.000"); assert.equal(saved.presentation.scores.day_2, null);
+  await actions.updateResult(competitionId, resultId, {}, rowForm());
+  assert.equal(Object.hasOwn(calls.find((call) => call.operation === "update").payload, "presentation"), false);
+});
+test("presentation migration is additive and does not touch data, grants or policies", () => {
+  const sql = readFileSync(new URL("../supabase/migrations/202610120001_competition_presentation.sql", import.meta.url), "utf8").replace(/--[^\n]*/g, "");
+  assert.equal((sql.match(/add column presentation jsonb/g) ?? []).length, 3);
+  assert.doesNotMatch(sql, /\b(drop|delete|update|insert|grant|revoke|disable|policy|truncate)\b/i);
+  assert.equal((sql.match(/jsonb_typeof/g) ?? []).length, 3);
+});
+function renderedLeaderboard(sets, expectedStages = []) {
+  const imports = {
+    react: React, "react/jsx-runtime": jsxRuntime, "lucide-react": icons,
+    "next/link": { default: ({ children, ...props }) => React.createElement("a", props, children) },
+    "@/components/ui/badge": { Badge: ({ children, ...props }) => React.createElement("span", props, children) },
+    "@/components/ui/button": { Button: ({ children, disabled, onClick }) => React.createElement("button", {disabled,onClick}, children) },
+    "@/lib/results/provider": { RESULT_SOURCE_LABELS: { official_import: "Organizer" } },
+    "@/lib/validation/competition-presentation": presentation,
+  };
+  imports["@/components/competition-result-switcher"] = load("components/competition-result-switcher.tsx", imports);
+  imports["@/components/competition-standings"] = load("components/competition-standings.tsx", imports);
+  const { CompetitionLeaderboard } = load("components/competition-leaderboard.tsx", imports);
+  return renderToStaticMarkup(React.createElement(CompetitionLeaderboard, { resultSets: sets, expectedStages }));
+}
+test("results SSR smoke: separate stage panels, partial coverage, source link, original columns and escaping", () => {
+  const set = { id: setId, name: "Qualification — selected entries", status: "official", source: "official_import", source_url: "https://example.org/results", verified_at: null,
+    presentation: { stageLabel: "Qualification", availability: "OFFICIAL_STAGE_RESULTS", coverage: "partial", columns: [{ key: "day_1", label: "Day 1" }, { key: "day_2", label: "Day 2" }] },
+    competition_results: [{ id: resultId, participant_name: "<script>unsafe</script>", participant_type: "individual", rank: 1, country_code: null, score: 0, score_display: "0.000", award: null, result_status: "ranked", presentation: { scores: { day_1: 0, day_2: null } } }] };
+  const html = renderedLeaderboard([set], [{ name: "Final", availability: "NOT_YET_PUBLISHED" }]);
+  assert.match(html, /Result stages/); assert.match(html, /aria-pressed="true"/); assert.match(html, /hidden=""/);
+  assert.match(html, /Selected entries — not full standings/); assert.match(html, /Day 1/); assert.match(html, /Day 2/);
+  assert.match(html, /0\.000/); assert.match(html, /Results are not available yet/); assert.match(html, /https:\/\/example\.org\/results/);
+  assert.match(html, /&lt;script&gt;/); assert.doesNotMatch(html, /<script>unsafe/);
+});
+test("results SSR smoke: missing sets show an honest empty state and winners stay labelled", () => {
+  assert.match(renderedLeaderboard([]), /Results are not available yet/);
+  const html = renderedLeaderboard([{ id: setId, name: "Winners", status: "official", source: "official_import", presentation: { availability: "OFFICIAL_WINNERS_ONLY", coverage: "partial" }, competition_results: [] }]);
+  assert.match(html, /Official winners \/ medalists only/); assert.match(html, /Results are not available yet/);
+  const secondary = renderedLeaderboard([{ id: setId, name: "Selected entries", status: "official", source: "official_import", presentation: { availability: "SECONDARY_RESULTS_ONLY", coverage: "partial" }, competition_results: [] }]);
+  assert.match(secondary, /Secondary source/); assert.doesNotMatch(secondary, /Official results/);
+});
+
+test("standings search and awards preserve original order, tied ranks, missing and zero scores",()=>{
+ const imports={react:React,"react/jsx-runtime":jsxRuntime,"next/link":{default:()=>null},"@/components/ui/badge":{Badge:()=>null},"@/components/ui/button":{Button:()=>null}};
+ const {filterStandings}=load('components/competition-standings.tsx',imports);
+ const rows=[{id:'a',name:'First',rank:2,award:'Gold',total:0,country:'KZ',detail:'Almaty'},{id:'b',name:'Second',rank:2,award:null,total:null,country:null,detail:''}];
+ assert.deepEqual(Array.from(filterStandings(rows,'almaty','Gold')).map(row=>row.id),['a']);
+ assert.deepEqual(Array.from(filterStandings(rows,'','')).map(row=>row.rank),[2,2]);
+ assert.equal(filterStandings(rows,'Second','')[0].total,null);
+ assert.equal(filterStandings(rows,'','Gold')[0].total,0);
 });

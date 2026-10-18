@@ -2,6 +2,8 @@
 
 Starting main: `22f69d1bc4234c48c94d50e3c90765f900b711e5` (PR #14 merged). Issue #21; branch `feature/competition-results-population`. Preparation only: no hosted writes, production changes, auth/RLS changes, migrations, deployment or merge.
 
+This audit records the original offline research pass. The subsequent [competition experience follow-up](competition-experience.md) extends UI/admin presentation support, original score columns and edition grouping with one **unapplied** additive migration. No hosted write, publication, auth/RLS change, merge or deployment has occurred. Its release prerequisites supersede the original no-migration description.
+
 ## Architecture and security boundaries
 
 `competitions` supports description, organizer, official/registration URLs, dates/deadline, location, online/offline/hybrid, eligibility, category/tags, verified/temporal status, and unique slug. It has **no publication flag**: unverified competitions remain public. There are no separate rules/tasks columns; keep provenance/reference links in the inventory and use only approved existing content fields. Never misuse registration URLs for standings/tasks.

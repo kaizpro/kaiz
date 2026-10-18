@@ -3,15 +3,19 @@
 import { useActionState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import type { RowPresentation, SetPresentation } from "@/lib/validation/competition-presentation";
 import type { AdminResultState } from "@/app/admin/competitions/[id]/results/actions";
 
 type FormAction = (state: AdminResultState, formData: FormData) => Promise<AdminResultState>;
 
 export type ResultSetFormValue = {
+  presentation?: SetPresentation;
   name: string; status: string; source: string; source_label: string | null; source_url: string | null; published: boolean;
 };
 
 export type ResultFormValue = {
+  presentation?: RowPresentation;
   result_set_id: string; participant_type: string; participant_name: string; rank: number | null; score: number | null;
   score_display: string | null; country_code: string | null; award: string | null; result_status: string;
   external_participant_id: string | null; profiles: { username: string | null } | null;
@@ -23,10 +27,11 @@ export function ResultSetForm({ action, value }: { action: FormAction; value?: R
   const [state, formAction, pending] = useActionState(action, {});
   return <form action={formAction} className="grid gap-4 sm:grid-cols-2">
     <label className="text-sm font-medium">Name<Input className={field} name="name" defaultValue={value?.name ?? "Official results"} required/></label>
-    <label className="text-sm font-medium">Status<select className={`${field} h-10 w-full rounded-md border bg-background px-3 text-sm`} name="status" defaultValue={value?.status ?? "official"}><option value="official">Official / final</option><option value="provisional">Live / provisional</option></select></label>
+    <label className="text-sm font-medium">Status<select className={`${field} h-10 w-full rounded-md border bg-background px-3 text-sm`} name="status" defaultValue={value?.status ?? "official"}><option value="official">Official (stage or final)</option><option value="provisional">Live / provisional</option></select></label>
     <label className="text-sm font-medium">Source provider<Input className={field} name="source" defaultValue={value?.source ?? "manual"} pattern="[a-z][a-z0-9_]{1,39}" required/></label>
     <label className="text-sm font-medium">Source label<Input className={field} name="sourceLabel" defaultValue={value?.source_label ?? ""} placeholder="e.g. Official organizer"/></label>
     <label className="text-sm font-medium sm:col-span-2">Source URL<Input className={field} name="sourceUrl" type="url" defaultValue={value?.source_url ?? ""} placeholder="https://…"/></label>
+    <label className="text-sm font-medium sm:col-span-2">Stage presentation JSON<Textarea name="presentation" className="mt-2 font-mono text-xs" defaultValue={JSON.stringify(value?.presentation ?? {}, null, 2)}/><span className="mt-2 block text-xs text-muted-foreground">Use availability, coverage, stageLabel, displayOrder, notes and columns. Partial selections are not full standings. See content operations.</span></label>
     <label className="flex items-center gap-2 text-sm font-medium sm:col-span-2"><input type="checkbox" name="published" value="true" defaultChecked={value?.published ?? false}/> Publish this result set publicly</label>
     {state.error && <p role="alert" className="text-sm text-destructive sm:col-span-2">{state.error}</p>}
     {state.success && <p role="status" className="text-sm text-success sm:col-span-2">{state.success}</p>}
@@ -48,6 +53,7 @@ export function ResultForm({ action, resultSets, value }: { action: FormAction; 
     <label className="text-sm font-medium">Score display<Input className={field} name="scoreDisplay" defaultValue={value?.score_display ?? ""} placeholder="e.g. 97.42 pts"/></label>
     <label className="text-sm font-medium">Country code<Input className={field} name="countryCode" defaultValue={value?.country_code ?? ""} pattern="[A-Za-z]{2,3}" placeholder="KAZ"/></label>
     <label className="text-sm font-medium sm:col-span-2">Award<Input className={field} name="award" defaultValue={value?.award ?? ""} placeholder="e.g. Gold"/></label>
+    <label className="text-sm font-medium sm:col-span-2">Original score fields JSON<Textarea name="presentation" className="mt-2 font-mono text-xs" defaultValue={JSON.stringify(value?.presentation ?? {}, null, 2)} placeholder={'{"scores":{"day_1":0,"day_2":null}}'}/><span className="mt-2 block text-xs text-muted-foreground">scores keys must match the set columns. Optional city, school, team and comments. Do not infer missing scores or expose private contact data.</span></label>
     {state.error && <p role="alert" className="text-sm text-destructive sm:col-span-2">{state.error}</p>}
     {state.success && <p role="status" className="text-sm text-success sm:col-span-2">{state.success}</p>}
     <div className="sm:col-span-2"><Button disabled={pending}>{pending ? "Saving…" : value ? "Update result" : "Add result"}</Button></div>

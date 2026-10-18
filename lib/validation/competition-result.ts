@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { RESULT_ENTRY_STATUSES, RESULT_PARTICIPANT_TYPES, RESULT_SET_STATUSES } from "@/lib/constants";
+import { presentationInput, rowPresentationSchema, setPresentationSchema } from "@/lib/validation/competition-presentation";
 
 const optionalText = (max: number) => z.string().trim().max(max).optional().or(z.literal(""));
 const optionalHttpUrl = z.string().trim().url().refine(
@@ -10,6 +11,7 @@ const optionalInteger = z.preprocess((value) => value === "" || value == null ? 
 const optionalNumber = z.preprocess((value) => value === "" || value == null ? undefined : value, z.coerce.number().finite().optional());
 
 export const resultSetSchema = z.object({
+  presentation: presentationInput(setPresentationSchema),
   name: z.string().trim().min(2).max(120),
   status: z.enum(RESULT_SET_STATUSES),
   source: z.string().trim().toLowerCase().regex(/^[a-z][a-z0-9_]{1,39}$/),
@@ -19,6 +21,7 @@ export const resultSetSchema = z.object({
 });
 
 export const competitionResultSchema = z.object({
+  presentation: presentationInput(rowPresentationSchema),
   resultSetId: z.string().uuid(),
   participantType: z.enum(RESULT_PARTICIPANT_TYPES),
   participantName: z.string().trim().min(1).max(160),
