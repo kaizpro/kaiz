@@ -35,23 +35,28 @@ test('all 40 lessons use structured objectives, ordered materials and one end-of
  let state={user:{id:'unit-owner'},records:[],error:null};
  const lessonLoad=loadTypescript({'@/lib/data/learning-progress':{getOwnLearningState:async()=>state},'@/app/roadmaps/actions':{setLessonCompletion:async()=>({success:'Saved'})},'next/navigation':{notFound(){throw new Error('Not found');},useRouter:()=>({refresh(){}})}});
  const Page=lessonLoad('app/roadmaps/[level]/lessons/[lesson]/page.tsx').default;
+ const {getLearningStep}=lessonLoad('lib/learning/learning-steps.ts');
+ const {beginnerStep}=lessonLoad('lib/learning/beginner-learning.ts');
  let count=0;
  for(const path of journeys)for(const lesson of courseFor(path).flatMap(m=>m.lessons)){
   const html=renderToStaticMarkup(await Page({params:Promise.resolve({level:path.level,lesson:encodeURIComponent(lesson.id)})}));count++;
-  for(const heading of ['What you’ll learn','Recommended learning sequence','Materials &amp; exercises','Practice check','Lesson completion'])assert.ok(html.includes(heading));
+  const guided=path.level==='beginner'?beginnerStep(lesson.topic.id):getLearningStep(lesson.topic.id);
+  for(const heading of ['What you’ll learn','Recommended learning sequence','Lesson completion'])assert.ok(html.includes(heading));
+  for(const heading of guided?['<h2>Learn</h2>','<h2>Practice</h2>','<h2>Next</h2>']:['Materials &amp; exercises','Practice check'])assert.ok(html.includes(heading));
   assert.equal((html.match(/aria-label="Lesson completion"/g)||[]).length,1);
   assert.equal((html.match(/Mark completed: lesson/g)||[]).length,1);
-  assert.ok(html.indexOf('aria-label="Lesson completion"')>html.indexOf('Practice check'));
-  assert.ok(html.indexOf('Practice check')>html.indexOf('Ordered learning materials'));
+  const practice=html.indexOf(guided?'id="practice"':'Practice check');
+  assert.ok(html.indexOf('aria-label="Lesson completion"')>practice);
+  assert.ok(practice>html.indexOf('Ordered learning materials'));
   assert.match(html,/KAIZ does not run or judge code/);assert.match(html,/private self-report/);
   assert.match(html,new RegExp(`href="/roadmaps/${path.level}"`));
-  const objectives=html.slice(html.indexOf('What you’ll learn'),html.indexOf('Materials &amp; exercises'));
+  const objectives=html.slice(html.indexOf('What you’ll learn'),html.indexOf(guided?'Supporting maths':'Materials &amp; exercises'));
   assert.doesNotMatch(objectives,/Source [AB] starts|Stepik is unavailable/);
  }
  assert.equal(count,40);
  const params=Promise.resolve({level:'beginner',lesson:'python-algebra:python-fundamentals'});
  state={user:{id:'unit-owner'},records:rows(journeys[0]).slice(0,1),error:null};
- let html=renderToStaticMarkup(await Page({params}));assert.match(html,/Undo completion of lesson 1.1/);assert.match(html,/Next lesson · 1.2/);assert.match(html,/10 Learning XP/);
+ let html=renderToStaticMarkup(await Page({params}));assert.match(html,/Undo completion of lesson 1.1/);assert.match(html,/Next: Python Practice/);assert.match(html,/10 Learning XP/);
  state={user:null,records:[],error:null};html=renderToStaticMarkup(await Page({params}));assert.match(html,/Sign in to save progress/);assert.doesNotMatch(html,/Mark completed:|<progress|\d+ Learning XP/);
  state={user:{id:'unit-owner'},records:[],error:'Progress unavailable'};html=renderToStaticMarkup(await Page({params}));assert.match(html,/Retry saved progress/);assert.doesNotMatch(html,/Mark completed:|<progress|\d+ Learning XP/);
  await assert.rejects(()=>Page({params:Promise.resolve({level:'beginner',lesson:'forged'})}),/Not found/);
@@ -62,7 +67,14 @@ test('lesson material controls retain actual titles/URLs and do not activate unv
  const resources=courseFor(journeys[0])[0].lessons[0].topic.resources;
  const html=renderToStaticMarkup(React.createElement(LessonMaterials,{resources}));
  assert.match(html,/Ordered learning materials/);assert.match(html,/View source details/);assert.doesNotMatch(html,/Hello, Python/);
- for(const item of resources){assert.ok(html.includes(item.title));if(!['unavailable','challenge'].includes(item.availability))assert.ok(html.includes(`href="${item.href.replaceAll('&','&amp;')}"`));}
+ const {ioaiMaterials}=load('lib/learning/ioai-materials.ts');
+ for(const item of resources){
+  assert.ok(html.includes(item.title));
+  const review=ioaiMaterials.find(resource=>resource.href===item.href);
+  const held=['unavailable','challenge'].includes(item.availability)||(review&&review.verification.status!=='verified');
+  if(held)assert.ok(!html.includes(`href="${item.href.replaceAll('&','&amp;')}"`));
+  else assert.ok(html.includes(`href="${item.href.replaceAll('&','&amp;')}"`));
+ }
  const sample=resources[0];
  for(const availability of ['unavailable','challenge']){const held=renderToStaticMarkup(React.createElement(LessonMaterials,{resources:[{...sample,availability}]}));assert.doesNotMatch(held,/target="_blank"/);assert.match(held,/No active resource link/);}
  for(const href of ['javascript:alert(1)','https://name:password@example.com/'])assert.doesNotMatch(renderToStaticMarkup(React.createElement(LessonMaterials,{resources:[{...sample,href}]})),/href=/);
