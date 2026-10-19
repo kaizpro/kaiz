@@ -44,9 +44,9 @@ The screenshot **has not been supplied or read**. The user reports 38 finalists 
 
 Obtain the full-resolution screenshot or organizer export and provenance. Record exact headers and stage labels first, retain each scoring component, and reconcile all 38 reported rows. **Do not interpret red-colored rows as exclusions**. Resolve unknown awards/ranks/status from explicit organizer evidence, not colors or ordering. No placeholder contestants, school/contact data or automatic profile matching.
 
-## AI Olymp Kazakhstan 2026 — public sheet, provenance hold
+## AI Olymp Kazakhstan 2026 — private original, final-version hold
 
-Supplied URL: https://docs.google.com/spreadsheets/d/15ONxNRz7HBSHZigr6Fb0fteYC9SzR1YhMbYsWJTgvrw/edit?gid=132773358
+Original document link withheld: private source retained outside Git. Public event context: [official government report](https://www.gov.kz/org/astana/press/news/details/1199320), not a row-level score source.
 
 Unauthenticated CSV export returned HTTP 200 without a token or cookies. The tab is `leaderboard_final`, self-labelled **Final Scores AI Olymp Final 2026**, with **39** numeric-rank rows (not the user-reported 38 for the separate 2025 screenshot). Headers are `Rank`, `Username`, `First Name`, `Last Name`, `Total Score`, `Zhuldyzzhan's Detective Agency`, `Forgotten labels`, `Jimmy and Aibek brotherhood`. All observed totals equal their three task components; multiple tied ranks exist.
 
