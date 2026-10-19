@@ -75,6 +75,27 @@ test('migration protects ownership and trusted timestamps without competitive co
  assert.match(sql,/grant update\(completed_at\)/i);assert.match(sql,/new\.completed_at := case/);
 });
 
+test('disposable SQL runner applies every migration canonically before discovering all current-schema suites',()=>{
+ const runner=readFileSync(new URL('./learning-progress.postgres.mjs',import.meta.url),'utf8');
+ assert.match(runner,/readdir\('supabase\/migrations'\)\)\.filter\(f=>f\.endsWith\('\.sql'\)\)\.sort\(\)/);
+ assert.match(runner,/for\(const file of files\)await client\.query\(await readFile\('supabase\/migrations\/\'\+file,'utf8'\)\)/);
+ assert.match(runner,/readdir\('supabase\/tests'\)\)\.filter\(f=>f\.endsWith\('\.test\.sql'\)\)\.sort\(\)/);
+ assert.ok(runner.indexOf('for(const file of files)')<runner.indexOf('for(const file of suites)'));
+ assert.doesNotMatch(runner,/files\.filter|files\.includes|const privacy=|const external=/);
+ assert.match(runner,/mkdtemp\(join\(tmpdir\(\),'kaiz-learning-'\)\)/);
+ assert.match(runner,/postgresFlags:\['-h','127\.0\.0\.1'\]/);
+});
+
+test('archive assertions enforce current admin cross-owner denial, not the superseded moderation exception',()=>{
+ const sql=readFileSync(new URL('../supabase/tests/problem_archive_security.test.sql',import.meta.url),'utf8');
+ assert.match(sql,/count\(\*\) from public\.problem_performances where attempt_type = 'practice'\), 0::bigint, 'admin cannot read another owner private practice'/);
+ assert.match(sql,/select is\(count\(\*\), 0::bigint, 'admin cannot invalidate another owner private practice'\) from changed/);
+ assert.match(sql,/'valid', 'denied admin update preserves the owner private attempt'/);
+ assert.match(sql,/owner cannot revalidate admin-invalidated attempt/);
+ assert.match(sql,/admin manages official normalized\/provenance data/);
+ assert.doesNotMatch(sql,/'admin invalidates practice'/);
+});
+
 test('dashboard practice reads only the authenticated owner and preserves unavailable state',async()=>{
  let signedIn=false,fail=false;const calls=[];
  const query={select(...args){calls.push(['select',...args]);return this;},eq(...args){calls.push(['eq',...args]);return this;},order(...args){calls.push(['order',...args]);return this;},limit(n){calls.push(['limit',n]);return Promise.resolve({data:[],count:fail?null:0,error:fail?{}:null});}};
