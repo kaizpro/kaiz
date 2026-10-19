@@ -1,0 +1,69 @@
+{
+  "mode": "review_only",
+  "approvalReady": false,
+  "productionWrites": 0,
+  "relationshipToApprovedBatch": "Two additional held templates; NOT included in the eight-edition metadata-batch.json",
+  "holds": ["Verify owner-reported date ranges against original organizer material", "Confirm supplied standings identity and final version before creating parents for publication"],
+  "competitions": [
+    {
+      "editionKey": "ai-olymp-kazakhstan-2025",
+      "sourceIds": ["kz-2025-owner-confirmed"],
+      "dateVerification": "OWNER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "form": {
+        "title": "AI Olymp Kazakhstan 2025",
+        "slug": "ai-olymp-kazakhstan-2025",
+        "description": "First Republican Olympiad in Artificial Intelligence for school students in Kazakhstan, held at Astana IT University in Astana. Organized by the Kazakhstan Competitive Programming Federation and DSML.KZ. The owner reports an event programme of May 3–5; exact dates and the supplied final standings version still require organizer-original verification. The supplied 38-row aggregate includes remote-stage and two competition-day score columns. No separate qualification ranking or medals are inferred.",
+        "organizer": "Kazakhstan Competitive Programming Federation and DSML.KZ",
+        "officialWebsite": "https://www.gov.kz/org/maidd/press/news/details/989919",
+        "registrationUrl": "",
+        "startDate": "2025-05-03",
+        "endDate": "2025-05-05",
+        "registrationDeadline": "",
+        "city": "Astana",
+        "country": "Kazakhstan",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "School students in grades 9–12 selected through the national qualification process.",
+        "tags": "Olympiad, AI Olymp, Kazakhstan, Final",
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "ai-olymp-kazakhstan",
+          "year": 2025,
+          "sourceNotes": "Held review template. Event dates are owner-reported, not independently verified. Government link corroborates the event; the original score image is retained privately. No standings are published by this metadata template.",
+          "expectedStages": [{"name":"Final standings (includes remote stage)","availability":"NOT_YET_PUBLISHED"}]
+        }
+      }
+    },
+    {
+      "editionKey": "ai-olymp-kazakhstan-2026",
+      "sourceIds": ["kz-2026-owner-confirmed"],
+      "dateVerification": "OWNER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "form": {
+        "title": "AI Olymp Kazakhstan 2026",
+        "slug": "ai-olymp-kazakhstan-2026",
+        "description": "Second Republican Olympiad in Artificial Intelligence for school students in Kazakhstan, with a final in Astana at Astana IT University. The owner reports April 10–13 as the event programme and April 11–12 as competition days. Exact dates and the supplied 39-row Final-labelled standings version still require organizer-original verification. The Second Round platform corroborates April 12 but is not evidence for the complete final programme. No missing qualification results or awards are invented.",
+        "organizer": "Kazakhstan Competitive Programming Federation",
+        "officialWebsite": "https://www.gov.kz/org/astana/press/news/details/1199320",
+        "registrationUrl": "",
+        "startDate": "2026-04-10",
+        "endDate": "2026-04-13",
+        "registrationDeadline": "",
+        "city": "Astana",
+        "country": "Kazakhstan",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "School students selected through the national qualification process.",
+        "tags": "Olympiad, AI Olymp, Kazakhstan, Final",
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "ai-olymp-kazakhstan",
+          "year": 2026,
+          "sourceNotes": "Held review template. Dates are owner-reported. The original Final-labelled sheet is private and must not be linked publicly. Government report provides public attribution, not row-level score verification. No qualification dataset is supplied.",
+          "expectedStages": [{"name":"Final standings","availability":"NOT_YET_PUBLISHED"}]
+        }
+      }
+    }
+  ]
+}

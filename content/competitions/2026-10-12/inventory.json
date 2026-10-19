@@ -694,15 +694,13 @@
     },
     {
       "id": "ai-olymp-2026-user-sheet",
-      "url": "https://docs.google.com/spreadsheets/d/15ONxNRz7HBSHZigr6Fb0fteYC9SzR1YhMbYsWJTgvrw/edit?gid=132773358",
+      "url": "https://www.gov.kz/org/astana/press/news/details/1199320",
       "checkedAt": "2026-10-12",
       "status": "needs_review",
       "fields": [
-        "self-labelled Final Scores",
-        "headers",
-        "anonymous access"
+        "event context only; private score original withheld"
       ],
-      "notes": "Unauthenticated CSV HTTP 200: 39 rows; tab leaderboard_final, self-label Final Scores AI Olymp Final 2026. No verified organizer backlink/sign-off or publication date. Public readability does not prove official publication."
+      "notes": "Private original URL removed at owner request on 2026-10-19. The URL here is public event corroboration only, not the score sheet. Earlier anonymous access established 39 rows and a Final label, not final-version verification. See the current Kazakhstan permission review for owner authorization; organizer-original final-version confirmation remains pending."
     }
   ],
   "existing": [

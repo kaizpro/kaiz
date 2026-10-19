@@ -1,0 +1,330 @@
+{
+  "checkedAt": "2026-10-19T12:47:15.4904429Z",
+  "main": "c063ffb779fdf66486cbd2d2d2b74fde87b89b69",
+  "production": {
+    "project": "oolaemebhoytzuussigu",
+    "history": [
+      "202609200001",
+      "202609210001",
+      "202609210002",
+      "202609220001",
+      "202609300001",
+      "202610040001",
+      "202610070001",
+      "202610120001",
+      "202610150001"
+    ],
+    "counts": {
+      "posts": 2,
+      "results": 0,
+      "comments": 1,
+      "profiles": 8,
+      "auth_users": 8,
+      "result_sets": 0,
+      "competitions": 5,
+      "learning_progress": 4
+    },
+    "readOnly": true,
+    "preservationFingerprintsUnchanged": true,
+    "rls": [
+      {
+        "table": "competition_result_sets",
+        "enabled": true
+      },
+      {
+        "table": "competition_results",
+        "enabled": true
+      },
+      {
+        "table": "competitions",
+        "enabled": true
+      }
+    ],
+    "publicDraftRows": 0
+  },
+  "sources": {
+    "checkedAt": "2026-10-19T12:37:18.901Z",
+    "hashes": {
+      "screenshot": "e05219f58a99a58d722c359bd7ae6d387987312f661d5035cb210892b05b35ea",
+      "workbook": "4725716b700a43e9b8ae6708a2513159b4d232f34bf77a05a7888b8bfdf4cb7f"
+    },
+    "screenshot": {
+      "rows": 38,
+      "independentImageComparisonCells": 303,
+      "unresolvedCityCells": 1,
+      "allNamesRanksScoresMatched": true,
+      "arithmeticDifferences": 0,
+      "redRanksRetained": [
+        8,
+        12,
+        15
+      ],
+      "tiedRank36Rows": 2,
+      "awardsInferred": 0,
+      "completeness": "38 supplied rows; full roster not established"
+    },
+    "workbook": {
+      "rows": 39,
+      "tab": "leaderboard_final",
+      "cellsCompared": 328,
+      "originalArchivedAndFreshExportIdentical": true,
+      "arithmeticDifferences": 0,
+      "repeatedRankRows": 16,
+      "awardsInferred": 0,
+      "stage": "Owner identifies supplied sheet as intended Final standings; organizer-original final-version verification remains pending"
+    },
+    "permission": {
+      "evidence": "Release-owner Zhunussov attestation in task dated 2026-10-19",
+      "scope": "Public KAIZ participant names and results for supplied Kazakhstan 2025/2026 standings",
+      "independentOrganizerDocumentReviewed": false,
+      "executionAuthorized": false,
+      "original2026SheetSharing": "NOT_AUTHORIZED"
+    },
+    "privateRowsInGit": 0,
+    "productionWrites": 0
+  },
+  "productionDryRun": {
+    "checkedAt": "2026-10-19T12:35:30.1524108Z",
+    "productionWrites": 0,
+    "metadata": {
+      "valid": true,
+      "counts": {
+        "create_competition": 8,
+        "skip": 5
+      },
+      "resultSets": 0
+    },
+    "kazakhstan": {
+      "valid": false,
+      "errors": [
+        {
+          "path": "resultSets.0.competitionSlug",
+          "message": "Unknown competition foreign key (not in batch or snapshot)"
+        },
+        {
+          "path": "resultSets.1.competitionSlug",
+          "message": "Unknown competition foreign key (not in batch or snapshot)"
+        }
+      ],
+      "actionCounts": {},
+      "holds": [
+        "Organizer-original identity/final-version confirmation for both datasets",
+        "Owner-reported dates require original-source verification",
+        "Missing Kazakhstan competition parents in production",
+        "One 2025 city spelling requires review; full-roster completeness is not claimed"
+      ],
+      "sets": [
+        {
+          "key": "ai-olymp-kazakhstan-2025-final",
+          "rows": 38,
+          "published": false,
+          "coverage": "partial"
+        },
+        {
+          "key": "ai-olymp-kazakhstan-2026-final",
+          "rows": 39,
+          "published": false,
+          "coverage": "partial"
+        }
+      ]
+    }
+  },
+  "nonIoai": {
+    "checkedAt": "2026-10-19T12:43:22.651Z",
+    "sets": [
+      {
+        "id": "apoai-2026-individual",
+        "rows": 6,
+        "source": "https://www.apoai.org/apoai2026",
+        "coverage": "partial",
+        "clearance": "BLOCKED_REDISTRIBUTION_NOT_ESTABLISHED",
+        "stageLabel": "Individual contest"
+      },
+      {
+        "id": "euroai-2026-members",
+        "rows": 4,
+        "source": "https://euroai-official.org/2026/results/",
+        "coverage": "partial",
+        "clearance": "BLOCKED_REDISTRIBUTION_NOT_ESTABLISHED",
+        "stageLabel": "Member"
+      },
+      {
+        "id": "euroai-2026-remote",
+        "rows": 2,
+        "source": "https://euroai-official.org/2026/results/",
+        "coverage": "partial",
+        "clearance": "BLOCKED_REDISTRIBUTION_NOT_ESTABLISHED",
+        "stageLabel": "Remote"
+      },
+      {
+        "id": "faio-2025-final",
+        "rows": 4,
+        "source": "https://docs.google.com/spreadsheets/d/10Rj9aCxwFR5EoTQUo9ChunzffX7Xgxb3fy3zDGNjlrQ/edit?usp=sharing",
+        "coverage": "partial",
+        "clearance": "BLOCKED_REDISTRIBUTION_NOT_ESTABLISHED",
+        "stageLabel": "FAIO 2025 Final Results"
+      },
+      {
+        "id": "poland-oai-2025-final",
+        "rows": 5,
+        "source": "https://www.oai.edu.pl/edycje/ii-oai",
+        "coverage": "partial",
+        "clearance": "BLOCKED_REDISTRIBUTION_NOT_ESTABLISHED",
+        "stageLabel": "Wyniki Finału II Olimpiady Sztucznej Inteligencji"
+      },
+      {
+        "id": "poland-oai-2025-stage1",
+        "rows": 3,
+        "source": "https://www.oai.edu.pl/edycje/ii-oai",
+        "coverage": "partial",
+        "clearance": "BLOCKED_REDISTRIBUTION_NOT_ESTABLISHED",
+        "stageLabel": "Wyniki I etapu"
+      },
+      {
+        "id": "poland-oai-2025-stage2",
+        "rows": 3,
+        "source": "https://www.oai.edu.pl/edycje/ii-oai",
+        "coverage": "partial",
+        "clearance": "BLOCKED_REDISTRIBUTION_NOT_ESTABLISHED",
+        "stageLabel": "Wyniki 2 etapu"
+      },
+      {
+        "id": "iaio-2026-final",
+        "rows": 3,
+        "source": "https://iaio-official.org/results2026/",
+        "coverage": "partial",
+        "clearance": "BLOCKED_REDISTRIBUTION_NOT_ESTABLISHED",
+        "stageLabel": "IAIO 2026 Competition Results"
+      }
+    ],
+    "rows": 30,
+    "records": [
+      {
+        "url": "https://www.apoai.org/apoai2026",
+        "status": 200,
+        "sha256": "8bd30156f375ef863d4681af1e2d54cc481285546ae0ffcdd9fd2e1396d16b7f",
+        "bytes": 162011,
+        "rightsLinks": [],
+        "nativeRedistribution": "NOT_ESTABLISHED"
+      },
+      {
+        "url": "https://euroai-official.org/2026/results/",
+        "status": 200,
+        "sha256": "4d04fe5f7c4a2ae76decf18f72a6d0516954de2c26f7ff0dc1ebcf2c4f9f630a",
+        "bytes": 158949,
+        "rightsLinks": [
+          "https://euroai-official.org/terms-and-conditions"
+        ],
+        "nativeRedistribution": "NOT_ESTABLISHED"
+      },
+      {
+        "url": "https://docs.google.com/spreadsheets/d/10Rj9aCxwFR5EoTQUo9ChunzffX7Xgxb3fy3zDGNjlrQ/edit?usp=sharing",
+        "status": 200,
+        "sha256": "14fa902ec359b1ba8e76c8add56ef409226e3f257073ee4c27078e7d1a1ba3bd",
+        "bytes": 296399,
+        "rightsLinks": [],
+        "nativeRedistribution": "NOT_ESTABLISHED"
+      },
+      {
+        "url": "https://www.oai.edu.pl/edycje/ii-oai",
+        "status": 200,
+        "sha256": "ac0995f6ef0af495078e70dc460324efa07704ac3d1b8c5f7bf02fe0f743f43e",
+        "bytes": 397543,
+        "rightsLinks": [],
+        "nativeRedistribution": "NOT_ESTABLISHED"
+      },
+      {
+        "url": "https://iaio-official.org/results2026/",
+        "status": 200,
+        "sha256": "3832160773507299a4023942fa52a511ff1b357cc6a6998846de6d4fbdd2f74c",
+        "bytes": 159002,
+        "rightsLinks": [],
+        "nativeRedistribution": "NOT_ESTABLISHED"
+      }
+    ],
+    "scope": "Anonymous official-source availability and rights-link inspection; not a legal determination or full-table retranscription",
+    "ioaiExcluded": true,
+    "productionWrites": 0
+  },
+  "isolatedSupabase": {
+    "status": "PASS",
+    "project": "venniccblkybvfbxyhug",
+    "productionAccess": false,
+    "realAuth": true,
+    "authenticatedAdminImport": true,
+    "metadataForms": 13,
+    "metadataReplaySkipped": 13,
+    "syntheticKzShells": 2,
+    "productionMetadataReady": false,
+    "sets": 2,
+    "rows": 77,
+    "rowRoundtrip": true,
+    "replayDuplicates": 0,
+    "duplicateKeyDenial": "23505",
+    "failedRequestAtomicity": true,
+    "memberPublishDenied": true,
+    "anonymousWriteDenied": true,
+    "draftsInvisible": true,
+    "guestPublishedOnly": true,
+    "privateControlHidden": true,
+    "views": 8,
+    "rowChecks": 308,
+    "keyboardMobileLightDark": true,
+    "search": true,
+    "noInferredAwards": true,
+    "memberBrowserLogin": true,
+    "adminPageDenied": true,
+    "sourceAttribution": true
+  },
+  "cleanup": {
+    "remaining": {
+      "competitions": 0,
+      "resultSets": 0,
+      "rows": 0,
+      "users": 0
+    },
+    "productionAccess": false
+  },
+  "guestProductionBrowser": {
+    "status": "PASS",
+    "checkedAt": "2026-10-19T12:46:11.905Z",
+    "widths": [
+      375,
+      1440
+    ],
+    "theme": "light",
+    "guestRouteViews": 16,
+    "competitionViews": 10,
+    "hybridFilter": true,
+    "dashboardGuestLoginRedirect": true,
+    "resultsEmptyState": true,
+    "tasksEmptyState": true,
+    "productionWriteRequests": 0,
+    "authenticatedMutationsTested": false
+  },
+  "tests": {
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "regression": 222,
+    "build": "PASS",
+    "exactNineMigrationPostgresMetadata": "PASS",
+    "metadataAdds": 8,
+    "metadataReplayAdded": 0,
+    "metadataRollback": "PASS",
+    "standingsBrowser": {
+      "editionViews": 60,
+      "stageViews": 56,
+      "taskLinks": 108,
+      "visual": "PASS"
+    },
+    "awardLayout": {
+      "cases": 8,
+      "computedTextZoom": [
+        "100%",
+        "200%"
+      ],
+      "keyboardScroll": true
+    }
+  },
+  "productionWrites": 0
+}
