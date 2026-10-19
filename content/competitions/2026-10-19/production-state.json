@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-10-19T00:13:33.4364667Z",
+  "project": "oolaemebhoytzuussigu",
+  "readOnlyTransaction": true,
+  "appliedMigrations": [
+    "202609200001",
+    "202609210001",
+    "202609210002",
+    "202609220001",
+    "202609300001",
+    "202610040001",
+    "202610070001",
+    "202610120001",
+    "202610150001"
+  ],
+  "competitions": 5,
+  "resultSets": 0,
+  "resultRows": 0,
+  "publishedResultSets": 0,
+  "publishedResultRows": 0,
+  "competitionFingerprint": "e1d129954948ed500f4220b3d7900dc1",
+  "rls": [
+    {
+      "table": "competition_result_sets",
+      "enabled": true
+    },
+    {
+      "table": "competition_results",
+      "enabled": true
+    },
+    {
+      "table": "competitions",
+      "enabled": true
+    }
+  ],
+  "productionWrites": 0
+}

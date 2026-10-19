@@ -1,0 +1,200 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-19",
+  "mode": "review_only",
+  "productionWrites": 0,
+  "metadataManifest": "content/competitions/2026-10-17/publication-manifest.json",
+  "resultsManifest": "content/competitions/2026-10-17/publication-manifest.json",
+  "publicationAuthorization": "NOT_GRANTED",
+  "notes": "Metadata and links can be reviewed independently of named-results redistribution. No copied task statements. Task links are original publisher materials, not a guarantee of runnable submissions. Existing production UUIDs/forms must be preserved. The two Kazakhstan datasets remain outside all public import batches.",
+  "editions": [
+    {
+      "editionId": "ioai-2024", "metadataAction": "new_candidate",
+      "metadataSources": ["https://ioai-official.org/bulgaria-2024/", "https://ioai-official.org/bulgaria-2024/2024-team/"],
+      "stageNotes": "Scientific round has at-home and on-site tasks. Practical round is separate. Do not relabel at-home work as a national qualification round.",
+      "stages": [
+        {"label": "Scientific Round 2024", "kind": "scientific", "resultStageId": "ioai-2024-scientific", "source": "https://ioai-official.org/bulgaria-2024/results/"},
+        {"label": "Practical Round", "kind": "practical", "resultStageId": null, "source": "https://ioai-official.org/bulgaria-2024/results/"}
+      ],
+      "tasks": [{"label": "Scientific at-home/on-site and Practical collections", "stage": "Scientific / Practical", "day": null, "kind": "collection", "url": "https://ioai-official.org/2024-tasks/", "provenance": "https://ioai-official.org/bulgaria-2024/", "access": "public_materials", "license": "Link only; no task text copied"}],
+      "resultsRights": "NOT_ESTABLISHED", "missing": ["Full Practical table not transcribed; Scientific sample is partial", "Named-results redistribution confirmation"]
+    },
+    {
+      "editionId": "ioai-2025", "metadataAction": "preserve_existing",
+      "metadataSources": ["https://ioai-official.org/china-2025/", "https://ioai-official.org/2025-press-release-1/"],
+      "stageNotes": "Individual and GAITE days are score components, not separate aggregate rankings. Team Challenge final remains a team table.",
+      "stages": [
+        {"label": "Individual contest", "kind": "individual", "resultStageId": "ioai-2025-individual", "source": "https://ioai-official.org/china-2025/results-2025/"},
+        {"label": "Final Round of Team Challenge", "kind": "team_final", "resultStageId": "ioai-2025-team-final", "source": "https://ioai-official.org/china-2025/results-2025/"},
+        {"label": "GAITE contest", "kind": "individual", "resultStageId": "ioai-2025-gaite", "source": "https://ioai-official.org/china-2025/results-2025/"}
+      ],
+      "tasks": [
+        {"label": "Individual contest tasks", "stage": "Individual contest", "day": null, "kind": "collection", "url": "https://github.com/IOAI-official/IOAI-2025/tree/main/Individual-Contest", "provenance": "https://github.com/IOAI-official/IOAI-2025", "access": "public_materials", "license": "CC-BY-4.0 repository materials; does not license the results website"},
+        {"label": "At-home preparation", "stage": "At-home practice", "day": null, "kind": "collection", "url": "https://github.com/IOAI-official/IOAI-2025/tree/main/At-Home-Round", "provenance": "https://github.com/IOAI-official/IOAI-2025", "access": "public_materials", "license": "CC-BY-4.0 repository materials"},
+        {"label": "GAITE supplementary tasks", "stage": "GAITE contest", "day": null, "kind": "collection", "url": "https://github.com/IOAI-official/IOAI-2025/tree/main/GAITE-Contest", "provenance": "https://github.com/IOAI-official/IOAI-2025", "access": "public_materials", "license": "CC-BY-4.0 repository materials"}
+      ],
+      "resultsRights": "NOT_ESTABLISHED", "missing": ["Permission for republication of the five IOAI 2025/2026 results tables", "No Team Challenge task URL prepared here"]
+    },
+    {
+      "editionId": "ioai-2026", "metadataAction": "preserve_existing",
+      "metadataSources": ["https://ioai-official.org/republic-of-kazakhstan/"],
+      "stageNotes": "Six Individual tasks: Day 1 Find the Order, Robot Chasing, Potato; Day 2 Double Agent Dilemma, Ghost of the Machine, IOAI Field. GAITE has separate standings. A team label is not citizenship. Named source tables are complete, not a claim about the full event roster.",
+      "stages": [
+        {"label": "Individual contest", "kind": "individual", "resultStageId": "ioai-2026-individual", "source": "https://ioai-official.org/republic-of-kazakhstan/results-2026/"},
+        {"label": "GA I TE contest", "kind": "individual", "resultStageId": "ioai-2026-gaite", "source": "https://ioai-official.org/republic-of-kazakhstan/results-2026/"}
+      ],
+      "tasks": [
+        {"label": "Individual contest: two days, six tasks", "stage": "Individual contest", "day": null, "kind": "collection", "url": "https://github.com/IOAI-official/IOAI-2026/tree/main/Individual-Contest", "provenance": "https://github.com/IOAI-official/IOAI-2026", "access": "public_materials", "license": "CC-BY-4.0 repository materials; not a results redistribution grant"},
+        {"label": "GAITE hints for the six shared tasks", "stage": "GA I TE contest", "day": null, "kind": "collection", "url": "https://github.com/IOAI-official/IOAI-2026/tree/main/GAITE-Contest", "provenance": "https://github.com/IOAI-official/IOAI-2026", "access": "public_materials", "license": "CC-BY-4.0 repository materials"},
+        {"label": "At-home preparation notebooks", "stage": "At-home preparation", "day": null, "kind": "collection", "url": "https://github.com/IOAI-official/IOAI-2026/tree/main/At-Home-Round", "provenance": "https://github.com/IOAI-official/IOAI-2026", "access": "public_materials", "license": "CC-BY-4.0 repository materials"}
+      ],
+      "resultsRights": "NOT_ESTABLISHED", "missing": ["Results redistribution confirmation; practice-repository license must not be extended to website standings"]
+    },
+    {
+      "editionId": "apoai-2026", "metadataAction": "preserve_existing",
+      "metadataSources": ["https://www.apoai.org/apoai2026"],
+      "stageNotes": "June 13 competition day. Published totals retain original normalized precision, ties, N/A and literal awards. June 1 delegation submission is not individual registration.",
+      "stages": [{"label": "Individual contest", "kind": "individual", "resultStageId": "apoai-2026-individual", "source": "https://www.apoai.org/apoai2026"}],
+      "tasks": [{"label": "Official 2026 task collection not verified", "stage": "Individual contest", "day": null, "kind": "collection", "url": null, "provenance": "https://www.apoai.org/apoai2026", "access": "unavailable", "license": "No material copied"}],
+      "resultsRights": "NOT_ESTABLISHED", "missing": ["Full 128-contestant table not transcribed; six-row sample remains partial", "Organizer republication confirmation", "Usable official tasks URL"]
+    },
+    {
+      "editionId": "euroai-2026", "metadataAction": "preserve_existing",
+      "metadataSources": ["https://euroai-official.org/2026/results/", "https://euroai-official.org/"],
+      "stageNotes": "Member and Remote are participation divisions, not qualification/final stages. Guest is a third official division, not included in the prepared sample. Only Member entries have official ranks; Remote/Guest blanks stay null. Do not create CEOAI as a duplicate edition.",
+      "stages": [
+        {"label": "Member", "kind": "division", "resultStageId": "euroai-2026-members", "source": "https://euroai-official.org/2026/results/"},
+        {"label": "Remote", "kind": "division", "resultStageId": "euroai-2026-remote", "source": "https://euroai-official.org/2026/results/"},
+        {"label": "Guest", "kind": "division", "resultStageId": null, "source": "https://euroai-official.org/2026/results/"}
+      ],
+      "tasks": [
+        {"label": "Faithful Explanations, TextSnap, Clockwork Ellipses", "stage": "Competition", "day": 1, "kind": "collection", "url": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-1", "provenance": "https://euroai-official.org/2026/results/", "access": "invitation_required", "license": "Link only; public viewing does not grant submission access"},
+        {"label": "Stowaway, Interleaved Lines, Odd One Out", "stage": "Competition", "day": 2, "kind": "collection", "url": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-2", "provenance": "https://euroai-official.org/2026/results/", "access": "invitation_required", "license": "Link only; no statements copied"}
+      ],
+      "resultsRights": "NOT_ESTABLISHED", "missing": ["Complete Member, Remote and Guest coverage", "Organizer results republication confirmation"]
+    },
+    {
+      "editionId": "iaio-2026", "metadataAction": "new_candidate",
+      "metadataSources": ["https://iaio-official.org/olympiad-2026/"],
+      "stageNotes": "Winter IAIO, Ljubljana February 23–27, is distinct from IOAI Astana. Round 1 and Round 2 are original final-score components, not independently ranked qualification rounds.",
+      "stages": [{"label": "IAIO 2026 Competition Results", "kind": "final", "resultStageId": "iaio-2026-final", "source": "https://iaio-official.org/results2026/"}],
+      "tasks": [{"label": "Edition-specific contest tasks not verified", "stage": "Competition", "day": null, "kind": "collection", "url": null, "provenance": "https://iaio-official.org/olympiad-2026/", "access": "unavailable", "license": "Webinars are not substituted for competition tasks"}],
+      "resultsRights": "NOT_ESTABLISHED", "missing": ["Full 95-person table not transcribed; three-row sample remains partial", "Results permission", "Edition-specific task URL"]
+    },
+    {
+      "editionId": "ai-olymp-kazakhstan-2025", "metadataAction": "hold",
+      "metadataSources": ["https://www.gov.kz/memleket/entities/maidd/press/news/details/989919"],
+      "stageNotes": "Public retrospective establishes the national event and organizers CPFED/DSML.KZ at Astana IT University. Exact two-day dates and identity of the uncaptioned screenshot still require organizer evidence.",
+      "stages": [],
+      "tasks": [{"label": "2025 official tasks not verified", "stage": "Unconfirmed", "day": null, "kind": "collection", "url": null, "provenance": "https://www.gov.kz/memleket/entities/maidd/press/news/details/989919", "access": "unavailable", "license": "Private source excluded"}],
+      "resultsRights": "RESTRICTED", "missing": ["Exact event dates and source identity", "Final/post-appeal status and completeness of 38 screenshot rows versus 40 finalists in retrospective", "One city spelling review", "Explicit organizer authorization for public names/scores/awards; internal distribution is insufficient"]
+    },
+    {
+      "editionId": "ai-olymp-kazakhstan-2026", "metadataAction": "hold",
+      "metadataSources": ["https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round", "https://www.gov.kz/memleket/entities/astana/press/news/details/1199320"],
+      "stageNotes": "Second Round is explicitly named on CPFED's platform, April 12. Do not equate it with the Final-labelled workbook or infer a qualification table from a task heading. Exact full event dates remain unresolved.",
+      "stages": [{"label": "AI Olympiad 2026 Second Round", "kind": "second_round", "resultStageId": null, "source": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round"}],
+      "tasks": [
+        {"label": "Zhuldyzzhan's Detective Agency", "stage": "Second Round", "day": null, "kind": "task", "url": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round/1/view", "provenance": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round", "access": "invitation_required", "license": "Official public task view; submission invitation required"},
+        {"label": "Forgotten labels", "stage": "Second Round", "day": null, "kind": "task", "url": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round/2/view", "provenance": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round", "access": "invitation_required", "license": "Link only; no statement copied"}
+      ],
+      "resultsRights": "RESTRICTED", "missing": ["Organizer attribution of the 39-row Final-labelled workbook and exact official stage", "Post-appeal finality/completeness and publication authorization", "Separate qualification source", "Exact full event dates; do not infer awards without an award column"]
+    },
+    {
+      "editionId": "faio-2025", "metadataAction": "new_candidate",
+      "metadataSources": ["https://www.faio.kz/2025/"],
+      "stageNotes": "September 28 online qualification, October 30–31 Almaty final; season range is not continuous contest duration. Final problem 1–5 columns belong to one final team table.",
+      "stages": [
+        {"label": "Qualification", "kind": "qualification", "resultStageId": null, "source": "https://www.faio.kz/2025/"},
+        {"label": "FAIO 2025 Final Results", "kind": "team_final", "resultStageId": "faio-2025-final", "source": "https://docs.google.com/spreadsheets/d/10Rj9aCxwFR5EoTQUo9ChunzffX7Xgxb3fy3zDGNjlrQ/edit?usp=sharing"}
+      ],
+      "tasks": [
+        {"label": "Qualification tasks", "stage": "Qualification", "day": null, "kind": "collection", "url": "https://github.com/BeksultanSagyndyk/faio-tasks/tree/main/faio-2025/qualification", "provenance": "https://www.faio.kz/", "access": "public_materials", "license": "Apache-2.0 task repository; does not cover the separate standings sheet"},
+        {"label": "Final Day 1 tasks", "stage": "Final", "day": 1, "kind": "collection", "url": "https://github.com/BeksultanSagyndyk/faio-tasks/tree/main/faio-2025/day1", "provenance": "https://www.faio.kz/", "access": "public_materials", "license": "Apache-2.0 task repository"},
+        {"label": "Final Day 2 tasks", "stage": "Final", "day": 2, "kind": "collection", "url": "https://github.com/BeksultanSagyndyk/faio-tasks/tree/main/faio-2025/day2", "provenance": "https://www.faio.kz/", "access": "public_materials", "license": "Apache-2.0 task repository"}
+      ],
+      "resultsRights": "NOT_ESTABLISHED", "missing": ["Complete final and qualification transcription; four final rows remain partial", "FAIO permission for the results sheet"]
+    },
+    {
+      "editionId": "faio-2026", "metadataAction": "new_candidate",
+      "metadataSources": ["https://www.faio.kz/", "https://www.faio.kz/final/"],
+      "stageNotes": "Qualification September 20; October 27–28 contest days, October 26–30 travel/programme. Final is future as of October 19. Qualification ranking/invitations are not final results.",
+      "stages": [
+        {"label": "Qualification", "kind": "qualification", "resultStageId": null, "source": "https://www.faio.kz/results/"},
+        {"label": "Final", "kind": "final", "resultStageId": null, "source": "https://www.faio.kz/final/"}
+      ],
+      "tasks": [{"label": "2026 edition task URL not verified", "stage": "Qualification / Final", "day": null, "kind": "collection", "url": null, "provenance": "https://www.faio.kz/", "access": "unavailable", "license": "Past-years repository is not relabelled as 2026 tasks"}],
+      "resultsRights": "NOT_ESTABLISHED", "missing": ["Qualification table transcription and republication approval", "Final has not occurred; no final standings fabricated", "Edition-specific 2026 tasks"]
+    },
+    {
+      "editionId": "neoai-2025", "metadataAction": "new_candidate",
+      "metadataSources": ["https://ioai-official.org/northern-eurasia-oai-2025/"],
+      "stageNotes": "May 6–11 hybrid edition, main round has eight challenges. Live/late Kaggle task leaderboards are not an audited aggregate final result.",
+      "stages": [{"label": "Main round", "kind": "main", "resultStageId": null, "source": "https://ioai-official.org/northern-eurasia-oai-2025/"}],
+      "tasks": [{"label": "Official linked NEOAI 2025 collection", "stage": "Main round", "day": null, "kind": "collection", "url": "https://www.kaggle.com/competitions/neoai-2025/overview", "provenance": "https://ioai-official.org/northern-eurasia-oai-2025/", "access": "account_required", "license": "Organizer backlink verified; Kaggle access/rules apply, no submission tested"}],
+      "resultsRights": "NOT_ESTABLISHED", "missing": ["Official aggregate final results", "No guessed city or conflation of distributed participants with Russian host location"]
+    },
+    {
+      "editionId": "neoai-2026", "metadataAction": "preserve_existing",
+      "metadataSources": ["https://cu.ru/olympiad/events/neoai"],
+      "stageNotes": "Dedicated edition May 3–4, hybrid. Homework examples are explicitly practice, not evidence for a published qualification ranking. Russia is organizer context, not all participant locations; approved Central University mapping is retained, city absent.",
+      "stages": [],
+      "tasks": [
+        {"label": "Code Stars homework", "stage": "Homework practice", "day": null, "kind": "task", "url": "https://www.kaggle.com/competitions/neoai-2026-qualification-code-stars-homework", "provenance": "https://cu.ru/olympiad/events/neoai", "access": "account_required", "license": "Original organizer-linked Kaggle task; submission not tested"},
+        {"label": "Terminal Animals homework", "stage": "Homework practice", "day": null, "kind": "task", "url": "https://www.kaggle.com/competitions/neoai-2026-qualification-terminal-animals-homework", "provenance": "https://cu.ru/olympiad/events/neoai", "access": "account_required", "license": "Link only"},
+        {"label": "Find Comments homework", "stage": "Homework practice", "day": null, "kind": "task", "url": "https://www.kaggle.com/competitions/neoai-2026-qualification-find-comments-homework", "provenance": "https://cu.ru/olympiad/events/neoai", "access": "account_required", "license": "Link only"}
+      ],
+      "resultsRights": "NOT_ESTABLISHED", "missing": ["Official stage-labelled aggregate standings", "Canonical international organizer/location caveat remains"]
+    },
+    {
+      "editionId": "usaaio-2025", "metadataAction": "new_candidate",
+      "metadataSources": ["https://ioai-official.org/the-usa-north-america-ai-olympiad-is-organized-by-the-usa-ai-olympiad-usaaio/"],
+      "stageNotes": "Existing metadata draft is scoped to Round 2 at MIT April 27, not the whole season. Round 1 March 24; top Round 2 scorers enter June team-selection camp. Exact camp dates not inferred.",
+      "stages": [
+        {"label": "Round 1", "kind": "qualification", "resultStageId": null, "source": "https://ioai-official.org/the-usa-north-america-ai-olympiad-is-organized-by-the-usa-ai-olympiad-usaaio/"},
+        {"label": "Round 2", "kind": "main", "resultStageId": null, "source": "https://www.usaaio.org/hall-of-fame"},
+        {"label": "Round 3 — USAAIO Camp", "kind": "team_selection", "resultStageId": null, "source": "https://ioai-official.org/the-usa-north-america-ai-olympiad-is-organized-by-the-usa-ai-olympiad-usaaio/"}
+      ],
+      "tasks": [
+        {"label": "2025 Round 1 problems", "stage": "Round 1", "day": null, "kind": "collection", "url": "https://forum.beaver-edge.ai/c/ai-olympiads/usa-north-america-ai-olympiad/8", "provenance": "https://www.usaaio.org/past-problems", "access": "public_materials", "license": "Official linked partner forum; no statements copied"},
+        {"label": "2025 Round 2 problems", "stage": "Round 2", "day": null, "kind": "collection", "url": "https://forum.beaver-edge.ai/c/ai-olympiads/2025-usa-na-aio-round-2/9", "provenance": "https://www.usaaio.org/past-problems", "access": "public_materials", "license": "Linked materials; publisher conditions apply"}
+      ],
+      "resultsRights": "NOT_ESTABLISHED", "missing": ["Current 2025 award ranking link on Hall of Fame points back to itself; no usable 2025 dataset verified", "Camp dates and results"]
+    },
+    {
+      "editionId": "poland-oai-2025", "metadataAction": "new_candidate",
+      "metadataSources": ["https://www.oai.edu.pl/edycje/ii-oai", "https://www.oai.edu.pl/regulamin-iioai"],
+      "stageNotes": "I etap February 17–March 22; II etap April 26–27; final May 30–June 2. Stage I/II public score lists have no explicit rank numbers, so selected entries remain unranked. Preserve Laureaci classes, not inferred Gold/Silver.",
+      "stages": [
+        {"label": "Wyniki I etapu", "kind": "qualification", "resultStageId": "poland-oai-2025-stage1", "source": "https://www.oai.edu.pl/edycje/ii-oai"},
+        {"label": "Wyniki 2 etapu", "kind": "regional", "resultStageId": "poland-oai-2025-stage2", "source": "https://www.oai.edu.pl/edycje/ii-oai"},
+        {"label": "Wyniki Finału II Olimpiady Sztucznej Inteligencji", "kind": "final", "resultStageId": "poland-oai-2025-final", "source": "https://www.oai.edu.pl/edycje/ii-oai"}
+      ],
+      "tasks": [
+        {"label": "I etap tasks", "stage": "I etap", "day": null, "kind": "collection", "url": "https://github.com/OlimpiadaAI/II-OlimpiadaAI/tree/main/1_etap", "provenance": "https://www.oai.edu.pl/edycje/ii-oai", "access": "public_materials", "license": "Official repository link; no result-list license inferred"},
+        {"label": "II etap tasks", "stage": "II etap", "day": null, "kind": "collection", "url": "https://github.com/OlimpiadaAI/II-OlimpiadaAI/tree/main/2_etap", "provenance": "https://www.oai.edu.pl/edycje/ii-oai", "access": "public_materials", "license": "Link only"},
+        {"label": "Final tasks", "stage": "Final", "day": null, "kind": "collection", "url": "https://github.com/OlimpiadaAI/II-OlimpiadaAI/tree/main/3_etap", "provenance": "https://www.oai.edu.pl/edycje/ii-oai", "access": "public_materials", "license": "Link only"}
+      ],
+      "resultsRights": "NOT_ESTABLISHED", "missing": ["Complete stage tables; prepared 3/3/5 rows remain partial", "Results redistribution confirmation"]
+    },
+    {
+      "editionId": "onia-2026", "metadataAction": "new_candidate",
+      "metadataSources": ["https://www.olimpiada-ai.ro/en/editii/2026", "https://www.olimpiada-ai.ro/en/news/comunicat-nationala-2026"],
+      "stageNotes": "Local February 14, county March 14, national April 17–20 (contest April 18). Grades 9–10 and 11–12 are separate. Extended Team May 21–25 and Restricted Team June 5–7 are distinct selection stages, not national contest results.",
+      "stages": [
+        {"label": "Local Stage", "kind": "qualification", "resultStageId": null, "source": "https://www.olimpiada-ai.ro/en/rezultate/locala"},
+        {"label": "County Stage", "kind": "regional", "resultStageId": null, "source": "https://www.olimpiada-ai.ro/en/rezultate/judeteana"},
+        {"label": "National Stage", "kind": "national", "resultStageId": null, "source": "https://www.olimpiada-ai.ro/en/rezultate/nationala"},
+        {"label": "Extended Team", "kind": "team_selection", "resultStageId": null, "source": "https://www.olimpiada-ai.ro/en/editii/2026"},
+        {"label": "Restricted Team", "kind": "team_selection", "resultStageId": null, "source": "https://www.olimpiada-ai.ro/en/editii/2026"}
+      ],
+      "tasks": [
+        {"label": "Local grades 9–10", "stage": "Local Stage", "day": null, "kind": "collection", "url": "https://platform.olimpiada-ai.ro/ro/competitions/11", "provenance": "https://www.olimpiada-ai.ro/en/editii/2026", "access": "account_required", "license": "Official contest view; submissions subject to platform access"},
+        {"label": "Local grades 11–12", "stage": "Local Stage", "day": null, "kind": "collection", "url": "https://platform.olimpiada-ai.ro/ro/competitions/12", "provenance": "https://www.olimpiada-ai.ro/en/editii/2026", "access": "account_required", "license": "Link only"},
+        {"label": "County grades 9–10", "stage": "County Stage", "day": null, "kind": "collection", "url": "https://platform.olimpiada-ai.ro/ro/competitions/14", "provenance": "https://www.olimpiada-ai.ro/en/editii/2026", "access": "account_required", "license": "Link only"},
+        {"label": "County grades 11–12", "stage": "County Stage", "day": null, "kind": "collection", "url": "https://platform.olimpiada-ai.ro/ro/competitions/15", "provenance": "https://www.olimpiada-ai.ro/en/editii/2026", "access": "account_required", "license": "Link only"}
+      ],
+      "resultsRights": "NOT_ESTABLISHED", "missing": ["Separate grade-section dataset extraction/score/rank/award review and organizer permission", "National task URLs not yet verified; local/county links must not be labelled national"]
+    }
+  ]
+}

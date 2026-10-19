@@ -1,0 +1,826 @@
+{
+  "checkedAt": "2026-10-19T00:42:05.984Z",
+  "method": "Anonymous HTTP and independent official-page review; HTTP is not accuracy or permission proof",
+  "records": [
+    {
+      "url": "https://cu.ru/olympiad/events/neoai",
+      "status": null,
+      "reachable": false,
+      "checkedAt": "2026-10-19T00:15:18.718Z",
+      "permission": "NOT_ESTABLISHED"
+    },
+    {
+      "url": "https://docs.google.com/spreadsheets/d/10Rj9aCxwFR5EoTQUo9ChunzffX7Xgxb3fy3zDGNjlrQ/edit?usp=sharing",
+      "status": 200,
+      "finalUrl": "https://docs.google.com/spreadsheets/d/10Rj9aCxwFR5EoTQUo9ChunzffX7Xgxb3fy3zDGNjlrQ/edit?usp=sharing",
+      "sha256": "abd16d353d1e1ac8fdcb90cab1eee3eb90a991db73c4aa009796eac79dcb9bf9",
+      "bytes": 284096,
+      "checkedAt": "2026-10-19T00:15:24.210Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://euroai-official.org/",
+      "status": 200,
+      "finalUrl": "https://euroai-official.org/",
+      "sha256": "5fa24a8f81eeb2a67a8362827349af20c92588b3a1df6ee7cf7a4869480dbf8d",
+      "bytes": 50998,
+      "checkedAt": "2026-10-19T00:15:21.132Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://euroai-official.org/2026/results/",
+      "status": 200,
+      "finalUrl": "https://euroai-official.org/2026/results/",
+      "sha256": "fc4cdf6aa60b6ce7564b084075bd43f89b29c8745cdaf156db63f1aba21689ea",
+      "bytes": 158949,
+      "checkedAt": "2026-10-19T00:15:23.537Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://github.com/BeksultanSagyndyk/faio-tasks",
+      "status": 200,
+      "finalUrl": "https://github.com/BeksultanSagyndyk/faio-tasks",
+      "sha256": "ce1ee09af58ee076d41eb2a7cd486cc37083011cffef2e60f7182fec8f566b22",
+      "bytes": 272092,
+      "checkedAt": "2026-10-19T00:15:25.778Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://github.com/IOAI-official/IOAI-2025",
+      "status": 200,
+      "finalUrl": "https://github.com/IOAI-official/IOAI-2025",
+      "sha256": "7d173b8ec9b8ac4260a182846e7db08e7d9bafb613e7af674bd61a0b07c2db39",
+      "bytes": 297404,
+      "checkedAt": "2026-10-19T00:15:25.137Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://github.com/IOAI-official/IOAI-2026",
+      "status": 200,
+      "finalUrl": "https://github.com/IOAI-official/IOAI-2026",
+      "sha256": "90b1781c6e724a7ecffa2651cefbb230418268552ad48669a5310c3ba8d15e14",
+      "bytes": 268144,
+      "checkedAt": "2026-10-19T00:15:25.024Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://github.com/OlimpiadaAI/II-OlimpiadaAI",
+      "status": 200,
+      "finalUrl": "https://github.com/OlimpiadaAI/II-OlimpiadaAI",
+      "sha256": "27123e431f175eb2ea2f612cffdb10dfc62c03e5ed9e970db5ebe40a41d3636a",
+      "bytes": 291306,
+      "checkedAt": "2026-10-19T00:15:25.543Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://iaio-official.org/olympiad-2026/",
+      "status": 200,
+      "finalUrl": "https://iaio-official.org/olympiad-2026/",
+      "sha256": "97d3d0dafb3de9e6fa4a0ba130497facfaf13758708a03292263f1930fa4e5a2",
+      "bytes": 531412,
+      "checkedAt": "2026-10-19T00:15:20.237Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://iaio-official.org/results2026/",
+      "status": 200,
+      "finalUrl": "https://iaio-official.org/results2026/",
+      "sha256": "fb5ea1595b0e02501c5042e1d67dc4ae5aa8c81fa54cc8dded0cd97b98e95389",
+      "bytes": 159002,
+      "checkedAt": "2026-10-19T00:15:24.722Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://ioai-official.org/2024-tasks/",
+      "status": 200,
+      "finalUrl": "https://ioai-official.org/2024-tasks/",
+      "sha256": "9c9690731d5c6946fd93e5ce3d8121638e69d45deca0459d1bd32f5e78ce2ed0",
+      "bytes": 191022,
+      "checkedAt": "2026-10-19T00:15:24.368Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://ioai-official.org/2025-press-release-1/",
+      "status": 200,
+      "finalUrl": "https://ioai-official.org/2025-press-release-1/",
+      "sha256": "8c57946cdb96e0248881bff732a8047038671f376c6c0804fa1f5cc6b3cfa979",
+      "bytes": 219819,
+      "checkedAt": "2026-10-19T00:15:17.123Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://ioai-official.org/bulgaria-2024/",
+      "status": 200,
+      "finalUrl": "https://ioai-official.org/bulgaria-2024/",
+      "sha256": "0ca4610ee0cd3f799e3eed2a53895894f5487ff93f3c90c90fa396e0108a82ab",
+      "bytes": 289570,
+      "checkedAt": "2026-10-19T00:15:17.038Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://ioai-official.org/bulgaria-2024/2024-team/",
+      "status": 200,
+      "finalUrl": "https://ioai-official.org/bulgaria-2024/2024-team/",
+      "sha256": "ba6f8b522d43b010acf8d44c7ba42b51bd083330153f28e3d33e03f5b8f3182a",
+      "bytes": 333809,
+      "checkedAt": "2026-10-19T00:15:19.704Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://ioai-official.org/bulgaria-2024/results/",
+      "status": 200,
+      "finalUrl": "https://ioai-official.org/bulgaria-2024/results/",
+      "sha256": "67872d53f665d2807987f845eb56f4a33e25022546d5a29bbafaed4613daa286",
+      "bytes": 221255,
+      "checkedAt": "2026-10-19T00:15:23.745Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://ioai-official.org/china-2025/",
+      "status": 200,
+      "finalUrl": "https://ioai-official.org/china-2025/",
+      "sha256": "5eaf3501cb5b22a8c19a8038566c6326e93d11ade546a9060a1fa9b6dc844200",
+      "bytes": 295910,
+      "checkedAt": "2026-10-19T00:15:17.030Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://ioai-official.org/china-2025/results-2025/",
+      "status": 200,
+      "finalUrl": "https://ioai-official.org/china-2025/results-2025/",
+      "sha256": "2dc7dbf7c75370f34236a1158a0933544f9689b5aeccb1dbfa3ac6c51c645d24",
+      "bytes": 244258,
+      "checkedAt": "2026-10-19T00:15:22.945Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://ioai-official.org/northern-eurasia-oai-2025/",
+      "status": 200,
+      "finalUrl": "https://ioai-official.org/northern-eurasia-oai-2025/",
+      "sha256": "57816b902e01e499cce1155c25688a6d7ad2f3e4eb7d588b21a088157c90ce1e",
+      "bytes": 227743,
+      "checkedAt": "2026-10-19T00:15:20.769Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://ioai-official.org/republic-of-kazakhstan/",
+      "status": 200,
+      "finalUrl": "https://ioai-official.org/republic-of-kazakhstan/",
+      "sha256": "b9944c6ab189ace0673846638629258b30267b9ac3cdb535fc34e2db6a328d4f",
+      "bytes": 233498,
+      "checkedAt": "2026-10-19T00:15:16.958Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+      "status": 200,
+      "finalUrl": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+      "sha256": "69d049827ca6d760eae1bbe367547eb9052fd2804de25c3359e9476158d451c4",
+      "bytes": 504353,
+      "checkedAt": "2026-10-19T00:15:23.508Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://ioai-official.org/the-usa-north-america-ai-olympiad-is-organized-by-the-usa-ai-olympiad-usaaio/",
+      "status": 200,
+      "finalUrl": "https://ioai-official.org/the-usa-north-america-ai-olympiad-is-organized-by-the-usa-ai-olympiad-usaaio/",
+      "sha256": "375b22e223b03540d5566685eb298f1ac83f6542c507a7417d154cb0a022193b",
+      "bytes": 250682,
+      "checkedAt": "2026-10-19T00:15:18.456Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round",
+      "status": 200,
+      "finalUrl": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round",
+      "sha256": "b5103f22ec9810033ace420188376c45b9fcc3a79597f220b1d8bc07dbafc5db",
+      "bytes": 42458,
+      "checkedAt": "2026-10-19T00:15:26.460Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://www.apoai.org/apoai2026",
+      "status": 200,
+      "finalUrl": "https://www.apoai.org/apoai2026",
+      "sha256": "8bd30156f375ef863d4681af1e2d54cc481285546ae0ffcdd9fd2e1396d16b7f",
+      "bytes": 162011,
+      "checkedAt": "2026-10-19T00:15:19.290Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://www.faio.kz/",
+      "status": 200,
+      "finalUrl": "https://www.faio.kz/",
+      "sha256": "edb8e1756665522ef33ec9d88e795465b87b3e1d663116428a2aeca076a4861f",
+      "bytes": 84542,
+      "checkedAt": "2026-10-19T00:15:21.924Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://www.faio.kz/2025/",
+      "status": 200,
+      "finalUrl": "https://www.faio.kz/2025/",
+      "sha256": "e50f83797e0e3c24d158a6ac3aaa84162098c5a4cbc7c3a448caf14aa73a9110",
+      "bytes": 33166,
+      "checkedAt": "2026-10-19T00:15:21.887Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://www.faio.kz/final/",
+      "status": 200,
+      "finalUrl": "https://www.faio.kz/final/",
+      "sha256": "3d03b0a4c952d2cd833fa9cff33323c9df2ab1c1741707f063f0e8e76692f337",
+      "bytes": 36038,
+      "checkedAt": "2026-10-19T00:15:21.890Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://www.faio.kz/results/",
+      "status": 200,
+      "finalUrl": "https://www.faio.kz/results/",
+      "sha256": "244407d5b072ec0ccc65daadaa8de1658ffc87181b2e4deba0d49cfac3647af8",
+      "bytes": 125365,
+      "checkedAt": "2026-10-19T00:15:23.601Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://www.gov.kz/memleket/entities/astana/press/news/details/1199320",
+      "status": 200,
+      "finalUrl": "https://www.gov.kz/memleket/entities/astana/press/news/details/1199320",
+      "sha256": "eab44d1e5a61bbcc397bbe88fdf32fc0ff5573cd756401cfb5a5dc36071c85d0",
+      "bytes": 1209,
+      "checkedAt": "2026-10-19T00:15:25.367Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://www.gov.kz/memleket/entities/maidd/press/news/details/989919",
+      "status": 200,
+      "finalUrl": "https://www.gov.kz/memleket/entities/maidd/press/news/details/989919",
+      "sha256": "eab44d1e5a61bbcc397bbe88fdf32fc0ff5573cd756401cfb5a5dc36071c85d0",
+      "bytes": 1209,
+      "checkedAt": "2026-10-19T00:15:25.347Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://www.kaggle.com/competitions/neoai-2025/overview",
+      "status": 200,
+      "finalUrl": "https://www.kaggle.com/competitions/neoai-2025/overview",
+      "sha256": "3178668358722b7b98a2ba3231400d35942b812992f7bcf6d10706d4d462bce1",
+      "bytes": 5870,
+      "checkedAt": "2026-10-19T00:15:21.286Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://www.oai.edu.pl/edycje/ii-oai",
+      "status": null,
+      "reachable": false,
+      "checkedAt": "2026-10-19T00:15:21.854Z",
+      "permission": "NOT_ESTABLISHED"
+    },
+    {
+      "url": "https://www.oai.edu.pl/regulamin-iioai",
+      "status": 200,
+      "finalUrl": "https://www.oai.edu.pl/regulamin-iioai",
+      "sha256": "7295a4b7541fa7ea5ca3936832b0d9e95f618d6519c41804f5d46d32c6d8d998",
+      "bytes": 213395,
+      "checkedAt": "2026-10-19T00:15:23.066Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://www.olimpiada-ai.ro/en/editii/2026",
+      "status": null,
+      "reachable": false,
+      "checkedAt": "2026-10-19T00:15:22.094Z",
+      "permission": "NOT_ESTABLISHED"
+    },
+    {
+      "url": "https://www.olimpiada-ai.ro/en/news/comunicat-nationala-2026",
+      "status": 200,
+      "finalUrl": "https://www.olimpiada-ai.ro/en/news/comunicat-nationala-2026",
+      "sha256": "2966d71da7abf149f0c5715de67d41c1ee6cbd087bad6cfa1606afc98c0dd707",
+      "bytes": 105439,
+      "checkedAt": "2026-10-19T00:15:22.950Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://www.olimpiada-ai.ro/en/rezultate/nationala",
+      "status": 200,
+      "finalUrl": "https://www.olimpiada-ai.ro/en/rezultate/nationala",
+      "sha256": "f2bfc5eefb9ba65d9abc1d85c97c959c66a2a9acf995a225eb1b70662e9015ba",
+      "bytes": 95742,
+      "checkedAt": "2026-10-19T00:15:24.152Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://www.usaaio.org/",
+      "status": 200,
+      "finalUrl": "https://www.usaaio.org/",
+      "sha256": "62b2a2c390fa2381abf9e5b073402b7dd80e4218e00799e8454e0fd6b2c5669f",
+      "bytes": 91337,
+      "checkedAt": "2026-10-19T00:15:25.698Z",
+      "reachable": true,
+      "permission": "NOT_ESTABLISHED_BY_HTTP"
+    },
+    {
+      "url": "https://github.com/IOAI-official/IOAI-2025/tree/main/Individual-Contest",
+      "status": 200,
+      "finalUrl": "https://github.com/IOAI-official/IOAI-2025/tree/main/Individual-Contest",
+      "bytes": 217224,
+      "sha256": "b270e9aecd0cac40980ca92b8d296ba169b02af7fd086bf9ad52a38144a19c86",
+      "checkedAt": "2026-10-19T00:20:06.746Z",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/IOAI-official/IOAI-2025",
+      "status": 200,
+      "finalUrl": "https://github.com/IOAI-official/IOAI-2025",
+      "bytes": 297404,
+      "sha256": "f1f1bc190455989ff74bf0f439d1bd080b8e79a6b659194122feb6b18f495619",
+      "checkedAt": "2026-10-19T00:20:07.222Z",
+      "reachable": true
+    },
+    {
+      "url": "https://ioai-official.org/2024-tasks/",
+      "status": 200,
+      "finalUrl": "https://ioai-official.org/2024-tasks/",
+      "bytes": 191022,
+      "sha256": "9c9690731d5c6946fd93e5ce3d8121638e69d45deca0459d1bd32f5e78ce2ed0",
+      "checkedAt": "2026-10-19T00:20:07.302Z",
+      "reachable": true
+    },
+    {
+      "url": "https://ioai-official.org/bulgaria-2024/results/",
+      "status": 200,
+      "finalUrl": "https://ioai-official.org/bulgaria-2024/results/",
+      "bytes": 221255,
+      "sha256": "67872d53f665d2807987f845eb56f4a33e25022546d5a29bbafaed4613daa286",
+      "checkedAt": "2026-10-19T00:20:07.376Z",
+      "reachable": true
+    },
+    {
+      "url": "https://ioai-official.org/bulgaria-2024/",
+      "status": 200,
+      "finalUrl": "https://ioai-official.org/bulgaria-2024/",
+      "bytes": 289570,
+      "sha256": "0ca4610ee0cd3f799e3eed2a53895894f5487ff93f3c90c90fa396e0108a82ab",
+      "checkedAt": "2026-10-19T00:20:07.542Z",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/IOAI-official/IOAI-2025/tree/main/At-Home-Round",
+      "status": 200,
+      "finalUrl": "https://github.com/IOAI-official/IOAI-2025/tree/main/At-Home-Round",
+      "bytes": 210353,
+      "sha256": "72291d0d01659f87eeccf791f7a366d681e50f0fe8637722dbdfaa80e1ae6425",
+      "checkedAt": "2026-10-19T00:20:07.679Z",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/IOAI-official/IOAI-2025/tree/main/GAITE-Contest",
+      "status": 200,
+      "finalUrl": "https://github.com/IOAI-official/IOAI-2025/tree/main/GAITE-Contest",
+      "bytes": 208493,
+      "sha256": "269fc9001ef59f79d6905ebf324ff20932d05618ff1960cdd54f2754a19f3516",
+      "checkedAt": "2026-10-19T00:20:08.022Z",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/IOAI-official/IOAI-2026",
+      "status": 200,
+      "finalUrl": "https://github.com/IOAI-official/IOAI-2026",
+      "bytes": 268145,
+      "sha256": "1e16aea80c17765cd0cc22ed816286c86b502d98413d760453dbe38379acbb4a",
+      "checkedAt": "2026-10-19T00:20:08.214Z",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/IOAI-official/IOAI-2026/tree/main/Individual-Contest",
+      "status": 200,
+      "finalUrl": "https://github.com/IOAI-official/IOAI-2026/tree/main/Individual-Contest",
+      "bytes": 263201,
+      "sha256": "9c8e273b6d36a7c7398517aa6e5f16a3980c6e1b4091a6a0984386befbacfde3",
+      "checkedAt": "2026-10-19T00:20:08.390Z",
+      "reachable": true
+    },
+    {
+      "url": "https://ioai-official.org/china-2025/results-2025/",
+      "status": 200,
+      "finalUrl": "https://ioai-official.org/china-2025/results-2025/",
+      "bytes": 244258,
+      "sha256": "2dc7dbf7c75370f34236a1158a0933544f9689b5aeccb1dbfa3ac6c51c645d24",
+      "checkedAt": "2026-10-19T00:20:08.465Z",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/IOAI-official/IOAI-2026/tree/main/GAITE-Contest",
+      "status": 200,
+      "finalUrl": "https://github.com/IOAI-official/IOAI-2026/tree/main/GAITE-Contest",
+      "bytes": 223982,
+      "sha256": "7bb71baa4b2a3a25b2e575ac78a98070affada2a26c8fb977f04e2d5a4db90bc",
+      "checkedAt": "2026-10-19T00:20:08.513Z",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/IOAI-official/IOAI-2026/tree/main/At-Home-Round",
+      "status": 200,
+      "finalUrl": "https://github.com/IOAI-official/IOAI-2026/tree/main/At-Home-Round",
+      "bytes": 211215,
+      "sha256": "dc6c080dec0910f485fb29b4cdfaa3f830e79ce7307ca212f08c324486a71f07",
+      "checkedAt": "2026-10-19T00:20:08.706Z",
+      "reachable": true
+    },
+    {
+      "url": "https://www.apoai.org/apoai2026",
+      "status": 200,
+      "finalUrl": "https://www.apoai.org/apoai2026",
+      "bytes": 162011,
+      "sha256": "8bd30156f375ef863d4681af1e2d54cc481285546ae0ffcdd9fd2e1396d16b7f",
+      "checkedAt": "2026-10-19T00:20:09.049Z",
+      "reachable": true
+    },
+    {
+      "url": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-1",
+      "status": 200,
+      "finalUrl": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-1",
+      "bytes": 110092,
+      "sha256": "510459b30173e9bd6e20cfc7ffd247dbc63d311d7cd7df809c620fd7213bee5b",
+      "checkedAt": "2026-10-19T00:20:09.701Z",
+      "reachable": true
+    },
+    {
+      "url": "https://euroai-official.org/2026/results/",
+      "status": 200,
+      "finalUrl": "https://euroai-official.org/2026/results/",
+      "bytes": 158949,
+      "sha256": "5e6b05d54dede149a7c2381d5dbac8da82ff60c30c974aeccbf8b6edcd573a57",
+      "checkedAt": "2026-10-19T00:20:09.993Z",
+      "reachable": true
+    },
+    {
+      "url": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+      "status": 200,
+      "finalUrl": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+      "bytes": 504353,
+      "sha256": "69d049827ca6d760eae1bbe367547eb9052fd2804de25c3359e9476158d451c4",
+      "checkedAt": "2026-10-19T00:20:10.173Z",
+      "reachable": true
+    },
+    {
+      "url": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-2",
+      "status": 200,
+      "finalUrl": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-2",
+      "bytes": 129927,
+      "sha256": "f9bd56e8bb9a4ba7426db751f698a1eb9812cd074a3143f7150f8f25113a3885",
+      "checkedAt": "2026-10-19T00:20:10.277Z",
+      "reachable": true
+    },
+    {
+      "url": "https://iaio-official.org/results2026/",
+      "status": 200,
+      "finalUrl": "https://iaio-official.org/results2026/",
+      "bytes": 159002,
+      "sha256": "fb5ea1595b0e02501c5042e1d67dc4ae5aa8c81fa54cc8dded0cd97b98e95389",
+      "checkedAt": "2026-10-19T00:20:10.774Z",
+      "reachable": true
+    },
+    {
+      "url": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round",
+      "status": 200,
+      "finalUrl": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round",
+      "bytes": 42458,
+      "sha256": "0e10209823c023079e9951b62675f4a22c42fd46f5e3e2faa1380f827b04f578",
+      "checkedAt": "2026-10-19T00:20:10.876Z",
+      "reachable": true
+    },
+    {
+      "url": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round/1/view",
+      "status": 200,
+      "finalUrl": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round/1/view",
+      "bytes": 190067,
+      "sha256": "e9a7236bddbd70b9c8092622bdefec8f3a2d66fe64e826a8878e3d67e4ae778c",
+      "checkedAt": "2026-10-19T00:20:10.881Z",
+      "reachable": true
+    },
+    {
+      "url": "https://www.faio.kz/",
+      "status": 200,
+      "finalUrl": "https://www.faio.kz/",
+      "bytes": 84542,
+      "sha256": "edb8e1756665522ef33ec9d88e795465b87b3e1d663116428a2aeca076a4861f",
+      "checkedAt": "2026-10-19T00:20:11.016Z",
+      "reachable": true
+    },
+    {
+      "url": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round/2/view",
+      "status": 200,
+      "finalUrl": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round/2/view",
+      "bytes": 95106,
+      "sha256": "92e09e16f3d09e871501d4791b1996fd4a1e7f78eeaf0021c2f8577c2c722e2c",
+      "checkedAt": "2026-10-19T00:20:11.286Z",
+      "reachable": true
+    },
+    {
+      "url": "https://www.faio.kz/2025/",
+      "status": 200,
+      "finalUrl": "https://www.faio.kz/2025/",
+      "bytes": 33166,
+      "sha256": "e50f83797e0e3c24d158a6ac3aaa84162098c5a4cbc7c3a448caf14aa73a9110",
+      "checkedAt": "2026-10-19T00:20:11.325Z",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/BeksultanSagyndyk/faio-tasks/tree/main/faio-2025/qualification",
+      "status": 200,
+      "finalUrl": "https://github.com/BeksultanSagyndyk/faio-tasks/tree/main/faio-2025/qualification",
+      "bytes": 250933,
+      "sha256": "5a929ceee9c5f9aeae0666f509a072c23461bed3dd28075968ec074db6e0e5e3",
+      "checkedAt": "2026-10-19T00:20:11.387Z",
+      "reachable": true
+    },
+    {
+      "url": "https://www.faio.kz/results/",
+      "status": 200,
+      "finalUrl": "https://www.faio.kz/results/",
+      "bytes": 125365,
+      "sha256": "244407d5b072ec0ccc65daadaa8de1658ffc87181b2e4deba0d49cfac3647af8",
+      "checkedAt": "2026-10-19T00:20:11.441Z",
+      "reachable": true
+    },
+    {
+      "url": "https://www.faio.kz/final/",
+      "status": 200,
+      "finalUrl": "https://www.faio.kz/final/",
+      "bytes": 36038,
+      "sha256": "3d03b0a4c952d2cd833fa9cff33323c9df2ab1c1741707f063f0e8e76692f337",
+      "checkedAt": "2026-10-19T00:20:11.479Z",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/BeksultanSagyndyk/faio-tasks/tree/main/faio-2025/day2",
+      "status": 200,
+      "finalUrl": "https://github.com/BeksultanSagyndyk/faio-tasks/tree/main/faio-2025/day2",
+      "bytes": 232374,
+      "sha256": "933a723cb7327b4f6eaca2336708086e5c1d95da3904ee5fd593a9720b1a2ff6",
+      "checkedAt": "2026-10-19T00:20:11.494Z",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/BeksultanSagyndyk/faio-tasks/tree/main/faio-2025/day1",
+      "status": 200,
+      "finalUrl": "https://github.com/BeksultanSagyndyk/faio-tasks/tree/main/faio-2025/day1",
+      "bytes": 241296,
+      "sha256": "bcd17cb8720949d4b6d21d1db424a6a5197bf3c9bc1c0faf2ff274e4c4e9f819",
+      "checkedAt": "2026-10-19T00:20:11.619Z",
+      "reachable": true
+    },
+    {
+      "url": "https://www.kaggle.com/competitions/neoai-2025/overview",
+      "status": 200,
+      "finalUrl": "https://www.kaggle.com/competitions/neoai-2025/overview",
+      "bytes": 5870,
+      "sha256": "28eeab92ecbf15586e0f1366bf5507d342e2ea6e8d2270cad3cc055bef5e8794",
+      "checkedAt": "2026-10-19T00:20:11.910Z",
+      "reachable": true
+    },
+    {
+      "url": "https://www.kaggle.com/competitions/neoai-2026-qualification-code-stars-homework",
+      "status": 200,
+      "finalUrl": "https://www.kaggle.com/competitions/neoai-2026-qualification-code-stars-homework",
+      "bytes": 5818,
+      "sha256": "1ac3befebb4c341a283fd92a6c75fd37280aed0a7da13bb0b3ac394ec5960ad7",
+      "checkedAt": "2026-10-19T00:20:12.035Z",
+      "reachable": true
+    },
+    {
+      "url": "https://docs.google.com/spreadsheets/d/10Rj9aCxwFR5EoTQUo9ChunzffX7Xgxb3fy3zDGNjlrQ/edit?usp=sharing",
+      "status": 200,
+      "finalUrl": "https://docs.google.com/spreadsheets/d/10Rj9aCxwFR5EoTQUo9ChunzffX7Xgxb3fy3zDGNjlrQ/edit?usp=sharing",
+      "bytes": 283784,
+      "sha256": "a91ac364ff1c991456382b73894ad4d2ff49bda1ab9572e8e3106de3a7ccda03",
+      "checkedAt": "2026-10-19T00:20:12.089Z",
+      "reachable": true
+    },
+    {
+      "url": "https://www.kaggle.com/competitions/neoai-2026-qualification-terminal-animals-homework",
+      "status": 200,
+      "finalUrl": "https://www.kaggle.com/competitions/neoai-2026-qualification-terminal-animals-homework",
+      "bytes": 5873,
+      "sha256": "61dba14a0bf5c9361f636d03496df785b7256769d6e2ee9f476a89e6823dd825",
+      "checkedAt": "2026-10-19T00:20:12.294Z",
+      "reachable": true
+    },
+    {
+      "url": "https://www.kaggle.com/competitions/neoai-2026-qualification-find-comments-homework",
+      "status": 200,
+      "finalUrl": "https://www.kaggle.com/competitions/neoai-2026-qualification-find-comments-homework",
+      "bytes": 5830,
+      "sha256": "f7d2a8288d82c96a652edae5f9836c1571fe9037a312068a5b4c580abf79fb71",
+      "checkedAt": "2026-10-19T00:20:12.333Z",
+      "reachable": true
+    },
+    {
+      "url": "https://cu.ru/olympiad/events/neoai",
+      "status": 200,
+      "finalUrl": "https://cu.ru/olympiad/events/neoai",
+      "bytes": 640522,
+      "sha256": "1389bf5b491d3329e6021d47c8a3ed6d8e0076a40e3ded3770c8e1f155b305c9",
+      "checkedAt": "2026-10-19T00:20:12.462Z",
+      "reachable": true
+    },
+    {
+      "url": "https://www.usaaio.org/past-problems",
+      "status": 200,
+      "finalUrl": "https://www.usaaio.org/past-problems",
+      "bytes": 46114,
+      "sha256": "531a9408329e61cd7fe7d076da4e235cc356d9dda8173692c0384313fb6fcee9",
+      "checkedAt": "2026-10-19T00:20:12.619Z",
+      "reachable": true
+    },
+    {
+      "url": "https://forum.beaver-edge.ai/c/ai-olympiads/usa-north-america-ai-olympiad/8",
+      "status": 200,
+      "finalUrl": "https://forum.beaver-edge.ai/c/ai-olympiads/usa-north-america-ai-olympiad/8",
+      "bytes": 53970,
+      "sha256": "98355e7319de94906c14a6dc8a1a4eac7212a3873d367121613e686c94b0be79",
+      "checkedAt": "2026-10-19T00:20:13.075Z",
+      "reachable": true
+    },
+    {
+      "url": "https://ioai-official.org/northern-eurasia-oai-2025/",
+      "status": 200,
+      "finalUrl": "https://ioai-official.org/northern-eurasia-oai-2025/",
+      "bytes": 227743,
+      "sha256": "57816b902e01e499cce1155c25688a6d7ad2f3e4eb7d588b21a088157c90ce1e",
+      "checkedAt": "2026-10-19T00:20:13.086Z",
+      "reachable": true
+    },
+    {
+      "url": "https://forum.beaver-edge.ai/c/ai-olympiads/2025-usa-na-aio-round-2/9",
+      "status": 200,
+      "finalUrl": "https://forum.beaver-edge.ai/c/ai-olympiads/2025-usa-na-aio-round-2/9",
+      "bytes": 51094,
+      "sha256": "a3afa764bed1c4439a7d58dfbeefebc4c22028b46c89406be6cd4353bfea9c8c",
+      "checkedAt": "2026-10-19T00:20:13.263Z",
+      "reachable": true
+    },
+    {
+      "url": "https://www.usaaio.org/hall-of-fame",
+      "status": 200,
+      "finalUrl": "https://www.usaaio.org/hall-of-fame",
+      "bytes": 47258,
+      "sha256": "975a3144e9bb1ae79ecce7856a6fe5f533dbb8d7c86031f927d434e97f9a5237",
+      "checkedAt": "2026-10-19T00:20:13.311Z",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/OlimpiadaAI/II-OlimpiadaAI/tree/main/1_etap",
+      "status": 200,
+      "finalUrl": "https://github.com/OlimpiadaAI/II-OlimpiadaAI/tree/main/1_etap",
+      "bytes": 215378,
+      "sha256": "8927b47719a9cf23344f0cb62ad7389825ebe143d2dd6ad2f769df21de6adc9d",
+      "checkedAt": "2026-10-19T00:20:13.605Z",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/OlimpiadaAI/II-OlimpiadaAI/tree/main/2_etap",
+      "status": 200,
+      "finalUrl": "https://github.com/OlimpiadaAI/II-OlimpiadaAI/tree/main/2_etap",
+      "bytes": 210268,
+      "sha256": "7454b0303561501248f5f025503f69d522ee7b7dc0cc629edcc9575839f0861c",
+      "checkedAt": "2026-10-19T00:20:13.790Z",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/OlimpiadaAI/II-OlimpiadaAI/tree/main/3_etap",
+      "status": 200,
+      "finalUrl": "https://github.com/OlimpiadaAI/II-OlimpiadaAI/tree/main/3_etap",
+      "bytes": 212521,
+      "sha256": "3c70c00e9ee919e76e79249847dd5d50e4e898cad5f00ee2cdc8b2cb81a5ccc3",
+      "checkedAt": "2026-10-19T00:20:14.076Z",
+      "reachable": true
+    },
+    {
+      "url": "https://www.oai.edu.pl/edycje/ii-oai",
+      "status": 200,
+      "finalUrl": "https://www.oai.edu.pl/edycje/ii-oai",
+      "bytes": 397540,
+      "sha256": "dd145516b7faaa29acc1b956d9aa0d6484964933c121cb258ca4ea22b1c05228",
+      "checkedAt": "2026-10-19T00:20:14.104Z",
+      "reachable": true
+    },
+    {
+      "url": "https://ioai-official.org/the-usa-north-america-ai-olympiad-is-organized-by-the-usa-ai-olympiad-usaaio/",
+      "status": 200,
+      "finalUrl": "https://ioai-official.org/the-usa-north-america-ai-olympiad-is-organized-by-the-usa-ai-olympiad-usaaio/",
+      "bytes": 250682,
+      "sha256": "375b22e223b03540d5566685eb298f1ac83f6542c507a7417d154cb0a022193b",
+      "checkedAt": "2026-10-19T00:20:14.165Z",
+      "reachable": true
+    },
+    {
+      "url": "https://www.olimpiada-ai.ro/en/editii/2026",
+      "status": 200,
+      "finalUrl": "https://www.olimpiada-ai.ro/en/editii/2026",
+      "bytes": 123375,
+      "sha256": "50d252af56601b709aa7d409ca4b58d5646bab133c225c83b7d31d3038484518",
+      "checkedAt": "2026-10-19T00:20:14.580Z",
+      "reachable": true
+    },
+    {
+      "url": "https://platform.olimpiada-ai.ro/ro/competitions/11",
+      "status": 200,
+      "finalUrl": "https://platform.olimpiada-ai.ro/ro/competitions/11",
+      "bytes": 888344,
+      "sha256": "22a376a88de76c1fa56aa9b3d727c760dfd4f142653826d480887907fb80bf12",
+      "checkedAt": "2026-10-19T00:20:15.955Z",
+      "reachable": true
+    },
+    {
+      "url": "https://platform.olimpiada-ai.ro/ro/competitions/15",
+      "status": 200,
+      "finalUrl": "https://platform.olimpiada-ai.ro/ro/competitions/15",
+      "bytes": 487153,
+      "sha256": "f6ddbff0f498a2fc2b9032347dc0eb7dff4a899a717f5815933f057b79e44b43",
+      "checkedAt": "2026-10-19T00:20:15.962Z",
+      "reachable": true
+    },
+    {
+      "url": "https://platform.olimpiada-ai.ro/ro/competitions/14",
+      "status": 200,
+      "finalUrl": "https://platform.olimpiada-ai.ro/ro/competitions/14",
+      "bytes": 427134,
+      "sha256": "2d68038381c710380fad125bce4f12968f55989551288d852bf8baede4764030",
+      "checkedAt": "2026-10-19T00:20:16.044Z",
+      "reachable": true
+    },
+    {
+      "url": "https://www.olimpiada-ai.ro/en/rezultate/locala",
+      "status": 200,
+      "finalUrl": "https://www.olimpiada-ai.ro/en/rezultate/locala",
+      "bytes": 97169,
+      "sha256": "0125b38421bf0e2fb7bc7ab440928370f3dd39119fdbfb73c79963c63bd6786c",
+      "checkedAt": "2026-10-19T00:20:16.196Z",
+      "reachable": true
+    },
+    {
+      "url": "https://platform.olimpiada-ai.ro/ro/competitions/12",
+      "status": 200,
+      "finalUrl": "https://platform.olimpiada-ai.ro/ro/competitions/12",
+      "bytes": 962690,
+      "sha256": "f26dc84e576d536364e98a749250c6d17f8a95eced61b49c1b4947b01015012c",
+      "checkedAt": "2026-10-19T00:20:16.232Z",
+      "reachable": true
+    },
+    {
+      "url": "https://www.olimpiada-ai.ro/en/rezultate/judeteana",
+      "status": 200,
+      "finalUrl": "https://www.olimpiada-ai.ro/en/rezultate/judeteana",
+      "bytes": 102081,
+      "sha256": "e9698bcfe374f1f54229873d52af7437d45180e8e535964661a5d02cfba91370",
+      "checkedAt": "2026-10-19T00:20:16.265Z",
+      "reachable": true
+    },
+    {
+      "url": "https://www.olimpiada-ai.ro/en/rezultate/nationala",
+      "status": 200,
+      "finalUrl": "https://www.olimpiada-ai.ro/en/rezultate/nationala",
+      "bytes": 95742,
+      "sha256": "b4318f3a2d829a6526467e6016cae3414beaf98b52dd632a6eb2099847bc6da9",
+      "checkedAt": "2026-10-19T00:20:16.296Z",
+      "reachable": true
+    }
+  ],
+  "privateSourcesIncluded": false
+}

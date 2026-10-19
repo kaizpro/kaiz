@@ -1,0 +1,69 @@
+{
+  "checkedAt": "2026-10-19T00:22:47.581Z",
+  "stages": [
+    {
+      "id": "apoai-2026-individual",
+      "rows": 6,
+      "namesAndPublishedScoreStringsFound": true,
+      "unmatchedRows": 0,
+      "scope": "Source containment check; not full-table completeness or permission proof"
+    },
+    {
+      "id": "euroai-2026-members",
+      "rows": 4,
+      "namesAndPublishedScoreStringsFound": true,
+      "unmatchedRows": 0,
+      "scope": "Source containment check; not full-table completeness or permission proof"
+    },
+    {
+      "id": "euroai-2026-remote",
+      "rows": 2,
+      "namesAndPublishedScoreStringsFound": true,
+      "unmatchedRows": 0,
+      "scope": "Source containment check; not full-table completeness or permission proof"
+    },
+    {
+      "id": "ioai-2024-scientific",
+      "rows": 3,
+      "namesAndPublishedScoreStringsFound": true,
+      "unmatchedRows": 0,
+      "scope": "Source containment check; not full-table completeness or permission proof"
+    },
+    {
+      "id": "faio-2025-final",
+      "rows": 4,
+      "namesAndPublishedScoreStringsFound": true,
+      "unmatchedRows": 0,
+      "scope": "Source containment check; not full-table completeness or permission proof"
+    },
+    {
+      "id": "poland-oai-2025-final",
+      "rows": 5,
+      "namesAndPublishedScoreStringsFound": true,
+      "unmatchedRows": 0,
+      "scope": "Source containment check; not full-table completeness or permission proof"
+    },
+    {
+      "id": "poland-oai-2025-stage1",
+      "rows": 3,
+      "namesAndPublishedScoreStringsFound": true,
+      "unmatchedRows": 0,
+      "scope": "Source containment check; not full-table completeness or permission proof"
+    },
+    {
+      "id": "poland-oai-2025-stage2",
+      "rows": 3,
+      "namesAndPublishedScoreStringsFound": true,
+      "unmatchedRows": 0,
+      "scope": "Source containment check; not full-table completeness or permission proof"
+    },
+    {
+      "id": "iaio-2026-final",
+      "rows": 3,
+      "namesAndPublishedScoreStringsFound": true,
+      "unmatchedRows": 0,
+      "scope": "Source containment check; not full-table completeness or permission proof"
+    }
+  ],
+  "publicationPermissionInferred": false
+}
