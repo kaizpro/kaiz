@@ -379,7 +379,11 @@
               "availability": "NOT_YET_PUBLISHED"
             },
             {
-              "name": "Extended Team / Restricted Team",
+              "name": "Extended Team",
+              "availability": "NOT_YET_PUBLISHED"
+            },
+            {
+              "name": "Restricted Team",
               "availability": "NOT_YET_PUBLISHED"
             }
           ]

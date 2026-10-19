@@ -50,6 +50,8 @@ test("new task links use only existing presentation schema; no finals or stage r
   assert.ok(catalog.editions.find(e => e.editionId === "iaio-2026").stageNotes.includes("not independently ranked qualification"));
   assert.ok(catalog.editions.find(e => e.editionId === "euroai-2026").stageNotes.includes("Remote/Guest blanks stay null"));
   assert.ok(catalog.editions.every(e => e.resultsRights !== "APPROVED"));
+  const selection = catalog.editions.find(e => e.editionId === "onia-2026").stages.filter(s => s.kind === "team_selection");
+  assert.deepEqual(selection.map(s => s.label), ["Extended Team", "Restricted Team"]);
 });
 
 test("release artifacts remain metadata-only and source summaries contain no private student rows", () => {

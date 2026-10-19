@@ -180,12 +180,13 @@
     {
       "editionId": "onia-2026", "metadataAction": "new_candidate",
       "metadataSources": ["https://www.olimpiada-ai.ro/en/editii/2026", "https://www.olimpiada-ai.ro/en/news/comunicat-nationala-2026"],
-      "stageNotes": "Local February 14, county March 14, national April 17–20 (contest April 18). Grades 9–10 and 11–12 are separate. May extended team and June restricted team are selection stages, not national contest results.",
+      "stageNotes": "Local February 14, county March 14, national April 17–20 (contest April 18). Grades 9–10 and 11–12 are separate. Extended Team May 21–25 and Restricted Team June 5–7 are distinct selection stages, not national contest results.",
       "stages": [
         {"label": "Local Stage", "kind": "qualification", "resultStageId": null, "source": "https://www.olimpiada-ai.ro/en/rezultate/locala"},
         {"label": "County Stage", "kind": "regional", "resultStageId": null, "source": "https://www.olimpiada-ai.ro/en/rezultate/judeteana"},
         {"label": "National Stage", "kind": "national", "resultStageId": null, "source": "https://www.olimpiada-ai.ro/en/rezultate/nationala"},
-        {"label": "Extended Team / Restricted Team", "kind": "team_selection", "resultStageId": null, "source": "https://www.olimpiada-ai.ro/en/editii/2026"}
+        {"label": "Extended Team", "kind": "team_selection", "resultStageId": null, "source": "https://www.olimpiada-ai.ro/en/editii/2026"},
+        {"label": "Restricted Team", "kind": "team_selection", "resultStageId": null, "source": "https://www.olimpiada-ai.ro/en/editii/2026"}
       ],
       "tasks": [
         {"label": "Local grades 9–10", "stage": "Local Stage", "day": null, "kind": "collection", "url": "https://platform.olimpiada-ai.ro/ro/competitions/11", "provenance": "https://www.olimpiada-ai.ro/en/editii/2026", "access": "account_required", "license": "Official contest view; submissions subject to platform access"},
