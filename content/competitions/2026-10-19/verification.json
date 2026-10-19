@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-10-19T00:35:03.083Z",
+  "productionBefore": "2026-10-19T00:13:33.4364667Z",
+  "productionAfter": "2026-10-19T00:34:14.1400752Z",
+  "productionWrites": 0,
+  "productionInventoryUnchanged": true,
+  "migrationHistoryUnchanged": true,
+  "competitionFingerprintUnchanged": true,
+  "profileFingerprintUnchanged": true,
+  "countsUnchanged": true,
+  "rlsGrantsIndexesUnchanged": true,
+  "browser": {
+    "functional": "PASS",
+    "editionViews": 60,
+    "stageViews": 56,
+    "taskLinkChecks": 108,
+    "visual": "BLOCKED_BY_SEPARATE_PR44",
+    "visualBlockers": [
+      "PR44_UNMERGED_AWARD_WRAPPING"
+    ],
+    "source": "Existing public-source draft manifest; no restricted Kazakhstan rows",
+    "productionAccess": false,
+    "databaseImports": 0
+  },
+  "guestProductionSmoke": {
+    "status": "PASS",
+    "checkedAt": "2026-10-19T00:31:03.500Z",
+    "widths": [
+      375,
+      1440
+    ],
+    "theme": "light",
+    "guestRouteViews": 16,
+    "competitionViews": 10,
+    "hybridFilter": true,
+    "dashboardGuestLoginRedirect": true,
+    "resultsEmptyState": true,
+    "tasksEmptyState": true,
+    "productionWriteRequests": 0,
+    "authenticatedMutationsTested": false
+  },
+  "isolatedMetadataDatabase": {
+    "status": "PASS",
+    "migrations": 9,
+    "additions": 8,
+    "replay": 0,
+    "rollback": true,
+    "presentationRoundtrip": true,
+    "existingFiveUnchanged": true,
+    "memberCreateUpdateDenied": true
+  },
+  "isolatedResultsDatabase": {
+    "status": "PASS",
+    "sets": 14,
+    "rows": 809,
+    "roundtripAndReplay": true,
+    "draftGuestMemberHidden": true,
+    "sqlSecurityAssertions": 27
+  },
+  "authenticatedProductionWritesTested": false,
+  "fullManagedSupabaseRecoveryVerified": false
+}

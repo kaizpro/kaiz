@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-19T00:21:50.244Z",
+  "privateOriginalsOutsideGit": true,
+  "originalHashesMatch": true,
+  "screenshot2025": {
+    "rows": 38,
+    "rank36Rows": 2,
+    "arithmeticDifferences": 0,
+    "redRowsRetained": true,
+    "awardColoursNotInferred": true,
+    "sourceTitleOrYearAbsent": true,
+    "completenessAgainstRoster": "UNCONFIRMED",
+    "organizerPublicationApproval": "MISSING"
+  },
+  "workbook2026": {
+    "rows": 39,
+    "tabs": 1,
+    "archivedCellsMatchOriginal": true,
+    "freshAnonymousExportCellsMatch": true,
+    "arithmeticDifferences": 0,
+    "duplicateRanks": 16,
+    "awardColumn": false,
+    "stage": "Final-labelled, organizer finality not confirmed",
+    "organizerPublicationApproval": "MISSING"
+  },
+  "productionWrites": 0,
+  "restrictedRowsCopiedToGit": 0
+}

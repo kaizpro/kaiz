@@ -1,0 +1,281 @@
+{
+  "verifiedAt": "2026-10-19T00:24:41.338Z",
+  "historicalParserDateNotReused": true,
+  "manifestSha256": "cf784cdcb709db818695a690aaf0dc0425a6e5dc7425eb06faa01543bb70f866",
+  "sets": [
+    {
+      "edition": "ioai-2025",
+      "stage": "ioai-2025-individual",
+      "label": "Individual contest",
+      "rows": 284,
+      "participantType": "individual",
+      "source": "https://ioai-official.org/china-2025/results-2025/",
+      "fields": [
+        "Rank",
+        "Name",
+        "Country Or Region",
+        "Task1: Radar",
+        "Task2: Chicken Counting",
+        "Task3: Concepts",
+        "Task4: Restroom Icon Matching",
+        "Task5: Antique Painting Authentication",
+        "Task6: Pixel Parsimony Challenge",
+        "Total Score",
+        "Medal"
+      ],
+      "components": [
+        {
+          "key": "task_1",
+          "label": "Task1: Radar"
+        },
+        {
+          "key": "task_2",
+          "label": "Task2: Chicken Counting"
+        },
+        {
+          "key": "task_3",
+          "label": "Task3: Concepts"
+        },
+        {
+          "key": "task_4",
+          "label": "Task4: Restroom Icon Matching"
+        },
+        {
+          "key": "task_5",
+          "label": "Task5: Antique Painting Authentication"
+        },
+        {
+          "key": "task_6",
+          "label": "Task6: Pixel Parsimony Challenge"
+        }
+      ],
+      "awards": {
+        "Gold": 24,
+        "Silver": 47,
+        "Bronze": 71,
+        "Honourable Mention": 37,
+        "No stated award": 105
+      },
+      "repeatedRankRows": 0,
+      "arithmeticDifferences": 0,
+      "completeNamedSourceTable": true,
+      "cellComparison": "PASS",
+      "sourceHtmlSha256": "2dc7dbf7c75370f34236a1158a0933544f9689b5aeccb1dbfa3ac6c51c645d24",
+      "redistribution": "UNCONFIRMED",
+      "publicationAuthorized": false
+    },
+    {
+      "edition": "ioai-2025",
+      "stage": "ioai-2025-team-final",
+      "label": "Final Round of Team Challenge",
+      "rows": 10,
+      "participantType": "team",
+      "source": "https://ioai-official.org/china-2025/results-2025/",
+      "fields": [
+        "Rank",
+        "Team",
+        "Total",
+        "Award"
+      ],
+      "components": [],
+      "awards": {
+        "First Place Trophy": 1,
+        "Second Place Trophy": 1,
+        "Third Place Trophy": 1,
+        "No stated award": 7
+      },
+      "repeatedRankRows": 0,
+      "arithmeticDifferences": 0,
+      "completeNamedSourceTable": true,
+      "cellComparison": "PASS",
+      "sourceHtmlSha256": "2dc7dbf7c75370f34236a1158a0933544f9689b5aeccb1dbfa3ac6c51c645d24",
+      "redistribution": "UNCONFIRMED",
+      "publicationAuthorized": false
+    },
+    {
+      "edition": "ioai-2025",
+      "stage": "ioai-2025-gaite",
+      "label": "GAITE contest",
+      "rows": 16,
+      "participantType": "individual",
+      "source": "https://ioai-official.org/china-2025/results-2025/",
+      "fields": [
+        "Rank",
+        "Name",
+        "Country Or Region",
+        "Task1: Radar",
+        "Task2: Chicken Counting",
+        "Task3: Concepts",
+        "Task 4: Combinatorial Word Segmentation",
+        "Task 5: Synthetic Speech Detector",
+        "Total Score",
+        "Award"
+      ],
+      "components": [
+        {
+          "key": "task_1",
+          "label": "Task1: Radar"
+        },
+        {
+          "key": "task_2",
+          "label": "Task2: Chicken Counting"
+        },
+        {
+          "key": "task_3",
+          "label": "Task3: Concepts"
+        },
+        {
+          "key": "task_4",
+          "label": "Task 4: Combinatorial Word Segmentation"
+        },
+        {
+          "key": "task_5",
+          "label": "Task 5: Synthetic Speech Detector"
+        }
+      ],
+      "awards": {
+        "First Level": 2,
+        "Second Level": 2,
+        "Third Level": 4,
+        "Honourable Mention": 2,
+        "No stated award": 6
+      },
+      "repeatedRankRows": 4,
+      "arithmeticDifferences": 0,
+      "completeNamedSourceTable": true,
+      "cellComparison": "PASS",
+      "sourceHtmlSha256": "2dc7dbf7c75370f34236a1158a0933544f9689b5aeccb1dbfa3ac6c51c645d24",
+      "redistribution": "UNCONFIRMED",
+      "publicationAuthorized": false
+    },
+    {
+      "edition": "ioai-2026",
+      "stage": "ioai-2026-individual",
+      "label": "Individual contest",
+      "rows": 440,
+      "participantType": "individual",
+      "source": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+      "fields": [
+        "rank",
+        "name",
+        "team",
+        "Find the Order",
+        "Robot Chasing",
+        "Potato",
+        "Double Agent Dilemma",
+        "Ghost of Machine",
+        "IOAI Field",
+        "total",
+        "award"
+      ],
+      "components": [
+        {
+          "key": "task_1",
+          "label": "Find the Order"
+        },
+        {
+          "key": "task_2",
+          "label": "Robot Chasing"
+        },
+        {
+          "key": "task_3",
+          "label": "Potato"
+        },
+        {
+          "key": "task_4",
+          "label": "Double Agent Dilemma"
+        },
+        {
+          "key": "task_5",
+          "label": "Ghost of Machine"
+        },
+        {
+          "key": "task_6",
+          "label": "IOAI Field"
+        }
+      ],
+      "awards": {
+        "Gold + 1st Place 🏆": 1,
+        "Gold + 2nd Place 🏆": 1,
+        "Gold + 3rd Place 🏆": 1,
+        "Gold": 34,
+        "Silver": 73,
+        "Bronze": 110,
+        "Honourable Mention": 62,
+        "No stated award": 158
+      },
+      "repeatedRankRows": 0,
+      "arithmeticDifferences": 0,
+      "completeNamedSourceTable": true,
+      "cellComparison": "PASS",
+      "sourceHtmlSha256": "69d049827ca6d760eae1bbe367547eb9052fd2804de25c3359e9476158d451c4",
+      "redistribution": "UNCONFIRMED",
+      "publicationAuthorized": false
+    },
+    {
+      "edition": "ioai-2026",
+      "stage": "ioai-2026-gaite",
+      "label": "GA I TE contest",
+      "rows": 26,
+      "participantType": "individual",
+      "source": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+      "fields": [
+        "rank",
+        "name",
+        "team",
+        "Find the Order",
+        "Robot Chasing",
+        "Potato",
+        "Double Agent Dilemma",
+        "Ghost of Machine",
+        "IOAI Field",
+        "total",
+        "award"
+      ],
+      "components": [
+        {
+          "key": "task_1",
+          "label": "Find the Order"
+        },
+        {
+          "key": "task_2",
+          "label": "Robot Chasing"
+        },
+        {
+          "key": "task_3",
+          "label": "Potato"
+        },
+        {
+          "key": "task_4",
+          "label": "Double Agent Dilemma"
+        },
+        {
+          "key": "task_5",
+          "label": "Ghost of Machine"
+        },
+        {
+          "key": "task_6",
+          "label": "IOAI Field"
+        }
+      ],
+      "awards": {
+        "Level 1 Award": 3,
+        "Level 2 Award": 4,
+        "Level 3 Award": 6,
+        "GAITE Honorable Mention": 13
+      },
+      "repeatedRankRows": 0,
+      "arithmeticDifferences": 0,
+      "completeNamedSourceTable": true,
+      "cellComparison": "PASS",
+      "sourceHtmlSha256": "69d049827ca6d760eae1bbe367547eb9052fd2804de25c3359e9476158d451c4",
+      "redistribution": "UNCONFIRMED",
+      "publicationAuthorized": false
+    }
+  ],
+  "ioaiRows": 776,
+  "allManifestRows": 809,
+  "partialRows": 33,
+  "kazakhstanExcluded": true,
+  "productionWrites": 0
+}

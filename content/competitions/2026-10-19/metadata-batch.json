@@ -1,0 +1,900 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-19",
+  "sources": [
+    {
+      "id": "ioai-2024",
+      "url": "https://ioai-official.org/bulgaria-2024/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "edition",
+        "Burgas",
+        "Bulgaria",
+        "August 9–15 dates",
+        "separate scientific and practical rounds"
+      ],
+      "notes": "Dedicated retrospective explicitly establishes event dates August 9–15. Use that named scope for this draft; retain general-regulations August 8–15 as an approval caveat, not a guessed compromise."
+    },
+    {
+      "id": "ioai-2025-edition",
+      "url": "https://ioai-official.org/china-2025/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "edition",
+        "dates",
+        "city",
+        "country",
+        "format"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "ioai-2025-host",
+      "url": "https://ioai-official.org/2025-press-release-1/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "host",
+        "co-host",
+        "eligibility",
+        "stages"
+      ],
+      "notes": "BNDS and ITCCC are named hosts; preserve this distinction from patrons and sponsors."
+    },
+    {
+      "id": "ioai-2026-edition",
+      "url": "https://ioai-official.org/republic-of-kazakhstan/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "edition",
+        "dates",
+        "city",
+        "country",
+        "host",
+        "eligibility"
+      ],
+      "notes": "Current Astana page supersedes the old Abu Dhabi announcement."
+    },
+    {
+      "id": "ioai-2025-results",
+      "url": "https://ioai-official.org/china-2025/results-2025/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "individual standings",
+        "final team challenge",
+        "GAITE standings"
+      ],
+      "notes": "Selected public rows only; see source for full tables. Award spelling and decimal precision retained."
+    },
+    {
+      "id": "ioai-2026-results",
+      "url": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "individual standings",
+        "GAITE standings"
+      ],
+      "notes": "Selected public rows only. Decimal comma converted to numeric decimal point; original display retained."
+    },
+    {
+      "id": "apoai-2026",
+      "url": "https://www.apoai.org/apoai2026",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "dates",
+        "host",
+        "format",
+        "organizer",
+        "eligibility",
+        "standings"
+      ],
+      "notes": "June 13 is competition day. June 1 delegation-list and June 27 tentative release dates are not student-registration and actual-publication dates."
+    },
+    {
+      "id": "euroai-2026-results",
+      "url": "https://euroai-official.org/2026/results/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "member ranks",
+        "remote participation",
+        "score",
+        "award",
+        "dates",
+        "location"
+      ],
+      "notes": "Member ranks and Remote/Guest blanks have different meaning; remote entries remain unranked."
+    },
+    {
+      "id": "iaio-2024",
+      "url": "https://iaio-official.org/olympiad-2024/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "dates",
+        "city",
+        "country",
+        "organizers",
+        "on-site schedule"
+      ],
+      "notes": "IAIO and IOAI are different events. No 2025 IAIO edition inferred."
+    },
+    {
+      "id": "iaio-2026",
+      "url": "https://iaio-official.org/olympiad-2026/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "dates",
+        "city",
+        "country",
+        "organizer",
+        "results link"
+      ],
+      "notes": "Use the edition's published Winter IAIO identity."
+    },
+    {
+      "id": "usaaio-2025",
+      "url": "https://ioai-official.org/the-usa-north-america-ai-olympiad-is-organized-by-the-usa-ai-olympiad-usaaio/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "year",
+        "Round 2 date",
+        "venue",
+        "organizer",
+        "eligibility"
+      ],
+      "notes": "Edition dates cover Round 2 only; other rounds are not duplicated as separate annual editions."
+    },
+    {
+      "id": "usaaio-2026",
+      "url": "https://www.usaaio.org/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "2026 Round 2 dates",
+        "venues",
+        "organizer",
+        "historical announcements"
+      ],
+      "notes": "April 4–6 is the organizer's event window; competition sessions are April 4–5. Camp June 8–12 is a different stage."
+    },
+    {
+      "id": "neoai-2026",
+      "url": "https://cu.ru/olympiad/events/neoai",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "May 3–4 dates",
+        "hybrid format",
+        "eligibility",
+        "practice task titles"
+      ],
+      "notes": "Official indexed page confirms May 3–4. Direct retrieval timed out. The broader CU selection page announces May 2–8; retain the dedicated edition dates, not a selection-week range. No final standings URL verified."
+    },
+    {
+      "id": "ioai-2024-host",
+      "url": "https://ioai-official.org/bulgaria-2024/2024-team/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "LERAI Foundation organizer"
+      ],
+      "notes": "Do not copy organizers' private contact information."
+    },
+    {
+      "id": "euroai-2027",
+      "url": "https://euroai-official.org/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "second edition",
+        "Belgrade",
+        "Serbia",
+        "July 27–August 1 dates"
+      ],
+      "notes": "Latest homepage now leads with 2027 while still describing 2026 historically. Confirm edition-specific organizer before preparing form."
+    },
+    {
+      "id": "ioai-2024-results",
+      "url": "https://ioai-official.org/bulgaria-2024/results/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "Scientific Round",
+        "Practical Round",
+        "score",
+        "rank",
+        "medal"
+      ],
+      "notes": "Separate team rounds; practical fields: jury score and peer voting score."
+    },
+    {
+      "id": "neoai-2025",
+      "url": "https://ioai-official.org/northern-eurasia-oai-2025/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "dates",
+        "organizer",
+        "format",
+        "countries"
+      ],
+      "notes": "Official IOAI retrospective confirms May 6–11 and Central University + AI Alliance."
+    },
+    {
+      "id": "neoai-2025-platform",
+      "url": "https://www.kaggle.com/competitions/neoai-2025/overview",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "date scope",
+        "venue",
+        "tasks"
+      ],
+      "notes": "Linked by official retrospective. Late submissions/task leaderboards are not audited aggregate final standings."
+    },
+    {
+      "id": "faio-2025",
+      "url": "https://www.faio.kz/2025/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "qualification date",
+        "final dates",
+        "city",
+        "audience",
+        "final-results link"
+      ],
+      "notes": "Rendered archive: September 28 online qualifier; October 30–31 offline final, Almaty. Organizer label uses FAIO itself."
+    },
+    {
+      "id": "faio-2026",
+      "url": "https://www.faio.kz/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "name",
+        "organizer",
+        "qualification date",
+        "final contest dates",
+        "city",
+        "format",
+        "eligibility"
+      ],
+      "notes": "Fizmat organizes FAIO; September 20 qualifier; October 27–28 contest rounds."
+    },
+    {
+      "id": "faio-2026-final",
+      "url": "https://www.faio.kz/final/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "programme",
+        "venue",
+        "contest days"
+      ],
+      "notes": "October 26–30 includes arrival/departure; contests October 27–28. Preliminary programme, recheck."
+    },
+    {
+      "id": "faio-2025-results",
+      "url": "https://docs.google.com/spreadsheets/d/10Rj9aCxwFR5EoTQUo9ChunzffX7Xgxb3fy3zDGNjlrQ/edit?usp=sharing",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "final team labels",
+        "rank",
+        "delegation",
+        "problem 1–5",
+        "total"
+      ],
+      "notes": "Linked by official archive; public view-only. Omit schools, contacts and member details."
+    },
+    {
+      "id": "poland-oai-2025",
+      "url": "https://www.oai.edu.pl/edycje/ii-oai",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "edition",
+        "stage dates",
+        "final results",
+        "stage I/II scores",
+        "eligibility",
+        "tasks"
+      ],
+      "notes": "II OAI: online February 17–March 22; regional April 26–27; final May 30–June 2 Wrocław. I/II score lists lack explicit rank numbering."
+    },
+    {
+      "id": "poland-oai-2025-rules",
+      "url": "https://www.oai.edu.pl/regulamin-iioai",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "organizer",
+        "dates",
+        "individual format",
+        "eligibility",
+        "deadline"
+      ],
+      "notes": "Foundation organizer. Scheduled results dates are not actual publication timestamps."
+    },
+    {
+      "id": "onia-2026-archive",
+      "url": "https://www.olimpiada-ai.ro/en/editii/2026",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "edition",
+        "stages",
+        "dates",
+        "format",
+        "venue",
+        "result links"
+      ],
+      "notes": "Anonymous HTTP 200: national April 17–20 UPB, contest April 18; local February 14, county March 14, camps separate."
+    },
+    {
+      "id": "onia-2026-organizer",
+      "url": "https://www.olimpiada-ai.ro/en/news/comunicat-nationala-2026",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "organizer",
+        "city",
+        "national stage",
+        "grade sections",
+        "awards"
+      ],
+      "notes": "UPIR under Ministry aegis with HRIA/academic partners. Grades 9–10 and 11–12 separate."
+    },
+    {
+      "id": "iaio-2026-results",
+      "url": "https://iaio-official.org/results2026/",
+      "checkedAt": "2026-10-12",
+      "status": "verified",
+      "fields": [
+        "final results",
+        "Round 1",
+        "Round 2",
+        "Final Result",
+        "place",
+        "delegation",
+        "awards"
+      ],
+      "notes": "95 contestants. Delegation strings have team numbers, not residence; no independent round ranks inferred."
+    }
+  ],
+  "competitions": [
+    {
+      "editionKey": "ioai-2024",
+      "year": 2024,
+      "sourceIds": [
+        "ioai-2024",
+        "ioai-2024-host"
+      ],
+      "dateScope": "Dedicated retrospective edition event dates August 9–15, not travel range",
+      "notes": "Earlier general regulations say August 8–15. Dedicated retrospective explicitly states August 9–15; retain date-scope distinction for approval.",
+      "form": {
+        "title": "International Olympiad in Artificial Intelligence 2024",
+        "slug": "ioai-2024",
+        "description": "First IOAI edition; separate Scientific and Practical team rounds. The dedicated retrospective dates are used rather than broader planning/travel ranges.",
+        "organizer": "LERAI Foundation",
+        "officialWebsite": "https://ioai-official.org/bulgaria-2024/",
+        "registrationUrl": "",
+        "startDate": "2024-08-09",
+        "endDate": "2024-08-15",
+        "registrationDeadline": "",
+        "city": "Burgas",
+        "country": "Bulgaria",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "High-school national teams under the IOAI framework.",
+        "tags": "AI, Machine Learning, Olympiad, IOAI, 2024",
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "ioai",
+          "year": 2024,
+          "sourceNotes": "Dedicated retrospective edition event dates August 9–15, not travel range No native KAIZ results are published by this metadata-only batch.",
+          "expectedStages": [
+            {
+              "name": "Scientific Round 2024",
+              "availability": "NOT_YET_PUBLISHED"
+            },
+            {
+              "name": "Practical Round",
+              "availability": "NOT_YET_PUBLISHED"
+            }
+          ],
+          "tasksUrl": "https://ioai-official.org/2024-tasks/"
+        }
+      }
+    },
+    {
+      "editionKey": "ioai-2025",
+      "year": 2025,
+      "expectedId": "6f9d4073-366b-47f1-8859-f0fc83c36afb",
+      "form": {
+        "title": "International Olympiad in Artificial Intelligence 2025",
+        "slug": "ioai-2025",
+        "description": "The second International Olympiad in Artificial Intelligence (IOAI), hosted in Beijing, China. High-school students representing countries and territories around the world competed in artificial intelligence through individual and team activities.",
+        "organizer": "Beijing National Day School (BNDS)",
+        "officialWebsite": "https://ioai-official.org/china-2025/",
+        "registrationUrl": "",
+        "startDate": "2025-08-02",
+        "endDate": "2025-08-09",
+        "registrationDeadline": "",
+        "city": "Beijing",
+        "country": "China",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "High school students",
+        "tags": "AI, Machine Learning, International, Olympiad, High School, China, IOAI",
+        "verified": true,
+        "presentation": {}
+      },
+      "sourceIds": [
+        "ioai-2025-edition",
+        "ioai-2025-host"
+      ],
+      "dateScope": "Full international event week",
+      "notes": "Preserve existing record and UUID exactly; no metadata/presentation update in this release."
+    },
+    {
+      "editionKey": "ioai-2026",
+      "year": 2026,
+      "expectedId": "45fa3bfb-6e3b-43e0-927e-ea0ee617b9ba",
+      "sourceIds": [
+        "ioai-2026-edition"
+      ],
+      "dateScope": "Existing reviewed edition dates, current row retained",
+      "notes": "Preserve existing record and UUID exactly; no metadata/presentation update in this release.",
+      "form": {
+        "title": "International Olympiad in Artificial Intelligence 2026",
+        "slug": "ioai-2026",
+        "description": "The third International Olympiad in Artificial Intelligence (IOAI), hosted in Astana, Kazakhstan. IOAI is an international artificial intelligence olympiad for high-school students, bringing together national delegations for individual and team-based AI competition and international collaboration.",
+        "organizer": "Competitive Programming Federation of Kazakhstan (CPFED)",
+        "officialWebsite": "https://ioai-official.org/republic-of-kazakhstan/",
+        "registrationUrl": "",
+        "startDate": "2026-08-02",
+        "endDate": "2026-08-08",
+        "registrationDeadline": "",
+        "city": "Astana",
+        "country": "Kazakhstan",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "High school students",
+        "tags": "AI, Machine Learning, International, Olympiad, High School, Kazakhstan, IOAI",
+        "verified": true,
+        "presentation": {}
+      }
+    },
+    {
+      "editionKey": "apoai-2026",
+      "year": 2026,
+      "expectedId": "4f0dc01c-c6cc-49b1-8333-2d17f2d096d4",
+      "form": {
+        "title": "Asia Pacific Olympiad in Artificial Intelligence 2026",
+        "slug": "apoai-2026",
+        "description": "The 2026 Asia Pacific Olympiad in Artificial Intelligence (APOAI), a regional artificial intelligence olympiad operating under the supervision of the International Olympiad in Artificial Intelligence. It provides a regional competition and preparation pathway aligned with IOAI standards.",
+        "organizer": "NOAI Organizing Committee (China)",
+        "officialWebsite": "https://www.apoai.org/apoai2026",
+        "registrationUrl": "",
+        "startDate": "2026-06-13",
+        "endDate": "2026-06-13",
+        "registrationDeadline": "",
+        "city": "",
+        "country": "China",
+        "format": "hybrid",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "High school students",
+        "tags": "AI, Asia Pacific, International, Regional, Olympiad, High School, APOAI, IOAI",
+        "verified": true,
+        "presentation": {}
+      },
+      "sourceIds": [
+        "apoai-2026"
+      ],
+      "dateScope": "Official competition day only",
+      "notes": "Preserve existing record and UUID exactly; no metadata/presentation update in this release."
+    },
+    {
+      "editionKey": "euroai-2026",
+      "year": 2026,
+      "expectedId": "663f286e-b6b6-479a-9350-55caf31343b9",
+      "sourceIds": [
+        "euroai-2027"
+      ],
+      "dateScope": "Existing reviewed edition dates, current row retained",
+      "notes": "Preserve existing record and UUID exactly; no metadata/presentation update in this release.",
+      "form": {
+        "title": "European Olympiad in Artificial Intelligence 2026",
+        "slug": "euroai-2026",
+        "description": "The 2026 European Olympiad in Artificial Intelligence (EUROAI), initially launched as the Central European Olympiad in Artificial Intelligence (CEOAI) before being renamed ahead of its first edition. The regional AI olympiad brings together secondary-school students for theoretical and practical artificial intelligence competition.",
+        "organizer": "EUROAI International Committee",
+        "officialWebsite": "https://euroai-official.org/",
+        "registrationUrl": "",
+        "startDate": "2026-07-14",
+        "endDate": "2026-07-19",
+        "registrationDeadline": "",
+        "city": "Cluj-Napoca",
+        "country": "Romania",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "High school students",
+        "tags": "AI, Machine Learning, Europe, International, Regional, Olympiad, High School, EUROAI, CEOAI, IOAI",
+        "verified": true,
+        "presentation": {}
+      }
+    },
+    {
+      "editionKey": "iaio-2026",
+      "year": 2026,
+      "sourceIds": [
+        "iaio-2026"
+      ],
+      "dateScope": "Full international event",
+      "notes": "",
+      "form": {
+        "title": "International Winter AI Olympiad 2026",
+        "slug": "iaio-2026",
+        "description": "The International Winter AI Olympiad 2026 was held in Ljubljana and organized by IRCAI at the Jožef Stefan Institute. This is an IAIO edition, not IOAI 2026.",
+        "organizer": "International Research Centre on Artificial Intelligence (IRCAI), Jožef Stefan Institute",
+        "officialWebsite": "https://iaio-official.org/olympiad-2026/",
+        "registrationUrl": "",
+        "startDate": "2026-02-23",
+        "endDate": "2026-02-27",
+        "registrationDeadline": "",
+        "city": "Ljubljana",
+        "country": "Slovenia",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "National delegations; consult the edition's competition requirements.",
+        "tags": "AI, Machine Learning, IAIO, 2026",
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "iaio",
+          "year": 2026,
+          "sourceNotes": "Full international event No native KAIZ results are published by this metadata-only batch.",
+          "expectedStages": [
+            {
+              "name": "IAIO 2026 Competition Results",
+              "availability": "NOT_YET_PUBLISHED"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "editionKey": "faio-2025",
+      "year": 2025,
+      "sourceIds": [
+        "faio-2025"
+      ],
+      "dateScope": "September 28 qualification through October 30–31 final contest",
+      "notes": "",
+      "form": {
+        "title": "Fizmat AI Olympiad 2025",
+        "slug": "faio-2025",
+        "description": "International school-student AI olympiad in Kazakhstan. Online qualification and Almaty offline final are distinct stages; the date span is the season, not continuous competition.",
+        "organizer": "Fizmat AI Olympiad (FAIO)",
+        "officialWebsite": "https://www.faio.kz/2025/",
+        "registrationUrl": "",
+        "startDate": "2025-09-28",
+        "endDate": "2025-10-31",
+        "registrationDeadline": "",
+        "city": "Almaty",
+        "country": "Kazakhstan",
+        "format": "hybrid",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "School students; consult archived rules for edition-specific entry conditions.",
+        "tags": "AI, Machine Learning, Olympiad, FAIO, 2025",
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "faio",
+          "year": 2025,
+          "sourceNotes": "September 28 qualification through October 30–31 final contest No native KAIZ results are published by this metadata-only batch.",
+          "expectedStages": [
+            {
+              "name": "Qualification",
+              "availability": "NOT_YET_PUBLISHED"
+            },
+            {
+              "name": "FAIO 2025 Final Results",
+              "availability": "NOT_YET_PUBLISHED"
+            }
+          ],
+          "tasksUrl": "https://github.com/BeksultanSagyndyk/faio-tasks/tree/main/faio-2025"
+        }
+      }
+    },
+    {
+      "editionKey": "faio-2026",
+      "year": 2026,
+      "sourceIds": [
+        "faio-2026",
+        "faio-2026-final"
+      ],
+      "dateScope": "September 20 qualification through October 27–28 final contest rounds",
+      "notes": "Final results not yet available October 12; programme preliminary, recheck before entry.",
+      "form": {
+        "title": "Fizmat AI Olympiad 2026",
+        "slug": "faio-2026",
+        "description": "International AI olympiad organized by Fizmat. Online qualification precedes October 27–28 final contest rounds in Almaty. October 26–30 is arrival/departure programme, not contest duration.",
+        "organizer": "Fizmat (National School of Physics and Math)",
+        "officialWebsite": "https://www.faio.kz/",
+        "registrationUrl": "",
+        "startDate": "2026-09-20",
+        "endDate": "2026-10-28",
+        "registrationDeadline": "",
+        "city": "Almaty",
+        "country": "Kazakhstan",
+        "format": "hybrid",
+        "status": "active",
+        "category": "Machine Learning",
+        "eligibility": "School students; free participation and supporting theory provided.",
+        "tags": "AI, Machine Learning, Olympiad, FAIO, 2026",
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "faio",
+          "year": 2026,
+          "sourceNotes": "September 20 qualification through October 27–28 final contest rounds No native KAIZ results are published by this metadata-only batch.",
+          "expectedStages": [
+            {
+              "name": "Qualification",
+              "availability": "NOT_YET_PUBLISHED"
+            },
+            {
+              "name": "Final",
+              "availability": "NOT_YET_PUBLISHED"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "editionKey": "neoai-2025",
+      "year": 2025,
+      "sourceIds": [
+        "neoai-2025",
+        "neoai-2025-platform"
+      ],
+      "dateScope": "Retrospective May 6–11, not Kaggle April 3 opening",
+      "notes": "Russia is organizing/on-site country, not every contestant location. City unestablished; late submissions are not final aggregate standings.",
+      "form": {
+        "title": "Northern Eurasia Olympiad in Artificial Intelligence 2025",
+        "slug": "neoai-2025",
+        "description": "Regional school-student AI olympiad, on-site at SberUniversity and online, including Kazakhstan. The official retrospective identifies eight main-round challenges.",
+        "organizer": "Central University and AI Alliance",
+        "officialWebsite": "https://www.kaggle.com/competitions/neoai-2025/overview",
+        "registrationUrl": "",
+        "startDate": "2025-05-06",
+        "endDate": "2025-05-11",
+        "registrationDeadline": "",
+        "city": "",
+        "country": "Russia",
+        "format": "hybrid",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "Northern Eurasia school students; on-site participation restricted to international olympiad training programme.",
+        "tags": "AI, Machine Learning, Olympiad, NEOAI, 2025",
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "neoai",
+          "year": 2025,
+          "sourceNotes": "Retrospective May 6–11, not Kaggle April 3 opening No native KAIZ results are published by this metadata-only batch.",
+          "expectedStages": [
+            {
+              "name": "Main round",
+              "availability": "NOT_YET_PUBLISHED"
+            }
+          ],
+          "tasksUrl": "https://www.kaggle.com/competitions/neoai-2025/overview"
+        }
+      }
+    },
+    {
+      "editionKey": "neoai-2026",
+      "year": 2026,
+      "expectedId": "4e4f151a-c541-41d8-a845-8106bf70d438",
+      "sourceIds": [
+        "neoai-2026"
+      ],
+      "dateScope": "Existing reviewed edition dates, current row retained",
+      "notes": "Preserve existing record and UUID exactly; no metadata/presentation update in this release.",
+      "form": {
+        "title": "Northern Eurasia Olympiad in Artificial Intelligence 2026",
+        "slug": "neoai-2026",
+        "description": "The Northern Eurasia Olympiad in Artificial Intelligence is an international AI olympiad for high-school students from Northern Eurasia and partner countries. The competition uses a practice-oriented format with challenges in areas including machine learning, computer vision, natural language processing, data analysis, and algorithmic thinking. Participants from Russia compete onsite at the official venue, while international participants can compete remotely or at local partner venues.",
+        "organizer": "Central University",
+        "officialWebsite": "https://cu.ru/olympiad/events/neoai",
+        "registrationUrl": "",
+        "startDate": "2026-05-03",
+        "endDate": "2026-05-04",
+        "registrationDeadline": "",
+        "city": "",
+        "country": "Russia",
+        "format": "hybrid",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "High school students",
+        "tags": "AI, Machine Learning, Computer Vision, NLP, Data Analysis, Olympiad, High School, NEOAI",
+        "verified": true,
+        "presentation": {}
+      }
+    },
+    {
+      "editionKey": "usaaio-2025",
+      "year": 2025,
+      "sourceIds": [
+        "usaaio-2025"
+      ],
+      "dateScope": "Round 2 only",
+      "notes": "Cambridge is the MIT venue's city; do not treat this date as the entire season.",
+      "form": {
+        "title": "USA–North America AI Olympiad 2025 — Round 2",
+        "slug": "usaaio-2025",
+        "description": "The 2025 USA–North America AI Olympiad Round 2 was held at MIT. This listing covers that round only; Round 1 and the subsequent selection camp belong to the same annual edition.",
+        "organizer": "USA AI Olympiad (USAAIO)",
+        "officialWebsite": "https://ioai-official.org/the-usa-north-america-ai-olympiad-is-organized-by-the-usa-ai-olympiad-usaaio/",
+        "registrationUrl": "",
+        "startDate": "2025-04-27",
+        "endDate": "2025-04-27",
+        "registrationDeadline": "",
+        "city": "Cambridge",
+        "country": "United States",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "Top scorers invited from Round 1; primarily U.S. students with North American participation.",
+        "tags": "AI, Machine Learning, USAAIO, 2025",
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "usaaio",
+          "year": 2025,
+          "sourceNotes": "Round 2 only No native KAIZ results are published by this metadata-only batch.",
+          "expectedStages": [
+            {
+              "name": "Round 1",
+              "availability": "NOT_YET_PUBLISHED"
+            },
+            {
+              "name": "Round 2",
+              "availability": "NOT_YET_PUBLISHED"
+            },
+            {
+              "name": "Round 3 — USAAIO Camp",
+              "availability": "NOT_YET_PUBLISHED"
+            }
+          ],
+          "tasksUrl": "https://forum.beaver-edge.ai/c/ai-olympiads/2025-usa-na-aio-round-2/9"
+        }
+      }
+    },
+    {
+      "editionKey": "poland-oai-2025",
+      "year": 2025,
+      "sourceIds": [
+        "poland-oai-2025",
+        "poland-oai-2025-rules"
+      ],
+      "dateScope": "Stage I February 17–March 22 through final May 30–June 2; later camp excluded",
+      "notes": "No single city for season; Wrocław is final venue. Country not assumed contestant citizenship.",
+      "form": {
+        "title": "Olimpiada Sztucznej Inteligencji 2025 — II OAI",
+        "slug": "poland-oai-2025",
+        "description": "Second Polish AI Olympiad: online qualification, April 26–27 regional contests and Wrocław final May 30–June 2. Separate stage results preserve distinct scoring.",
+        "organizer": "Fundacja Edukacji i Rozwoju Sztucznej Inteligencji",
+        "officialWebsite": "https://www.oai.edu.pl/edycje/ii-oai",
+        "registrationUrl": "",
+        "startDate": "2025-02-17",
+        "endDate": "2025-06-02",
+        "registrationDeadline": "",
+        "city": "",
+        "country": "Poland",
+        "format": "hybrid",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "Primary and secondary school students under the Polish Olympiad rules.",
+        "tags": "AI, Machine Learning, Olympiad, POLAND, 2025",
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "poland-oai",
+          "year": 2025,
+          "sourceNotes": "Stage I February 17–March 22 through final May 30–June 2; later camp excluded No native KAIZ results are published by this metadata-only batch.",
+          "expectedStages": [
+            {
+              "name": "Wyniki I etapu",
+              "availability": "NOT_YET_PUBLISHED"
+            },
+            {
+              "name": "Wyniki 2 etapu",
+              "availability": "NOT_YET_PUBLISHED"
+            },
+            {
+              "name": "Wyniki Finału II Olimpiady Sztucznej Inteligencji",
+              "availability": "NOT_YET_PUBLISHED"
+            }
+          ],
+          "tasksUrl": "https://github.com/OlimpiadaAI/II-OlimpiadaAI"
+        }
+      }
+    },
+    {
+      "editionKey": "onia-2026",
+      "year": 2026,
+      "sourceIds": [
+        "onia-2026-archive",
+        "onia-2026-organizer"
+      ],
+      "dateScope": "National programme April 17–20; contest April 18; camps excluded",
+      "notes": "",
+      "form": {
+        "title": "Romanian National Artificial Intelligence Olympiad 2026 — National Stage",
+        "slug": "onia-2026",
+        "description": "Third ONIA edition's national programme at Politehnica Bucharest. Local/county stages and team-selection camps remain distinct result records; national sections grades 9–10 and 11–12 are separate.",
+        "organizer": "Romanian Computer Science Teachers' Union (UPIR)",
+        "officialWebsite": "https://www.olimpiada-ai.ro/en/editii/2026",
+        "registrationUrl": "",
+        "startDate": "2026-04-17",
+        "endDate": "2026-04-20",
+        "registrationDeadline": "",
+        "city": "Bucharest",
+        "country": "Romania",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "County-stage qualifiers in grades 9–10 and 11–12; special guests separate.",
+        "tags": "AI, Machine Learning, Olympiad, ONIA, 2026",
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "onia",
+          "year": 2026,
+          "sourceNotes": "National programme April 17–20; contest April 18; camps excluded No native KAIZ results are published by this metadata-only batch.",
+          "expectedStages": [
+            {
+              "name": "Local Stage",
+              "availability": "NOT_YET_PUBLISHED"
+            },
+            {
+              "name": "County Stage",
+              "availability": "NOT_YET_PUBLISHED"
+            },
+            {
+              "name": "National Stage",
+              "availability": "NOT_YET_PUBLISHED"
+            },
+            {
+              "name": "Extended Team / Restricted Team",
+              "availability": "NOT_YET_PUBLISHED"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "resultSets": []
+}
