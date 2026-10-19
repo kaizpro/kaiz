@@ -193,3 +193,14 @@ test("standings search and awards preserve original order, tied ranks, missing a
  assert.equal(filterStandings(rows,'Second','')[0].total,null);
  assert.equal(filterStandings(rows,'','Gold')[0].total,0);
 });
+
+test("award labels retain original text in a non-clipping, keyboard-scrollable standings table", () => {
+  const award = "GAITE Honorable Mention";
+  const html = renderedLeaderboard([{ id: setId, name: "Final", status: "official", source: "official_import",
+    competition_results: [{ id: resultId, participant_name: "Fixture participant", participant_type: "individual",
+      rank: 2, score: 0, score_display: "0.0000", country_code: null, award, result_status: "ranked" }] }]);
+  assert.match(html, /role="region"[^>]*tabindex="0"[^>]*overflow-x-auto/);
+  assert.match(html, /<td class="min-w-48 whitespace-nowrap px-4 py-3"><span class="whitespace-nowrap text-\[0\.6875rem\]">GAITE Honorable Mention<\/span><\/td>/);
+  assert.doesNotMatch(html, /truncate|line-clamp|text-ellipsis/);
+  assert.match(html, /0\.0000/);
+});
