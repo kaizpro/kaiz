@@ -1,11 +1,12 @@
 .status { font-size: .75rem; color: var(--muted-foreground); }
-.status[data-status="attempted"] { color: #8a5a0a; }
-.status[data-status="solved"] { color: #087663; }
-:global(.dark) .status[data-status="attempted"] { color: #e1b85a; }
-:global(.dark) .status[data-status="solved"] { color: #61d4b6; }
-.row[data-status="attempted"] { box-shadow: inset 2px 0 #b47b16; background: color-mix(in srgb,#b47b16 3%,var(--card)); }
-.row[data-status="solved"] { box-shadow: inset 2px 0 #168c77; background: color-mix(in srgb,#168c77 3%,var(--card)); }
+.status:is([data-status="attempted"],[data-status="practiced"]) { color: #8a5a0a; }
+.status:is([data-status="solved"],[data-status="finished"]) { color: #087663; }
+:global(.dark) .status:is([data-status="attempted"],[data-status="practiced"]) { color: #e1b85a; }
+:global(.dark) .status:is([data-status="solved"],[data-status="finished"]) { color: #61d4b6; }
+.row:is([data-status="attempted"],[data-status="practiced"]) { box-shadow: inset 2px 0 #b47b16; background: color-mix(in srgb,#b47b16 3%,var(--card)); }
+.row:is([data-status="solved"],[data-status="finished"]) { box-shadow: inset 2px 0 #168c77; background: color-mix(in srgb,#168c77 3%,var(--card)); }
 .action { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 10px; font-size: .75rem; border: 1px solid var(--border); border-radius: 3px; color: var(--primary); }
 .action:disabled { opacity: .6; }
 .action:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+.solve { min-height: 48px; min-width: 144px; padding: 12px 24px; font-size: .875rem; font-weight: 700; }
 @media(pointer:coarse) { .action { min-height: 44px; } }

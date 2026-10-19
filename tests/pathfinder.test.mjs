@@ -133,7 +133,7 @@ test("unified archive combines published tasks and collections without exposing 
 
 test("one archive page applies the same source filter to internal and external items", async () => {
   const problem = { id: "fixture-task", slug: "fixture-task", title: "Fixture classification", published: true, category: "Machine Learning", tags: [], source_label: "Kaggle", source_provider: "kaggle", difficulty_status: "unrated", difficulty_rating: null, metric_name: "Accuracy", metric_direction: "higher_is_better", competition: null, statistics: null };
-  const Page = modules({ "@/lib/data/problems": { listProblems: async () => [problem] }, "@/lib/data/problem-progress": { getOwnProblemProgress: async () => ({signedIn:false,items:[],error:null,attempted:null,solved:null}) } })("app/problems/page.tsx").default;
+  const Page = modules({ "@/lib/data/source-practice": { getOwnSourceSummaries:async()=>({signedIn:false,items:[],error:null,count:null}) }, "@/lib/data/problems": { listProblems: async () => [problem] }, "@/lib/data/problem-progress": { getOwnProblemProgress: async () => ({signedIn:false,items:[],error:null,attempted:null,solved:null}) } })("app/problems/page.tsx").default;
   const html = renderToStaticMarkup(await Page({ searchParams: Promise.resolve({ source: "Kaggle" }) }));
   assert.match(html, /Fixture classification/); assert.match(html, /Northern Eurasia OAI 2025/);
   assert.equal((html.match(/<form/g) ?? []).length, 1);

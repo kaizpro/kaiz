@@ -19,7 +19,8 @@ try{
  await client.query(await readFile('tests/fixtures/disposable-supabase.sql','utf8'));
  const files=(await readdir('supabase/migrations')).filter(f=>f.endsWith('.sql')).sort();
  const privacy='202610160001_personal_problem_progress.sql';
- for(const file of files.filter(file=>file!==privacy))await client.query(await readFile('supabase/migrations/'+file,'utf8'));
+ const external='202610170001_external_source_practice.sql';
+ for(const file of files.filter(file=>file!==privacy&&file!==external))await client.query(await readFile('supabase/migrations/'+file,'utf8'));
  const load=loadTypescript();const {journeys}=load('lib/learning/journeys.ts');const {courseFor}=load('lib/learning/course.ts');
  const expected=journeys.flatMap(p=>courseFor(p).flatMap(m=>m.lessons.map(l=>p.level+'/'+l.id))).sort();
  const actual=(await client.query('select roadmap_id,lesson_id from public.learning_lesson_keys where active')).rows.map(r=>r.roadmap_id+'/'+r.lesson_id).sort();
@@ -37,6 +38,15 @@ try{
   const sql=(await readFile('supabase/tests/personal_problem_progress_security.test.sql','utf8')).replace('create extension if not exists pgtap with schema extensions;','');
   const result=await client.query(sql);const count=result.flatMap(r=>r.rows??[]).filter(row=>Object.values(row).some(v=>typeof v==='string'&&v.startsWith('ok: '))).length;
   assertions+=count;console.log(JSON.stringify({suite:'personal_problem_progress_security.test.sql',assertions:count,status:'PASS'}));
+ }
+ if(files.includes(external)){
+  await client.query(await readFile('supabase/migrations/'+external,'utf8'));
+  const sql=(await readFile('supabase/tests/external_source_practice_security.test.sql','utf8')).replace('create extension if not exists pgtap with schema extensions;','');
+  const result=await client.query(sql);const count=result.flatMap(r=>r.rows??[]).filter(row=>Object.values(row).some(v=>typeof v==='string'&&v.startsWith('ok: '))).length;
+  assertions+=count;console.log(JSON.stringify({suite:'external_source_practice_security.test.sql',assertions:count,status:'PASS'}));
+  const previous=(await readFile('supabase/tests/personal_problem_progress_security.test.sql','utf8')).replace('create extension if not exists pgtap with schema extensions;','');
+  const checked=await client.query(previous);const regressions=checked.flatMap(r=>r.rows??[]).filter(row=>Object.values(row).some(v=>typeof v==='string'&&v.startsWith('ok: '))).length;
+  assertions+=regressions;console.log(JSON.stringify({suite:'personal_problem_progress_security.test.sql after external extension',assertions:regressions,status:'PASS'}));
  }
  // A separate connection establishes that committed completion survives a new session.
  await client.query("insert into auth.users(id,email) values('92000000-0000-4000-8000-000000000001','persist@example.test')");

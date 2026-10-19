@@ -11,7 +11,7 @@ async function saveAttempt(operation: "create" | "update" | "delete", problemId:
   if (!user) return { error: "Sign in to record or manage your practice." };
   if (!z.uuid().safeParse(problemId).success || (attemptId !== null && !z.uuid().safeParse(attemptId).success))
     return { error: "Invalid problem or attempt ID." };
-  const parsed = operation === "delete" ? null : practiceSchema.safeParse({ raw_score: formData.get("raw_score"), attempted_at: formData.get("attempted_at") });
+  const parsed = operation === "delete" ? null : practiceSchema.safeParse({ raw_score: formData.get("raw_score"), attempted_at: formData.get("attempted_at"), ...(formData.has("practice_notes")?{practice_notes:formData.get("practice_notes")}:{}) });
   if (parsed && !parsed.success) return problemValidationError(parsed.error);
   if (operation === "delete" && formData.get("confirm") !== "true") return { error: "Confirm deletion before removing your attempt." };
   const supabase = await createClient();
