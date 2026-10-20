@@ -1,5 +1,9 @@
 # IOAI roadmap improvements
 
+This document retains implementation-stage notes. The **Beta integration
+validation — 2026-10-20** section below supersedes earlier main/test-count and
+guest-only verification statements; educational limitations still apply.
+
 ## Scope and ownership
 
 Extends the existing Roadmaps system after the user-confirmed handoff from
@@ -305,3 +309,93 @@ mathematical functions remain supporting study; Deep Learning is optional next-s
 preparation, not mandatory beginner mastery. All 40 lesson IDs, 85 topic routes and
 saved-progress semantics are preserved. See `educational-quality-audit.md` for the
 current per-lesson resource assessment, teaching scope and verification boundaries.
+
+## Beta integration validation — 2026-10-20
+
+Release-owner-authorized handoff retained original PR #48 head `eca1809` and
+merged main `0761ff6` normally, including PR #49 and canonical SQL runner PR #51.
+No history rewrite, RLS change, migration, runtime implementation change or PR #42
+feature was introduced. Bekjj's separate local/unpushed workspace is unavailable
+on this host: unseen work is not claimed recovered. The published owner-private
+archive assertion blocker is already resolved by #51; its canonical runner and
+assertions are retained rather than duplicated or relaxed.
+
+### Fresh verification
+
+- `npm ci`, TypeScript, ESLint, normal Turbopack production build and diff check
+  pass. All 256 application regressions pass, including competition publication
+  boundaries and the merged Kazakhstan preparation. CI's existing learning step
+  now also runs the six IOAI suites and Beginner sequence regression.
+- Two independent clean PostgreSQL 17.7 runs apply all ten main migrations in
+  canonical order before all five SQL suites: **198/198 assertions** per run,
+  including 25 Learning Progress assertions, real new-connection persistence and
+  concurrent completion/undo. This is the current executable count, not the
+  previously reported 211. All 40 lesson registry identities are retained.
+- Two complete guest production-browser matrices pass at 375/768/1024/1440px
+  in light/dark, including all 133 routes, all three profiles, eleven Beginner
+  core steps, practical exercises, map geometry/history, keyboard navigation,
+  responsive contents and 200% text. Desktop-light/mobile-dark screenshots were
+  visually inspected; screenshots remain ignored local evidence.
+- Twenty additional reduced-motion contexts (five repeats per 1440/375px/theme
+  combination) found no running map/lesson animation. The originally reported
+  intermittent 1440px animation failure was not reproduced. A separate rapid
+  keyboard-focus/smooth-scroll race was reproduced in the browser test: Enter
+  could start hash scrolling before focus scrolling finished. The test now waits
+  for measured scroll stability, retaining the final anchor/visibility assertion.
+  Reduced-motion sampling waits for visible content/fonts and two paint frames,
+  retains the zero-running-animation assertion and reports animation diagnostics.
+  No motion CSS or failing assertion was removed.
+- All 17 authored Python examples / 20 executions pass, including boundary
+  inputs, train-only fitting and real CPU autograd, in a local virtual environment.
+
+### Real isolated Supabase verification
+
+Only the pre-existing approved `KAIZ Release A QA` project is used. A localhost
+production build uses its browser-public key; service credentials are never
+passed to the application. Credentials are supplied in process memory from the
+existing private local credential store, not Git or a committed environment file.
+
+`tests/skill-atlas.supabase.mjs` is an opt-in, origin-locked Auth/Data API/browser
+test. Supply `KAIZ_QA_SUPABASE_URL`, `KAIZ_QA_ANON_KEY`,
+`KAIZ_QA_SERVICE_KEY`, `KAIZ_LEARNING_URL=http://localhost:3106` and an installed
+`KAIZ_PLAYWRIGHT_MODULE` through a secure local process, then run
+`node tests/skill-atlas.supabase.mjs`. It refuses production/other origins.
+
+Real browser login, completion, 10 XP, refresh, logout/login, independent browser
+sessions, Continue Learning, My Learning, undo to zero XP and twelve concurrent
+idempotent completions pass. Two ordinary accounts and one actual admin are
+verified via Auth sessions and `is_admin()`. Both non-owner roles are denied
+reads/updates/forged inserts against private learning progress; guest writes are
+denied, while guest browsing creates no fictional saved progress.
+
+The existing `tests/personal-practice.supabase.mjs` also passes with two ordinary
+accounts and one admin: real score CRUD, status/undo, refresh/new sessions,
+dashboard/filter integration, score bounds, owner-only attempts/status and guest
+denial. **Admins cannot read or edit another user's private practice through
+normal client APIs.** Both themes at 375px/200% text pass.
+
+All six synthetic accounts and three synthetic tasks are removed. Before/after
+QA inventory reconciles to zero Auth users, profiles, learning records, private
+practice records, tasks, competitions and result rows. Production is not accessed.
+No production content is imported or published.
+
+Environment limitation: this managed QA project already has eleven migrations,
+including the separately prepared external-practice migration 17. Nothing is
+applied here. Exact-main dependency/security coverage is independently provided
+by the clean ten-migration PostgreSQL runs; testing does not imply integrating,
+approving or releasing PR #42.
+
+### Release gates and remaining limits
+
+PR #48 adds **no migration**. Competition routes/data access, private practice
+policies, main's ten migrations and PR #49 content/provenance remain byte-identical
+to main. No production setting/data change, deployment or merge is performed.
+Independent teammate review is requested from `alimendeke-maker`; human approval
+and final head-specific CI/Preview checks remain release gates, not implied by
+local tests. Bekjj should reconcile any unavailable local WIP before owner merge.
+
+The clean install also reports the existing development-only braces/micromatch
+advisory chain under the Next ESLint tooling (five affected packages); production
+dependency audit reports zero advisories. No unrelated dependency downgrade or
+lockfile change is included. Intermediate/Advanced educational gaps described
+above remain honestly documented; this is not a completed IOAI curriculum.

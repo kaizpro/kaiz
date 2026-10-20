@@ -32,6 +32,32 @@ try {
       assert.equal(await page.getByRole("heading", { level: 1 }).count(), 1);
     }
     async function screenshot(name) { await page.evaluate(() => scrollTo({ top: 0, behavior: "instant" })); await page.waitForTimeout(480); await page.screenshot({ path: join(output, `${name}-${width}-${theme}.png`), animations: "disabled" }); }
+    async function scrollSettled() {
+      // Keyboard focus can initiate smooth scrolling independently of the hash.
+      // Let that finish before Enter starts a second, competing anchor scroll.
+      await page.evaluate(() => new Promise((resolve, reject) => {
+        const started = performance.now(); let previous = scrollY, stable = 0;
+        function frame() {
+          stable = Math.abs(scrollY - previous) < .1 ? stable + 1 : 0;
+          previous = scrollY;
+          if (stable >= 6 && performance.now() - started >= 120) return resolve();
+          if (performance.now() - started > 4000) return reject(new Error('Scroll did not settle'));
+          requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      }));
+    }
+    async function noRunningAnimations(label) {
+      // Desktop has no mobile toggle click between navigation and this check.
+      // Sample the visible lesson after fonts and two paint frames, not a timer.
+      await page.getByRole('heading', {level: 1}).waitFor();
+      await page.evaluate(async () => {
+        await document.fonts.ready;
+        await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+      });
+      const running = await page.evaluate(() => document.getAnimations().filter(a => a.playState === 'running').map(a => ({name: a.animationName, transition: a.transitionProperty, target: a.effect?.target?.tagName})));
+      assert.deepEqual(running, [], label);
+    }
     async function pathGeometry() {
       await page.waitForFunction(() => document.querySelector('[data-atlas-connections] path'));
       await page.waitForTimeout(380);
@@ -110,8 +136,13 @@ try {
       await example.focus(); await page.keyboard.press("Enter");
       assert.equal((await page.locator("#practice pre code").first().innerText()).trimEnd(), step.practice.code.trimEnd());
       const learnLink = page.getByRole("navigation", { name: "Learning step sections" }).getByRole("link", { name: /Learn/ });
-      await learnLink.focus(); await page.keyboard.press("Enter");
-      await page.waitForFunction(() => document.querySelector("#learn").getBoundingClientRect().top >= document.querySelector("body > header").getBoundingClientRect().bottom - 1);
+      await learnLink.focus(); await scrollSettled(); await page.keyboard.press("Enter");
+      try {
+        await page.waitForFunction(() => document.querySelector("#learn").getBoundingClientRect().top >= document.querySelector("body > header").getBoundingClientRect().bottom - 1);
+      } catch (error) {
+        console.error(JSON.stringify({width, theme, step: step.topicId, anchor: await page.evaluate(() => ({top: document.querySelector('#learn').getBoundingClientRect().top, header: document.querySelector('body > header').getBoundingClientRect().bottom, scroll: scrollY, margin: getComputedStyle(document.querySelector('#learn')).scrollMarginTop}))}));
+        throw error;
+      }
       await layout();
       if (index === 0) {
         await page.getByRole("navigation", { name: "Lesson context" }).getByRole("link", { name: "Back to Python", exact: true }).click();
@@ -145,10 +176,10 @@ try {
     await page.waitForFunction(()=>document.activeElement?.getAttribute('aria-label')?.startsWith('Explore Python'));
     await page.goBack();await page.locator('#area-heading').waitFor();await page.goForward();await page.waitForURL(url=>!url.searchParams.has('area'));
     await page.emulateMedia({reducedMotion:'reduce'});await go('/roadmaps/beginner?view=map&area=1');await pathGeometry();
-    assert.equal(await page.evaluate(()=>document.getAnimations().filter(a=>a.playState==='running').length),0,'reduced motion has no running animation');
+    await noRunningAnimations('reduced motion has no running animation');
     await go(learningStepHref(learningSteps[0]));
     if(width < 1100) await page.getByRole('button',{name:'Course Contents',exact:true}).click();
-    assert.equal(await page.evaluate(()=>document.getAnimations().filter(a=>a.playState==='running').length),0,'lesson and contents respect reduced motion');
+    await noRunningAnimations('lesson and contents respect reduced motion');
     await page.addStyleTag({content:'html { font-size: 200% !important; }'});await layout();
     await go('/roadmaps/beginner');await page.addStyleTag({content:'html { font-size: 200% !important; }'});await layout();
     await go("/roadmaps/beginner?view=map");
