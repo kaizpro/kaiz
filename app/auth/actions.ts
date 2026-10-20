@@ -1,7 +1,7 @@
 "use server";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { getSiteUrl } from "@/lib/supabase/env";
+import { getAuthOrigin } from "@/lib/auth/origin";
 import { profileDestination } from "@/lib/auth";
 import { safeAuthRedirect } from "@/lib/auth/redirects";
 import { authCallbackUrl } from "@/lib/auth/urls";
@@ -23,7 +23,7 @@ export async function login(_: AuthState, formData: FormData): Promise<AuthState
 export async function register(_: AuthState, formData: FormData): Promise<AuthState> {
   const parsed = registerSchema.safeParse(Object.fromEntries(formData));
   if (!parsed.success) return { error: parsed.error.issues[0]?.message ?? "Check the form." };
-  const origin = getSiteUrl();
+  const origin = await getAuthOrigin();
   const supabase = await createClient();
   try {
     await supabase.auth.signUp({ email: parsed.data.email, password: parsed.data.password, options: { emailRedirectTo: authCallbackUrl(origin, "/onboarding"), data: { display_name: parsed.data.displayName } } });
@@ -35,7 +35,7 @@ export async function register(_: AuthState, formData: FormData): Promise<AuthSt
 export async function resetPassword(_: AuthState, formData: FormData): Promise<AuthState> {
   const parsed = emailSchema.safeParse(formData.get("email"));
   if (!parsed.success) return { error: "Enter a valid email address." };
-  const origin = getSiteUrl();
+  const origin = await getAuthOrigin();
   const supabase = await createClient();
   try {
     await supabase.auth.resetPasswordForEmail(parsed.data, { redirectTo: authCallbackUrl(origin, "/auth/update-password") });
@@ -45,7 +45,7 @@ export async function resetPassword(_: AuthState, formData: FormData): Promise<A
   return { success: RECOVERY_MESSAGE, email: parsed.data };
 }
 export async function signInWithGoogle() {
-  const origin = getSiteUrl();
+  const origin = await getAuthOrigin();
   const supabase = await createClient();
   const { data, error } = await supabase.auth.signInWithOAuth({ provider: "google", options: { redirectTo: authCallbackUrl(origin, "/onboarding") } });
   if (error || !data.url) redirect("/auth/login?error=oauth");
@@ -55,7 +55,7 @@ export async function resendConfirmation(_: AuthState, formData: FormData): Prom
   const parsed = emailSchema.safeParse(formData.get("email"));
   if (!parsed.success) return { error: "Enter a valid email address." };
   const supabase = await createClient();
-  const emailRedirectTo = authCallbackUrl(getSiteUrl(), "/onboarding");
+  const emailRedirectTo = authCallbackUrl(await getAuthOrigin(), "/onboarding");
   try {
     await supabase.auth.resend({ type: "signup", email: parsed.data, options: { emailRedirectTo } });
   } catch {
