@@ -17,7 +17,7 @@ export function loadTypescript(overrides={}){
    if(name in overrides)return overrides[name];
    if(name==='server-only')return {};
    if(name.endsWith('.module.css'))return {default:new Proxy({},{get:(_,key)=>String(key)})};
-   if(name==='next/link')return {default:({children,...props})=>native('react').createElement('a',props,children)};
+   if(name==='next/link')return {default:({children,scroll,...props})=>{void scroll;return native('react').createElement('a',props,children);}};
    if(name.startsWith('@/')){
     if(name.endsWith('.json'))return {default:JSON.parse(readFileSync(resolve(root,name.slice(2)),'utf8'))};
     return load(name.slice(2)+(name.startsWith('@/components/')?'.tsx':'.ts'));

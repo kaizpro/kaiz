@@ -1,0 +1,86 @@
+import type { PracticeExercise } from "./learning-steps";
+
+// Original KAIZ exercises for released Beginner lessons outside the six-step
+// journey. Topic keys select content only; saved lesson identities are unchanged.
+export const beginnerPractice: Readonly<Record<string, PracticeExercise>> = Object.assign(Object.create(null), {
+  "python-functions": {
+    title: "Return a reusable score mean", validation: "self-check",
+    prerequisites: ["Python Basics: lists, sum and len", "Function parameters, return and if; standard-library Python only"],
+    instructions: ["Write mean_score(scores) so it RETURNS the mean, rather than only printing inside the function. Try [4, 8] and [7].", "Reject an empty list with ValueError before dividing. Call the function twice with different inputs; explain which values are local."],
+    expected: "mean_score([4, 8]) is 6.0 and mean_score([7]) is 7.0. Empty input raises ValueError; no guessed default mean is returned.",
+    hints: ["Use def with a parameter, then return sum(scores) / len(scores). if not scores detects an empty list.", "raise ValueError('empty scores') stops the function. A caller can catch that exception; printing None is not a successful result."],
+    code: "def mean_score(scores):\n    if not scores:\n        raise ValueError('empty scores')\n    return sum(scores) / len(scores)\n\nprint(mean_score([4, 8]), mean_score([7]))\n",
+  },
+  "python-collections": {
+    title: "Represent repeated scores", validation: "self-check",
+    prerequisites: ["Python lists, loops and dictionary basics", "Standard-library Python only; no packages or files"],
+    instructions: ["Use scores = [4, 7, 4]. Keep that ordered list, create a tuple describing sensor A's score, a set of distinct scores, and a dictionary counting each score.", "Explain why the list keeps duplicates, the set removes them, and a dictionary maps each score to its frequency. Do not assume a set's printed order."],
+    expected: "The list is [4, 7, 4], the tuple is ('A', 4), distinct scores are {4, 7}, and counts are {4: 2, 7: 1} regardless of display ordering.",
+    hints: ["set(scores) gives distinct values. counts.get(score, 0) returns a prior count or zero; add one and assign it back."],
+    code: "scores = [4, 7, 4]\nsensor = ('A', 4)\ndistinct = set(scores)\ncounts = {}\nfor score in scores:\n    counts[score] = counts.get(score, 0) + 1\nprint(scores, sensor, distinct, counts)\n",
+  },
+  algebra: {
+    title: "Solve and substitute an equation", validation: "self-check",
+    prerequisites: ["Addition, multiplication and division", "Paper is enough; optional verification code uses only Python arithmetic"],
+    instructions: ["Solve 2x + 3 = 11 by applying the same operation to each side. Write each algebraic step, not only a guessed x.", "Substitute your answer into both sides. Then solve 3x - 2 = 10 and explain why the same number solves a different equation."],
+    expected: "Both equations give x = 4. Substitution gives 11 = 11 and 10 = 10; explain subtracting/adding first, then division.",
+    hints: ["For the first equation subtract 3 from both sides, then divide both sides by 2. Checking a candidate alone is not a derivation."],
+    code: "x = (11 - 3) / 2\ny = (10 + 2) / 3\nprint(x, 2 * x + 3, y, 3 * y - 2)\n",
+  },
+  "math-functions": {
+    title: "Follow inputs through two functions", validation: "self-check",
+    prerequisites: ["Substitution into an expression", "Paper is enough; optional Python uses def and return"],
+    instructions: ["For f(x) = 2x + 3, make an input/output table for -1, 0 and 2.", "Let g(x) = x squared. Calculate g(f(2)) and f(g(2)) by hand. Describe why changing composition order changes the result."],
+    expected: "f(-1) = 1, f(0) = 3, f(2) = 7. g(f(2)) = 49 while f(g(2)) = 11. A function maps each allowed input to one output.",
+    hints: ["Evaluate the inner parentheses first; ** 2 means squaring in Python."],
+    code: "def f(x):\n    return 2 * x + 3\n\ndef g(x):\n    return x ** 2\n\nprint(f(-1), f(0), f(2))\nprint(g(f(2)), f(g(2)))\n",
+  },
+  "supervised-learning": {
+    title: "Separate features from labels", validation: "self-check",
+    prerequisites: ["Python lists, indexing, loops and comparisons", "Standard-library Python only; the full toy dataset is supplied"],
+    instructions: ["Use feature values [1, 2, 3, 4, 5, 6] with labels [0, 0, 0, 1, 1, 1]. Reserve rows 1 and 4 (zero-based) as test data; learn a separating threshold from the other rows only.", "Find the largest training value labelled 0 and the smallest labelled 1. Put a threshold halfway between them. Predict the two reserved labels, then compare. Explain why appending the true label to the input is leakage."],
+    expected: "Training values [1, 3, 4, 6] give threshold 3.5. Test values [2, 5] yield [0, 1]. Two correct toy predictions do not establish generalization to other data.",
+    hints: ["The training row indices are [0, 2, 3, 5]. values[i] looks up row i; append adds an item to a list. max and min select its largest/smallest value. Do not use test labels to choose the threshold.", "A separating threshold places small values in class 0 and large values in class 1. This assumes the supplied training values separate cleanly; it is not a general training algorithm."],
+    code: "values = [1, 2, 3, 4, 5, 6]\nlabels = [0, 0, 0, 1, 1, 1]\ntrain = [0, 2, 3, 5]\ntest = [1, 4]\nnegative = []\npositive = []\nfor i in train:\n    if labels[i] == 0:\n        negative.append(values[i])\n    else:\n        positive.append(values[i])\nthreshold = (max(negative) + min(positive)) / 2\npredictions = []\nfor i in test:\n    if values[i] > threshold:\n        predictions.append(1)\n    else:\n        predictions.append(0)\nprint(threshold, predictions)\n",
+  },
+  "building-baselines": {
+    title: "Measure a majority-class baseline", validation: "self-check",
+    prerequisites: ["Supervised Learning: training labels versus reserved test labels", "Python lists, loops and dictionaries; no extra packages needed"],
+    instructions: ["Use training labels [0, 0, 0, 1] and reserved test labels [0, 1, 1, 1]. Count TRAINING labels and choose the most frequent class before inspecting the test labels. There is no tie in this dataset.", "Predict that class for every test row. Count correct predictions and divide by the number of test rows. Explain why choosing class 1 after seeing the test answers would leak information. Next, apply this same idea with DummyClassifier in First ML Model."],
+    expected: "Training counts are {0: 3, 1: 1}, so predict class 0 four times. Only one test label matches: accuracy = 0.25. Predicting a training majority is a reference, not a promise of high test accuracy.",
+    hints: ["counts.get(label, 0) reads a count or zero. Track the largest count in a separate loop. If you later add ties, document a training-only tie rule rather than consulting test labels.", "Accuracy is correct / total. zip pairs a prediction with its true label for evaluation only; it must not choose the baseline."],
+    code: "train_labels = [0, 0, 0, 1]\ncounts = {}\nfor label in train_labels:\n    counts[label] = counts.get(label, 0) + 1\nbaseline = train_labels[0]\nfor label in counts:\n    if counts[label] > counts[baseline]:\n        baseline = label\n# Only now evaluate on reserved labels.\ntest_labels = [0, 1, 1, 1]\npredictions = [baseline] * len(test_labels)\ncorrect = 0\nfor predicted, actual in zip(predictions, test_labels):\n    if predicted == actual:\n        correct = correct + 1\naccuracy = correct / len(test_labels)\nprint(counts, baseline, predictions, accuracy)\n",
+  },
+  "model-evaluation": {
+    title: "Expose a misleading accuracy", validation: "self-check",
+    prerequisites: ["Class labels and a confusion table; First ML Model", "scikit-learn installed; all four labels are supplied inline"],
+    instructions: ["For true labels [0, 0, 0, 1] and predictions [0, 0, 0, 0], count correct predictions and missed positives by hand.", "Compute accuracy, recall for class 1 and balanced accuracy. Explain why the 75% headline hides failure to detect the positive class. Choose a metric based on task costs, not on the largest number."],
+    expected: "Accuracy = 0.75, positive-class recall = 0 and balanced accuracy = 0.5. State that this is a four-row illustration, not a reliable performance estimate.",
+    hints: ["Recall for class 1 is correctly found positives / actual positives. Balanced accuracy averages recall across the two classes."],
+    code: "from sklearn.metrics import accuracy_score, recall_score, balanced_accuracy_score\ny_true = [0, 0, 0, 1]\ny_pred = [0, 0, 0, 0]\nprint(accuracy_score(y_true, y_pred), recall_score(y_true, y_pred), balanced_accuracy_score(y_true, y_pred))\n",
+  },
+  "neural-networks": {
+    title: "Trace a single neuron", validation: "self-check",
+    prerequisites: ["Python lists, zip and sum; dot products", "A weighted sum and max(0, score); no deep-learning installation needed"],
+    instructions: ["Use inputs [1, 2], weights [0.5, -1] and bias 0.25. Compute the weighted sum, then ReLU = max(0, score).", "Change the second weight to 0.25 and recompute. For target 1, compare squared errors. Explain why choosing one weight by hand is not a trained neural network."],
+    expected: "First score = -1.25, ReLU = 0, squared error = 1. Changed score = 1.25, error = 0.0625. This toy forward pass does not demonstrate model quality.",
+    hints: ["Multiply corresponding inputs and weights, add the products, then add the bias. ReLU clips negative scores to zero."],
+    code: "inputs = [1, 2]\ndef neuron(weights):\n    score = sum(x * w for x, w in zip(inputs, weights)) + 0.25\n    return score, max(0, score)\nscore, output = neuron([0.5, -1])\nnew_score, new_output = neuron([0.5, 0.25])\nprint(score, output, (output - 1) ** 2)\nprint(new_score, new_output, (new_output - 1) ** 2)\n",
+  },
+  backpropagation: {
+    title: "Check one chain-rule gradient", validation: "self-check",
+    prerequisites: ["Derivatives and the chain rule; the single-neuron exercise", "Optional Python uses arithmetic and a function only; this is a scalar preview, not full neural-network training"],
+    instructions: ["For L(w) = (w*x - y)^2 with x=2, y=3, w=1, derive dL/dw = 2*(w*x-y)*x. Check its sign using a small positive and negative weight perturbation.", "Compare the derivative with a centred finite difference. Apply w_new = w - 0.1*gradient and recompute the loss. Explain why too large a step could increase loss."],
+    expected: "Gradient = -4; finite difference is approximately -4. The new weight is 1.4 and the loss falls from 1 to approximately 0.04. This checks one scalar chain, not a whole network's backpropagation.",
+    hints: ["Differentiate the square with respect to its input, then multiply by x. The centred difference is (L(w+eps)-L(w-eps))/(2*eps)."],
+    code: "x, y, w = 2.0, 3.0, 1.0\ndef loss(weight):\n    return (weight * x - y) ** 2\ngradient = 2 * (w * x - y) * x\neps = 1e-5\nnumeric = (loss(w + eps) - loss(w - eps)) / (2 * eps)\nnew_w = w - 0.1 * gradient\nprint(gradient, numeric, new_w, loss(w), loss(new_w))\n",
+  },
+  pytorch: {
+    title: "Compare autograd with a hand derivative", validation: "self-check",
+    prerequisites: ["The scalar chain-rule exercise; tensor, backward and grad sections of the PyTorch tutorial", "For this optional executable example, a separate local CPU PyTorch environment; no GPU or upload required"],
+    instructions: ["Following the official PyTorch installation selector for your OS, install a CPU build locally if needed. Do not put PyTorch on the KAIZ server. Recreate L(w) = (2w - 3)^2 with w=1 and requires_grad=True.", "Call loss.backward() once and compare w.grad with -4. Zero the accumulated gradient, recompute the forward pass, then call backward again. Explain why gradients accumulate and why reusing the same freed graph is not the intended workflow."],
+    expected: "Each separately recomputed backward pass gives gradient -4 after clearing grad. The weight stays 1 because no optimizer step was taken. This example is not a training loop or a performance claim.",
+    hints: ["Use a floating-point tensor. Set w.grad = None before the second forward/backward pass; otherwise gradients add. Consult https://pytorch.org/get-started/locally/ for installation rather than guessing a GPU command."],
+    code: "import torch\nw = torch.tensor(1.0, requires_grad=True)\nloss = (2 * w - 3) ** 2\nloss.backward()\nfirst_gradient = w.grad.item()\nw.grad = None\nloss = (2 * w - 3) ** 2\nloss.backward()\nprint(first_gradient, w.grad.item(), w.item())\n",
+  },
+} satisfies Record<string, PracticeExercise>);
