@@ -1,0 +1,58 @@
+{
+  "checkedAt": "2026-10-19",
+  "mode": "review_only",
+  "productionWrites": 0,
+  "permission": {
+    "status": "OWNER_CONFIRMED",
+    "confirmedBy": "Zhunussov",
+    "evidence": "Release-owner task and subsequent clarification dated 2026-10-19",
+    "scope": "Public display on KAIZ of participant names, ranks and original scores from the supplied Kazakhstan 2025 and 2026 standings, with source attribution",
+    "independentOrganizerDocumentReviewed": false,
+    "original2026DocumentSharing": "NOT_AUTHORIZED",
+    "productionImportOrPublicationAuthorized": false
+  },
+  "editions": [
+    {
+      "editionId": "ai-olymp-kazakhstan-2025",
+      "intendedStage": "Final standings, including remote-stage and two competition-day scores",
+      "rows": 38,
+      "sourceSha256": "e05219f58a99a58d722c359bd7ae6d387987312f661d5035cb210892b05b35ea",
+      "sourcePublicUrl": "https://www.gov.kz/org/maidd/press/news/details/989919",
+      "sourcePublicUrlScope": "Official event report, not the original participant score table",
+      "reportedStartDate": "2025-05-03",
+      "reportedEndDate": "2025-05-05",
+      "dateEvidence": "Owner-reported; original-source verification pending",
+      "city": "Astana",
+      "venue": "Astana IT University",
+      "identityAndFinalVersion": "PENDING_ORGANIZER_ORIGINAL",
+      "coverage": "partial",
+      "coverageNote": "All 38 supplied image rows retained; official report mentions 40 finalists",
+      "awards": "None transcribed; no color/rank inference",
+      "redRows": "Retained without inferred exclusion or disqualification",
+      "qualificationSet": "Not supplied; remote component is not a separate qualification standings table"
+    },
+    {
+      "editionId": "ai-olymp-kazakhstan-2026",
+      "intendedStage": "Final standings",
+      "sourceTab": "leaderboard_final",
+      "rows": 39,
+      "sourceSha256": "4725716b700a43e9b8ae6708a2513159b4d232f34bf77a05a7888b8bfdf4cb7f",
+      "sourcePublicUrl": "https://www.gov.kz/org/astana/press/news/details/1199320",
+      "sourcePublicUrlScope": "Official event report, not the original participant score table",
+      "reportedStartDate": "2026-04-10",
+      "reportedEndDate": "2026-04-13",
+      "reportedCompetitionDays": ["2026-04-11", "2026-04-12"],
+      "dateEvidence": "Owner-reported; Second Round platform corroborates April 12 only, not the complete event range",
+      "city": "Astana",
+      "venue": "Astana IT University",
+      "identityAndFinalVersion": "PENDING_ORGANIZER_ORIGINAL",
+      "coverage": "partial",
+      "coverageNote": "All 39 supplied rows retained; official report mentions 40 finalists",
+      "awards": "No source award column; none invented",
+      "qualificationSet": "Not supplied; no new stage fabricated"
+    }
+  ],
+  "restrictedOriginalsInGit": false,
+  "participantRowsInGit": false,
+  "releaseGate": "HOLD_FINAL_VERSION_AND_METADATA_VERIFICATION"
+}

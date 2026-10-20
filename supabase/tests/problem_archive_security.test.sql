@@ -82,10 +82,11 @@ select throws_ok($$insert into public.problem_performances(problem_id,user_id,at
 select set_config('request.jwt.claim.sub', '10000000-0000-0000-0000-000000000003', true);
 select is((select count(*) from public.problem_performances where attempt_type = 'official'), 4::bigint, 'admin reads draft and unlinked official records');
 select lives_ok($$update public.problem_performances set normalized_performance = 0.9, source_provider = 'manual', source_provenance = '{"validated":true}' where id = '60000000-0000-0000-0000-000000000002'$$, 'admin manages official normalized/provenance data');
-select lives_ok($$update public.problem_performances set status = 'disqualified' where id = '60000000-0000-0000-0000-000000000005'$$, 'admin invalidates practice');
+select is((select count(*) from public.problem_performances where attempt_type = 'practice'), 0::bigint, 'admin cannot read another owner private practice');
+with changed as (update public.problem_performances set status = 'disqualified' where id = '60000000-0000-0000-0000-000000000005' returning id)
+select is(count(*), 0::bigint, 'admin cannot invalidate another owner private practice') from changed;
 select set_config('request.jwt.claim.sub', '10000000-0000-0000-0000-000000000001', true);
-select throws_ok($$update public.problem_performances set status = 'valid' where id = '60000000-0000-0000-0000-000000000005'$$, '42501', null, 'owner cannot undo actual administrator disqualification');
-select is((select status::text from public.problem_performances where id = '60000000-0000-0000-0000-000000000005'), 'disqualified', 'administrative decision is preserved');
+select is((select status::text from public.problem_performances where id = '60000000-0000-0000-0000-000000000005'), 'valid', 'denied admin update preserves the owner private attempt');
 select set_config('request.jwt.claim.sub', '10000000-0000-0000-0000-000000000003', true);
 select throws_ok($$update public.problems set competition_id = null where id = '50000000-0000-0000-0000-000000000001'$$, '23503', null, 'problem cannot drop context with linked evidence');
 select throws_ok($$update public.problems set competition_id = '20000000-0000-0000-0000-000000000002' where id = '50000000-0000-0000-0000-000000000001'$$, '23503', null, 'problem cannot change competition with linked evidence');

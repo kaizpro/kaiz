@@ -559,7 +559,7 @@
       "rowCoverage": "no rows prepared",
       "published": false,
       "notes": "Self-label verified, official stage/publication not independently confirmed. Anonymous CSV 39 numeric-rank rows, totals equal three task sums; ties preserved. No awards/delegations/publication date stated, no rows promoted.",
-      "suppliedSourceUrl": "https://docs.google.com/spreadsheets/d/15ONxNRz7HBSHZigr6Fb0fteYC9SzR1YhMbYsWJTgvrw/edit?gid=132773358",
+      "suppliedSourceUrl": null,
       "observedTab": "leaderboard_final",
       "observedRows": 39,
       "anonymousAccessVerified": true,

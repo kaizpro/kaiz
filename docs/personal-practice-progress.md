@@ -77,12 +77,19 @@ learning XP, competitive rating, official results or judged achievements.
 ## Tests and release
 
 `personal-practice.test.mjs` joins existing CI regressions. Native PostgreSQL
-`learning-progress.postgres.mjs` preserves all older archive/external/progress
-security assertions at their original schema state, then applies the new additive
-migration and tests the tightened boundary. This preserves the historical admin
-moderation assertions instead of weakening them. The new security suite covers
+`learning-progress.postgres.mjs` applies every existing migration in sorted filename
+order to a fresh disposable database before running every `supabase/tests/*.test.sql`
+suite against the current schema. Archive assertions now require zero cross-owner
+practice reads/updates even for admins; official-result management and protection
+of previously reviewed practice remain tested. The private-practice suite covers
 owner/member/admin/anonymous status and score privacy, forged fields, published
 boundaries, known score ranges, replay, undo and distinct-task counts.
+
+PR #42 must retain this migration-before-assertions ordering when it updates from
+main. Its existing migration 17 follows migration 16, and its external-source SQL
+suite is discovered automatically. Do not restore its staged privacy/external
+exclusions or copy migration 17 into this standalone runner fix. PR #48 uses the
+same 40 registry identities and needs no runner-specific application change.
 
 `personal-practice.supabase.mjs` is opt-in real managed Supabase Auth/REST/browser
 QA, hard-locked to the existing approved isolated Free project and localhost:3106.
