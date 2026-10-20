@@ -20,9 +20,64 @@ Configure these variables for the Production environment in Vercel and redeploy 
 
 Do not add a Supabase secret or service-role key. `NEXT_PUBLIC_SUPABASE_ANON_KEY` is a legacy alternative to the publishable key.
 
-`NEXT_PUBLIC_SITE_URL` takes priority. Without it, production uses `VERCEL_PROJECT_PRODUCTION_URL`, then `VERCEL_URL` / `NEXT_PUBLIC_VERCEL_URL`. Preview uses its deployment URL, not the production-domain fallback. `VERCEL`, `VERCEL_ENV` and `NODE_ENV` identify hosted/production contexts. Only unconfigured non-production local development falls back to localhost; unconfigured production fails closed. Hosted origins must be public HTTPS without credentials, paths, query strings or fragments.
+In Production, `NEXT_PUBLIC_SITE_URL` takes priority. Without it, production uses `VERCEL_PROJECT_PRODUCTION_URL`, then `VERCEL_URL` / `NEXT_PUBLIC_VERCEL_URL`. In Preview, `NEXT_PUBLIC_SITE_URL` is deliberately ignored: auth uses `VERCEL_URL` / `NEXT_PUBLIC_VERCEL_URL` and fails closed if deployment identity is missing. An inherited production value must never move a Preview PKCE code onto the production host, which does not have the Preview verifier cookie. `VERCEL`, `VERCEL_ENV` and `NODE_ENV` identify hosted/production contexts. Only unconfigured non-production local development falls back to localhost; unconfigured production fails closed. Hosted origins must be public HTTPS without credentials, paths, query strings or fragments.
 
-Keep Development, Preview and Production environment values separately scoped in Vercel. A preview must use a separate test Supabase project, not write to production Supabase. Set an explicit preview origin if needed and allow that origin only in the test project. An explicit production origin mistakenly assigned to Preview overrides the deployment fallback; the release owner must prevent that misconfiguration. Do not allow arbitrary preview domains in the production project.
+Keep Development, Preview and Production environment values separately scoped in Vercel. Scope `NEXT_PUBLIC_SITE_URL=https://kaizpro.com` to **Production only**. A preview must use a separate test Supabase project, not write to production Supabase. Its browser-public URL/key belong in the **Preview** environment; do not copy service-role keys. Enable Vercel system environment variables so `VERCEL_ENV`, `VERCEL_URL` and `VERCEL_BRANCH_URL` are available. Owner configuration changes require explicit authorization and a new Preview build; this code change does not alter dashboard settings.
+
+Auth Server Actions use the initiating `Origin` only when it exactly matches the server-provided deployment URL or `VERCEL_BRANCH_URL`. This preserves host-only PKCE cookies when a tester uses the branch alias rather than the immutable deployment URL. Arbitrary `Host`, `Forwarded`, `Origin`, form/query destinations and unrelated `*.vercel.app` hosts are not trusted. Additional custom Preview aliases are not automatically accepted. Production auth retains its configured canonical origin. The internal `next` path validator, PKCE exchange, cookie handling, RLS and email-confirmation requirements are unchanged.
+
+On the isolated test Supabase project, allow the exact deployment and branch callback URLs (including KAIZ's `?next=...` query), plus its existing localhost URL. Do not use `https://**.vercel.app/**`. A narrowly project/account-scoped wildcard can support trusted team previews, but exact origins are preferable and fork/untrusted-code previews must not receive production credentials. Keep production Site URL `https://kaizpro.com`; do not change it to fix Preview auth.
+
+Read-only incident inspection on 2026-10-20 found production already allowing the project-scoped `https://kaiz-*-temirlan-s-projects1.vercel.app/**` pattern, confirmation/recovery templates using `ConfirmationURL`, Google enabled and email confirmation required. No settings were changed. The approved isolated QA project only allows `http://localhost:3106/**`, with Google and custom SMTP unconfigured. The reported Preview is Vercel deployment-protected; authentication through that protection requires the owner's own Vercel session. These are live-test prerequisites, not claimed successful email/OAuth delivery tests.
+
+### Preview incident verification and owner checklist
+
+The prior resolver reproducibly chose production when `VERCEL_ENV=preview` and
+`NEXT_PUBLIC_SITE_URL=https://kaizpro.com` were combined. Signup/resend, OAuth and
+recovery all used that resolver. The Preview verifier cookie is host-only, so a
+code arriving on production cannot complete its Preview exchange. The new tests
+cover that inherited-value case, deployment/branch cookie-origin consistency,
+exact-origin rejection, same-origin success/failure callbacks and unchanged
+production password-login destinations. Actual Vercel variable scopes/server
+logs could not be inspected through the available session; confirming that
+configuration trigger remains an owner action, not a claimed observation.
+
+The opt-in `tests/auth-flows.supabase.mjs` runs only against the existing isolated
+QA project and `http://localhost:3106`. It needs `KAIZ_QA_SUPABASE_URL`,
+`KAIZ_QA_ANON_KEY`, `KAIZ_QA_SERVICE_KEY`, `KAIZ_LEARNING_URL` and an installed
+`KAIZ_PLAYWRIGHT_MODULE` supplied securely to the test process, never committed.
+It generates a synthetic unconfirmed account/link without sending mail, verifies
+the real signup token via the application callback, checks replay denial,
+password login/refresh/new sessions, real recovery/password update and old-password
+rejection. A missing PKCE verifier is rejected; Google initiation retains S256
+and the configured callback. The synthetic user is removed in `finally`.
+**Passing this test does not demonstrate inbox delivery, emailed PKCE-link
+completion, Google consent or live Vercel Preview/production end-to-end success.**
+
+Before release, the owner must:
+
+1. Inspect **Vercel → KAIZ → Settings → Environment Variables**. Confirm the
+   production site URL is Production-only, system deployment/branch variables
+   exist, and Preview URL/browser-public key belong to the isolated QA project.
+   Never copy secret values into chat. Authorize any settings change separately.
+2. In the **isolated QA** Supabase project, allow the exact new Preview deployment
+   and branch callback origins, retaining localhost. Configure Google and a test
+   email sender directly in the dashboards if full tests need them. Keep email
+   confirmation and PKCE enabled. Do not change production Site URL/templates or
+   broaden its allowlist to solve this Preview problem.
+3. Use the owner's own Vercel session to enter the deployment-protected Preview.
+   In the same browser/profile/host, test signup → received email → callback,
+   Google consent → callback, password login/logout, reset email → callback →
+   new password → new login. Verify each destination stays on that Preview
+   origin, including the branch alias. Do not switch hosts mid-PKCE flow or reuse
+   consumed links. No confirmation/recovery URL or verifier may be logged/shared.
+4. After an owner-approved production release, repeat with an owner-controlled
+   test account on `https://kaizpro.com`, verifying all destinations stay there.
+   A cross-device PKCE failure is expected security behavior, not a reason to
+   share cookies across hosts or disable the verifier.
+
+Changing env scopes only affects new builds. The fix adds no migration, auth
+provider, key, cookie-domain override, session-security change or RLS change.
 
 ## Supabase URL configuration
 
@@ -51,7 +106,9 @@ The existing auth.users trigger creates one profile keyed by the user UUID and d
 
 ## Email templates
 
-The existing callback continues to accept Supabase's PKCE `code` redirects. For an SSR-safe token-hash flow, update the authentication templates in **Authentication → Email Templates**.
+The existing callback continues to accept Supabase's PKCE `code` redirects. The current production `ConfirmationURL` templates already support that flow and do not need to be changed merely to fix Preview origin selection. Open the link in the same browser/profile and exact host that initiated signup/recovery/OAuth: PKCE requires its verifier cookie. Separate browsers/devices, browser-cleared cookies and already-consumed links need a new flow, not a verifier bypass or shared cross-domain cookie.
+
+If the release owner separately chooses an SSR token-hash email flow, the existing callback also supports it. That is a separate template change, not part of the Preview fix. In **Authentication → Email Templates**, the supported targets are:
 
 Confirm signup button URL:
 
