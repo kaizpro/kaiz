@@ -50,6 +50,7 @@ try{
    }
    await page.addStyleTag({content:'html{font-size:200% !important}'});
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`${width} ${theme} ${path} 200%`);
+   if(path==='/competitions')assert.equal(await page.locator('main h1').evaluate(el=>{const range=document.createRange();range.selectNodeContents(el);return range.getClientRects().length;}),1,'Competition title must not break mid-word at200%');
    if(path===`/competitions/${slug}`){
     for(const name of ['Overview','Results','Tasks']){const button=page.getByRole('navigation',{name:'Competition sections'}).getByRole('button',{name,exact:true});await button.focus();await page.keyboard.press('Enter');assert.equal(await button.getAttribute('aria-pressed'),'true');assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));}
    }
