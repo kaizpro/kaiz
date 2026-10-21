@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { Suspense } from "react";
 import { getJourney, journeys } from "@/lib/learning/journeys";
-import { readArea, areaTitles } from "@/lib/learning/ioai-navigation";
+import { readArea } from "@/lib/learning/ioai-navigation";
+import { classicNext } from "@/lib/learning/classic-roadmap";
 import { getOwnLearningState } from "@/lib/data/learning-progress";
 import { CourseProgress } from "@/components/learning/course-progress";
-import { IoaiOverview, LearningOverview } from "@/components/learning/ioai-overview";
+import { CourseModules } from "@/components/learning/course-modules";
+import { IoaiOverview } from "@/components/learning/ioai-overview";
+import { JourneyCompetitions } from "@/components/learning/journey-competitions";
+import { PracticeSources } from "@/components/learning/practice-sources";
 import { ProgressUnavailable } from "@/components/learning/progress-unavailable";
-import styles from "@/components/learning/ioai.module.css";
+import styles from "@/components/training/catalog.module.css";
 
 type Props = { params: Promise<{ level: string }>; searchParams?: Promise<{ area?: string | string[]; view?: string | string[] }> };
 export function generateStaticParams() { return journeys.map(path => ({ level: path.level })); }
@@ -19,16 +23,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function JourneyPage({ params, searchParams }: Props) {
   const path = getJourney((await params).level);
   if (!path) notFound();
-  const query = await searchParams;
-  const area = readArea(query?.area);
-  const map = query?.view === "map";
-  const learning = await getOwnLearningState();
-  return <section className={styles.page} aria-labelledby="path-title">
-    <div className={styles.pathToolbar}><Link className={styles.backLink} href="/roadmaps"><ArrowLeft size={16} aria-hidden="true" />Starting points</Link><Link className={styles.backLink} href="/learn">Learning Tree<ArrowUpRight size={14} aria-hidden="true" /></Link></div>
-    <header className={`${styles.pathHeader} ${styles.guidanceHeader}`}><div><p className={styles.eyebrow}>YOUR AI JOURNEY / {path.title}</p><h1 id="path-title">{map ? "Skill Atlas" : area ? areaTitles[area - 1] : "Let’s learn."}</h1></div>
-      <nav className={styles.profileSwitch} aria-label="Starting profile">{journeys.map(profile => <Link key={profile.level} href={`/roadmaps/${profile.level}`} aria-current={profile.level === path.level ? "page" : undefined}>{profile.title}</Link>)}</nav>
-    </header>
-    {map || area ? <>{map && <Link className={styles.backLink} href={`/roadmaps/${path.level}`}><ArrowLeft size={16} aria-hidden="true"/>Back to courses</Link>}<IoaiOverview profile={path.level} area={area} course={!map} records={learning.records} canSave={Boolean(learning.user) && !learning.error}/></> : <LearningOverview profile={path.level} records={learning.records} canSave={Boolean(learning.user) && !learning.error}/>}
-    {learning.error ? <ProgressUnavailable message={learning.error}/> : learning.user && <details className={styles.disclosure}><summary>Your saved progress</summary><CourseProgress path={path} records={learning.records} signedIn={true} error={null}/></details>}
-  </section>;
+  const query = await searchParams, area = readArea(query?.area), map = query?.view === "map";
+  const state = await getOwnLearningState(), ready = Boolean(state.user) && !state.error;
+  const recommendation = classicNext(path, state.records, ready);
+  const practiceHref = path.practiceQuery ? `/problems?${new URLSearchParams({q: path.practiceQuery})}` : "/problems";
+  const action = recommendation.next ? <Link className={`${styles.action} ${styles.primary}`} data-classic-next href={recommendation.next.href}>{recommendation.continuing ? "Continue learning" : "Start learning"} · {recommendation.next.title}</Link> : <p className={styles.note}>{path.level === "beginner" ? "Core sequence complete. Review lessons or explore optional study below." : "All lessons complete. Review or undo any completion below."}</p>;
+  return <div className={styles.page}>
+    <Link href="/roadmaps" className={styles.textAction}>Choose another level</Link>
+    <header className={styles.intro}><div><p>Roadmaps / {path.title}</p><h1>{map ? `${path.title} Skill Atlas` : `${path.title} AI Olympiad Roadmap`}</h1><p>{path.audience}</p></div><nav className={styles.actions} aria-label="Roadmap shortcuts"><Link href="/learn/topics" className={styles.action}>AI Topics</Link><Link href={practiceHref} className={styles.action}>Practice</Link></nav></header>
+    <nav className={styles.actions} aria-label="Starting profile">{journeys.map(profile => <Link key={profile.level} className={styles.textAction} href={`/roadmaps/${profile.level}`} aria-current={profile.level === path.level ? "page" : undefined}>{profile.title}</Link>)}<Link className={styles.action} href={`/roadmaps/${path.level}${map ? "" : "?view=map"}`}>{map ? "Back to roadmap" : "Explore Skill Atlas"}</Link></nav>
+    {map ? <>{state.error && <ProgressUnavailable message={state.error}/>}<IoaiOverview profile={path.level} area={area} records={state.records} canSave={ready}/></> : <>
+      <CourseProgress path={path} records={state.records} signedIn={Boolean(state.user)} error={state.error} action={action}/>
+      {area && <details className="my-3 text-sm"><summary className={styles.textAction}>Linked course contents</summary><IoaiOverview profile={path.level} area={area} course records={state.records} canSave={ready}/></details>}
+      <div className={styles.stageLayout}>
+        <CourseModules path={path} records={state.error ? [] : state.records} canSave={ready}/>
+        <aside className="min-w-0 space-y-4">
+          <p className={styles.note}>{path.outcome}</p>
+          <section><h2 className="text-sm font-bold">Olympiad editions</h2><Suspense fallback={<p role="status" className={styles.note}>Loading editions…</p>}><JourneyCompetitions slugs={path.competitionSlugs}/></Suspense><Link href="/competitions" className={styles.textAction}>All competitions</Link></section>
+          <details><summary className={styles.textAction}>Practice sources</summary><PracticeSources level={path.level}/></details>
+          <Link href="/discussions?category=help" className={styles.textAction}>Ask a question</Link>
+        </aside>
+      </div>
+    </>}
+  </div>;
 }

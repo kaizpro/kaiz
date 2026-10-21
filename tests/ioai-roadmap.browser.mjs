@@ -74,56 +74,50 @@ try {
       if(await active.count())assert.equal(await active.evaluate(path=>{const svg=path.ownerSVGElement.getBoundingClientRect(),end=path.getPointAtLength(path.getTotalLength()),panel=document.querySelector('[data-atlas-branch]').getBoundingClientRect();return Math.abs(svg.x+end.x-(panel.x+panel.width/2))<2&&Math.abs(svg.y+end.y-panel.top)<2;}),true,'expanded branch anchor');
     }
     await go("/roadmaps"); await layout();
-    assert.equal(await page.locator("[data-entry-profile]").count(), 3);
-    assert.equal(await page.locator("main a[target='_blank'], main details, [data-path-area]").count(), 0, "no third-layer clutter on entry");
+    assert.equal(await page.locator('section[aria-label$="roadmap progress"]').count(), 3);
+    assert.equal(await page.locator("[data-entry-profile], main details, [data-path-area]").count(), 0, "classic entry stays compact, not map/card-first");
     await screenshot("A-landing");
-    await page.locator('[data-entry-profile="beginner"]').focus(); await page.keyboard.press("Enter");
+    await page.getByRole('link',{name:'Browse Beginner roadmap',exact:true}).focus(); await page.keyboard.press("Enter");
     await page.waitForURL(url => url.pathname === "/roadmaps/beginner"); await layout();
-    assert.equal(await page.locator("[data-course-area]").count(), 6);
-    const start = page.getByRole("link", { name: "Start Learning", exact: true });
+    assert.equal(await page.locator("[data-course-module]").count(), 4);
+    const start = page.locator('[data-classic-next]');
     assert.equal(await start.isVisible(), true);
     assert.ok((await start.boundingBox()).y + (await start.boundingBox()).height < 1000, "primary action is above the fold");
-    assert.equal(await page.locator("main a[target='_blank'], [data-primary-material]").count(), 0);
+    assert.equal(await page.locator("[data-primary-material]").count(), 0, 'full instructional materials remain on the lesson, not the compact overview');
     await screenshot("B-beginner-path");
-    await page.locator('[data-course-area="1"]').focus(); await page.keyboard.press("Enter");
-    await page.waitForURL(url => url.searchParams.get("area") === "1"); await page.locator("#area-heading").waitFor(); await layout();
-    assert.equal(await page.locator("[data-path-area]").count(), 0, "course selection does not require the map");
-    assert.equal(await page.locator("[data-primary-material], main a[target='_blank']").count(), 0);
-    assert.equal(await page.locator('[data-next-lesson]').count(),1);
-    const maths = page.locator('summary').filter({hasText:'Maths alongside'});
-    await maths.waitFor();await maths.focus();await page.keyboard.press('Enter');
-    assert.equal(await page.getByRole('link',{name:'Algebra',exact:true}).isVisible(),true);
+    const firstModule=page.locator('[data-course-module]').first();
+    await firstModule.locator(':scope > summary').focus();await page.keyboard.press('Enter');
+    assert.equal(await firstModule.getAttribute('open'),null);
     await page.keyboard.press('Enter');
-    await screenshot("C-python-course");
-    await page.getByRole('link',{name:'All courses',exact:true}).focus();await page.keyboard.press('Enter');
-    await page.waitForURL(url=>!url.searchParams.has('area'));
-    await page.goBack();await page.locator('#area-heading').waitFor();
-    await page.goBack(); await page.getByRole("link", { name: "Start Learning", exact: true }).waitFor();
-    await page.goForward(); await page.locator("#area-heading").waitFor();
-    await go('/roadmaps/beginner');await page.getByRole('link',{name:'Start Learning',exact:true}).focus();await page.keyboard.press('Enter');
+    assert.equal(await page.locator("[data-path-area]").count(), 0, "classic module browsing does not require the map");
+    assert.equal(await page.locator('[data-classic-next]').count(),1);
+    const maths = firstModule.locator('summary').filter({hasText:'Supporting maths'});
+    await maths.waitFor();await maths.focus();await page.keyboard.press('Enter');
+    assert.equal(await page.getByRole('link',{name:'Open lesson 1.5: Algebra',exact:true}).isVisible(),true);
+    await page.keyboard.press('Enter');
+    await screenshot("C-classic-modules");
+    await start.focus();await page.keyboard.press('Enter');
     for (const [index, step] of learningSteps.entries()) {
       await page.waitForURL(url => decodeURIComponent(url.pathname) === decodeURIComponent(learningStepHref(step)));
       await page.locator('#check > summary').waitFor(); await layout();
       const contents = page.getByRole('navigation',{name:'Course contents',exact:true});
-      const toggle = page.getByRole('button',{name:'Course Contents',exact:true});
-      if(width < 1100) {
-        assert.equal(await contents.isVisible(),false);
-        await toggle.focus();await page.keyboard.press('Enter');
-        assert.equal(await contents.isVisible(),true);assert.equal(await toggle.getAttribute('aria-expanded'),'true');
-      } else assert.equal(await toggle.isVisible(),false);
+      const toggle = page.locator('summary').filter({hasText:/^Course contents$/});
+      assert.equal(await contents.isVisible(),false);
+      await toggle.focus();await page.keyboard.press('Enter');
+      assert.equal(await contents.isVisible(),true);
       assert.equal(await contents.locator('[aria-current="page"]').count(),1);
       assert.equal(await contents.locator('[aria-current="page"]').getAttribute('href'),learningStepHref(step), 'course entry keeps canonical identity');
-      if(width < 1100) {await toggle.focus();await page.keyboard.press('Enter');}
+      await toggle.focus();await page.keyboard.press('Enter');
       assert.equal(await page.locator("[data-primary-material] a[target='_blank']").count(), 1);
       assert.equal(await page.getByRole("progressbar").count(), 0, "no fake guest progress");
       if (index === 0) await screenshot("D-python-lesson");
       if (index === 0) {
-        if(width < 1100) await toggle.click();
-        const lessonLink = contents.getByRole('link',{name:'Python Practice',exact:true});
+        await toggle.click();
+        const lessonLink = contents.getByRole('link',{name:/1.2 Python Practice/});
         await lessonLink.focus();assert.notEqual(await lessonLink.evaluate(element=>getComputedStyle(element).outlineStyle),'none');
         await page.keyboard.press('Enter');await page.waitForURL(url=>decodeURIComponent(url.pathname)===decodeURIComponent(learningStepHref(learningSteps[1])));
         await page.goBack();await page.waitForURL(url=>decodeURIComponent(url.pathname)===decodeURIComponent(learningStepHref(step)));
-        if(width < 1100 && await toggle.getAttribute('aria-expanded')==='true') await toggle.click();
+        if(await contents.isVisible()) await toggle.click();
       }
       const practice = page.getByRole('navigation',{name:'Learning step sections'}).getByRole('link',{name:/Practice/});
       await practice.focus();await page.keyboard.press('Enter');await page.waitForURL(url=>url.hash==='#practice');
@@ -145,9 +139,9 @@ try {
       }
       await layout();
       if (index === 0) {
-        await page.getByRole("navigation", { name: "Lesson context" }).getByRole("link", { name: "Back to Python", exact: true }).click();
-        await page.waitForURL(url => url.searchParams.get("area") === "1");
-        await page.getByRole("list", { name: "Python lessons" }).getByRole("link", { name: /Python Basics/ }).click();
+        await page.getByRole("navigation", { name: "Lesson context" }).getByRole("link", { name: "Beginner roadmap", exact: true }).click();
+        await page.waitForURL(url => url.pathname === '/roadmaps/beginner');
+        await page.getByRole("list", { name: "Module 1 lessons" }).getByRole("link", { name: /Python Basics/ }).click();
         await page.locator("#next a").waitFor();
       }
       await page.locator("#next a").focus(); await page.keyboard.press("Enter");
@@ -156,8 +150,8 @@ try {
     for (const [profile, title] of [["intermediate", "NumPy"], ["advanced", "Validation Strategies"]]) {
       await go("/roadmaps/beginner"); await page.getByRole("navigation", { name: "Starting profile" }).getByRole("link", { name: new RegExp(profile, "i") }).click();
       await page.waitForURL(url => url.pathname === "/roadmaps/" + profile);
-      assert.ok((await page.locator('[data-next-lesson]').innerText()).includes('Start Learning'));
-      await page.locator('[data-next-lesson]').click();
+      assert.ok((await page.locator('[data-classic-next]').innerText()).includes('Start learning'));
+      await page.locator('[data-classic-next]').click();
       await page.waitForURL(url => url.pathname.includes('/lessons/'));
       await page.getByRole("heading", { level: 1 }).waitFor(); await layout();
       assert.ok((await page.getByRole('heading',{level:1}).innerText()).endsWith(title), 'existing numbered lesson headings stay valid');
@@ -165,11 +159,11 @@ try {
     }
     for (let area = 1; area <= 6; area++) {
       await go("/roadmaps/beginner?area=" + area);
-      await page.locator("#area-heading").waitFor(); await layout();
+      await page.getByRole('heading',{name:'Beginner AI Olympiad Roadmap',exact:true}).waitFor(); await layout();
       await go("/roadmaps/beginner?view=map&area=" + area);
       await page.locator("#area-heading").waitFor(); await layout();await pathGeometry();
     }
-    await go('/roadmaps/beginner');await page.getByRole('link',{name:'Explore Skill Map',exact:true}).click();
+    await go('/roadmaps/beginner');await page.getByRole('link',{name:'Explore Skill Atlas',exact:true}).click();
     await page.waitForURL(url=>url.searchParams.get('view')==='map');await pathGeometry();await screenshot('E-skill-atlas');
     await page.getByRole('link',{name:/^Explore Python/}).click();await pathGeometry();
     await page.getByRole('link',{name:'Collapse Python lessons',exact:true}).focus();await page.keyboard.press('Enter');
@@ -178,7 +172,7 @@ try {
     await page.emulateMedia({reducedMotion:'reduce'});await go('/roadmaps/beginner?view=map&area=1');await pathGeometry();
     await noRunningAnimations('reduced motion has no running animation');
     await go(learningStepHref(learningSteps[0]));
-    if(width < 1100) await page.getByRole('button',{name:'Course Contents',exact:true}).click();
+    await page.locator('summary').filter({hasText:/^Course contents$/}).click();
     await noRunningAnimations('lesson and contents respect reduced motion');
     await page.addStyleTag({content:'html { font-size: 200% !important; }'});await layout();
     await go('/roadmaps/beginner');await page.addStyleTag({content:'html { font-size: 200% !important; }'});await layout();

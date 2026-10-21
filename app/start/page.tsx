@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { StartingPoints } from "@/components/learning/ioai-overview";
-import { ProgressUnavailable } from "@/components/learning/progress-unavailable";
+import { RoadmapProgressList } from "@/components/learning/roadmap-progress-list";
 import { getOwnLearningState } from "@/lib/data/learning-progress";
-import styles from "@/components/learning/ioai.module.css";
+import styles from "@/components/training/catalog.module.css";
 
-export const metadata: Metadata = { title: "Your AI Journey", description: "Choose your starting point on the KAIZ AI Olympiad learning path.", alternates: { canonical: "https://kaizpro.com/roadmaps" } };
+export const metadata: Metadata = { title: "AI Olympiad Roadmaps", description: "Beginner, Intermediate and Advanced AI olympiad preparation, with courses, practice and saved progress.", alternates: { canonical: "https://kaizpro.com/roadmaps" } };
 
 export default async function StartPage() {
   const state = await getOwnLearningState();
-  return <section className={styles.landing} aria-labelledby="journey-title">
-    <header className={styles.landingHeader}><p className={styles.eyebrow}>KAIZ / THE ROAD TO AI OLYMPIADS</p><h1 id="journey-title">Small steps.<br/><span>Extraordinary possibilities.</span></h1><p>Choose your starting point. Make the path your own.</p></header>
-    <StartingPoints records={state.records} ready={Boolean(state.user) && !state.error}/>
-    {state.error && <ProgressUnavailable message={state.error}/>}
-    <Link className={styles.treeLink} href="/learn">Just exploring? Open the Learning Tree<ArrowUpRight size={16} aria-hidden="true" /></Link>
-  </section>;
+  return <div className={styles.page}>
+    <header className={styles.intro}><div><p>Preparation / roadmaps</p><h1>AI Olympiad Roadmaps</h1><p>Choose your level. Study, practise and save your progress.</p></div></header>
+    <h2 className="sr-only">Choose your starting point</h2>
+    <RoadmapProgressList records={state.records} signedIn={Boolean(state.user)} error={state.error}/>
+    <nav className={styles.actions} aria-label="Explore learning"><Link href="/learn/topics" className={styles.action}>AI Topics</Link><Link href="/learn" className={styles.action}>Learning Tree</Link><Link href="/problems" className={styles.action}>Practice archive</Link></nav>
+  </div>;
 }

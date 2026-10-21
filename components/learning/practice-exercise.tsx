@@ -3,7 +3,7 @@ import type { PracticeExercise as PracticeContent } from "@/lib/learning/learnin
 import styles from "./ioai.module.css";
 
 export function PracticeExercise({ practice, children }: { practice: PracticeContent; children?: ReactNode }) {
-  return <div className={styles.practiceCard}>
+  return <div className={styles.practiceCard} data-practice-exercise>
     <h3>{practice.title}</h3>
     <p className={styles.note}>Original KAIZ instructions. KAIZ does not run or judge code. Compare your own output and reasoning; no automatic pass is claimed.</p>
     <p className={styles.note}><strong>Before you start:</strong> {practice.prerequisites.join("; ")}.</p>
