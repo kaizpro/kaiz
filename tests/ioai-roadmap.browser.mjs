@@ -77,7 +77,7 @@ try {
     assert.equal(await page.locator('section[aria-label$="roadmap progress"]').count(), 3);
     assert.equal(await page.locator("[data-entry-profile], main details, [data-path-area]").count(), 0, "classic entry stays compact, not map/card-first");
     await screenshot("A-landing");
-    await page.getByRole('link',{name:'Browse Beginner roadmap',exact:true}).focus(); await page.keyboard.press("Enter");
+    await page.getByRole('link',{name:'Open Beginner roadmap',exact:true}).focus(); await page.keyboard.press("Enter");
     await page.waitForURL(url => url.pathname === "/roadmaps/beginner"); await layout();
     assert.equal(await page.locator("[data-course-module]").count(), 4);
     const start = page.locator('[data-classic-next]');

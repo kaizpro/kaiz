@@ -59,4 +59,4 @@ A dash means no sufficiently appropriate Kaggle equivalent was selected. Those l
 
 Each roadmap row is a single native link with a visible focus outline and an accessible description of saved counts/XP. Study Material and topic-specific Practice on Kaggle actions precede a single existing completion/undo control. Instructions, original expected outputs, hints, worked examples and setup remain available in closed-by-default native disclosures. Completion remains a private self-report. Existing educational content files and stable identities are unchanged.
 
-Personal AI Strategist is discoverable from the desktop More menu, mobile menu and Roadmaps shortcuts. `/strategist` links to `/strategist/olympiads` and `/strategist/preparation`; both are static Coming soon pages with no backend, forms or generated output.
+Personal AI Strategist is discoverable directly in desktop navigation, the responsive mobile/laptop menu and Roadmaps shortcuts. `/strategist` links to `/strategist/olympiads` and `/strategist/preparation`; both are static Coming soon pages with no backend, forms or generated output.

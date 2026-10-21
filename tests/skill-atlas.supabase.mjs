@@ -71,6 +71,13 @@ try {
   browser = await chromium.launch({channel: 'chrome', headless: true});
   const a = await context();
   step = 'browser completion'; await login(a.page, owner); await progress(a.page, 0);
+  step = 'authenticated direct header';
+  const header = a.page.getByRole('navigation', {name: 'Primary navigation', exact: true});
+  await header.getByRole('link', {name: 'Personal AI Strategist', exact: true}).waitFor();
+  assert.equal(await header.getByRole('link').count(), 7);
+  assert.ok((await header.boundingBox()).height <= 60, 'desktop signed-in navigation stays on one row');
+  assert.equal(await a.page.getByRole('link', {name: 'My learning', exact: true}).count(), 1);
+  step = 'browser completion';
   await a.page.locator('[data-classic-next]').click();
   await a.page.waitForURL(base.origin + lessonPath);
   await a.page.locator('#practice').waitFor();
@@ -89,6 +96,17 @@ try {
   await a.page.getByRole('button', {name: 'Sign out', exact: true}).click(); await a.page.waitForURL(base.origin + '/');
   await login(a.page, owner); await progress(a.page, 1);
   const second = await context(375, 'dark'); await login(second.page, owner); await progress(second.page, 1);
+  step = 'authenticated laptop navigation';
+  const laptop = await context(1280, 'light'); await login(laptop.page, owner); await progress(laptop.page, 1);
+  await laptop.page.getByLabel('Open navigation').click();
+  const menu = laptop.page.getByRole('navigation', {name: 'Mobile navigation', exact: true});
+  assert.equal(await menu.getByRole('link').count(), 7);
+  await menu.getByRole('link', {name: 'Personal AI Strategist', exact: true}).click();
+  await laptop.page.waitForURL(base.origin + '/strategist');
+  await laptop.page.getByRole('heading', {name: 'Personal AI Strategist', exact: true}).waitFor();
+  assert.equal(await laptop.page.getByRole('navigation', {name: 'Strategy options'}).getByRole('link').count(), 2);
+  await laptop.ctx.close();
+  step = 'mobile saved progress';
   for (const path of ['/roadmaps/beginner', '/roadmaps/beginner?view=map&area=1', lessonPath, '/dashboard']) {
     await second.page.goto(base.origin + path);
     await second.page.getByRole('heading', {level: 1}).waitFor();
@@ -137,7 +155,7 @@ try {
   await shared.getByRole('button', {name: /Mark completed:/}).waitFor();
   assert.equal((await rows(owner)).filter(row => row.completed_at).length, 0);
   assert.deepEqual(errors, []);
-  console.log(JSON.stringify({status: 'PASS',realAuth: true,accounts: 'two ordinary, one admin',completion: true,refreshAndNewSession: true,xpAndUndo: true,concurrentRetry: 12,ownerOnlyRls: true,guestDenied: true,mobile200Percent: true,existingProgressPreserved: true,sharedAnalysisIdentityAndXp: true,productionAccess: false}));
+  console.log(JSON.stringify({status: 'PASS',realAuth: true,accounts: 'two ordinary, one admin',completion: true,refreshAndNewSession: true,xpAndUndo: true,concurrentRetry: 12,ownerOnlyRls: true,guestDenied: true,mobile200Percent: true,existingProgressPreserved: true,sharedAnalysisIdentityAndXp: true,directDesktopAndLaptopNavigation: true,productionAccess: false}));
 } catch (error) {
   console.error(JSON.stringify({status: 'FAIL',step,type: error.name,code: error.code ?? null,location: error.stack?.split('\n').filter(line => line.includes('at ') && line.includes('skill-atlas.supabase.mjs')).slice(0,2)}));
   process.exitCode = 1;

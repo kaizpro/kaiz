@@ -9,6 +9,8 @@
 .roadmap .bar { width: 100%; }
 .roadmap:hover { background: var(--muted); }
 .roadmap:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+.rowDirection { display: inline-flex; align-items: center; justify-content: end; gap: 8px; color: var(--primary); font-size: .75rem; font-weight: 600; }
+.rowDirection svg { flex-shrink: 0; }
 .progressLabel { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-size: .75rem; }
 .status { font-size: .75rem; color: var(--muted-foreground); }
 .totals { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; margin-bottom: 16px; }

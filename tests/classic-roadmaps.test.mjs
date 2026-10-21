@@ -36,6 +36,22 @@ test('each whole roadmap row is one keyboard-native link with live progress and 
  assert.match(html,/aria-describedby="roadmap-beginner-progress"/);
  assert.match(html,/1 \/ 15 lessons completed/);assert.match(html,/10 Learning XP/);
  assert.doesNotMatch(html,/<button|tabindex|role="button"/i);
+ const guest=renderToStaticMarkup(React.createElement(RoadmapProgressList,{records:[],signedIn:false,error:null}));
+ for(const path of journeys)assert.ok(guest.includes(`aria-label="Open ${path.title} roadmap"`));
+ assert.equal((guest.match(/lucide-chevron-right/g)??[]).length,3);
+ assert.doesNotMatch(guest,/smallAction|>Browse|<button/);
+});
+
+test('desktop and mobile navigation retain all seven destinations with a direct active Strategist link and no More menu',()=>{
+ const {MainNav,MobileNav}=loadTypescript({'next/navigation':{usePathname:()=>'/strategist/preparation'}})('components/main-nav.tsx');
+ for(const Component of [MainNav,MobileNav]){
+  const html=renderToStaticMarkup(React.createElement(Component));
+  assert.equal((html.match(/<a /g)??[]).length,7);
+  for(const href of ['/competitions','/problems','/leaderboards','/roadmaps','/discussions','/learn','/strategist'])assert.ok(html.includes(`href="${href}"`));
+  assert.match(html,/<a[^>]*aria-current="page"[^>]*href="\/strategist"[^>]*>Personal AI Strategist<\/a>/);
+  assert.doesNotMatch(html,/>More<|dropdown/i);
+ }
+ const desktop=renderToStaticMarkup(React.createElement(MainNav));assert.doesNotMatch(desktop,/<details|<summary/);
 });
 
 test('all 40 lessons retain one completion control, compact actions and complete collapsed instruction content',async()=>{
@@ -73,6 +89,8 @@ test('all 40 lessons retain one completion control, compact actions and complete
 test('Strategist is static, has two real destinations, rejects unknown pages and exposes no fake AI or collection',async()=>{
  const pageLoad=loadTypescript({'next/navigation':{notFound(){throw Error('not found');}}});
  const html=renderToStaticMarkup(React.createElement(pageLoad('app/strategist/page.tsx').default));
+ assert.match(html,/<svg[^>]*viewBox="0 0 420 260"[^>]*aria-hidden="true"[^>]*focusable="false"/);
+ assert.equal((html.match(/Coming soon/g)??[]).length,2);
  for(const focus of ['olympiads','preparation']){
   assert.ok(html.includes(`/strategist/${focus}`));
   const child=renderToStaticMarkup(await pageLoad('app/strategist/[focus]/page.tsx').default({params:Promise.resolve({focus})}));

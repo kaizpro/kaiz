@@ -14,8 +14,9 @@ const {practiceLinkFor}=load('lib/learning/lesson-practice-links.ts');
 const output=process.env.KAIZ_SCREENSHOTS??'work/classic-roadmaps/final';await mkdir(output,{recursive:true});
 const browser=await chromium.launch({channel:'chrome',headless:true});const errors=[];
 try{
- for(const width of [375,1440])for(const theme of ['light','dark']){
-  const context=await browser.newContext({viewport:{width,height:1000},reducedMotion:'reduce'});
+ for(const width of [320,375,1280,1440])for(const theme of ['light','dark']){
+  const height=width===320?720:1000;
+  const context=await browser.newContext({viewport:{width,height},reducedMotion:'reduce'});
   await context.addInitScript(value=>localStorage.setItem('theme',value),theme);
   await context.route('**/*',route=>new URL(route.request().url()).origin===base.origin&&['GET','HEAD'].includes(route.request().method())?route.continue():route.abort());
   const page=await context.newPage();page.on('pageerror',error=>errors.push(error.message));
@@ -25,15 +26,24 @@ try{
   for(const path of journeys){
    const row=page.getByRole('region',{name:`${path.title} roadmap progress`});
    assert.equal(await row.getByRole('link').count(),1);
+   assert.equal(await row.getByRole('button').count(),0);assert.equal(await row.getByText('Browse',{exact:true}).count(),0);
+   assert.equal(await row.locator('svg.lucide-chevron-right').count(),1);
    const link=row.getByRole('link');
    const bounds=await link.boundingBox(),region=await row.boundingBox();assert.ok(Math.abs(bounds.width-region.width)<1,'entire row is the link');
    await link.focus();assert.notEqual(await link.evaluate(e=>getComputedStyle(e).outlineStyle),'none');await page.keyboard.press('Enter');await page.waitForURL(base.origin+`/roadmaps/${path.level}`);
    await layout();await go('/roadmaps');
+   await page.getByRole('region',{name:`${path.title} roadmap progress`}).getByRole('link').click({position:{x:bounds.width/2,y:bounds.height/2}});
+   await page.waitForURL(base.origin+`/roadmaps/${path.level}`);await go('/roadmaps');
   }
-  const primary=page.getByRole('navigation',{name:width>=1280?'Primary navigation':'Mobile navigation'});
-  const toggle=width>=1280?page.locator('summary').filter({hasText:'More'}):page.getByLabel('Open navigation');
-  await toggle.focus();await page.keyboard.press('Enter');
+  const primary=page.getByRole('navigation',{name:width>=1440?'Primary navigation':'Mobile navigation'});
+  assert.equal(await page.locator('body > header summary').filter({hasText:'More'}).count(),0);
+  if(width<1440){await page.getByLabel('Open navigation').focus();await page.keyboard.press('Enter');}
+  assert.equal(await primary.getByRole('link').count(),7);
+  for(const href of ['/competitions','/problems','/leaderboards','/roadmaps','/discussions','/learn','/strategist'])assert.equal(await primary.locator(`a[href="${href}"]`).count(),1);
   const strategist=primary.getByRole('link',{name:'Personal AI Strategist',exact:true});await strategist.focus();await page.keyboard.press('Enter');await page.waitForURL(base.origin+'/strategist');await layout();
+  if(width<1440)await page.getByLabel('Open navigation').click();
+  assert.equal(await primary.getByRole('link',{name:'Personal AI Strategist',exact:true}).getAttribute('aria-current'),'page');
+  if(width<1440)await page.getByLabel('Open navigation').click();
   assert.equal(await page.locator('main form, main input, main textarea').count(),0);
   await page.screenshot({path:join(output,`strategist-${width}-${theme}.png`),fullPage:true,animations:'disabled'});
   for(const [label,focus]of [['Strategy for Olympiads','olympiads'],['Preparation Strategy','preparation']]){
@@ -65,7 +75,30 @@ try{
    await page.locator('[data-atlas-root]').waitFor();await page.evaluate(async()=>{await document.fonts.ready;await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));});
    assert.deepEqual(await page.evaluate(()=>document.getAnimations().filter(a=>a.playState==='running').map(a=>a.animationName)),[]);await layout();
   }
-  await context.close();console.log(`PASS ${width}px ${theme}: 40 lessons, full-row keyboard links, practice disclosures/actions, Strategist, 200% text, reduced motion x3`);
+  await go('/strategist');await page.addStyleTag({content:'html{font-size:200% !important}'});await layout();
+  if(width<1440){
+   await page.getByLabel('Open navigation').click();
+   const last=primary.getByRole('link',{name:'Personal AI Strategist',exact:true});await last.focus();await last.scrollIntoViewIfNeeded();
+   const box=await last.boundingBox();assert.ok(box.x>=0&&box.x+box.width<=width+1&&box.y>=0&&box.y+box.height<=height+1,'zoomed menu remains reachable');
+   await page.setViewportSize({width,height:height-80});
+   await page.waitForFunction(()=>document.querySelector('nav[aria-label="Mobile navigation"]').getBoundingClientRect().bottom<=innerHeight);
+   await last.scrollIntoViewIfNeeded();const resized=await last.boundingBox();assert.ok(resized.y+resized.height<=height-79,'open menu responds to viewport resize');
+   await page.setViewportSize({width,height});
+   await page.getByLabel('Open navigation').click();
+  }
+  const option=page.getByRole('navigation',{name:'Strategy options'}).getByRole('link').first();
+  // Enter keyboard modality after the preceding pointer-driven menu check.
+  await page.keyboard.press('Tab');await option.focus();assert.notEqual(await option.evaluate(e=>getComputedStyle(e).outlineStyle),'none');
+  await page.mouse.move(0,0);
+  const contrast=await option.getByText('Coming soon',{exact:true}).evaluate(e=>{
+   const canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');
+   const luminance=color=>{ctx.fillStyle=color;ctx.fillRect(0,0,1,1);const [r,g,b]=ctx.getImageData(0,0,1,1).data;return [r,g,b].map(v=>v/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4).reduce((sum,v,i)=>sum+v*[.2126,.7152,.0722][i],0);};
+   const fg=luminance(getComputedStyle(e).color),bg=luminance(getComputedStyle(e.closest('a')).backgroundColor);
+   return (Math.max(fg,bg)+.05)/(Math.min(fg,bg)+.05);
+  });assert.ok(contrast>=4.5,`availability contrast ${contrast}`);
+  await option.hover();assert.equal(await option.locator('svg').last().evaluate(e=>getComputedStyle(e).transform),'none');
+  assert.deepEqual(await page.evaluate(()=>document.getAnimations().filter(a=>a.playState==='running').map(a=>a.animationName)),[]);
+  await context.close();console.log(`PASS ${width}px ${theme}: 40 lessons, full-row keyboard/pointer links, direct navigation, Strategist/options/contrast, 200% text/menu, reduced motion x3`);
  }
  assert.deepEqual(errors,[]);
 }finally{await browser.close();}

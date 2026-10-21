@@ -87,7 +87,7 @@ No production migration, account/data/configuration change, import, merge or
 deployment is part of this PR. Final results and head-specific CI/Preview status
 are recorded on the PR after the complete verification run.
 
-Local verification on 2026-10-21: 264 application tests, TypeScript, ESLint,
+Local verification on 2026-10-21: 265 application tests, TypeScript, ESLint,
 normal Turbopack build, all 133 browser routes/eight viewport-theme combinations,
 and all 20 authored Python example executions pass. Two fresh PostgreSQL 17.7
 runs each pass all 198 assertions (including 25 Learning Progress assertions).
@@ -116,15 +116,41 @@ managed QA's extra schema is part of this release.
   materials rather than inventing a Kaggle equivalent. Signed-in Kaggle exercise
   execution is not verified and is not a KAIZ completion signal. The community
   NumPy notebook is explicitly distinguished from an official course.
-- Personal AI Strategist is a small desktop More/mobile menu destination and a
+- Personal AI Strategist is a direct desktop navigation/mobile menu destination and a
   Roadmaps shortcut. Its landing page has two linked Coming soon pages; there are
   no AI APIs, forms, generated output or backend requirements.
-- Additional browser checks cover every lesson at 375/1440px in both themes,
+- Additional browser checks cover every lesson at 320/375/1280/1440px in both themes,
   native keyboard actions/disclosures, 200% text with intact section labels, and
-  twelve repeated reduced-motion Atlas checks. The broader eight-context matrix
+  twenty-four repeated reduced-motion Atlas checks. The broader eight-context matrix
   still covers all 133 existing routes and the optional Skill Atlas.
 
 The clean `npm ci` reports five pre-existing high-severity development-tool
 advisories through the ESLint / fast-glob / micromatch / braces chain. Package
 files are unchanged; no unrelated dependency downgrade or forced audit fix is
 included in this UI PR. Track dependency remediation separately.
+
+## Final visual review refinements
+
+The roadmap links now use a plain right chevron, not a button-styled Browse label.
+Signed-in Start/Continue/Review remains a subtle text cue with real progress.
+Strategist is directly present alongside every existing primary destination;
+below 1440px the scrollable native navigation menu prevents header crowding.
+The menu measures the actual header/visual viewport and responds to resize and
+text zoom, so its last link remains reachable even at 320×720 with 200% text.
+
+Strategist now uses a larger editorial heading, one supporting sentence and a
+lightweight decorative SVG decision-path motif. Its two option links have small
+existing Lucide icons, cyan hover/focus accents and explicit Coming soon labels.
+Both destination pages use the same visual language, without AI output or forms.
+No educational data, practice links, completion actions, XP or backend code changes.
+
+The visual follow-up passes 265 application tests, TypeScript, ESLint, both normal
+and isolated-QA production builds, all 198 SQL assertions on fresh PostgreSQL,
+and the full 133-route browser matrix. Real isolated Auth/progress QA additionally
+checks the signed-in desktop header and 1280px laptop menu. Completion/undo, XP,
+refresh/new sessions and owner-only RLS pass; its three synthetic users are removed
+and the isolated inventory reconciles to the original zero baseline.
+
+| Desktop, light | Mobile, dark |
+| --- | --- |
+| ![Strategist desktop](qa/classic-roadmaps/strategist-desktop-light.png) | ![Strategist mobile](qa/classic-roadmaps/strategist-mobile-dark.png) |
