@@ -8,6 +8,7 @@ Stacked on PR #55 (`codex/premium-learning-ui`), dependent on #53. Independent s
 - One semantic full-card internal link per entry, readable source/type/access/difficulty, visible real private individual-task status/latest score, and separate native source disclosures. No nested controls, external-navigation overlay or duplicated View/Solve buttons in each card.
 - Source detail title and main Solve on Source action use only the existing safe destination. Held/unavailable links remain inactive. Related contests use internal cards. Full account/provenance/access/reproduction notes remain in a disclosure; collections cannot be marked solved as one task.
 - Individual-task title, Solve on Source and Record practice are prominent. Existing statement-permission checks, statuses, score forms, official/practice separation and private history are retained. Guest Record practice now has an actual `#practice` sign-in destination (also addressed independently by #42).
+- Scoped anchor scroll offset prevents the sticky header covering the recording heading, including enlarged text. A separate isolated guest/keyboard browser test covers all four widths, both themes and 100/200% text with a single disposable task.
 
 ## PR #42 integration contract
 

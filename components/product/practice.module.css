@@ -8,6 +8,7 @@
 .entry:focus-within { border-color: var(--primary); }
 .entry :is(a,summary):focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
 .detailHero { margin-block: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+.detailPage :global(#practice) { scroll-margin-top: 10rem; }
 .detailHero h1 { font-size: clamp(1.5rem,3.4vw + .5rem,3.5rem); font-weight: 650; line-height: 1.15; letter-spacing: -.045em; text-wrap: balance; }
 .sourceMeta { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-block: 20px; font-size: .875rem; }
 .sourceMeta dt { color: var(--muted-foreground); font-size: .8125rem; }
