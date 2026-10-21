@@ -10,6 +10,21 @@ const {classicModules,classicNext}=load('lib/learning/classic-roadmap.ts');
 const {beginnerCore}=load('lib/learning/beginner-learning.ts');
 const row=(roadmap,id)=>({roadmap_id:roadmap,lesson_id:id,completed_at:'2026-10-20T00:00:00Z',started_at:'2026-10-20T00:00:00Z',updated_at:'2026-10-20T00:00:00Z'});
 
+test('premium page visuals stay decorative; roadmap cards retain actual counts without guest progress',()=>{
+ const {PageHero,ProductEmptyState}=load('components/product/page-hero.tsx');
+ for(const motif of ['learning','competition','ranking','practice']){
+  const html=renderToStaticMarkup(React.createElement(PageHero,{title:'A real page',description:'One useful sentence.',motif}));
+  assert.match(html,/<h1>A real page<\/h1>/);assert.match(html,/<svg[^>]*aria-hidden="true"[^>]*focusable="false"/);
+  assert.doesNotMatch(html,/<script|<animate|<progress|<img|<form/);
+ }
+ const {RoadmapProgressList}=load('components/learning/roadmap-progress-list.tsx');
+ const guest=renderToStaticMarkup(React.createElement(RoadmapProgressList,{records:[],signedIn:false,error:null}));
+ assert.equal((guest.match(/curriculum lessons/g)??[]).length,3);
+ assert.doesNotMatch(guest,/<progress|0%|0 Learning XP/);
+ const empty=renderToStaticMarkup(React.createElement(ProductEmptyState,{title:'No results'},'Nothing published.'));
+ assert.match(empty,/<h2>No results<\/h2>/);assert.doesNotMatch(empty,/<table/);
+});
+
 test('classic module projection preserves all 40 original identities and only adds the existing shared Analysis reference',()=>{
  let own=0;
  for(const path of journeys){
