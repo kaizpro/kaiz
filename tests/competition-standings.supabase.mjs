@@ -27,6 +27,36 @@ try{
   const scroll=page.getByRole('region',{name:/standings; scroll horizontally/});await scroll.focus();assert.equal(await scroll.getAttribute('tabindex'),'0');if(width===375)assert.ok(await scroll.evaluate(el=>el.scrollWidth>el.clientWidth));assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await page.screenshot({path:`work/competition-standings/screenshots/${theme}-${width}.png`,fullPage:true});
   await page.getByRole('navigation',{name:'Result stages'}).getByRole('button',{name:'Qualification',exact:true}).click();await page.getByText('Results are not available yet',{exact:true}).waitFor();assert.equal(await page.getByRole('table').count(),0);await page.getByRole('button',{name:'Tasks',exact:true}).click();assert.equal(await page.getByRole('link',{name:/Solve/}).getAttribute('href'),'https://example.test/tasks');await context.close();
  }
- assert.deepEqual(errors,[]);assert.deepEqual(blocked,[]);console.log(JSON.stringify({status:'PASS',realSupabase:true,published125Draft1:true,anonymousMemberAdminBoundaries:true,stages:true,searchAwardsPaging:true,tiesZeroMissing:true,keyboardMobileLightDark:true,taskSource:true,productionAccess:false}));
+ // Presentation matrix on the actual QA-backed routes; all fixture records are synthetic.
+ for(const width of [320,768,1280,1440])for(const theme of ['light','dark']){
+  step=`premium directory/detail/leaderboard ${width} ${theme}`;
+  const ctx=await browser.newContext({viewport:{width,height:1000},reducedMotion:'reduce'});
+  await ctx.addInitScript(t=>localStorage.setItem('theme',t),theme);
+  await ctx.route('**/*',r=>[base.origin,api.origin].includes(new URL(r.request().url()).origin)?r.continue():r.abort());
+  const page=await ctx.newPage();page.on('pageerror',e=>errors.push(e.name));
+  for(const path of ['/competitions',`/competitions/${slug}`,`/leaderboards?edition=${slug}`]){
+   await page.goto(base.origin+path);await page.locator('main h1').waitFor();await page.evaluate(()=>document.fonts.ready);
+   if(path==='/competitions'){
+    const card=page.locator(`main a[href="/competitions/${slug}"]`);await card.waitFor();assert.equal(await card.count(),1);
+    await page.keyboard.press('Tab');await card.focus();assert.notEqual(await card.evaluate(e=>getComputedStyle(e).outlineStyle),'none');
+    await card.hover();assert.equal(await card.evaluate(e=>getComputedStyle(e).transform),'none');
+    await page.keyboard.press('Enter');await page.waitForURL(`${base.origin}/competitions/${slug}`);
+    await page.goto(base.origin+'/competitions?status=active');await page.getByRole('heading',{name:'No matching competitions'}).waitFor();
+    await page.goto(base.origin+'/competitions');
+   }
+   if(path.startsWith('/leaderboards')){
+    assert.equal(await page.getByLabel('Stage',{exact:true}).inputValue(),final.id);
+    assert.equal(await page.getByText('PRIVATE DRAFT ROW',{exact:true}).count(),0);
+   }
+   await page.addStyleTag({content:'html{font-size:200% !important}'});
+   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),`${width} ${theme} ${path} 200%`);
+   if(path===`/competitions/${slug}`){
+    for(const name of ['Overview','Results','Tasks']){const button=page.getByRole('navigation',{name:'Competition sections'}).getByRole('button',{name,exact:true});await button.focus();await page.keyboard.press('Enter');assert.equal(await button.getAttribute('aria-pressed'),'true');assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));}
+   }
+   if(width===320||width===1440)await page.screenshot({path:`work/competition-standings/screenshots/premium-${width}-${theme}-${path.startsWith('/leaderboards')?'leaderboards':path==='/competitions'?'directory':'detail'}.png`,fullPage:true});
+  }
+  await ctx.close();
+ }
+ assert.deepEqual(errors,[]);assert.deepEqual(blocked,[]);console.log(JSON.stringify({status:'PASS',realSupabase:true,published125Draft1:true,anonymousMemberAdminBoundaries:true,stages:true,searchAwardsPaging:true,tiesZeroMissing:true,keyboardMobileLightDark:true,taskSource:true,premiumMatrix24Views:true,textZoom200:true,reducedMotion:true,productionAccess:false}));
 }catch(error){console.error(JSON.stringify({status:'FAIL',step,type:error.name,code:error.code??null,location:error.stack?.split('\n').filter(line=>line.includes('competition-standings.supabase.mjs')).slice(0,2)}));process.exitCode=1;}
 finally{if(browser)await browser.close();if(competition){const r=await service.from('competitions').delete().eq('id',competition.id).select('id');if(r.error||r.data?.length!==1){process.exitCode=1;console.error('QA competition cleanup failed');}else assert.equal(check(await service.from('competition_results').select('id').eq('competition_id',competition.id)).length,0);}if(user)check(await service.auth.admin.deleteUser(user.id));console.log(JSON.stringify({syntheticCompetitionRemoved:!!competition,disposableUserRemoved:!!user,productionAccess:false}));}

@@ -10,6 +10,24 @@ import * as jsxRuntime from "react/jsx-runtime";
 import { renderToStaticMarkup } from "react-dom/server";
 import * as icons from "lucide-react";
 import { loadContentModule } from "../scripts/content/load.mjs";
+import { loadTypescript } from "./helpers/load-typescript.mjs";
+
+test('premium edition cards preserve database values and stay one semantic link',()=>{
+ const {CompetitionRow}=loadTypescript()('components/competition-row.tsx');
+ const html=renderToStaticMarkup(React.createElement(CompetitionRow,{competition:{id:'qa',slug:'synthetic-2026',title:'Synthetic edition 2026',organizer:'Source organizer',start_date:'2026-01-01',city:null,country:'Kazakhstan',format:'hybrid',status:'completed',verified:false}}));
+ assert.equal((html.match(/<a /g)??[]).length,1);assert.match(html,/href="\/competitions\/synthetic-2026"/);
+ assert.match(html,/Synthetic edition 2026/);assert.match(html,/Source organizer/);assert.match(html,/Hybrid/);assert.match(html,/Kazakhstan/);
+ assert.doesNotMatch(html,/<button|>Verified<|fake|rating/);
+});
+
+test('premium competition directory preserves server filters and honest empty state',async()=>{
+ const calls=[];
+ const Page=loadTypescript({'@/lib/data/competitions':{listCompetitions:async(...args)=>{calls.push(args);return [];}}})('app/competitions/page.tsx').default;
+ const html=renderToStaticMarkup(await Page({searchParams:Promise.resolve({status:'completed',format:'hybrid',category:'invalid'})}));
+ assert.deepEqual(Array.from(calls[0]),['completed','all','hybrid']);
+ assert.match(html,/<h1>Competitions<\/h1>/);assert.match(html,/No matching competitions/);assert.match(html,/0 listed editions/);
+ assert.doesNotMatch(html,/Synthetic edition|<table/);
+});
 
 const competitionId = "80000000-0000-4000-8000-000000000001";
 const setId = "80000000-0000-4000-8000-000000000002";
