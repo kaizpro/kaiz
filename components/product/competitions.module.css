@@ -12,5 +12,5 @@
 .task { grid-template-columns: auto minmax(0,1fr) auto; align-items: center; }
 .task h3 { font-size: 1rem; font-weight: 600; overflow-wrap: break-word; }
 @media(max-width:1000px) { .edition { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } .edition > div:first-child { grid-column: 1/-1; } }
-@media(max-width:480px) { .edition { gap: 12px; } .task { grid-template-columns: minmax(0,1fr) auto; } .task > svg:first-child { display: none; } }
+@media(max-width:480px) { .edition { grid-template-columns: minmax(0,1fr); gap: 12px; } .task { grid-template-columns: minmax(0,1fr) auto; } .task > svg:first-child { display: none; } }
 @media(prefers-reduced-motion:reduce) { .sections button { transition: none; } }
