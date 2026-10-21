@@ -25,6 +25,62 @@ test('classic module projection preserves all 40 original identities and only ad
  }
  assert.equal(own,40);
 });
+
+test('each whole roadmap row is one keyboard-native link with live progress and no nested controls',()=>{
+ const {RoadmapProgressList}=load('components/learning/roadmap-progress-list.tsx');
+ const html=renderToStaticMarkup(React.createElement(RoadmapProgressList,{records:[row('beginner',beginnerCore[0].lessonId)],signedIn:true,error:null}));
+ assert.equal((html.match(/<a /g)??[]).length,3);
+ assert.equal((html.match(/<progress /g)??[]).length,3);
+ assert.match(html,/<section[^>]*Beginner roadmap progress[^>]*><a[^>]*href="\/roadmaps\/beginner"/);
+ assert.match(html,/aria-label="Continue Beginner roadmap"/);
+ assert.match(html,/aria-describedby="roadmap-beginner-progress"/);
+ assert.match(html,/1 \/ 15 lessons completed/);assert.match(html,/10 Learning XP/);
+ assert.doesNotMatch(html,/<button|tabindex|role="button"/i);
+});
+
+test('all 40 lessons retain one completion control, compact actions and complete collapsed instruction content',async()=>{
+ const calls=[];
+ const pageLoad=loadTypescript({
+  '@/lib/data/learning-progress':{getOwnLearningState:async()=>({user:{id:'fixture'},records:[],error:null})},
+  '@/components/learning/completion-control':{CompletionControl:props=>{calls.push(props);return React.createElement('button',null,'Complete');}},
+  'next/navigation':{notFound(){throw Error('not found');}},
+ });
+ const Page=pageLoad('app/roadmaps/[level]/lessons/[lesson]/page.tsx').default;
+ const {lessonPracticeLinks,practiceLinkFor}=load('lib/learning/lesson-practice-links.ts');
+ const {beginnerStep}=load('lib/learning/beginner-learning.ts');
+ let count=0,external=0;
+ for(const path of journeys) for(const unit of courseFor(path)) for(const item of unit.lessons){
+  calls.length=0;
+  assert.ok(Object.hasOwn(lessonPracticeLinks,item.topic.id),`explicit practice audit: ${item.topic.id}`);
+  const html=renderToStaticMarkup(await Page({params:Promise.resolve({level:path.level,lesson:item.id})}));
+  assert.equal(calls.length,1);assert.equal(calls[0].roadmap,path.level);assert.equal(calls[0].lesson,item.id);
+  assert.equal((html.match(/aria-label="Lesson completion"/g)??[]).length,1);
+  assert.equal((html.match(/data-practice-actions=/g)??[]).length,1);
+  assert.match(html,/Study Material/);assert.match(html,/KAIZ does not verify external solutions/);
+  assert.match(html,/<details[^>]*data-practice-instructions="true"><summary>Task instructions/);
+  assert.doesNotMatch(html,/<details[^>]*\bopen[^>]*data-practice-instructions/);
+  const resource=practiceLinkFor(item.topic.id);
+  if(resource){external++;assert.ok(html.includes(resource.href));assert.equal(new URL(resource.href).hostname,'www.kaggle.com');assert.match(resource.href,/\/(code|competitions)\//);assert.ok(resource.evidence.startsWith('https://'));}
+  else assert.doesNotMatch(html,/Practice on Kaggle/);
+  const guided=path.level==='beginner'?beginnerStep(item.topic.id):null;
+  if(guided){assert.ok(html.includes(guided.practice.title));assert.match(html,/Optional hints/);assert.match(html,/Worked example/);}
+  count++;
+ }
+ assert.equal(count,40);assert.ok(external>=25);
+ assert.match(practiceLinkFor('numpy').note,/Community notebook.*not an official/);
+});
+
+test('Strategist is static, has two real destinations, rejects unknown pages and exposes no fake AI or collection',async()=>{
+ const pageLoad=loadTypescript({'next/navigation':{notFound(){throw Error('not found');}}});
+ const html=renderToStaticMarkup(React.createElement(pageLoad('app/strategist/page.tsx').default));
+ for(const focus of ['olympiads','preparation']){
+  assert.ok(html.includes(`/strategist/${focus}`));
+  const child=renderToStaticMarkup(await pageLoad('app/strategist/[focus]/page.tsx').default({params:Promise.resolve({focus})}));
+  assert.match(child,/Coming soon/);assert.match(child,/Explore Roadmaps/);assert.doesNotMatch(child,/<form|<input|<textarea|<button/);
+ }
+ await assert.rejects(pageLoad('app/strategist/[focus]/page.tsx').default({params:Promise.resolve({focus:'toString'})}),/not found/);
+ assert.doesNotMatch(html,/<form|<input|<textarea|<button/);
+});
 test('classic Beginner preserves every improved teaching step in order without making maths or DL prerequisites',()=>{
  const modules=classicModules(journeys[0]);
  assert.deepEqual(Array.from(modules.filter(module=>!module.optional).flatMap(module=>module.lessons.map(item=>item.topic.id))),Array.from(beginnerCore,item=>item.topicId));

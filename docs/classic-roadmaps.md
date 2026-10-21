@@ -55,9 +55,13 @@ reachable through a compact course-contents disclosure; they do not replace the
 default classic overview. Lesson contents are a native disclosure at every width,
 not a sticky sidebar or a mobile-only JavaScript navigation requirement.
 
-Instructional content files and `GuidedLesson` are unchanged. Compact styling is
-scoped to the lesson shell, with only an added practice-container hook. No global
-styles, main layout, competition features or Supabase utilities are changed.
+Authored instructional data files are unchanged. The final owner-requested UX
+pass adapts `GuidedLesson` presentation: concise practice actions and one existing
+completion control precede closed-by-default instructions, hints and examples.
+Study guidance and source access notes remain in native disclosures. Compact
+styling is scoped to the lesson shell; no global styles, root layout, competition
+features or Supabase utilities are changed. See the [40-lesson practice-link
+audit](lesson-practice-link-audit.md) for publisher evidence and limitations.
 Existing Intermediate/Advanced educational gaps remain documented in
 `educational-quality-audit.md`; restoring a layout is not a claim those gaps are solved.
 
@@ -83,7 +87,7 @@ No production migration, account/data/configuration change, import, merge or
 deployment is part of this PR. Final results and head-specific CI/Preview status
 are recorded on the PR after the complete verification run.
 
-Local verification on 2026-10-21: 261 application tests, TypeScript, ESLint,
+Local verification on 2026-10-21: 264 application tests, TypeScript, ESLint,
 normal Turbopack build, all 133 browser routes/eight viewport-theme combinations,
 and all 20 authored Python example executions pass. Two fresh PostgreSQL 17.7
 runs each pass all 198 assertions (including 25 Learning Progress assertions).
@@ -98,3 +102,29 @@ The managed QA project already has migration 17 from earlier independent work;
 no hosted migration is applied here. Exact-main dependency/security coverage is
 provided by the ten-migration disposable PostgreSQL runs, not by assuming that
 managed QA's extra schema is part of this release.
+
+## Final owner-requested UX pass
+
+- The complete Beginner / Intermediate / Advanced row is one native link, with
+  visible focus and saved-progress description; no nested links or fake buttons.
+- Study Material / topic-specific Practice on Kaggle actions and the single
+  existing completion/undo control are visible before detailed task instructions.
+  Full instructions, expected outcomes, hints, examples and setup remain available.
+- All 40 lessons have an explicit practice-link audit. 35 lesson surfaces link to
+  19 distinct relevant Kaggle exercises/notebooks/competition destinations. The
+  five maths/PyTorch/experiment-tracking exceptions retain original publisher
+  materials rather than inventing a Kaggle equivalent. Signed-in Kaggle exercise
+  execution is not verified and is not a KAIZ completion signal. The community
+  NumPy notebook is explicitly distinguished from an official course.
+- Personal AI Strategist is a small desktop More/mobile menu destination and a
+  Roadmaps shortcut. Its landing page has two linked Coming soon pages; there are
+  no AI APIs, forms, generated output or backend requirements.
+- Additional browser checks cover every lesson at 375/1440px in both themes,
+  native keyboard actions/disclosures, 200% text with intact section labels, and
+  twelve repeated reduced-motion Atlas checks. The broader eight-context matrix
+  still covers all 133 existing routes and the optional Skill Atlas.
+
+The clean `npm ci` reports five pre-existing high-severity development-tool
+advisories through the ESLint / fast-glob / micromatch / braces chain. Package
+files are unchanged; no unrelated dependency downgrade or forced audit fix is
+included in this UI PR. Track dependency remediation separately.

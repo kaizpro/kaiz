@@ -12,10 +12,12 @@ export function RoadmapProgressList({ records, signedIn, error }: { records: rea
     <div>{journeys.map(path => {
       const progress = courseProgress(path, records);
       const href = `/roadmaps/${path.level}`;
-      return <section className={styles.roadmap} key={path.level} aria-label={`${path.title} roadmap progress`}>
-        <div><Link href={`/roadmaps/${path.level}`} className="font-semibold hover:underline">{path.title}</Link><p className="mt-1 text-sm text-muted-foreground">{path.audience}</p></div>
-        <div>{ready ? <><p className={styles.progressLabel}><span>{progress.count} / {progress.total} lessons completed</span><strong>{progress.percent}%</strong></p><progress className={styles.bar} max={progress.total} value={progress.count} aria-label={`${path.title} completion`}/><p className={styles.status}>{progress.status} · {progress.xp} Learning XP</p></> : <p className="text-xs text-muted-foreground">{progress.total} curriculum lessons · {path.steps.length} modules</p>}</div>
-        <Link className={styles.smallAction} href={href} aria-label={`${ready ? progress.action : "Browse"} ${path.title} roadmap`}>{ready ? progress.action : "Browse"} →</Link>
+      return <section key={path.level} aria-label={`${path.title} roadmap progress`}>
+        <Link className={styles.roadmap} href={href} aria-label={`${ready ? progress.action : "Browse"} ${path.title} roadmap`} aria-describedby={`roadmap-${path.level}-progress`}>
+        <div><strong className="font-semibold">{path.title}</strong><p className="mt-1 text-sm text-muted-foreground">{path.audience}</p></div>
+        <div id={`roadmap-${path.level}-progress`}>{ready ? <><p className={styles.progressLabel}><span>{progress.count} / {progress.total} lessons completed</span><strong>{progress.percent}%</strong></p><progress className={styles.bar} max={progress.total} value={progress.count} aria-label={`${path.title} completion`}/><p className={styles.status}>{progress.status} · {progress.xp} Learning XP</p></> : <p className="text-xs text-muted-foreground">{progress.total} curriculum lessons · {path.steps.length} modules</p>}</div>
+        <span className={styles.smallAction}>{ready ? progress.action : "Browse"} →</span>
+        </Link>
       </section>;
     })}</div>
   </>;
