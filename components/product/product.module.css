@@ -1,0 +1,34 @@
+.page { width: 100%; max-width: 1240px; min-width: 0; margin-inline: auto; padding: 44px 32px 56px; }
+.hero { display: grid; grid-template-columns: minmax(0,1.7fr) minmax(180px,.8fr); align-items: center; gap: 24px 48px; margin-bottom: 32px; }
+.heroContent { min-width: 0; }
+.hero h1 { font-size: clamp(1.75rem,3.5vw + .5rem,3.5rem); font-weight: 650; letter-spacing: -.045em; line-height: 1.12; text-wrap: balance; }
+.hero p { max-width: 52ch; margin-top: 16px; color: var(--muted-foreground); font-size: .9375rem; line-height: 1.65; }
+.illustration { width: 100%; max-width: 330px; justify-self: end; color: var(--primary); }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.action { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; max-width: 100%; padding: 10px 16px; border: 1px solid var(--border); border-radius: 6px; background: var(--card); font-size: .875rem; line-height: 1.4; font-weight: 600; text-align: center; transition: background-color .16s,border-color .16s; }
+.action:hover { background: var(--muted); border-color: var(--primary); }
+.primary { background: var(--primary); border-color: var(--primary); color: var(--primary-foreground); }
+.primary:hover { background: color-mix(in srgb,var(--primary) 90%,var(--foreground)); }
+.filters { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,10rem),1fr)); align-items: end; gap: 16px; padding: 20px; border: 1px solid var(--border); border-radius: 8px; background: var(--card); margin-bottom: 20px; }
+.filters label { min-width: 0; font-size: .8125rem; font-weight: 550; color: var(--muted-foreground); }
+.control { display: block; width: 100%; min-width: 0; min-height: 44px; padding: 8px 10px; margin-top: 8px; border: 1px solid var(--input); border-radius: 5px; background: var(--background); color: var(--foreground); font-size: .875rem; font-weight: 400; }
+.list { display: grid; gap: 12px; min-width: 0; }
+.card { display: grid; min-width: 0; gap: 12px; padding: 24px; border: 1px solid var(--border); border-radius: 8px; background: var(--card); transition: border-color .16s,background-color .16s,transform .16s; }
+a.card:hover { border-color: var(--primary); background: color-mix(in srgb,var(--primary) 3%,var(--card)); transform: translateY(-2px); }
+.cardTitle { font-size: 1.125rem; font-weight: 650; line-height: 1.45; letter-spacing: -.02em; overflow-wrap: break-word; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; font-size: .8125rem; line-height: 1.6; color: var(--muted-foreground); }
+.pill { display: inline-flex; align-items: center; width: fit-content; gap: 6px; padding: 3px 9px; border-radius: 4px; background: var(--muted); font-size: .75rem; font-weight: 550; line-height: 1.5; overflow-wrap: normal; }
+.direction { color: var(--primary); display: inline-flex; align-items: center; gap: 8px; font-size: .875rem; font-weight: 600; }
+.direction svg { flex-shrink: 0; }
+.empty { padding: 32px 24px; margin-block: 20px; text-align: center; border: 1px dashed var(--border); border-radius: 8px; background: var(--card); }
+.emptyMark { display: inline-grid; width: 40px; height: 40px; place-items: center; color: var(--primary); background: color-mix(in srgb,var(--primary) 8%,var(--card)); border-radius: 50%; margin-bottom: 12px; }
+.empty h2 { font-size: 1.125rem; font-weight: 600; }
+.empty > div { margin: 8px auto 0; max-width: 52ch; color: var(--muted-foreground); font-size: .875rem; line-height: 1.65; }
+.details { margin-top: 16px; color: var(--muted-foreground); font-size: .8125rem; line-height: 1.7; }
+.details summary { cursor: pointer; min-height: 44px; width: fit-content; padding-block: 10px; }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; padding-block: 12px; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
+.tabs a { padding: 10px 16px; border-radius: 5px; font-size: .875rem; font-weight: 600; min-height: 44px; }
+.tabs a:hover, .tabs a[aria-current="page"] { background: var(--muted); color: var(--primary); }
+.page :is(a,button,input,select,summary):focus-visible, .action:focus-visible, .card:focus-visible { outline: 2px solid var(--ring); outline-offset: 4px; }
+@media(max-width:760px) { .page { padding: 28px 20px 40px; } .hero { grid-template-columns: minmax(0,1fr); gap: 16px; margin-bottom: 24px; } .illustration { max-width: 240px; justify-self: start; } .card { padding: 20px; } .filters { padding: 16px; } }
+@media(prefers-reduced-motion:reduce) { .card,.action { transition: none; } a.card:hover { transform: none; } }
