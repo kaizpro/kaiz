@@ -1,0 +1,27 @@
+.page { max-width: 1120px; margin-inline: auto; padding: 48px 32px 48px; min-width: 0; }
+.hero { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr); align-items: center; gap: 24px 48px; margin-block: 12px 40px; }
+.hero h1 { font-size: clamp(1.75rem,calc(4.8vw + 1rem),4rem); font-weight: 650; line-height: 1.08; letter-spacing: -.05em; text-wrap: balance; }
+.hero h1 span { display: block; color: var(--primary); }
+.page p { max-width: 46ch; margin-top: 16px; color: var(--muted-foreground); font-size: .9375rem; line-height: 1.65; text-wrap: pretty; }
+.motif { width: 100%; max-width: 420px; justify-self: end; color: var(--foreground); }
+.choices { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
+.option { display: grid; grid-template-columns: minmax(0,1fr) auto; align-content: start; column-gap: 16px; min-width: 0; padding: 24px; border: 1px solid var(--border); border-radius: 6px; background: var(--card); transition: border-color 160ms,background-color 160ms; }
+.optionTop { grid-column: 1/-1; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 26px; }
+.optionTop > svg { color: var(--primary); stroke-width: 1.6; }
+.availability { color: var(--muted-foreground); font-size: .75rem; line-height: 1.5; }
+.choices h2 { grid-column: 1/-1; font-size: 1.25rem; font-weight: 650; line-height: 1.4; letter-spacing: -.025em; }
+.choices p { margin-top: 8px; font-size: .875rem; }
+.arrow { align-self: end; color: var(--primary); transition: transform 160ms; }
+.option:hover { border-color: var(--primary); background: color-mix(in srgb,var(--primary) 3%,var(--card)); }
+.option:is(:hover,:focus-visible) .arrow { transform: translateX(3px); }
+.back, .primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; max-width: 100%; font-size: .8125rem; font-weight: 600; line-height: 1.6; }
+.back { margin-top: 24px; padding-block: 8px; color: var(--primary); }
+.back:hover { text-decoration: underline; text-underline-offset: 4px; }
+.primary { margin-top: 24px; padding: 10px 16px; border-radius: 4px; background: var(--primary); color: var(--primary-foreground); }
+.primary svg, .back svg, .arrow { flex-shrink: 0; }
+.page a:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+.page .soon { width: fit-content; margin: 0 0 18px; padding-left: 10px; border-left: 2px solid var(--primary); font-size: .8125rem; font-weight: 600; color: var(--foreground); }
+.destination { margin-top: 36px; }
+.destination h1 { font-size: clamp(1.5rem,calc(3vw + 1rem),3rem); }
+@media(max-width:760px) { .page { padding: 28px 24px 36px; } .hero { grid-template-columns: minmax(0,1fr); gap: 12px; margin-bottom: 24px; } .motif { max-width: 300px; justify-self: center; } .choices { grid-template-columns: minmax(0,1fr); gap: 12px; } .option { padding: 20px; } .optionTop { margin-bottom: 18px; } }
+@media(prefers-reduced-motion:reduce) { .option, .arrow { transition: none; } .option:is(:hover,:focus-visible) .arrow { transform: none; } }

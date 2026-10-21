@@ -31,7 +31,7 @@ test('all learning views invalidated only after confirmed mutation',async()=>{
  for(const path of ['/roadmaps','/start','/dashboard','/roadmaps/beginner'])assert.ok(paths.includes(path));
 });
 
-test('all 40 lessons use structured objectives, ordered materials and one end-of-content completion panel',async()=>{
+test('all 40 lessons use structured objectives, ordered materials and one explicit practice completion panel',async()=>{
  let state={user:{id:'unit-owner'},records:[],error:null};
  const lessonLoad=loadTypescript({'@/lib/data/learning-progress':{getOwnLearningState:async()=>state},'@/app/roadmaps/actions':{setLessonCompletion:async()=>({success:'Saved'})},'next/navigation':{notFound(){throw new Error('Not found');},useRouter:()=>({refresh(){}})}});
  const Page=lessonLoad('app/roadmaps/[level]/lessons/[lesson]/page.tsx').default;
@@ -42,10 +42,10 @@ test('all 40 lessons use structured objectives, ordered materials and one end-of
   const html=renderToStaticMarkup(await Page({params:Promise.resolve({level:path.level,lesson:encodeURIComponent(lesson.id)})}));count++;
   const guided=path.level==='beginner'?beginnerStep(lesson.topic.id):getLearningStep(lesson.topic.id);
   for(const heading of ['What you’ll learn','Recommended learning sequence','Lesson completion'])assert.ok(html.includes(heading));
-  for(const heading of guided?['<h2>Learn</h2>','<h2>Practice</h2>','<h2>Next</h2>']:['Materials &amp; exercises','Practice check'])assert.ok(html.includes(heading));
+  for(const heading of guided?['<h2>Learn</h2>','<h2>Practice</h2>','<h2>Next</h2>']:['Materials &amp; exercises','Task instructions'])assert.ok(html.includes(heading));
   assert.equal((html.match(/aria-label="Lesson completion"/g)||[]).length,1);
   assert.equal((html.match(/Mark completed: lesson/g)||[]).length,1);
-  const practice=html.indexOf(guided?'id="practice"':'Practice check');
+  const practice=html.indexOf(guided?'id="practice"':'data-practice-exercise');
   assert.ok(html.indexOf('aria-label="Lesson completion"')>practice);
   assert.ok(practice>html.indexOf('Ordered learning materials'));
   assert.match(html,/KAIZ does not run or judge code/);assert.match(html,/private self-report/);

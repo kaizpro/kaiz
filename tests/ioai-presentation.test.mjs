@@ -84,7 +84,9 @@ test("lesson content is preserved behind the Learn Practice Next hierarchy", () 
     for (const text of [step.objective, step.why, ...step.readiness]) assert.ok(html.includes(text.replaceAll("&", "&amp;").replaceAll("'", "&#x27;")));
     assert.match(html, /KAIZ does not run or judge code/); assert.match(html, /Worked example/); assert.match(html, /Ready to move on/);
     assert.equal((html.match(/data-primary-material/g) ?? []).length, 1);
-    assert.doesNotMatch(html, /href="https:\/\/www.kaggle|automatic assessment|mastery badge/);
+    assert.doesNotMatch(html, /automatic assessment|mastery badge/);
+    assert.match(html, /Practice on Kaggle/);assert.match(html,/KAIZ does not verify external solutions/);
+    assert.match(html, /data-practice-instructions="true"><summary>Task instructions/);
     assert.ok(html.includes(learningSteps[index + 1] ? learningStepHref(learningSteps[index + 1]) : step.after.href));
     assert.match(html, /Local Python setup/);
   }

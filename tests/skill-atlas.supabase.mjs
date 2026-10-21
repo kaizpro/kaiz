@@ -49,7 +49,7 @@ async function login(page, user) {
   await page.getByLabel('Password', {exact: true}).fill(user.password);
   await page.getByRole('button', {name: 'Sign in', exact: true}).click();
   await page.waitForURL(base.origin + '/roadmaps/beginner');
-  await page.getByRole('link', {name: /^(Start|Continue) Learning$/, exact: true}).waitFor();
+  await page.locator('[data-classic-next]').waitFor();
 }
 async function progress(page, count) {
   const disclosure = page.locator('details').filter({has: page.locator('summary', {hasText: 'Your saved progress'})});
@@ -59,23 +59,33 @@ async function progress(page, count) {
   assert.match(await section.innerText(), new RegExp(`\\b${count * 10} Learning XP`));
   assert.equal(await page.getByRole('progressbar', {name: 'Beginner completion', exact: true}).getAttribute('value'), String(count));
 }
-const rows = async user => check(await user.client.from('learning_progress').select('lesson_id,completed_at,updated_at').eq('user_id', user.id));
+const rows = async user => check(await user.client.from('learning_progress').select('roadmap_id,lesson_id,completed_at,updated_at').eq('user_id', user.id));
 const complete = (user, completed) => user.client.rpc('set_learning_completion', {p_roadmap_id: 'beginner', p_lesson_id: lesson, p_completed: completed});
 try {
   step = 'real ordinary and admin accounts';
   const owner = await account('owner'), other = await account('other'), admin = await account('admin', true), guest = client();
+  // A pre-existing released key, saved before this user first opens the new UI.
+  check(await other.client.rpc('set_learning_completion', {p_roadmap_id: 'beginner', p_lesson_id: 'python-algebra:algebra', p_completed: true}));
+  const legacy = (await rows(other))[0];
   const {chromium} = await import(pathToFileURL(process.env.KAIZ_PLAYWRIGHT_MODULE).href);
   browser = await chromium.launch({channel: 'chrome', headless: true});
   const a = await context();
   step = 'browser completion'; await login(a.page, owner); await progress(a.page, 0);
-  await a.page.getByRole('link', {name: 'Start Learning', exact: true}).click();
+  step = 'authenticated direct header';
+  const header = a.page.getByRole('navigation', {name: 'Primary navigation', exact: true});
+  await header.getByRole('link', {name: 'Personal AI Strategist', exact: true}).waitFor();
+  assert.equal(await header.getByRole('link').count(), 7);
+  assert.ok((await header.boundingBox()).height <= 60, 'desktop signed-in navigation stays on one row');
+  assert.equal(await a.page.getByRole('link', {name: 'My learning', exact: true}).count(), 1);
+  step = 'browser completion';
+  await a.page.locator('[data-classic-next]').click();
   await a.page.waitForURL(base.origin + lessonPath);
   await a.page.locator('#practice').waitFor();
   await a.page.getByRole('button', {name: 'Mark completed: lesson 1.1', exact: true}).click();
   await a.page.getByRole('button', {name: 'Undo completion of lesson 1.1', exact: true}).waitFor();
   assert.equal((await rows(owner)).filter(row => row.completed_at).length, 1);
   await a.page.goto(base.origin + '/roadmaps/beginner'); await progress(a.page, 1);
-  await a.page.getByRole('link', {name: 'Continue Learning', exact: true}).waitFor();
+  await a.page.getByRole('link', {name: 'Continue learning · Python Practice', exact: true}).waitFor();
   step = 'refresh and dashboard'; await a.page.reload(); await progress(a.page, 1);
   await a.page.goto(base.origin + '/dashboard'); await progress(a.page, 1);
   await a.page.getByRole('region', {name: 'Overall learning progress', exact: true}).getByText('1 / 40', {exact: true}).waitFor();
@@ -86,6 +96,17 @@ try {
   await a.page.getByRole('button', {name: 'Sign out', exact: true}).click(); await a.page.waitForURL(base.origin + '/');
   await login(a.page, owner); await progress(a.page, 1);
   const second = await context(375, 'dark'); await login(second.page, owner); await progress(second.page, 1);
+  step = 'authenticated laptop navigation';
+  const laptop = await context(1280, 'light'); await login(laptop.page, owner); await progress(laptop.page, 1);
+  await laptop.page.getByLabel('Open navigation').click();
+  const menu = laptop.page.getByRole('navigation', {name: 'Mobile navigation', exact: true});
+  assert.equal(await menu.getByRole('link').count(), 7);
+  await menu.getByRole('link', {name: 'Personal AI Strategist', exact: true}).click();
+  await laptop.page.waitForURL(base.origin + '/strategist');
+  await laptop.page.getByRole('heading', {name: 'Personal AI Strategist', exact: true}).waitFor();
+  assert.equal(await laptop.page.getByRole('navigation', {name: 'Strategy options'}).getByRole('link').count(), 2);
+  await laptop.ctx.close();
+  step = 'mobile saved progress';
   for (const path of ['/roadmaps/beginner', '/roadmaps/beginner?view=map&area=1', lessonPath, '/dashboard']) {
     await second.page.goto(base.origin + path);
     await second.page.getByRole('heading', {level: 1}).waitFor();
@@ -97,7 +118,7 @@ try {
     assert.deepEqual(check(await user.client.from('learning_progress').select('lesson_id').eq('user_id', owner.id)), []);
     assert.deepEqual(check(await user.client.from('learning_progress').update({completed_at: null}).eq('user_id', owner.id).select('lesson_id')), []);
     assert.equal((await user.client.from('learning_progress').insert({user_id: owner.id, roadmap_id: 'beginner', lesson_id: lesson, completed_at: new Date().toISOString()})).error?.code, '42501');
-    const b = await context(); await login(b.page, user); await progress(b.page, 0); await b.ctx.close();
+    const b = await context(); await login(b.page, user); await progress(b.page, user === other ? 1 : 0); await b.ctx.close();
   }
   assert.equal((await rows(owner)).filter(row => row.completed_at).length, 1);
   check(await complete(other, true));
@@ -113,9 +134,28 @@ try {
   await second.page.getByRole('button', {name: 'Mark completed: lesson 1.1', exact: true}).waitFor();
   await a.page.goto(base.origin + '/dashboard'); await progress(a.page, 0);
   assert.equal((await rows(owner)).filter(row => row.completed_at).length, 0);
-  assert.equal((await rows(other)).filter(row => row.completed_at).length, 1);
+  assert.equal((await rows(other)).filter(row => row.completed_at).length, 2);
+  assert.deepEqual((await rows(other)).find(row => row.lesson_id === legacy.lesson_id), legacy, 'existing completion/timestamps unchanged');
+  step = 'shared Analysis keeps Intermediate identity and XP';
+  await a.page.goto(base.origin + '/roadmaps/beginner');
+  const dataModule = a.page.locator('[data-course-module]').nth(1);
+  if (await dataModule.getAttribute('open') === null) await dataModule.locator(':scope > summary').click();
+  const shared = dataModule.locator('li').filter({has: a.page.locator('a[href="/roadmaps/intermediate/lessons/prepare-data%3Aexploratory-analysis"]')});
+  await shared.getByRole('button', {name: /Mark completed:/}).click();
+  await shared.getByRole('button', {name: /Undo completion/}).waitFor();
+  const bridge = (await rows(owner)).find(row => row.lesson_id === 'prepare-data:exploratory-analysis');
+  assert.equal(bridge.roadmap_id, 'intermediate'); assert.ok(bridge.completed_at);
+  await progress(a.page, 0);
+  await a.page.goto(base.origin + '/dashboard');
+  await a.page.getByRole('region', {name: 'Overall learning progress', exact: true}).getByText('1 / 40', {exact: true}).waitFor();
+  await a.page.getByRole('region', {name: 'Intermediate roadmap progress', exact: true}).getByText(/10 Learning XP/).waitFor();
+  await a.page.goto(base.origin + '/roadmaps/beginner');
+  if (await dataModule.getAttribute('open') === null) await dataModule.locator(':scope > summary').click();
+  await shared.getByRole('button', {name: /Undo completion/}).click();
+  await shared.getByRole('button', {name: /Mark completed:/}).waitFor();
+  assert.equal((await rows(owner)).filter(row => row.completed_at).length, 0);
   assert.deepEqual(errors, []);
-  console.log(JSON.stringify({status: 'PASS',realAuth: true,accounts: 'two ordinary, one admin',completion: true,refreshAndNewSession: true,xpAndUndo: true,concurrentRetry: 12,ownerOnlyRls: true,guestDenied: true,mobile200Percent: true,productionAccess: false}));
+  console.log(JSON.stringify({status: 'PASS',realAuth: true,accounts: 'two ordinary, one admin',completion: true,refreshAndNewSession: true,xpAndUndo: true,concurrentRetry: 12,ownerOnlyRls: true,guestDenied: true,mobile200Percent: true,existingProgressPreserved: true,sharedAnalysisIdentityAndXp: true,directDesktopAndLaptopNavigation: true,productionAccess: false}));
 } catch (error) {
   console.error(JSON.stringify({status: 'FAIL',step,type: error.name,code: error.code ?? null,location: error.stack?.split('\n').filter(line => line.includes('at ') && line.includes('skill-atlas.supabase.mjs')).slice(0,2)}));
   process.exitCode = 1;

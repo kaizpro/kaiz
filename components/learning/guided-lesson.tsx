@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { getTopicBySlug } from "@/lib/learning/curriculum";
 import { publishableMaterial } from "@/lib/learning/ioai-materials";
 import { nextLearningStep, learningStepHref, type LearningStep } from "@/lib/learning/learning-steps";
@@ -6,22 +7,23 @@ import { LessonMaterials } from "./lesson-materials";
 import { PracticeExercise } from "./practice-exercise";
 import styles from "./ioai.module.css";
 
-export function GuidedLesson({ step, recommendation }: { step: LearningStep; recommendation?: { title: string; href: string } }) {
+export function GuidedLesson({ step, recommendation, completion }: { step: LearningStep; recommendation?: { title: string; href: string }; completion?: ReactNode }) {
   const primary = publishableMaterial(step.primary);
   const next = nextLearningStep(step.topicId);
   const nextAction = recommendation ?? (next ? { title: next.title, href: learningStepHref(next) } : step.after);
   const extras = step.extraMaterials.flatMap(id => { const resource = publishableMaterial(id); return resource ? [resource] : []; });
   return <div className={styles.lesson}>
     <nav className={styles.sectionNav} aria-label="Learning step sections"><a href="#learn"><span>01</span>Learn</a><a href="#practice"><span>02</span>Practice</a><a href="#next"><span>03</span>Next</a></nav>
-    <section id="learn" className={styles.lessonSection}><h2>Learn</h2><p className={`${styles.lessonIntro} mb-4`}>{step.learnInstruction}</p>
-      <div className={styles.primaryMaterial} data-primary-material>{primary && <LessonMaterials resources={[primary]}/>}</div>
+    <section id="learn" className={styles.lessonSection}><h2>Learn</h2>
+      <div className={styles.primaryMaterial} data-primary-material>{primary && <LessonMaterials resources={[primary]} compact/>}</div>
+      <details className={styles.disclosure}><summary>Study guidance</summary><p className={styles.lessonIntro}>{step.learnInstruction}</p></details>
       <details className={styles.disclosure}><summary>Why this lesson</summary><h3 className="font-semibold">What you’ll learn</h3><p>{step.objective}</p><p className="mt-2 text-muted-foreground"><strong>Why it matters:</strong> {step.why}</p><h3 className="mt-3 font-semibold">Recommended learning sequence</h3><p>Read the focused material, try the original challenge, then use the readiness checks. You may revisit any step; navigation never records completion.</p></details>
       {(extras.length > 0 || step.mathTopics.length > 0) && <details className={styles.disclosure}><summary>Supporting maths &amp; additional materials</summary>
         <p className={styles.note}>Review these ideas as needed; not an all-maths-first requirement.</p><div className={styles.parallelTopics}>{step.mathTopics.map(id => <Link className={styles.topicLink} key={id} href={`/learn/${id}`}>{getTopicBySlug(id)!.title}</Link>)}</div>
         {extras.length > 0 && <LessonMaterials resources={extras}/>}
       </details>}
     </section>
-    <section id="practice" className={styles.lessonSection}><h2>Practice</h2><PracticeExercise practice={step.practice}>
+    <section id="practice" className={styles.lessonSection}><h2>Practice</h2><PracticeExercise practice={step.practice} objective={step.objective} actions={{ topicId: step.topicId, studyHref: primary?.href ?? "#learn", completion }}>
       <details className={`${styles.disclosure} ${styles.setup}`}><summary>Local Python setup</summary>
         <p>Install Python 3 from its official site if needed. The first two steps use only Python’s standard library.</p><a className={styles.topicLink} href="https://www.python.org/downloads/" target="_blank" rel="noopener noreferrer">Official Python downloads ↗</a>
         <p>For NumPy onward, use a virtual environment in a folder of your own. On macOS/Linux:</p><pre className={styles.code}><code>{"python3 -m venv .venv\nsource .venv/bin/activate\npython -m pip install numpy pandas matplotlib scikit-learn\npython practice.py"}</code></pre>

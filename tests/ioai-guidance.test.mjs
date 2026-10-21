@@ -52,7 +52,7 @@ test("map selection preserves map mode while original course URLs remain stable"
   assert.match(html, /view=map&amp;area=2/);
 });
 
-test("each released lesson has one current course entry, stable return links and mobile contents control", async () => {
+test("each released lesson has one current course entry, stable return links and native compact contents", async () => {
   const pageLoad = loadTypescript({
     "@/lib/data/learning-progress": { getOwnLearningState: async () => ({ user: null, records: [], error: null }) },
     "next/navigation": { notFound() { throw Error("Not found"); }, useRouter: () => ({ refresh() {} }) },
@@ -63,9 +63,10 @@ test("each released lesson has one current course entry, stable return links and
   let count = 0;
   for (const path of journeys) for (const item of courseFor(path).flatMap(unit => unit.lessons)) {
     const html = renderToStaticMarkup(await Page({ params: Promise.resolve({ level: path.level, lesson: encodeURIComponent(item.id) }) }));
-    assert.match(html, /Course Contents/);
+    assert.match(html, /<summary>Course contents<\/summary>/);
     assert.equal((html.match(/aria-current="page"/g) ?? []).length, 1, item.id);
-    assert.match(html, /aria-controls="course-contents"/);
+    assert.match(html, /aria-label="Course contents"/);
+    assert.ok(html.includes(`href="/roadmaps/${path.level}"`));
     assert.match(html, /aria-label="Lesson sequence"/);
     assert.doesNotMatch(html, /<form|<progress|Mark completed|\d+ Learning XP/);
     count++;

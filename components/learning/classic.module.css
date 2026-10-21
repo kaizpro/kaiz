@@ -1,0 +1,33 @@
+.contents { margin-block: 16px; border-block: 1px solid var(--border); min-width: 0; }
+.contents > summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-size: .8125rem; font-weight: 650; }
+.contents > summary::before { content: "+"; color: var(--primary); margin-right: 10px; }
+.contents[open] > summary::before { content: "−"; }
+.contents > summary::-webkit-details-marker { display: none; }
+.contents nav { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px 24px; padding-block: 12px; }
+.contents h2 { font-size: .8125rem; margin-bottom: 4px; }
+.contents a { display: flex; align-items: center; min-height: 44px; padding-block: 4px; font-size: .75rem; color: var(--muted-foreground); }
+.contents a:hover, .contents a[aria-current="page"] { color: var(--primary); }
+.contents a[aria-current="page"] { font-weight: 650; }
+.contents :is(a,summary):focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+.lesson section > h2 { font-size: 1rem; margin-bottom: 12px; }
+.lesson [data-primary-material] > ol > li { padding: 14px; border: 1px solid var(--border); border-radius: 3px; box-shadow: none; }
+.lesson [data-primary-material] h3 { font-size: .9375rem; }
+.lesson [data-primary-material] a[target="_blank"] { min-height: 44px; padding: 6px 12px; border-radius: 3px; font-size: .8125rem; }
+.lesson [data-practice-exercise] { padding: 16px; border-radius: 3px; background: transparent; }
+.lesson [data-practice-exercise] h3 { font-size: .9375rem; }
+.lesson [data-practice-exercise] li { margin-block: 10px; }
+.lesson :is(section[id],details[id]) { scroll-margin-top: 7rem; }
+.lesson > nav[aria-label="Lesson sequence"] { margin-block: 20px; }
+.lesson p { max-width: 80ch; }
+.lesson nav[aria-label="Learning step sections"] { flex-wrap: wrap; }
+.lesson nav[aria-label="Learning step sections"] a { flex-shrink: 0; white-space: nowrap; }
+.practiceActions { display: flex; flex-wrap: wrap; gap: 8px; margin-block: 14px 8px; }
+.studyAction, .kaggleAction { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; max-width: 100%; padding: 8px 14px; border: 1px solid var(--border); border-radius: 3px; font-size: .8125rem; font-weight: 600; text-align: center; }
+.kaggleAction { background: var(--primary); border-color: var(--primary); color: var(--primary-foreground); }
+.studyAction:hover { background: var(--muted); }
+.practiceActions a:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+.lesson .practiceNote { font-size: .75rem; color: var(--muted-foreground); margin-block: 6px; }
+.lesson [data-practice-exercise] > section[aria-label="Lesson completion"] { padding-block: 12px; margin: 0; border: 0; }
+.lesson section[aria-label="Lesson completion"] h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@media(max-width:640px) { .contents nav { grid-template-columns: minmax(0,1fr); } .lesson [data-practice-exercise] { padding: 12px; } }
+@media(prefers-reduced-motion:reduce) { .lesson *, .lesson *::before, .lesson *::after { animation: none !important; transition: none !important; } }
