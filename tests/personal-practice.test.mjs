@@ -13,7 +13,7 @@ test('every catalogued source has a stable internal detail route, including held
  for(const id of ['__proto__','missing','%GG','publisher%253Abeginner'])assert.equal(getArchiveSource(id),undefined);
  const Page=load('app/problems/sources/[id]/page.tsx').default;
  for(const id of ['source-a-problem-2','source-a-problem-10']){const html=renderToStaticMarkup(await Page({params:Promise.resolve({id})}));assert.match(html,/Back to archive/);assert.match(html,/detail page remains available/);assert.doesNotMatch(html,/href="https:|Mark Solved|Raw score/);}
- const parent=renderToStaticMarkup(await Page({params:Promise.resolve({id:'source-a-problem-20'})}));assert.match(parent,/Catalogued source entries/);assert.match(parent,/source-a-problem-27/);assert.match(parent,/Browse collection/);
+ const parent=renderToStaticMarkup(await Page({params:Promise.resolve({id:'source-a-problem-20'})}));assert.match(parent,/Catalogued source entries/);assert.match(parent,/source-a-problem-27/);assert.match(parent,/Solve on Source/);
 });
 test('generic error-page titles and unsafe source URLs never become active task links',()=>{
  const {buildPracticeArchive,publicExternalUrl}=load('lib/learning/unified-archive.ts');
@@ -40,6 +40,17 @@ test('archive renders private status only for individual tasks and never infers 
  assert.equal((html.match(/data-status="attempted"/g)||[]).length,2);assert.match(html,/Latest: 0.8 F1 · Self-reported/);assert.doesNotMatch(html,/Solved — Self-reported/);
  const solved=renderToStaticMarkup(React.createElement(ArchiveList,{items:[item],personal:[{...state,status:'solved'}]}));assert.match(solved,/✓ Solved — Self-reported/);
  const guest=renderToStaticMarkup(React.createElement(ArchiveList,{items:[item]}));assert.doesNotMatch(guest,/Unattempted|Latest:|data-status/);
+});
+
+test('premium archive cards use one internal full-surface link without nested controls or lost provenance',()=>{
+ const {ArchiveList}=load('components/learning/archive-list.tsx');
+ const {buildPracticeArchive}=load('lib/learning/unified-archive.ts');
+ const items=buildPracticeArchive([]);
+ const html=renderToStaticMarkup(React.createElement(ArchiveList,{items}));
+ assert.equal((html.match(/<article/g)??[]).length,31);assert.equal((html.match(/<a /g)??[]).length,31);
+ assert.equal((html.match(/<details/g)??[]).length,31);assert.equal((html.match(/aria-label="View details:/g)??[]).length,31);
+ assert.doesNotMatch(html,/<a [^>]*>[\s\S]*?<button|<a [^>]*href="https:|data-status=/);
+ for(const item of items){assert.ok(html.includes(item.href));assert.ok(html.includes(item.provenance.replaceAll('&','&amp;')));}
 });
 test('personal DAL scopes every read/count, bounds history and retains unknown on failure',async()=>{
  let signedIn=false,fail=false;const calls=[];
