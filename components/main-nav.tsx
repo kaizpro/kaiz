@@ -1,12 +1,19 @@
 "use client";
-import Link from "next/link";
-import { useEffect, useRef } from "react";
+import NextLink from "next/link";
+import { useEffect, useRef, type ComponentProps } from "react";
 import { Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const links = [["Competitions", "/competitions"], ["Problems", "/problems"], ["Leaderboards", "/leaderboards"], ["Roadmaps", "/roadmaps"], ["Discussions", "/discussions"], ["Learn", "/learn"], ["Personal AI Strategist", "/strategist"]] as const;
 const isActive = (path: string, href: string) => path === href || path.startsWith(`${href}/`) || (href === "/roadmaps" && path.startsWith("/start")) || (href === "/leaderboards" && path === "/leaderboard");
+
+// Keep navigation markup/style independent of the public-page cache policy.
+// Loading-boundary destinations otherwise prefetch server work from Learn.
+function Link(props: ComponentProps<typeof NextLink>) {
+  const pathname = usePathname();
+  return <NextLink {...props} prefetch={isActive(pathname, "/learn") ? false : props.prefetch}/>;
+}
 
 export function MainNav() {
   const pathname = usePathname();

@@ -51,4 +51,18 @@ jobs:
         run: node --test tests/learning-curriculum.test.mjs tests/learning-presentation.test.mjs tests/pathfinder.test.mjs tests/learning-progress.test.mjs tests/progress-experience.test.mjs tests/beginner-sequence.test.mjs tests/ioai-content-quality.test.mjs tests/ioai-guidance.test.mjs tests/ioai-navigation.test.mjs tests/ioai-presentation.test.mjs tests/ioai-roadmap.test.mjs tests/classic-roadmaps.test.mjs
 
       - name: Production build
+        # Non-credentials deliberately activate the configured Auth path. An
+        # unconfigured build previously concealed cookie-driven dynamic Learn.
+        env:
+          NEXT_PUBLIC_SITE_URL: https://kaizpro.com
+          NEXT_PUBLIC_SUPABASE_URL: https://cache-regression.supabase.co
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: build-test-not-a-credential
         run: npm run build
+
+      - name: Public Learn cache and authorization regression tests
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: https://cache-regression.supabase.co
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: build-test-not-a-credential
+        run: |
+          node --test tests/learn-cache.test.mjs
+          node tests/learn-cache.build.mjs

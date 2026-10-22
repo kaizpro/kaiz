@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/learning/learning-link";
+import { learningMetadata } from "@/lib/learning/seo";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, ChevronRight, Compass } from "lucide-react";
@@ -11,10 +12,12 @@ import styles from "@/components/learning/learning.module.css";
 import { ResourceCard } from "@/components/learning/resource-card";
 
 type Props = { params: Promise<{ slug: string }> };
+export const dynamic = "error";
+export const dynamicParams = false;
 export function generateStaticParams() { return getTopics().map((node) => ({ slug: node.slug })); }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const node = getTopicBySlug((await params).slug);
-  return node?.kind === "topic" ? { title: `${node.title} — Learn`, description: node.description } : { title: "Topic not found" };
+  return node?.kind === "topic" ? { title: `${node.title} — Learn`, description: node.description, ...learningMetadata(topicHref(node)) } : { title: "Topic not found" };
 }
 
 export default async function TopicPage({ params }: Props) {

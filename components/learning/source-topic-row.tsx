@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/learning/learning-link";
 import { getTopicBySlug, type LearningResource } from "@/lib/learning/curriculum";
 import { journeysForTopic } from "@/lib/learning/journeys";
 import { sourceTopics } from "@/lib/learning/source-inventory";
