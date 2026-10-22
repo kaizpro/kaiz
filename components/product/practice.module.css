@@ -1,0 +1,21 @@
+.entry { min-width: 0; border: 1px solid var(--border); border-radius: 8px; background: var(--card); }
+.archiveLink { grid-template-columns: minmax(0,2fr) minmax(0,1fr) auto; align-items: center; gap: 20px; border: 0; background: transparent; }
+.archiveLink h2 { margin-block: 8px; }
+.access { display: grid; justify-items: start; gap: 8px; }
+.sourceDetails { margin-inline: 24px; padding-bottom: 8px; color: var(--muted-foreground); font-size: .8125rem; line-height: 1.7; }
+.sourceDetails summary { width: fit-content; min-height: 44px; padding-block: 10px; cursor: pointer; }
+.sourceDetails p { max-width: 85ch; margin-bottom: 8px; }
+.entry:focus-within { border-color: var(--primary); }
+.entry :is(a,summary):focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+.detailHero { margin-block: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+.detailPage :global(#practice) { scroll-margin-top: 10rem; }
+.detailHero h1 { font-size: clamp(1.5rem,3.4vw + .5rem,3.5rem); font-weight: 650; line-height: 1.15; letter-spacing: -.045em; text-wrap: balance; }
+.sourceMeta { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-block: 20px; font-size: .875rem; }
+.sourceMeta dt { color: var(--muted-foreground); font-size: .8125rem; }
+.sourceMeta dd { margin-top: 6px; }
+.collectionNote { margin-block: 24px; padding: 20px; border-left: 2px solid var(--primary); background: var(--card); font-size: .875rem; line-height: 1.7; }
+.advancedFilters { grid-column: 1/-1; color: var(--muted-foreground); font-size: .8125rem; }
+.advancedFilters > summary { width: fit-content; min-height: 44px; padding-block: 12px; cursor: pointer; }
+.advancedFilters > div { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,10rem),1fr)); gap: 16px; padding-bottom: 8px; }
+@media(max-width:800px) { .archiveLink { grid-template-columns: minmax(0,1fr) auto; } .access { grid-column: 1/-1; grid-row: 2; } .archiveLink > span:last-child { grid-column: 2; grid-row: 1; } }
+@media(max-width:480px) { .archiveLink { grid-template-columns: minmax(0,1fr); } .archiveLink > span:last-child { grid-column: 1; grid-row: 3; } .sourceDetails { margin-inline: 20px; } }

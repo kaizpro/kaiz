@@ -5,6 +5,9 @@ import { buildPracticeArchive, filterPracticeArchive, archiveAvailability, type 
 import { ArchiveList } from "@/components/learning/archive-list";
 import styles from "@/components/training/catalog.module.css";
 import { getOwnProblemProgress } from "@/lib/data/problem-progress";
+import { PageHero } from "@/components/product/page-hero";
+import product from "@/components/product/product.module.css";
+import practice from "@/components/product/practice.module.css";
 
 export const metadata: Metadata = { title: "Practice archive", description: "One searchable archive of published KAIZ tasks and original olympiad practice, contests and collections." };
 const one = (value: string | string[] | undefined) => typeof value === "string" ? value.slice(0, 100) : "";
@@ -30,20 +33,21 @@ export default async function ProblemsPage({ searchParams }: { searchParams: Pro
     ["tag", "Topic / tag", [...new Set(items.flatMap(item => item.tags))]],
     ["competition", "Competition", [...new Set(items.map(item => item.competition))]],
   ] as const;
-  return <div className={styles.page}>
-    <header className={styles.intro}><div><p>Practice / original sources</p><h1>Practice archive</h1><p>KAIZ tasks, external contests and collections. One list; clearly labelled sources and access.</p></div><Link className={styles.action} href="/roadmaps">Roadmaps</Link></header>
-    <form method="get" className={styles.toolbar} aria-label="Archive filters">
-      <label>Search<input name="q" aria-label="Search archive" defaultValue={filters.q} maxLength={100} placeholder="Title, source or topic" className={styles.control}/></label>
-      {fields.map(([name, label, options]) => <label key={name}>{label}<select name={name} aria-label={label} defaultValue={filters[name]} className={styles.control}><option value="">All</option>{[...options].sort().map(value => <option key={value}>{value}</option>)}</select></label>)}
-      <label>Availability<select name="availability" aria-label="Availability" defaultValue={filters.availability} className={styles.control}><option value="">All</option>{Object.entries(archiveAvailability).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
+  return <div className={product.page}>
+    <PageHero title="Practice Archive" description="Find a task. Open the source. Build your skills." motif="practice"><Link className={product.action} href="/roadmaps">Explore Roadmaps →</Link></PageHero>
+    <form method="get" className={product.filters} aria-label="Archive filters">
+      <label>Search<input name="q" aria-label="Search archive" defaultValue={filters.q} maxLength={100} placeholder="Title, source or topic" className={product.control}/></label>
+      {fields.slice(0,2).map(([name, label, options]) => <label key={name}>{label}<select name={name} aria-label={label} defaultValue={filters[name]} className={product.control}><option value="">All</option>{[...options].sort().map(value => <option key={value}>{value}</option>)}</select></label>)}
+      <label>Availability<select name="availability" aria-label="Availability" defaultValue={filters.availability} className={product.control}><option value="">All</option>{Object.entries(archiveAvailability).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
       {filters.direction && <input type="hidden" name="direction" value={filters.direction}/>}
-      {personal.signedIn && !personal.error && <label>My status<select name="status" aria-label="My status" defaultValue={myStatus} className={styles.control}><option value="">All items</option><option value="unattempted">Unattempted tasks</option><option value="attempted">Attempted, not solved</option><option value="solved">Solved — Self-reported</option></select></label>}
-      <button className={`${styles.action} ${styles.primary}`}>Apply filters</button>
+      {personal.signedIn && !personal.error && <label>My status<select name="status" aria-label="My status" defaultValue={myStatus} className={product.control}><option value="">All items</option><option value="unattempted">Unattempted tasks</option><option value="attempted">Attempted, not solved</option><option value="solved">Solved — Self-reported</option></select></label>}
+      <button className={`${product.action} ${product.primary}`}>Apply filters</button>
+      <details className={practice.advancedFilters} open={fields.slice(2).some(([name])=>Boolean(filters[name]))}><summary>More filters</summary><div>{fields.slice(2).map(([name,label,options])=><label key={name}>{label}<select name={name} aria-label={label} defaultValue={filters[name]} className={product.control}><option value="">All</option>{[...options].sort().map(value=><option key={value}>{value}</option>)}</select></label>)}</div></details>
     </form>
     <p className={styles.count}>{visible.length} of {items.length} items · {items.filter(item => !item.external).length} published KAIZ tasks{Object.values(filters).some(Boolean) && <> · <Link href="/problems" className="text-primary underline underline-offset-4">Clear filters</Link></>}</p>
-    {!items.some(item=>!item.external) && <p className={styles.note}>No individual scored KAIZ problems are published yet. The source collections below have internal detail pages, but cannot be marked solved or assigned a collection-wide score.</p>}
+    {!items.some(item=>!item.external) && <p className={styles.note}>Source collections are available below. No individual KAIZ tasks are published yet.</p>}
     {personal.error ? <p role="alert" className={styles.note}>{personal.error} Personal filters are not applied. Refresh to retry.</p> : personal.signedIn && <p className={styles.note} aria-label="Personal task totals">{personal.attempted} attempted individual tasks · {personal.solved} solved — Self-reported · private account totals across published KAIZ tasks. <Link className="text-primary underline" href="/dashboard">My learning</Link>{myStatus && <> · <Link className="text-primary underline" href="/problems">Clear personal filter</Link></>}</p>}
     <ArchiveList items={visible} personal={personal.signedIn&&!personal.error?personal.items:undefined}/>
-    <p className={styles.note}>External items are not KAIZ submissions. Source difficulty labels are retained; Unrated is not a difficulty estimate. Open “Source &amp; access” for provenance and requirements.</p>
+    <details className={product.details}><summary>Sources &amp; private tracking</summary><p>External collections are not single solved problems or KAIZ submissions. Source difficulty labels are retained; Unrated is not an estimate. Details include provenance and access requirements. Private task status and scores remain self-reported.</p></details>
   </div>;
 }
