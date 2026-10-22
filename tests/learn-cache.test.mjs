@@ -60,6 +60,24 @@ test('dense learning links explicitly disable Next prefetch', () => {
   assert.equal(Link({href: '/roadmaps', prefetch: true}).props.prefetch, false);
   assert.equal(Link({href: '/learn/python-fundamentals'}).props.prefetch, false);
 });
+
+test('premium navigation spacing and Learn-only prefetch protection coexist', () => {
+  for (const pathname of ['/learn', '/learn/python-fundamentals', '/roadmaps']) {
+    const links = [];
+    const {MainNav} = loadTypescript({
+      'next/navigation': {usePathname: () => pathname},
+      'next/link': {default: ({children, prefetch, ...props}) => {
+        links.push({href: props.href, prefetch});
+        return React.createElement('a', props, children);
+      }},
+    })('components/main-nav.tsx');
+    const html = renderToStaticMarkup(React.createElement(MainNav));
+    assert.match(html, /gap-x-3/);
+    assert.match(html, /min-h-11 items-center rounded-\[5px\]/);
+    assert.equal(links.length, 7);
+    for (const link of links) assert.equal(link.prefetch, pathname.startsWith('/learn') ? false : undefined);
+  }
+});
 test('crawler inventory is public, canonical, finite and contains every real topic without query variants', () => {
   const {default: sitemap} = load('app/sitemap.ts');
   const {default: robots} = load('app/robots.ts');

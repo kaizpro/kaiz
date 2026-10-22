@@ -17,7 +17,7 @@ function Link(props: ComponentProps<typeof NextLink>) {
 
 export function MainNav() {
   const pathname = usePathname();
-  return <nav className="hidden min-h-14 flex-wrap items-center gap-x-1 min-[1440px]:flex" aria-label="Primary navigation">{links.map(([label, href]) => { const active = isActive(pathname, href); return <Link aria-current={active ? "page" : undefined} className={cn("flex min-h-14 items-center border-b-2 px-2 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-primary", active ? "border-primary bg-primary/5 font-semibold text-foreground" : "border-transparent font-medium text-muted-foreground hover:border-border hover:text-foreground")} href={href} key={href}>{label}</Link>; })}</nav>;
+  return <nav className="hidden min-h-14 flex-wrap items-center gap-x-3 min-[1440px]:flex" aria-label="Primary navigation">{links.map(([label, href]) => { const active = isActive(pathname, href); return <Link aria-current={active ? "page" : undefined} className={cn("flex min-h-11 items-center rounded-[5px] border-b-2 px-2 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary", active ? "border-primary bg-primary/5 font-semibold text-foreground" : "border-transparent font-medium text-muted-foreground hover:border-border hover:bg-muted hover:text-foreground")} href={href} key={href}>{label}</Link>; })}</nav>;
 }
 
 export function MobileNav() {
