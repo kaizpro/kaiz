@@ -85,7 +85,11 @@ import, Auth configuration or Firewall change is required.
   removed. No production access by fixture runners.
 - Saved reference comparison: 14/16 Roadmaps/Strategist screenshots and 12/12
   competition screenshots have identical SHA-256; desktop Roadmaps is identical.
-  Practice matched 8/12 exactly. Remaining mobile captures have small text/scroll
-  raster differences, not missing components, clipping or overflow; visual
-  inspection and the 200%/keyboard/reduced-motion assertions passed. Screenshots
-  stay local and ignored, not production content or repository assets.
+  Practice source-detail captures matched 8/8 exactly. The four archive reference
+  captures were written at 10:01 UTC on October 21, before the final approved
+  shared-heading adjustment `cd29fdd` at 10:15 UTC. Their enlarged hero typography
+  therefore differs: retain the final canonical CSS, not those older metrics.
+  Two mobile Roadmaps captures also differ slightly in text/scroll positioning.
+  Visual inspection and 200%/keyboard/reduced-motion assertions passed, with no
+  missing components, clipping or overflow. Screenshots stay local and ignored,
+  not production content or repository assets.
