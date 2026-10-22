@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import Link from "next/link";
+import Link from "@/components/learning/learning-link";
+import { learningMetadata } from "@/lib/learning/seo";
 import { LearningRoadmap } from "@/components/learning/learning-roadmap";
 import styles from "@/components/learning/learning.module.css";
 import catalog from "@/components/training/catalog.module.css";
 
+// Fail the build if cookie-based personalization is reintroduced here.
+export const dynamic = "error";
+
 export const metadata: Metadata = {
   title: "Learning Tree",
   description: "Explore the coding, AI and mathematics foundations for your next idea. An open curriculum roadmap from KAIZ.",
+  ...learningMetadata("/learn"),
 };
 
 export default function Page() {

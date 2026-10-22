@@ -19,4 +19,7 @@ export async function proxy(request: NextRequest) {
   await supabase.auth.getUser();
   return response;
 }
-export const config = { matcher: ["/((?!_next/static|_next/image|favicon.svg|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)"] };
+// Public, build-time Learn content must bypass the proxy itself, not merely
+// return early inside it. Auth is refreshed in the browser there. Private pages
+// and every protected Server Action keep their own server authorization checks.
+export const config = { matcher: ["/((?!learn(?:/|$)|robots\\.txt$|sitemap\\.xml$|_next/static|_next/image|favicon.svg|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)"] };
