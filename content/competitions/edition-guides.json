@@ -595,17 +595,22 @@
     "sources": [
       "https://www.faio.kz/2025/"
     ],
-    "statistics": [],
+    "statistics": [
+      {
+        "stage": "Final",
+        "population": "Ranked teams in the final table linked by the official 2025 archive; not individual students or qualifying entrants",
+        "unit": "teams",
+        "participants": 47,
+        "source": "https://www.faio.kz/2025/",
+        "checkedAt": "2026-10-23",
+        "method": "Counted all 47 ranked team rows in the organizer-linked final table. Original problem 1–5 and total columns; no explicit award column and no inferred medals. Native republication permission is not established."
+      }
+    ],
     "results": [
       {
         "label": "Official results",
         "url": "https://www.faio.kz/2025/",
-        "coverage": "Qualification"
-      },
-      {
-        "label": "Official results",
-        "url": "https://www.faio.kz/2025/",
-        "coverage": "FAIO 2025 Final Results"
+        "coverage": "Full official final team table: 47 ranked teams; problem 1–5 and total. Follow FAIO 2025 Final Results on the archive. External only; native republication not cleared."
       }
     ],
     "tasks": [
@@ -644,22 +649,40 @@
   {
     "slug": "faio-2026",
     "checkedAt": "2026-10-23",
-    "summary": "Fizmat AI Olympiad combines a September qualification with an Almaty final. Competition rounds are scheduled for October 27–28; the wider October 26–30 programme includes arrival and departure. Final results are not yet available as of October 23.",
-    "structure": "Qualification September 20; October 27–28 contest days, October 26–30 travel/programme. Final is future as of October 19. Qualification ranking/invitations are not final results.",
+    "summary": "Fizmat AI Olympiad is organized by the National School of Physics and Math. September qualification precedes two five-hour final rounds on October 27–28 at SDU University, Kaskelen. October 26–30 includes travel. Final results are not available as of October 23.",
+    "structure": "September 20 online qualification: five tasks, four hours, teams of 1–3. The organizer reports 578 entering teams and approximately 1,500 students from 28 countries. The separate post-jury qualification table has 410 ranked teams from 25 countries. These are different populations. The final page now names SDU University, Kaskelen, although its heading and older press report still say Almaty. Arrival October 26, contest October 27–28, closing October 29, departure October 30. Published award quotas are not actual medals. Consult current eligibility rules: the press release inconsistently says grades 8–12 and 9–12.",
     "sources": [
       "https://www.faio.kz/",
-      "https://www.faio.kz/final/"
+      "https://www.faio.kz/final/",
+      "https://www.faio.kz/press/faio-2026-qualifying.html",
+      "https://www.faio.kz/results/"
     ],
-    "statistics": [],
+    "statistics": [
+      {
+        "stage": "Qualification entrants",
+        "population": "Teams reported by the organizer immediately after the qualifying round; not the post-jury ranking",
+        "unit": "teams",
+        "participants": 578,
+        "countries": 28,
+        "source": "https://www.faio.kz/press/faio-2026-qualifying.html",
+        "checkedAt": "2026-10-23",
+        "method": "Explicit organizer report. Approximately 1,500 students is not an exact individual count; no medals inferred."
+      },
+      {
+        "stage": "Post-jury qualification standings",
+        "population": "Ranked teams after the September 22 jury decision; not all entrants and not final contestants",
+        "unit": "teams",
+        "participants": 410,
+        "countries": 25,
+        "source": "https://www.faio.kz/results/",
+        "checkedAt": "2026-10-23",
+        "method": "Counted the official page's 410 DATA records and 25 country labels; five original task-score columns sum to displayed totals. No named rows copied or awards inferred."
+      }
+    ],
     "results": [
       {
         "label": "Qualification results",
         "url": "https://www.faio.kz/results/",
-        "coverage": "Qualification only. The October 27–28 final has not taken place."
-      },
-      {
-        "label": "Qualification results",
-        "url": "https://www.faio.kz/final/",
         "coverage": "Qualification only. The October 27–28 final has not taken place."
       }
     ],

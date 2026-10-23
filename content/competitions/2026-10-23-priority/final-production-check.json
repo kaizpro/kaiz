@@ -1,0 +1,34 @@
+{
+  "checkedAt": "2026-10-23T11:31:08.9360829Z",
+  "project": "oolaemebhoytzuussigu",
+  "productionWrites": 0,
+  "existingProfilesBeforeInitialCheckpointUnchanged": true,
+  "counts": {
+    "competitions": 5,
+    "result_sets": 0,
+    "published_sets": 0,
+    "result_rows": 0,
+    "auth_users": 11,
+    "profiles": 11,
+    "discussions": 2,
+    "learning": 5
+  },
+  "appliedMigrations": [
+    "202609200001",
+    "202609210001",
+    "202609210002",
+    "202609220001",
+    "202609300001",
+    "202610040001",
+    "202610070001",
+    "202610120001",
+    "202610150001"
+  ],
+  "fingerprints": {
+    "competitions": "e1d129954948ed500f4220b3d7900dc1",
+    "profiles": "d5cc138afbaced70b8695141853f3168",
+    "learning": "578fb9dbde25238fa5c2cd83b33d9693",
+    "posts": "f62dd8dd611f273eea4c45cbd77952fb"
+  },
+  "ownerAuthCheck": "Owner reported no errors after signup/email confirmation and Google login checks; one Auth/profile addition observed."
+}
