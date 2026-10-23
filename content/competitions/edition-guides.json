@@ -1,0 +1,935 @@
+[
+  {
+    "slug": "ioai-2024",
+    "checkedAt": "2026-10-23",
+    "summary": "The first IOAI brought school teams to Burgas for Scientific and Practical rounds. Scientific work combined at-home preparation and on-site model-building; the Practical round used existing AI tools for creative tasks.",
+    "structure": "Scientific round has at-home and on-site tasks. Practical round is separate. Do not relabel at-home work as a national qualification round.",
+    "sources": [
+      "https://ioai-official.org/bulgaria-2024/",
+      "https://ioai-official.org/bulgaria-2024/2024-team/"
+    ],
+    "statistics": [
+      {
+        "stage": "Scientific Round",
+        "population": "Scientific Round teams in the organizer retrospective",
+        "unit": "teams",
+        "participants": 41,
+        "source": "https://ioai-official.org/bulgaria-2024/",
+        "checkedAt": "2026-10-23",
+        "method": "Official organizer report; no inferred missing awards.",
+        "gold": 4,
+        "silver": 7,
+        "bronze": 10
+      }
+    ],
+    "results": [
+      {
+        "label": "Official results",
+        "url": "https://ioai-official.org/bulgaria-2024/results/",
+        "coverage": "Scientific Round 2024 · Practical Round"
+      }
+    ],
+    "tasks": [
+      {
+        "id": "source-1",
+        "title": "Scientific at-home/on-site and Practical collections",
+        "stage": "Scientific / Practical",
+        "day": null,
+        "kind": "collection",
+        "url": "https://ioai-official.org/2024-tasks/",
+        "provenance": "https://ioai-official.org/bulgaria-2024/",
+        "access": "public_materials"
+      }
+    ]
+  },
+  {
+    "slug": "ioai-2025",
+    "checkedAt": "2026-10-23",
+    "summary": "The Beijing edition brought high-school contestants together for individual AI problem solving, a Team Challenge and GAITE. Individual scores cover six tasks across two competition days; the three contest formats have separate standings.",
+    "structure": "Individual and GAITE days are score components, not separate aggregate rankings. Team Challenge final remains a team table.",
+    "sources": [
+      "https://ioai-official.org/china-2025/",
+      "https://ioai-official.org/2025-press-release-1/"
+    ],
+    "statistics": [
+      {
+        "stage": "Individual contest",
+        "population": "Rows in the complete published Individual contest table",
+        "unit": "contestants",
+        "participants": 284,
+        "source": "https://ioai-official.org/china-2025/results-2025/",
+        "checkedAt": "2026-10-23",
+        "method": "Count of 284 individual rows and their literal Gold/Silver/Bronze awards, independently re-fetched October 23. Team Challenge and GAITE excluded.",
+        "gold": 24,
+        "silver": 47,
+        "bronze": 71
+      }
+    ],
+    "results": [
+      {
+        "label": "Official results",
+        "url": "https://ioai-official.org/china-2025/results-2025/",
+        "coverage": "Individual contest · Final Round of Team Challenge · GAITE contest"
+      }
+    ],
+    "tasks": [
+      {
+        "id": "source-1",
+        "title": "Individual contest tasks",
+        "stage": "Individual contest",
+        "day": null,
+        "kind": "collection",
+        "url": "https://github.com/IOAI-official/IOAI-2025/tree/main/Individual-Contest",
+        "provenance": "https://github.com/IOAI-official/IOAI-2025",
+        "access": "public_materials"
+      },
+      {
+        "id": "source-2",
+        "title": "At-home preparation",
+        "stage": "At-home practice",
+        "day": null,
+        "kind": "collection",
+        "url": "https://github.com/IOAI-official/IOAI-2025/tree/main/At-Home-Round",
+        "provenance": "https://github.com/IOAI-official/IOAI-2025",
+        "access": "public_materials"
+      },
+      {
+        "id": "source-3",
+        "title": "GAITE supplementary tasks",
+        "stage": "GAITE contest",
+        "day": null,
+        "kind": "collection",
+        "url": "https://github.com/IOAI-official/IOAI-2025/tree/main/GAITE-Contest",
+        "provenance": "https://github.com/IOAI-official/IOAI-2025",
+        "access": "public_materials"
+      },
+      {
+        "id": "radar",
+        "title": "Radar",
+        "stage": "Individual contest",
+        "day": null,
+        "kind": "task",
+        "url": "https://github.com/IOAI-official/IOAI-2025/tree/main/Individual-Contest/Radar",
+        "provenance": "https://github.com/IOAI-official/IOAI-2025/tree/main/Individual-Contest",
+        "access": "public_materials"
+      },
+      {
+        "id": "chicken-counting",
+        "title": "Chicken Counting",
+        "stage": "Individual contest",
+        "day": null,
+        "kind": "task",
+        "url": "https://github.com/IOAI-official/IOAI-2025/tree/main/Individual-Contest/Chicken_Counting",
+        "provenance": "https://github.com/IOAI-official/IOAI-2025/tree/main/Individual-Contest",
+        "access": "public_materials"
+      },
+      {
+        "id": "concepts",
+        "title": "Concepts",
+        "stage": "Individual contest",
+        "day": null,
+        "kind": "task",
+        "url": "https://github.com/IOAI-official/IOAI-2025/tree/main/Individual-Contest/Concepts",
+        "provenance": "https://github.com/IOAI-official/IOAI-2025/tree/main/Individual-Contest",
+        "access": "public_materials"
+      },
+      {
+        "id": "restroom",
+        "title": "Restroom Icon Matching",
+        "stage": "Individual contest",
+        "day": null,
+        "kind": "task",
+        "url": "https://github.com/IOAI-official/IOAI-2025/tree/main/Individual-Contest/Restroom",
+        "provenance": "https://github.com/IOAI-official/IOAI-2025/tree/main/Individual-Contest",
+        "access": "public_materials"
+      },
+      {
+        "id": "antique",
+        "title": "Antique Painting Authentication",
+        "stage": "Individual contest",
+        "day": null,
+        "kind": "task",
+        "url": "https://github.com/IOAI-official/IOAI-2025/tree/main/Individual-Contest/Antique",
+        "provenance": "https://github.com/IOAI-official/IOAI-2025/tree/main/Individual-Contest",
+        "access": "public_materials"
+      },
+      {
+        "id": "pixel",
+        "title": "Pixel Parsimony Challenge",
+        "stage": "Individual contest",
+        "day": null,
+        "kind": "task",
+        "url": "https://github.com/IOAI-official/IOAI-2025/tree/main/Individual-Contest/Pixel",
+        "provenance": "https://github.com/IOAI-official/IOAI-2025/tree/main/Individual-Contest",
+        "access": "public_materials"
+      }
+    ]
+  },
+  {
+    "slug": "ioai-2026",
+    "checkedAt": "2026-10-23",
+    "summary": "The Astana edition features an Individual contest and separate GAITE standings. Individual contestants tackle six tasks across two days; at-home notebooks offer preparation material, not a separate national qualification ranking.",
+    "structure": "Six Individual tasks: Day 1 Find the Order, Robot Chasing, Potato; Day 2 Double Agent Dilemma, Ghost of the Machine, IOAI Field. GAITE has separate standings. A team label is not citizenship. Named source tables are complete, not a claim about the full event roster.",
+    "sources": [
+      "https://ioai-official.org/republic-of-kazakhstan/"
+    ],
+    "statistics": [
+      {
+        "stage": "Individual contest",
+        "population": "Rows in the complete published Individual contest table",
+        "unit": "contestants",
+        "participants": 440,
+        "source": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+        "checkedAt": "2026-10-23",
+        "method": "Count of 440 individual rows and their literal Gold/Silver/Bronze awards (including podium Gold labels), independently re-fetched October 23. GAITE excluded. Team labels are not country counts.",
+        "gold": 37,
+        "silver": 73,
+        "bronze": 110
+      }
+    ],
+    "results": [
+      {
+        "label": "Official results",
+        "url": "https://ioai-official.org/republic-of-kazakhstan/results-2026/",
+        "coverage": "Individual contest · GA I TE contest"
+      }
+    ],
+    "tasks": [
+      {
+        "id": "source-1",
+        "title": "Individual contest: two days, six tasks",
+        "stage": "Individual contest",
+        "day": null,
+        "kind": "collection",
+        "url": "https://github.com/IOAI-official/IOAI-2026/tree/main/Individual-Contest",
+        "provenance": "https://github.com/IOAI-official/IOAI-2026",
+        "access": "public_materials"
+      },
+      {
+        "id": "source-2",
+        "title": "GAITE hints for the six shared tasks",
+        "stage": "GA I TE contest",
+        "day": null,
+        "kind": "collection",
+        "url": "https://github.com/IOAI-official/IOAI-2026/tree/main/GAITE-Contest",
+        "provenance": "https://github.com/IOAI-official/IOAI-2026",
+        "access": "public_materials"
+      },
+      {
+        "id": "source-3",
+        "title": "At-home preparation notebooks",
+        "stage": "At-home preparation",
+        "day": null,
+        "kind": "collection",
+        "url": "https://github.com/IOAI-official/IOAI-2026/tree/main/At-Home-Round",
+        "provenance": "https://github.com/IOAI-official/IOAI-2026",
+        "access": "public_materials"
+      },
+      {
+        "id": "find-the-order",
+        "title": "Find the Order",
+        "stage": "Individual contest",
+        "day": 1,
+        "kind": "task",
+        "url": "https://github.com/IOAI-official/IOAI-2026/tree/main/Individual-Contest/1_Find_the_Order",
+        "provenance": "https://github.com/IOAI-official/IOAI-2026/tree/main/Individual-Contest",
+        "access": "public_materials"
+      },
+      {
+        "id": "robot-chasing",
+        "title": "Robot Chasing",
+        "stage": "Individual contest",
+        "day": 1,
+        "kind": "task",
+        "url": "https://github.com/IOAI-official/IOAI-2026/tree/main/Individual-Contest/2_Robot_Chasing",
+        "provenance": "https://github.com/IOAI-official/IOAI-2026/tree/main/Individual-Contest",
+        "access": "public_materials"
+      },
+      {
+        "id": "potato",
+        "title": "Potato",
+        "stage": "Individual contest",
+        "day": 1,
+        "kind": "task",
+        "url": "https://github.com/IOAI-official/IOAI-2026/tree/main/Individual-Contest/3_Potato",
+        "provenance": "https://github.com/IOAI-official/IOAI-2026/tree/main/Individual-Contest",
+        "access": "public_materials"
+      },
+      {
+        "id": "double-agent-dilemma",
+        "title": "Double Agent Dilemma",
+        "stage": "Individual contest",
+        "day": 2,
+        "kind": "task",
+        "url": "https://github.com/IOAI-official/IOAI-2026/tree/main/Individual-Contest/4_Double_Agent_Dilemma",
+        "provenance": "https://github.com/IOAI-official/IOAI-2026/tree/main/Individual-Contest",
+        "access": "public_materials"
+      },
+      {
+        "id": "ghost-of-machine",
+        "title": "Ghost of Machine",
+        "stage": "Individual contest",
+        "day": 2,
+        "kind": "task",
+        "url": "https://github.com/IOAI-official/IOAI-2026/tree/main/Individual-Contest/5_Ghost_of_Machine",
+        "provenance": "https://github.com/IOAI-official/IOAI-2026/tree/main/Individual-Contest",
+        "access": "public_materials"
+      },
+      {
+        "id": "ioai-field",
+        "title": "IOAI Field",
+        "stage": "Individual contest",
+        "day": 2,
+        "kind": "task",
+        "url": "https://github.com/IOAI-official/IOAI-2026/tree/main/Individual-Contest/6_IOAI_Field",
+        "provenance": "https://github.com/IOAI-official/IOAI-2026/tree/main/Individual-Contest",
+        "access": "public_materials"
+      }
+    ]
+  },
+  {
+    "slug": "apoai-2026",
+    "checkedAt": "2026-10-23",
+    "summary": "A regional AI competition for secondary-school students, held on June 13. The organizer publishes normalized individual scores, medals and honorable mentions; the June 13 competition day is distinct from delegation administration dates.",
+    "structure": "June 13 competition day. Published totals retain original normalized precision, ties, N/A and literal awards. June 1 delegation submission is not individual registration.",
+    "sources": [
+      "https://www.apoai.org/apoai2026"
+    ],
+    "statistics": [
+      {
+        "stage": "Individual contest",
+        "population": "All contestants reported by the organizer",
+        "unit": "contestants",
+        "participants": 128,
+        "source": "https://www.apoai.org/apoai2026",
+        "checkedAt": "2026-10-23",
+        "method": "Official organizer report; no inferred missing awards.",
+        "gold": 10,
+        "silver": 22,
+        "bronze": 33,
+        "honorableMentions": 36
+      }
+    ],
+    "results": [
+      {
+        "label": "Official results",
+        "url": "https://www.apoai.org/apoai2026",
+        "coverage": "Individual contest"
+      }
+    ],
+    "tasks": [
+      {
+        "id": "source-1",
+        "title": "Official 2026 task collection not verified",
+        "stage": "Individual contest",
+        "day": null,
+        "kind": "collection",
+        "url": null,
+        "provenance": "https://www.apoai.org/apoai2026",
+        "access": "unavailable"
+      }
+    ]
+  },
+  {
+    "slug": "euroai-2026",
+    "checkedAt": "2026-10-23",
+    "summary": "The first European AI Olympiad took place in Cluj-Napoca. Contestants worked on six tasks across two days; Member, Remote and Guest are divisions, not successive rounds. The event was initially announced as CEOAI before its EUROAI rename.",
+    "structure": "Member and Remote are participation divisions, not qualification/final stages. Guest is a third official division, not included in the prepared sample. Only Member entries have official ranks; Remote/Guest blanks stay null. Do not create CEOAI as a duplicate edition.",
+    "sources": [
+      "https://euroai-official.org/2026/results/",
+      "https://euroai-official.org/"
+    ],
+    "statistics": [
+      {
+        "stage": "Member",
+        "population": "Member division rows only; not the whole event",
+        "unit": "contestants",
+        "participants": 56,
+        "source": "https://euroai-official.org/2026/results/",
+        "checkedAt": "2026-10-23",
+        "method": "Counted independently from the complete official table by literal Status and Medal cells on October 23. Only Member contestants have official ranks.",
+        "gold": 6,
+        "silver": 9,
+        "bronze": 13
+      },
+      {
+        "stage": "Remote",
+        "population": "Remote division rows only; not the whole event",
+        "unit": "contestants",
+        "participants": 16,
+        "source": "https://euroai-official.org/2026/results/",
+        "checkedAt": "2026-10-23",
+        "method": "Counted independently from the complete official table by literal Status and Medal cells on October 23. Only Member contestants have official ranks.",
+        "gold": 1,
+        "silver": 4,
+        "bronze": 6
+      },
+      {
+        "stage": "Guest",
+        "population": "Guest division rows only; not the whole event",
+        "unit": "contestants",
+        "participants": 22,
+        "source": "https://euroai-official.org/2026/results/",
+        "checkedAt": "2026-10-23",
+        "method": "Counted independently from the complete official table by literal Status and Medal cells on October 23. Only Member contestants have official ranks.",
+        "gold": 1,
+        "silver": 9,
+        "bronze": 2
+      }
+    ],
+    "results": [
+      {
+        "label": "Official results",
+        "url": "https://euroai-official.org/2026/results/",
+        "coverage": "Member · Remote · Guest"
+      }
+    ],
+    "tasks": [
+      {
+        "id": "source-1",
+        "title": "Faithful Explanations, TextSnap, Clockwork Ellipses",
+        "stage": "Competition",
+        "day": 1,
+        "kind": "collection",
+        "url": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-1",
+        "provenance": "https://euroai-official.org/2026/results/",
+        "access": "invitation_required"
+      },
+      {
+        "id": "source-2",
+        "title": "Stowaway, Interleaved Lines, Odd One Out",
+        "stage": "Competition",
+        "day": 2,
+        "kind": "collection",
+        "url": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-2",
+        "provenance": "https://euroai-official.org/2026/results/",
+        "access": "invitation_required"
+      },
+      {
+        "id": "faithful-explanations",
+        "title": "Faithful Explanations",
+        "stage": "Competition",
+        "day": 1,
+        "kind": "task",
+        "url": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-1/3/view",
+        "provenance": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-1",
+        "access": "invitation_required"
+      },
+      {
+        "id": "textsnap",
+        "title": "TextSnap",
+        "stage": "Competition",
+        "day": 1,
+        "kind": "task",
+        "url": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-1/4/view",
+        "provenance": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-1",
+        "access": "invitation_required"
+      },
+      {
+        "id": "clockwork-ellipses",
+        "title": "Clockwork Ellipses",
+        "stage": "Competition",
+        "day": 1,
+        "kind": "task",
+        "url": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-1/6/view",
+        "provenance": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-1",
+        "access": "invitation_required"
+      },
+      {
+        "id": "stowaway",
+        "title": "Stowaway",
+        "stage": "Competition",
+        "day": 2,
+        "kind": "task",
+        "url": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-2/1/view",
+        "provenance": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-2",
+        "access": "invitation_required"
+      },
+      {
+        "id": "interleaved-lines",
+        "title": "Interleaved lines",
+        "stage": "Competition",
+        "day": 2,
+        "kind": "task",
+        "url": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-2/2/view",
+        "provenance": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-2",
+        "access": "invitation_required"
+      },
+      {
+        "id": "odd-one-out",
+        "title": "Odd One Out",
+        "stage": "Competition",
+        "day": 2,
+        "kind": "task",
+        "url": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-2/3/view",
+        "provenance": "https://judge.nitro-ai.org/competitions/ceoai/ceoai-2026-day-2",
+        "access": "invitation_required"
+      }
+    ]
+  },
+  {
+    "slug": "iaio-2026",
+    "checkedAt": "2026-10-23",
+    "summary": "The International Winter AI Olympiad took place in Ljubljana. Its final score combines Round 1 and Round 2; these components must not be presented as separate qualification rankings.",
+    "structure": "Winter IAIO, Ljubljana February 23–27, is distinct from IOAI Astana. Round 1 and Round 2 are original final-score components, not independently ranked qualification rounds.",
+    "sources": [
+      "https://iaio-official.org/olympiad-2026/"
+    ],
+    "statistics": [
+      {
+        "stage": "Final result",
+        "population": "95 contestants in the final results publication. The host report separately describes 98 event attendees; these populations are not combined",
+        "unit": "contestants",
+        "participants": 95,
+        "source": "https://iaio-official.org/results2026/",
+        "checkedAt": "2026-10-23",
+        "method": "Official organizer report; no inferred missing awards.",
+        "gold": 9,
+        "silver": 15,
+        "bronze": 24,
+        "honorableMentions": 14
+      }
+    ],
+    "results": [
+      {
+        "label": "Official results",
+        "url": "https://iaio-official.org/results2026/",
+        "coverage": "IAIO 2026 Competition Results"
+      }
+    ],
+    "tasks": [
+      {
+        "id": "source-1",
+        "title": "Edition-specific contest tasks not verified",
+        "stage": "Competition",
+        "day": null,
+        "kind": "collection",
+        "url": null,
+        "provenance": "https://iaio-official.org/olympiad-2026/",
+        "access": "unavailable"
+      }
+    ]
+  },
+  {
+    "slug": "ai-olymp-kazakhstan-2025",
+    "checkedAt": "2026-10-23",
+    "summary": "Kazakhstan’s first Republican AI Olymp final was hosted at Astana IT University for school students in grades 9–12. Government reporting describes two five-hour rounds after preliminary selection. The supplied standings’ exact version and the owner-reported May 3–5 programme still require organizer-original confirmation.",
+    "structure": "Public retrospective establishes the national event and organizers CPFED/DSML.KZ at Astana IT University. Exact two-day dates and identity of the uncaptioned screenshot still require organizer evidence.",
+    "sources": [
+      "https://www.gov.kz/memleket/entities/maidd/press/news/details/989919"
+    ],
+    "statistics": [
+      {
+        "stage": "National final",
+        "population": "Finalists reported by the government; not the 38-row supplied image",
+        "unit": "finalists",
+        "participants": 40,
+        "source": "https://www.gov.kz/org/maidd/press/news/details/989919",
+        "checkedAt": "2026-10-23",
+        "method": "Official organizer report; no inferred missing awards."
+      }
+    ],
+    "results": [],
+    "tasks": [
+      {
+        "id": "source-1",
+        "title": "2025 official tasks not verified",
+        "stage": "Unconfirmed",
+        "day": null,
+        "kind": "collection",
+        "url": null,
+        "provenance": "https://www.gov.kz/memleket/entities/maidd/press/news/details/989919",
+        "access": "unavailable"
+      }
+    ]
+  },
+  {
+    "slug": "ai-olymp-kazakhstan-2026",
+    "checkedAt": "2026-10-23",
+    "summary": "The second Republican AI Olymp selected school students for a two-day final in Astana. The supplied Final-labelled standings and owner-reported April 10–13 programme still require organizer-original version confirmation. Permission to display standings does not authorize sharing the original private workbook.",
+    "structure": "Second Round is explicitly named on CPFED's platform, April 12. Do not equate it with the Final-labelled workbook or infer a qualification table from a task heading. Exact full event dates remain unresolved.",
+    "sources": [
+      "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round",
+      "https://www.gov.kz/memleket/entities/astana/press/news/details/1199320"
+    ],
+    "statistics": [
+      {
+        "stage": "National final selection",
+        "population": "Students invited to Astana according to the government; not the 39-row workbook",
+        "unit": "qualifiers",
+        "participants": 40,
+        "source": "https://www.gov.kz/org/astana/press/news/details/1199320",
+        "checkedAt": "2026-10-23",
+        "method": "Official organizer report; no inferred missing awards."
+      }
+    ],
+    "results": [],
+    "tasks": [
+      {
+        "id": "source-1",
+        "title": "Zhuldyzzhan's Detective Agency",
+        "stage": "Second Round",
+        "day": null,
+        "kind": "task",
+        "url": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round/1/view",
+        "provenance": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round",
+        "access": "invitation_required"
+      },
+      {
+        "id": "source-2",
+        "title": "Forgotten labels",
+        "stage": "Second Round",
+        "day": null,
+        "kind": "task",
+        "url": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round/2/view",
+        "provenance": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round",
+        "access": "invitation_required"
+      }
+    ]
+  },
+  {
+    "slug": "faio-2025",
+    "checkedAt": "2026-10-23",
+    "summary": "Fizmat AI Olympiad offers school teams a practical introduction to machine learning and data analysis. Its 2025 edition had a qualification round and a two-day Almaty final; the official archive links final results and task collections.",
+    "structure": "September 28 online qualification, October 30–31 Almaty final; season range is not continuous contest duration. Final problem 1–5 columns belong to one final team table.",
+    "sources": [
+      "https://www.faio.kz/2025/"
+    ],
+    "statistics": [],
+    "results": [
+      {
+        "label": "Official results",
+        "url": "https://www.faio.kz/2025/",
+        "coverage": "Qualification"
+      },
+      {
+        "label": "Official results",
+        "url": "https://www.faio.kz/2025/",
+        "coverage": "FAIO 2025 Final Results"
+      }
+    ],
+    "tasks": [
+      {
+        "id": "source-1",
+        "title": "Qualification tasks",
+        "stage": "Qualification",
+        "day": null,
+        "kind": "collection",
+        "url": "https://github.com/BeksultanSagyndyk/faio-tasks/tree/main/faio-2025/qualification",
+        "provenance": "https://www.faio.kz/",
+        "access": "public_materials"
+      },
+      {
+        "id": "source-2",
+        "title": "Final Day 1 tasks",
+        "stage": "Final",
+        "day": 1,
+        "kind": "collection",
+        "url": "https://github.com/BeksultanSagyndyk/faio-tasks/tree/main/faio-2025/day1",
+        "provenance": "https://www.faio.kz/",
+        "access": "public_materials"
+      },
+      {
+        "id": "source-3",
+        "title": "Final Day 2 tasks",
+        "stage": "Final",
+        "day": 2,
+        "kind": "collection",
+        "url": "https://github.com/BeksultanSagyndyk/faio-tasks/tree/main/faio-2025/day2",
+        "provenance": "https://www.faio.kz/",
+        "access": "public_materials"
+      }
+    ]
+  },
+  {
+    "slug": "faio-2026",
+    "checkedAt": "2026-10-23",
+    "summary": "Fizmat AI Olympiad combines a September qualification with an Almaty final. Competition rounds are scheduled for October 27–28; the wider October 26–30 programme includes arrival and departure. Final results are not yet available as of October 23.",
+    "structure": "Qualification September 20; October 27–28 contest days, October 26–30 travel/programme. Final is future as of October 19. Qualification ranking/invitations are not final results.",
+    "sources": [
+      "https://www.faio.kz/",
+      "https://www.faio.kz/final/"
+    ],
+    "statistics": [],
+    "results": [
+      {
+        "label": "Qualification results",
+        "url": "https://www.faio.kz/results/",
+        "coverage": "Qualification only. The October 27–28 final has not taken place."
+      },
+      {
+        "label": "Qualification results",
+        "url": "https://www.faio.kz/final/",
+        "coverage": "Qualification only. The October 27–28 final has not taken place."
+      }
+    ],
+    "tasks": [
+      {
+        "id": "source-1",
+        "title": "2026 edition task URL not verified",
+        "stage": "Qualification / Final",
+        "day": null,
+        "kind": "collection",
+        "url": null,
+        "provenance": "https://www.faio.kz/",
+        "access": "unavailable"
+      }
+    ]
+  },
+  {
+    "slug": "neoai-2025",
+    "checkedAt": "2026-10-23",
+    "summary": "Northern Eurasia OAI brought students together online and on site for eight practical AI challenges. Central University and AI Alliance organized the edition, with participation reported from Russia, Mongolia, Kazakhstan and Kyrgyzstan.",
+    "structure": "May 6–11 hybrid edition, main round has eight challenges. Live/late Kaggle task leaderboards are not an audited aggregate final result.",
+    "sources": [
+      "https://ioai-official.org/northern-eurasia-oai-2025/"
+    ],
+    "statistics": [
+      {
+        "stage": "Main round",
+        "population": "Participants reported in the official regional retrospective",
+        "unit": "contestants",
+        "participants": 89,
+        "source": "https://ioai-official.org/northern-eurasia-oai-2025/",
+        "checkedAt": "2026-10-23",
+        "method": "Official organizer report; no inferred missing awards.",
+        "countries": 4
+      }
+    ],
+    "results": [],
+    "tasks": [
+      {
+        "id": "source-1",
+        "title": "Official linked NEOAI 2025 collection",
+        "stage": "Main round",
+        "day": null,
+        "kind": "collection",
+        "url": "https://www.kaggle.com/competitions/neoai-2025/overview",
+        "provenance": "https://ioai-official.org/northern-eurasia-oai-2025/",
+        "access": "account_required"
+      }
+    ]
+  },
+  {
+    "slug": "neoai-2026",
+    "checkedAt": "2026-10-23",
+    "summary": "Northern Eurasia OAI is an individual, practical AI olympiad with distributed international participation. Russian contestants compete on site, while international contestants may compete remotely or at local venues. Russia is the organizer/host mapping, not every participant’s location; no single canonical city is established.",
+    "structure": "Dedicated edition May 3–4, hybrid. Homework examples are explicitly practice, not evidence for a published qualification ranking. Russia is organizer context, not all participant locations; approved Central University mapping is retained, city absent.",
+    "sources": [
+      "https://cu.ru/olympiad/events/neoai"
+    ],
+    "statistics": [],
+    "results": [],
+    "tasks": [
+      {
+        "id": "source-1",
+        "title": "Code Stars homework",
+        "stage": "Homework practice",
+        "day": null,
+        "kind": "task",
+        "url": "https://www.kaggle.com/competitions/neoai-2026-qualification-code-stars-homework",
+        "provenance": "https://cu.ru/olympiad/events/neoai",
+        "access": "account_required"
+      },
+      {
+        "id": "source-2",
+        "title": "Terminal Animals homework",
+        "stage": "Homework practice",
+        "day": null,
+        "kind": "task",
+        "url": "https://www.kaggle.com/competitions/neoai-2026-qualification-terminal-animals-homework",
+        "provenance": "https://cu.ru/olympiad/events/neoai",
+        "access": "account_required"
+      },
+      {
+        "id": "source-3",
+        "title": "Find Comments homework",
+        "stage": "Homework practice",
+        "day": null,
+        "kind": "task",
+        "url": "https://www.kaggle.com/competitions/neoai-2026-qualification-find-comments-homework",
+        "provenance": "https://cu.ru/olympiad/events/neoai",
+        "access": "account_required"
+      }
+    ]
+  },
+  {
+    "slug": "usaaio-2025",
+    "checkedAt": "2026-10-23",
+    "summary": "USA–North America AI Olympiad selects students through Round 1, Round 2 and a team-selection camp. This listing covers the April 27 Round 2 at MIT; the June camp is a separate stage.",
+    "structure": "Existing metadata draft is scoped to Round 2 at MIT April 27, not the whole season. Round 1 March 24; top Round 2 scorers enter June team-selection camp. Exact camp dates not inferred.",
+    "sources": [
+      "https://ioai-official.org/the-usa-north-america-ai-olympiad-is-organized-by-the-usa-ai-olympiad-usaaio/"
+    ],
+    "statistics": [
+      {
+        "stage": "Round 3 selection",
+        "population": "Students selected from Round 2 for the June camp; not total Round 2 entrants",
+        "unit": "qualifiers",
+        "participants": 12,
+        "source": "https://ioai-official.org/the-usa-north-america-ai-olympiad-is-organized-by-the-usa-ai-olympiad-usaaio/",
+        "checkedAt": "2026-10-23",
+        "method": "Official organizer report; no inferred missing awards."
+      }
+    ],
+    "results": [],
+    "tasks": [
+      {
+        "id": "source-1",
+        "title": "2025 Round 1 problems",
+        "stage": "Round 1",
+        "day": null,
+        "kind": "collection",
+        "url": "https://forum.beaver-edge.ai/c/ai-olympiads/usa-north-america-ai-olympiad/8",
+        "provenance": "https://www.usaaio.org/past-problems",
+        "access": "public_materials"
+      },
+      {
+        "id": "source-2",
+        "title": "2025 Round 2 problems",
+        "stage": "Round 2",
+        "day": null,
+        "kind": "collection",
+        "url": "https://forum.beaver-edge.ai/c/ai-olympiads/2025-usa-na-aio-round-2/9",
+        "provenance": "https://www.usaaio.org/past-problems",
+        "access": "public_materials"
+      }
+    ]
+  },
+  {
+    "slug": "poland-oai-2025",
+    "checkedAt": "2026-10-23",
+    "summary": "The second Polish AI Olympiad progressed through Stage I, Stage II and a Wrocław final. Original Polish award classes are preserved at the source rather than translated into invented Gold, Silver or Bronze medals.",
+    "structure": "I etap February 17–March 22; II etap April 26–27; final May 30–June 2. Stage I/II public score lists have no explicit rank numbers, so selected entries remain unranked. Preserve Laureaci classes, not inferred Gold/Silver.",
+    "sources": [
+      "https://www.oai.edu.pl/edycje/ii-oai",
+      "https://www.oai.edu.pl/regulamin-iioai"
+    ],
+    "statistics": [],
+    "results": [
+      {
+        "label": "Official results",
+        "url": "https://www.oai.edu.pl/edycje/ii-oai",
+        "coverage": "Wyniki I etapu · Wyniki 2 etapu · Wyniki Finału II Olimpiady Sztucznej Inteligencji"
+      }
+    ],
+    "tasks": [
+      {
+        "id": "source-1",
+        "title": "I etap tasks",
+        "stage": "I etap",
+        "day": null,
+        "kind": "collection",
+        "url": "https://github.com/OlimpiadaAI/II-OlimpiadaAI/tree/main/1_etap",
+        "provenance": "https://www.oai.edu.pl/edycje/ii-oai",
+        "access": "public_materials"
+      },
+      {
+        "id": "source-2",
+        "title": "II etap tasks",
+        "stage": "II etap",
+        "day": null,
+        "kind": "collection",
+        "url": "https://github.com/OlimpiadaAI/II-OlimpiadaAI/tree/main/2_etap",
+        "provenance": "https://www.oai.edu.pl/edycje/ii-oai",
+        "access": "public_materials"
+      },
+      {
+        "id": "source-3",
+        "title": "Final tasks",
+        "stage": "Final",
+        "day": null,
+        "kind": "collection",
+        "url": "https://github.com/OlimpiadaAI/II-OlimpiadaAI/tree/main/3_etap",
+        "provenance": "https://www.oai.edu.pl/edycje/ii-oai",
+        "access": "public_materials"
+      }
+    ]
+  },
+  {
+    "slug": "onia-2026",
+    "checkedAt": "2026-10-23",
+    "summary": "Romania’s national AI olympiad separates local, county and national stages, with distinct grade sections. The national programme ran April 17–20, with competition rounds on April 18; later team selection is separate.",
+    "structure": "Local February 14, county March 14, national April 17–20 (contest April 18). Grades 9–10 and 11–12 are separate. Extended Team May 21–25 and Restricted Team June 5–7 are distinct selection stages, not national contest results.",
+    "sources": [
+      "https://www.olimpiada-ai.ro/en/editii/2026",
+      "https://www.olimpiada-ai.ro/en/news/comunicat-nationala-2026",
+      "https://www.olimpiada-ai.ro/en/news/comunicat-nationala-2026"
+    ],
+    "statistics": [
+      {
+        "stage": "National stage",
+        "population": "Qualified students reported by UPIR: 71 in grades 9–10 and 88 in grades 11–12. The report separately mentions five eighth-grade guests; no guest-adjusted total is inferred",
+        "unit": "contestants",
+        "participants": 159,
+        "source": "https://www.olimpiada-ai.ro/en/news/comunicat-nationala-2026",
+        "checkedAt": "2026-10-23",
+        "method": "Official organizer report; no inferred missing awards."
+      }
+    ],
+    "results": [
+      {
+        "label": "Official results",
+        "url": "https://www.olimpiada-ai.ro/en/rezultate/locala",
+        "coverage": "Local Stage"
+      },
+      {
+        "label": "Official results",
+        "url": "https://www.olimpiada-ai.ro/en/rezultate/judeteana",
+        "coverage": "County Stage"
+      },
+      {
+        "label": "Official results",
+        "url": "https://www.olimpiada-ai.ro/en/rezultate/nationala",
+        "coverage": "National Stage"
+      },
+      {
+        "label": "Official results",
+        "url": "https://www.olimpiada-ai.ro/en/editii/2026",
+        "coverage": "Extended Team · Restricted Team"
+      }
+    ],
+    "tasks": [
+      {
+        "id": "source-1",
+        "title": "Local grades 9–10",
+        "stage": "Local Stage",
+        "day": null,
+        "kind": "collection",
+        "url": "https://platform.olimpiada-ai.ro/ro/competitions/11",
+        "provenance": "https://www.olimpiada-ai.ro/en/editii/2026",
+        "access": "account_required"
+      },
+      {
+        "id": "source-2",
+        "title": "Local grades 11–12",
+        "stage": "Local Stage",
+        "day": null,
+        "kind": "collection",
+        "url": "https://platform.olimpiada-ai.ro/ro/competitions/12",
+        "provenance": "https://www.olimpiada-ai.ro/en/editii/2026",
+        "access": "account_required"
+      },
+      {
+        "id": "source-3",
+        "title": "County grades 9–10",
+        "stage": "County Stage",
+        "day": null,
+        "kind": "collection",
+        "url": "https://platform.olimpiada-ai.ro/ro/competitions/14",
+        "provenance": "https://www.olimpiada-ai.ro/en/editii/2026",
+        "access": "account_required"
+      },
+      {
+        "id": "source-4",
+        "title": "County grades 11–12",
+        "stage": "County Stage",
+        "day": null,
+        "kind": "collection",
+        "url": "https://platform.olimpiada-ai.ro/ro/competitions/15",
+        "provenance": "https://www.olimpiada-ai.ro/en/editii/2026",
+        "access": "account_required"
+      }
+    ]
+  }
+]
