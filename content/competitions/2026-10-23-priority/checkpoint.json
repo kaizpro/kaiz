@@ -1,0 +1,85 @@
+{
+  "checkedAt": "2026-10-23T11:11:51.3096529Z",
+  "project": "oolaemebhoytzuussigu",
+  "main": "8759e7cdb62bf68b6b59f2e7b9a2aa220d8de4c5",
+  "productionWrites": 0,
+  "counts": {
+    "competitions": 5,
+    "result_sets": 0,
+    "published_sets": 0,
+    "result_rows": 0,
+    "auth_users": 10,
+    "profiles": 10,
+    "discussions": 2,
+    "learning": 5
+  },
+  "appliedMigrations": [
+    "202609200001",
+    "202609210001",
+    "202609210002",
+    "202609220001",
+    "202609300001",
+    "202610040001",
+    "202610070001",
+    "202610120001",
+    "202610150001"
+  ],
+  "fingerprints": {
+    "competitions": "e1d129954948ed500f4220b3d7900dc1",
+    "profiles": "15616a9dc932324afaf8935f9bc06a1a",
+    "learning": "578fb9dbde25238fa5c2cd83b33d9693",
+    "posts": "f62dd8dd611f273eea4c45cbd77952fb"
+  },
+  "metadata": {
+    "valid": true,
+    "creates": 8,
+    "preserves": 5,
+    "updates": 0,
+    "expectedTotal": 13,
+    "resultSets": 0,
+    "resultRows": 0,
+    "sourceCorrections": [
+      {
+        "editionKey": "faio-2026",
+        "field": "city / description",
+        "from": "Almaty",
+        "to": "SDU University, Kaskelen",
+        "source": "https://www.faio.kz/final/"
+      }
+    ],
+    "executionAuthorized": false
+  },
+  "kazakhstan": {
+    "checkedAt": "2026-10-23T11:20:26.483Z",
+    "productionWrites": 0,
+    "restrictedRowsInGit": 0,
+    "screenshot": {
+      "sha256": "e05219f58a99a58d722c359bd7ae6d387987312f661d5035cb210892b05b35ea",
+      "rows": 38,
+      "independentCellsCompared": 303,
+      "mismatches": [],
+      "uncertainCityCells": 1,
+      "arithmeticDifferences": 0,
+      "tiedRank36Rows": 2,
+      "redRowsRetained": true,
+      "awardsInferred": 0,
+      "eventTitleYearDatesPresent": false,
+      "organizerFinalityConfirmed": false
+    },
+    "workbook": {
+      "sha256": "4725716b700a43e9b8ae6708a2513159b4d232f34bf77a05a7888b8bfdf4cb7f",
+      "sheet": "leaderboard_final",
+      "rows": 39,
+      "cellsMatched": 328,
+      "archivedCellsMatch": true,
+      "arithmeticDifferences": 0,
+      "repeatedRankRows": 16,
+      "awardsInferred": 0,
+      "organizerFinalityConfirmed": false
+    },
+    "permission": "OWNER_CONFIRMED_PUBLIC_KAIZ_NAMES_AND_RESULTS",
+    "originalDocumentSharingAuthorized": false,
+    "finality": "BLOCKED_ORGANIZER_ORIGINAL_REQUIRED",
+    "executionAuthorized": false
+  }
+}

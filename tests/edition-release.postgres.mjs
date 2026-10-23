@@ -7,7 +7,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import { loadContentModule } from "../scripts/content/load.mjs";
-import { prepareEditionRelease } from "../scripts/content/edition-release-plan.mjs";
+import { preparePriorityEditionRelease } from "../scripts/content/priority-edition-plan.mjs";
 assert.ok(process.env.KAIZ_EMBEDDED_POSTGRES_MODULE);
 const { default: EmbeddedPostgres } = await import(pathToFileURL(process.env.KAIZ_EMBEDDED_POSTGRES_MODULE).href);
 const folder = await mkdtemp(join(tmpdir(), "kaiz-metadata-qa-"));
@@ -38,8 +38,9 @@ try {
   const fingerprints = async () => (await db.query("select id,md5(to_jsonb(c)::text) hash from public.competitions c where id=any($1::uuid[]) order by id", [snapshot.competitions.map(c => c.id)])).rows;
   const before = await fingerprints();
   await db.query("insert into auth.users(id,email) values('98000000-0000-4000-8000-000000000001','metadata-admin@example.test'),('98000000-0000-4000-8000-000000000002','metadata-member@example.test');update public.profiles set role='admin' where id='98000000-0000-4000-8000-000000000001';set role authenticated;select set_config('request.jwt.claim.sub','98000000-0000-4000-8000-000000000001',false)");
-  const plan = prepareEditionRelease(await read(dir + "release-catalog.json"), await read("content/competitions/2026-10-17/publication-manifest.json"), await read("content/competitions/2026-10-12/ready-batch.json"), snapshot);
+  const plan = preparePriorityEditionRelease(await read(dir + "release-catalog.json"), await read("content/competitions/2026-10-17/publication-manifest.json"), await read("content/competitions/2026-10-12/ready-batch.json"), snapshot);
   const additions = plan.batch.competitions.filter(c => !c.expectedId); assert.equal(additions.length, 8);
+  assert.equal(additions.find(c => c.editionKey === "faio-2026").form.city, "Kaskelen");
   // A failed single transaction leaves no partially created edition.
   await db.query("begin"); await insert(additions[0].form);
   await assert.rejects(db.query("insert into public.competitions(title,slug,description,organizer,start_date,end_date,format,category) values('Invalid','invalid-metadata-qa','QA only','QA',now(),now(),'invalid-format','Machine Learning')"), e => e.code === "22P02");

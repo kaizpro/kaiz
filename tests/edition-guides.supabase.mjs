@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile,mkdir} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
 import {createClient} from '@supabase/supabase-js';
+import {preparePriorityEditionRelease} from '../scripts/content/priority-edition-plan.mjs';
 const api=new URL(process.env.KAIZ_QA_SUPABASE_URL??''),base=new URL(process.env.KAIZ_LEARNING_URL??'');
 assert.equal(api.origin,'https://venniccblkybvfbxyhug.supabase.co');
 assert.equal(base.origin,'http://localhost:3106');
@@ -11,7 +12,7 @@ const options={auth:{persistSession:false,autoRefreshToken:false},global:{fetch:
 const service=createClient(api.href,process.env.KAIZ_QA_SERVICE_KEY,options),anon=createClient(api.href,process.env.KAIZ_QA_ANON_KEY,options);
 const read=async p=>JSON.parse(await readFile(p,'utf8'));
 const guides=await read('content/competitions/edition-guides.json');
-const batch=await read('content/competitions/2026-10-19/metadata-batch.json');
+const batch=preparePriorityEditionRelease(await read('content/competitions/2026-10-19/release-catalog.json'),await read('content/competitions/2026-10-17/publication-manifest.json'),await read('content/competitions/2026-10-12/ready-batch.json'),await read('content/competitions/2026-10-23/production-snapshot.json')).batch;
 const held=await read('content/competitions/2026-10-19/kazakhstan-metadata-review.json');
 const forms=[...batch.competitions,...held.competitions].map(e=>e.form);
 const check=r=>{if(r.error)throw Object.assign(Error('Isolated QA request failed'),{code:r.error.code});return r.data;};
@@ -40,6 +41,7 @@ try{
    await page.evaluate(()=>document.documentElement.style.fontSize='200%');
    assert.ok(await page.getByRole('button',{name:'View Results',exact:true}).isVisible());
    if(guide.statistics.length)await page.getByRole('heading',{name:'At a glance',exact:true}).waitFor();
+   if(['faio-2025','faio-2026','ai-olymp-kazakhstan-2025','ai-olymp-kazakhstan-2026'].includes(guide.slug))await page.screenshot({path:`work/beta-content/screenshots/${guide.slug}-overview-${width}-${theme}.png`,fullPage:true});
    const labelsFit=await page.locator('dt').filter({hasText:/^Contestants$/}).evaluateAll(elements=>elements.every(e=>e.getBoundingClientRect().height<=parseFloat(getComputedStyle(e).lineHeight)+1));
    assert.ok(labelsFit,'Contestants label must not split mid-word at 200%');
    const results=page.getByRole('button',{name:'View Results',exact:true});
@@ -56,7 +58,7 @@ try{
    assert.equal(await page.getByRole('link',{name:'Open task →',exact:true}).count(),guide.tasks.filter(t=>t.kind==='task'&&t.url).length);
    assert.equal(await page.locator('a[href*="docs.google.com"]').count(),0,'No restricted originals');
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),guide.slug+' overflow');
-   if(['ioai-2025','euroai-2026','neoai-2026'].includes(guide.slug))await page.screenshot({path:`work/beta-content/screenshots/${guide.slug}-${width}-${theme}.png`,fullPage:true});
+   if(['ioai-2025','euroai-2026','neoai-2026','faio-2025','faio-2026','ai-olymp-kazakhstan-2025','ai-olymp-kazakhstan-2026'].includes(guide.slug))await page.screenshot({path:`work/beta-content/screenshots/${guide.slug}-${width}-${theme}.png`,fullPage:true});
    for(const task of guide.tasks.filter(t=>t.kind==='task'&&t.url)){
     assert.equal((await page.goto(`${base.origin}/competitions/${guide.slug}/tasks/${task.id}`)).status(),200);
     await page.getByRole('heading',{name:task.title,exact:true}).waitFor();
