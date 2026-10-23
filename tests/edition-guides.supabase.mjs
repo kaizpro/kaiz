@@ -41,6 +41,7 @@ try{
    await page.evaluate(()=>document.documentElement.style.fontSize='200%');
    assert.ok(await page.getByRole('button',{name:'View Results',exact:true}).isVisible());
    if(guide.statistics.length)await page.getByRole('heading',{name:'At a glance',exact:true}).waitFor();
+   assert.ok(await page.locator('[data-competition-summary] .micro-label').evaluateAll(elements=>elements.length===4&&elements.every(e=>e.getBoundingClientRect().height<=2*parseFloat(getComputedStyle(e).lineHeight)+1)),'Summary captions must not become letter-by-letter columns at 200%');
    if(['faio-2025','faio-2026','ai-olymp-kazakhstan-2025','ai-olymp-kazakhstan-2026'].includes(guide.slug))await page.screenshot({path:`work/beta-content/screenshots/${guide.slug}-overview-${width}-${theme}.png`,fullPage:true});
    const labelsFit=await page.locator('dt').filter({hasText:/^Contestants$/}).evaluateAll(elements=>elements.every(e=>e.getBoundingClientRect().height<=parseFloat(getComputedStyle(e).lineHeight)+1));
    assert.ok(labelsFit,'Contestants label must not split mid-word at 200%');

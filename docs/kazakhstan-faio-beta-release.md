@@ -159,7 +159,11 @@ new backup or imply that encryption/integrity is a restore test.
 ## Verification and beta sign-off
 
 Focused changes are public guide data, an offline venue overlay, tests and this
-checkpoint. No UI redesign, migration, RLS/Auth change or shared layout change.
+checkpoint. Screenshot review also exposed the existing fixed four-column summary
+breaking captions into letter strips at 200% text. Its grid now responds to text
+size using the same auto-fit minimum as the existing statistics; all 15 pages have
+a caption-height browser assertion. No redesign, migration, RLS/Auth change or
+shared layout change.
 Preserve #59: static Learn, safe CDN caching, browser-only account controls,
 private/no-store personalized state, proxy exclusions and prefetch controls.
 
