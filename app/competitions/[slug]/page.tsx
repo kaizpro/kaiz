@@ -12,6 +12,8 @@ import { CompetitionLeaderboard } from "@/components/competition-leaderboard";
 import { OfficialResultSource } from "@/components/official-result-source";
 import { CompetitionDiscussions } from "@/components/competition-discussions";
 import { CompetitionProblems } from "@/components/competition-problems";
+import { CompetitionStatistics, CompetitionTaskSources } from "@/components/competition-edition-guide";
+import { getEditionGuide } from "@/lib/competitions/edition-guide";
 import { PreparationLinks } from "@/components/learning/preparation-links";
 import { getCurrentUser } from "@/lib/auth";
 import { getCompetition, listCompetitionEditions } from "@/lib/data/competitions";
@@ -36,6 +38,7 @@ function DataPoint({ label, value }: { label: string; value: React.ReactNode }) 
 export default async function CompetitionDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params; const competition = await getCompetition(slug); if (!competition) notFound();
   const presentation = editionPresentationSchema.safeParse(competition.presentation ?? {}).data ?? {};
+  const guide = getEditionGuide(slug);
   const singleDay = isSameDate(competition.start_date, competition.end_date);
   const [resultSets, discussionResult, user, problems, editions] = await Promise.all([
     getPublishedCompetitionResults(competition.id),
@@ -51,12 +54,13 @@ export default async function CompetitionDetail({ params }: { params: Promise<{ 
     <div className="grid gap-8 py-8 lg:grid-cols-[minmax(0,1fr)_21rem]">
       <div className="min-w-0">
         <CompetitionSections overview={<>
-        <div className="grid border-y sm:grid-cols-2 xl:grid-cols-4"><div className="border-b py-4 sm:border-r sm:px-4 sm:first:pl-0 xl:border-b-0"><p className="micro-label text-muted-foreground">{singleDay ? "Competition date" : "Competition window"}</p><p className="tabular mt-2 font-mono text-sm font-bold">{formatDateRange(competition.start_date, competition.end_date)}</p></div><div className="border-b py-4 sm:px-4 xl:border-b-0 xl:border-r"><p className="micro-label text-muted-foreground">Format</p><p className="mt-2 text-sm font-semibold">{formatCompetitionFormat(competition.format)}</p></div><div className="border-b py-4 sm:border-b-0 sm:border-r sm:px-4"><p className="micro-label text-muted-foreground">Location</p><p className="mt-2 text-sm font-semibold">{formatCompetitionLocation(competition.city, competition.country)}</p></div><div className="py-4 sm:pl-4"><p className="micro-label text-muted-foreground">Participants</p><p className="tabular mt-2 font-mono text-sm font-bold">{competition.participant_count ?? 0} registered</p></div></div>
-        <section className="py-6"><h2 className="text-xl font-semibold">About the competition</h2><p className="mt-4 max-w-4xl whitespace-pre-line text-sm leading-7 text-muted-foreground">{competition.description}</p></section>
+<div className="grid border-y sm:grid-cols-2 xl:grid-cols-4"><div className="border-b py-4 sm:border-r sm:px-4 sm:first:pl-0 xl:border-b-0"><p className="micro-label text-muted-foreground">{singleDay ? "Competition date" : "Competition window"}</p><p className="tabular mt-2 font-mono text-sm font-bold">{formatDateRange(competition.start_date, competition.end_date)}</p></div><div className="border-b py-4 sm:px-4 xl:border-b-0 xl:border-r"><p className="micro-label text-muted-foreground">Format</p><p className="mt-2 text-sm font-semibold">{formatCompetitionFormat(competition.format)}</p></div><div className="border-b py-4 sm:border-b-0 sm:border-r sm:px-4"><p className="micro-label text-muted-foreground">Location</p><p className="mt-2 text-sm font-semibold">{formatCompetitionLocation(competition.city, competition.country)}</p></div><div className="py-4 sm:pl-4"><p className="micro-label text-muted-foreground">KAIZ result sets</p><p className="tabular mt-2 font-mono text-sm font-bold">{resultSets.length} published</p></div></div>
+        <CompetitionStatistics slug={slug}/>
+        <section className="py-6"><h2 className="text-xl font-semibold">About the competition</h2><p className="mt-4 max-w-4xl whitespace-pre-line text-sm leading-7 text-muted-foreground">{guide?.summary ?? competition.description}</p>{guide && <details className={`${product.details} mt-4`}><summary>Competition structure &amp; sources</summary><p>{guide.structure}</p><p>{competition.description}</p><ul>{guide.sources.map(source => <li key={source}><a className="underline underline-offset-4" href={source} target="_blank" rel="noopener noreferrer">Organizer reference<span className="sr-only"> (opens in a new tab)</span></a></li>)}</ul></details>}</section>
         {competition.eligibility && <section className="border-t py-8"><div className="flex items-center gap-2"><ShieldCheck className="size-5 text-primary"/><h2 className="text-lg font-bold">Eligibility</h2></div><p className="mt-3 max-w-4xl leading-7 text-muted-foreground">{competition.eligibility}</p></section>}
         {!!competition.tags.length && <section className="border-t py-6"><p className="micro-label text-muted-foreground">Tags</p><div className="mt-3 flex flex-wrap gap-2">{competition.tags.map((tag) => <Badge key={tag}>{tag}</Badge>)}</div></section>}
         {presentation.sourceNotes && <p className="border-t py-6 text-sm leading-6 text-muted-foreground">{presentation.sourceNotes}</p>}
-        </>} results={<><CompetitionLeaderboard resultSets={resultSets} expectedStages={presentation.expectedStages}/><OfficialResultSource slug={competition.slug}/></>} tasks={<CompetitionProblems problems={problems} tasksUrl={presentation.tasksUrl}/>}/>
+        </>} results={<><OfficialResultSource slug={competition.slug}/>{resultSets.length > 0 ? <CompetitionLeaderboard resultSets={resultSets} expectedStages={presentation.expectedStages}/> : <p className="border-t py-5 text-sm text-muted-foreground">No published KAIZ standings yet. Use the official source when available.</p>}</>} tasks={<><CompetitionTaskSources slug={slug}/>{(problems.length > 0 || !guide) && <CompetitionProblems problems={problems} tasksUrl={presentation.tasksUrl}/>}</>}/>
         <PreparationLinks category={competition.category}/>
         <CompetitionDiscussions competitionId={competition.id} posts={discussionResult.posts} signedIn={Boolean(user)}/>
         <details className={product.details}><summary>Participant directory</summary><UnavailablePanel title="Participant directory unavailable" description="Registration data will appear here."/></details>
