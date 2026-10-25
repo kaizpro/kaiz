@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-10-25",
+  "supersedes": "2026-10-19 identity/finality holds; original transcriptions unchanged",
+  "confirmedBy": "Zhunussov",
+  "scope": "public_kaiz_names_and_results_2025_2026",
+  "organizerOriginalsConfirmed": true,
+  "productionExecutionAuthorized": false,
+  "attestation": "Exact files supplied directly by official organizers, used for national training-camp selection and medals. Owner confirms KAIZ publication of participant names, scores and rankings.",
+  "privateDocumentSharing": "NOT_AUTHORIZED",
+  "hashes": {
+    "screenshot2025": "e05219f58a99a58d722c359bd7ae6d387987312f661d5035cb210892b05b35ea",
+    "workbook2026": "4725716b700a43e9b8ae6708a2513159b4d232f34bf77a05a7888b8bfdf4cb7f"
+  },
+  "coverage": {
+    "2025": {
+      "provided": 38,
+      "reportedFinalists": 40
+    },
+    "2026": {
+      "provided": 39,
+      "reportedQualifiers": 40
+    }
+  },
+  "awards": {
+    "2025": "UNVERIFIED_NONE_INFERRED",
+    "2026": {
+      "source": "https://dsml.kz/ru/news/87047a67-d53a-409e-9ed5-eb32341485d7",
+      "gold": 3,
+      "silver": 5,
+      "bronze": 15,
+      "matching": "Explicit reviewed original-name aliases only; no rank-derived medals"
+    }
+  },
+  "dates": {
+    "2025": "May 3–5 owner-reported programme; exact contest dates not independently verified",
+    "2026": "Official April 11–12 competition rounds only"
+  },
+  "gates": {
+    "B": "Separate authorization: exactly two metadata editions, with explicit acceptance of 2025 date caveat",
+    "C": "Separate authorization: two unpublished sets, 77 rows, after parent UUID readback",
+    "D": "Separate authorization: publish exact verified set UUIDs after draft QA"
+  }
+}

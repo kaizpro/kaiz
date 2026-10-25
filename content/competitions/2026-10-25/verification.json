@@ -1,0 +1,70 @@
+{
+  "checkedAtUtc": "2026-10-25",
+  "productionWrites": 0,
+  "production": {
+    "projectIdentityVerified": true,
+    "competitions": 13,
+    "resultSets": 0,
+    "resultRows": 0,
+    "appliedMigrations": 9,
+    "existing13FingerprintsUnchanged": true,
+    "profilesLearningDiscussionsUnchanged": true
+  },
+  "originals": {
+    "hashesMatch": true,
+    "screenshotRows": 38,
+    "independentLegibleImageCellsCompared": 303,
+    "uncertainCityPreservedWithInternalNote": true,
+    "redHighlightedRowsRetained": true,
+    "workbookSheet": "leaderboard_final",
+    "workbookRows": 39,
+    "workbookCellsCompared": 328,
+    "scoreTotalDifferences": 0,
+    "missingParticipantsInvented": 0,
+    "medalMatches2026": { "Gold": 3, "Silver": 5, "Bronze": 15, "ambiguous": 0, "unmatched": 0 },
+    "medals2025Inferred": 0,
+    "restrictedOriginalsOrRowsInGit": false
+  },
+  "frozenPrivateDraftSha256": "7eee6d3d2555ba3b39721421e66df971440c64c711877e59b29a2f077dbff4fd",
+  "dryRun": {
+    "B": { "createCompetitions": 2, "existingUnchanged": 13, "expectedTotal": 15, "standingsActions": 0 },
+    "C": { "conditionalOnVerifiedBParentUuids": true, "createDraftSets": 2, "draftRows": 77, "published": false },
+    "D": { "authorized": false, "requiresSeparateOwnerApproval": true },
+    "migrationsRequired": 0
+  },
+  "qa": {
+    "environment": "Isolated Free-plan Supabase and loopback production build; no production writes",
+    "applicationRegressionsPassed": 306,
+    "sqlSecurityAssertionsPassed": 198,
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "productionBuild": "PASS",
+    "existingMetadataSqlImportReplayRollback": "PASS",
+    "authenticatedKazakhstanImportReadback": { "sets": 2, "rows": 77, "metadataReplaySkipped": 15, "rowChecksAcrossViews": 308 },
+    "duplicateRowDenied": "23505",
+    "failedRequestAtomicity": "PASS",
+    "draftPrivacyAndMemberPublicationDenial": "PASS",
+    "isolatedPublishedRowsAndHiddenDraftControl": "PASS",
+    "kazakhstanBrowserViews": 8,
+    "allEditionBrowserJourneys": 60,
+    "internalTaskPageChecks": 96,
+    "editionsTested": 15,
+    "largerSyntheticStandings": "125 published rows, hidden draft; pagination/search/awards/ties/zero/missing/stages PASS",
+    "sharedPremiumMatrixViews": 24,
+    "desktopMobileLightDarkKeyboardReducedMotion200Percent": "PASS",
+    "realAuthProgressXpUndoNewSessionOwnerOnlyRls": "PASS; two ordinary accounts and one admin",
+    "staticLearnPages": 87,
+    "staticLearnTopics": 85,
+    "learnCacheHitCookieQueryRscAndPrivateDashboard": "PASS",
+    "ownedIsolatedFixturesRemoved": true,
+    "diffCheck": "PASS"
+  },
+  "limitations": [
+    "2025 May 3–5 is an owner-reported programme window, not independently verified contest dates; Batch B must explicitly accept the caveat or use corrected organizer dates.",
+    "2025 exact final task URLs and medal labels remain unverified; only verified qualification task materials are linked.",
+    "38/40 and 39/40 coverage differences are explicit; provided standings are not reconstructed complete rosters.",
+    "Full encrypted backup integrity is verified but its October 14 snapshot is outdated; restore failed atomically because supabase_vault 0.3.1 was unavailable. Full recovery remains unverified.",
+    "New guide content requires its own reviewed code release; metadata creation, draft import and publication remain three separately authorized production batches.",
+    "Isolated QA publication is not production publication."
+  ]
+}

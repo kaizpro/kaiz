@@ -13,7 +13,7 @@ const service=createClient(api.href,process.env.KAIZ_QA_SERVICE_KEY,options),ano
 const read=async p=>JSON.parse(await readFile(p,'utf8'));
 const guides=await read('content/competitions/edition-guides.json');
 const batch=preparePriorityEditionRelease(await read('content/competitions/2026-10-19/release-catalog.json'),await read('content/competitions/2026-10-17/publication-manifest.json'),await read('content/competitions/2026-10-12/ready-batch.json'),await read('content/competitions/2026-10-23/production-snapshot.json')).batch;
-const held=await read('content/competitions/2026-10-19/kazakhstan-metadata-review.json');
+const held=await read('content/competitions/2026-10-25/metadata-batch.json');
 const forms=[...batch.competitions,...held.competitions].map(e=>e.form);
 const check=r=>{if(r.error)throw Object.assign(Error('Isolated QA request failed'),{code:r.error.code});return r.data;};
 const ids=[],errors=[];let browser,views=0,taskDetails=0;

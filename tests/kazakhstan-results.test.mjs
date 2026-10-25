@@ -61,9 +61,9 @@ test("Existing strict planner rehearses all 77 rows, no-op replay and conflict r
   const [a, b] = fixtures(), p = prepareKazakhstanStandings(a, b, permission);
   const { prepareContentPlan } = loadContentModule();
   // Synthetic inventory for validation only. Not a production inventory or date verification.
-  const snapshot = { version: 1, checkedAt: "2026-10-19", scope: "admin_complete",
+  const snapshot = { version: 1, checkedAt: "2026-10-25", scope: "admin_complete",
     competitions: metadata.competitions.map((c, i) => ({ id: `91000000-0000-4000-8000-${String(i + 1).padStart(12, "0")}`, editionKey: c.editionKey, form: c.form })), resultSets: [] };
-  const batch = { version: 1, checkedAt: "2026-10-19", sources: p.sources, competitions: [], resultSets: p.resultSets };
+  const batch = { version: 1, checkedAt: "2026-10-25", sources: p.sources, competitions: [], resultSets: p.resultSets };
   const first = prepareContentPlan(batch, snapshot);
   assert.equal(first.errors.length, 0, JSON.stringify(first.errors));
   assert.equal(first.actions.filter(a => a.action === "create_draft_set").length, 2);
