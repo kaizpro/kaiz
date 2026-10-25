@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-25",
+  "sources": [
+    {
+      "id": "kz-2025-owner-confirmed",
+      "url": "https://dsml.kz/ru/news/d6e58068-8ad0-4f7e-b536-51fa8389b0d9",
+      "checkedAt": "2026-10-25",
+      "status": "verified",
+      "fields": [
+        "event identity",
+        "organizer",
+        "owner-confirmed original standings provenance"
+      ],
+      "notes": "Owner confirms direct organizer originals, use for selection/medals, and permission for KAIZ public names, ranks and scores. Private originals remain private. Production execution requires separate authorization."
+    },
+    {
+      "id": "kz-2026-owner-confirmed",
+      "url": "https://dsml.kz/ru/news/87047a67-d53a-409e-9ed5-eb32341485d7",
+      "checkedAt": "2026-10-25",
+      "status": "verified",
+      "fields": [
+        "event identity",
+        "organizer",
+        "owner-confirmed original standings provenance"
+      ],
+      "notes": "Owner confirms direct organizer originals, use for selection/medals, and permission for KAIZ public names, ranks and scores. Private originals remain private. Production execution requires separate authorization."
+    }
+  ],
+  "competitions": [
+    {
+      "editionKey": "ai-olymp-kazakhstan-2025",
+      "year": 2025,
+      "sourceIds": [
+        "kz-2025-owner-confirmed"
+      ],
+      "dateScope": "Owner-reported May 3–5 programme; exact contest dates unverified",
+      "notes": "Authoritative organizer table: all 38 provided entries, not a reconstructed 40-person roster. May 3–5 is an owner-reported programme, not independently verified contest dates. Original remains private. No medals inferred.",
+      "form": {
+        "title": "AI Olymp Kazakhstan 2025",
+        "slug": "ai-olymp-kazakhstan-2025",
+        "description": "First Republican AI Olymp for Kazakhstan school students at Astana IT University, organized by the Kazakhstan Competitive Programming Federation and DSML.KZ. The organizer reports 40 finalists; the authoritative supplied final table has 38 entries, including remote-stage and two contest-day scores. All rows, including highlighted rows, are retained. Results supported national training-camp selection. May 3–5 is the owner-reported programme window, not independently verified contest dates. No medals inferred.",
+        "organizer": "Kazakhstan Competitive Programming Federation and DSML.KZ",
+        "officialWebsite": "https://dsml.kz/ru/news/d6e58068-8ad0-4f7e-b536-51fa8389b0d9",
+        "registrationUrl": "",
+        "startDate": "2025-05-03",
+        "endDate": "2025-05-05",
+        "registrationDeadline": "",
+        "city": "Astana",
+        "country": "Kazakhstan",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "School students in grades 9–12 selected through the national qualification process.",
+        "tags": "Olympiad, AI Olymp, Kazakhstan, Final",
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "ai-olymp-kazakhstan",
+          "year": 2025,
+          "sourceNotes": "Authoritative organizer table: all 38 provided entries, not a reconstructed 40-person roster. May 3–5 is an owner-reported programme, not independently verified contest dates. Original remains private. No medals inferred.",
+          "expectedStages": [
+            {
+              "name": "Final standings (includes remote stage)",
+              "availability": "NOT_YET_PUBLISHED"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "editionKey": "ai-olymp-kazakhstan-2026",
+      "year": 2026,
+      "sourceIds": [
+        "kz-2026-owner-confirmed"
+      ],
+      "dateScope": "Official contest rounds April 11–12; no travel dates inferred",
+      "notes": "April 11–12 contest rounds verified by DSML. All 39 provided entries retained against 40 qualifiers. Original workbook and sharing URL remain private. Medals require reviewed name matches to the public announcement.",
+      "form": {
+        "title": "AI Olymp Kazakhstan 2026",
+        "slug": "ai-olymp-kazakhstan-2026",
+        "description": "Republican AI Olymp at Astana IT University, Astana. Official competition rounds: April 11–12, 2026. Forty students qualified; the authoritative provided final workbook contains 39 entries. The public award list names 3 Gold, 5 Silver and 15 Bronze recipients, individually matched to original workbook names. Twelve students were invited to a training camp for selection of an eight-person national team. Qualification standings are not supplied.",
+        "organizer": "Kazakhstan Competitive Programming Federation",
+        "officialWebsite": "https://dsml.kz/ru/news/87047a67-d53a-409e-9ed5-eb32341485d7",
+        "registrationUrl": "",
+        "startDate": "2026-04-11",
+        "endDate": "2026-04-12",
+        "registrationDeadline": "",
+        "city": "Astana",
+        "country": "Kazakhstan",
+        "format": "offline",
+        "status": "completed",
+        "category": "Machine Learning",
+        "eligibility": "School students selected through the national qualification process.",
+        "tags": "Olympiad, AI Olymp, Kazakhstan, Final",
+        "verified": false,
+        "presentation": {
+          "seriesSlug": "ai-olymp-kazakhstan",
+          "year": 2026,
+          "sourceNotes": "April 11–12 contest rounds verified by DSML. All 39 provided entries retained against 40 qualifiers. Original workbook and sharing URL remain private. Medals require reviewed name matches to the public announcement.",
+          "expectedStages": [
+            {
+              "name": "Final standings",
+              "availability": "NOT_YET_PUBLISHED"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "resultSets": []
+}

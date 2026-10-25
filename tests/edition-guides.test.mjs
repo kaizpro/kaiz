@@ -13,8 +13,8 @@ test('15 public guides reuse approved identities without any standings or restri
  const original=JSON.parse(read('content/competitions/2026-10-19/release-catalog.json'));
  assert.deepEqual(data.map(e=>e.slug).sort(),original.editions.map(e=>e.editionId).sort());
  assert.equal(new Set(data.map(e=>e.slug)).size,15);
- assert.equal(data.flatMap(e=>e.tasks).filter(t=>t.url&&t.id.startsWith('source-')).length,27,'All 27 existing links preserved');
- assert.equal(data.flatMap(e=>e.tasks).filter(t=>t.url).length,45,'18 verified individual sources added');
+ assert.equal(data.flatMap(e=>e.tasks).filter(t=>t.url&&t.id.startsWith('source-')).length,28,'27 existing links plus verified Kazakhstan qualification collection');
+ assert.equal(data.flatMap(e=>e.tasks).filter(t=>t.url).length,47,'Existing 45 links retained plus two verified organizer task sources');
  assert.ok(!JSON.stringify(data).includes('docs.google.com'));
  for(const entry of data){assert.equal(editionGuideSchema.safeParse(entry).success,true);assert.ok(!Object.hasOwn(entry,'rows'));}
  assert.equal(getEditionGuide('__proto__'),undefined);
@@ -38,11 +38,17 @@ test('unsafe sources, private sheet URLs, duplicate task identities and inconsis
  assert.equal(editionGuideSchema.safeParse({...base,tasks:[base.tasks[0],base.tasks[0]]}).success,false);
  assert.equal(editionGuideSchema.safeParse({...base,tasks:[{...base.tasks[0],url:null}]}).success,false);
 });
-test('Kazakhstan metadata does not imply final-version approval and no named IOAI rows are imported',()=>{
+test('Kazakhstan organizer authority and coverage are explicit; no named IOAI rows are imported',()=>{
  for(const year of [2025,2026]){
   const entry=getEditionGuide('ai-olymp-kazakhstan-'+year);
-  assert.equal(entry.results.length,0);assert.match(entry.summary,/confirmation/);
+  assert.equal(entry.results.length,0);assert.match(entry.summary,/authoritative organizer-supplied/);
   assert.equal(entry.statistics[0].participants,40);assert.equal(entry.statistics[0].gold,undefined);
  }
+ const kz25=getEditionGuide('ai-olymp-kazakhstan-2025'),kz26=getEditionGuide('ai-olymp-kazakhstan-2026');
+ assert.equal(kz25.statistics[1].participants,38);assert.equal(kz25.statistics[1].gold,undefined);
+ assert.equal(kz26.statistics[1].participants,39);assert.deepEqual([kz26.statistics[1].gold,kz26.statistics[1].silver,kz26.statistics[1].bronze],[3,5,15]);
+ assert.match(kz26.statistics[1].population,/table only/);
+ assert.deepEqual(Array.from(kz26.tasks,t=>t.day),[1,2,2]);
+ assert.ok(kz26.tasks.every(t=>t.access==='invitation_required'));
  for(const year of [2025,2026])assert.equal(getEditionGuide('ioai-'+year).results.length,1);
 });

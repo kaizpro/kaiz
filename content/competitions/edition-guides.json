@@ -512,64 +512,97 @@
   },
   {
     "slug": "ai-olymp-kazakhstan-2025",
-    "checkedAt": "2026-10-23",
-    "summary": "Kazakhstan’s first Republican AI Olymp final was hosted at Astana IT University for school students in grades 9–12. Government reporting describes two five-hour rounds after preliminary selection. The supplied standings’ exact version and the owner-reported May 3–5 programme still require organizer-original confirmation.",
-    "structure": "Public retrospective establishes the national event and organizers CPFED/DSML.KZ at Astana IT University. Exact two-day dates and identity of the uncaptioned screenshot still require organizer evidence.",
+    "checkedAt": "2026-10-25",
+    "summary": "Kazakhstan’s first Republican AI Olymp brought school students to Astana IT University. The organizer reports 40 finalists; the authoritative organizer-supplied final table contains 38 entries, including all highlighted rows. Remote-stage and two contest-day scores are retained. Missing entries and medals are not inferred.",
+    "structure": "Qualification, a homework Kaggle competition, then two in-person contest days in Astana. Results supported national training-camp selection. May 3–5 is the owner-reported 2025 programme window, not independently verified contest dates; the May 5 recap timestamp is not an event schedule.",
     "sources": [
-      "https://www.gov.kz/memleket/entities/maidd/press/news/details/989919"
+      "https://dsml.kz/ru/news/d6e58068-8ad0-4f7e-b536-51fa8389b0d9",
+      "https://dsml.kz/articles/ai-olympiad-qualification-results",
+      "https://astanahub.com/en/article/v-astane-zavershilas-pervaia-respublikanskaia-olimpiada-po-iskusstvennomu-intellektu-ai-olymp"
     ],
     "statistics": [
       {
         "stage": "National final",
-        "population": "Finalists reported by the government; not the 38-row supplied image",
+        "population": "40 finalists reported by the organizer; the supplied final table has 38 entries, not a reconstructed 40-person roster",
         "unit": "finalists",
         "participants": 40,
-        "source": "https://www.gov.kz/org/maidd/press/news/details/989919",
-        "checkedAt": "2026-10-23",
-        "method": "Official organizer report; no inferred missing awards."
+        "source": "https://dsml.kz/ru/news/d6e58068-8ad0-4f7e-b536-51fa8389b0d9",
+        "checkedAt": "2026-10-25",
+        "method": "Organizer recap; no medals inferred from screenshot colours."
+      },
+      {
+        "stage": "Provided final standings",
+        "population": "All 38 supplied entries, including highlighted red rows; not all 40 announced finalists",
+        "unit": "contestants",
+        "participants": 38,
+        "source": "https://dsml.kz/ru/news/d6e58068-8ad0-4f7e-b536-51fa8389b0d9",
+        "checkedAt": "2026-10-25",
+        "method": "Organizer original reconciled cell-by-cell; public recap provides attribution, not a downloadable score file."
       }
     ],
     "results": [],
     "tasks": [
       {
         "id": "source-1",
-        "title": "2025 official tasks not verified",
-        "stage": "Unconfirmed",
+        "title": "Qualification tasks and solutions",
+        "stage": "Qualification",
         "day": null,
         "kind": "collection",
-        "url": null,
-        "provenance": "https://www.gov.kz/memleket/entities/maidd/press/news/details/989919",
-        "access": "unavailable"
+        "url": "https://dsml.kz/articles/ai-olympiad-qualification-results",
+        "provenance": "https://dsml.kz/articles/ai-olympiad-qualification-results",
+        "access": "public_materials"
       }
     ]
   },
   {
     "slug": "ai-olymp-kazakhstan-2026",
-    "checkedAt": "2026-10-23",
-    "summary": "The second Republican AI Olymp selected school students for a two-day final in Astana. The supplied Final-labelled standings and owner-reported April 10–13 programme still require organizer-original version confirmation. Permission to display standings does not authorize sharing the original private workbook.",
-    "structure": "Second Round is explicitly named on CPFED's platform, April 12. Do not equate it with the Final-labelled workbook or infer a qualification table from a task heading. Exact full event dates remain unresolved.",
+    "checkedAt": "2026-10-25",
+    "summary": "The Republican AI Olymp final took place at Astana IT University on April 11–12, 2026. Forty students qualified; the authoritative organizer-supplied final table contains 39 entries. All 23 published awardees are matched by name to this table: 3 Gold, 5 Silver and 15 Bronze.",
+    "structure": "Online selection followed by two final contest rounds: one task on April 11 and two on April 12. Twelve students were invited to a training camp, from which eight would form the national team. The 39-row table is the authoritative provided version, not a claim that all 40 qualifiers are listed. Qualification standings are not supplied.",
     "sources": [
-      "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round",
-      "https://www.gov.kz/memleket/entities/astana/press/news/details/1199320"
+      "https://cpfed.kz/en/news/ai-olymp-2026",
+      "https://dsml.kz/ru/news/87047a67-d53a-409e-9ed5-eb32341485d7"
     ],
     "statistics": [
       {
         "stage": "National final selection",
-        "population": "Students invited to Astana according to the government; not the 39-row workbook",
+        "population": "40 qualified students reported by the federation; not the number of rows in the supplied workbook",
         "unit": "qualifiers",
         "participants": 40,
-        "source": "https://www.gov.kz/org/astana/press/news/details/1199320",
-        "checkedAt": "2026-10-23",
-        "method": "Official organizer report; no inferred missing awards."
+        "source": "https://cpfed.kz/en/news/ai-olymp-2026",
+        "checkedAt": "2026-10-25",
+        "method": "Federation recap; qualifiers are distinct from supplied-table entries."
+      },
+      {
+        "stage": "Provided final standings",
+        "population": "39 supplied entries, including all 23 named medal recipients. Rates describe this table only, not all 40 qualifiers",
+        "unit": "contestants",
+        "participants": 39,
+        "gold": 3,
+        "silver": 5,
+        "bronze": 15,
+        "source": "https://dsml.kz/ru/news/87047a67-d53a-409e-9ed5-eb32341485d7",
+        "checkedAt": "2026-10-25",
+        "method": "Public organizer award list explicitly matched by name to original workbook; never inferred from rank or ties."
       }
     ],
     "results": [],
     "tasks": [
       {
+        "id": "first-round-brotherhood",
+        "title": "Jimmy and Aibek brotherhood",
+        "stage": "First Round · April 11",
+        "day": 1,
+        "kind": "task",
+        "url": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-first-round/1/view",
+        "provenance": "https://dsml.kz/ru/news/87047a67-d53a-409e-9ed5-eb32341485d7",
+        "access": "invitation_required"
+      },
+      {
         "id": "source-1",
         "title": "Zhuldyzzhan's Detective Agency",
-        "stage": "Second Round",
-        "day": null,
+        "stage": "Second Round · April 12",
+        "day": 2,
         "kind": "task",
         "url": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round/1/view",
         "provenance": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round",
@@ -578,8 +611,8 @@
       {
         "id": "source-2",
         "title": "Forgotten labels",
-        "stage": "Second Round",
-        "day": null,
+        "stage": "Second Round · April 12",
+        "day": 2,
         "kind": "task",
         "url": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round/2/view",
         "provenance": "https://judge.nitro-ai.org/competitions/cpfed/ai-olymp-2026-second-round",
