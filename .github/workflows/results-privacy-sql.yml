@@ -1,0 +1,33 @@
+name: Results SQL security
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'supabase/**'
+      - 'app/admin/competitions/**/results/**'
+      - 'tests/competition-presentation.postgres.mjs'
+      - 'tests/fixtures/supabase-postgres-bootstrap.sql'
+      - 'scripts/testing/prepare-postgres-pgtap.mjs'
+      - '.github/workflows/results-privacy-sql.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  sql-security:
+    name: Disposable PostgreSQL security assertions
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Install isolated PostgreSQL runtime (no hosted credentials)
+        run: npm install --prefix work/release-postgres --no-audit --no-fund embedded-postgres@17.7.0-beta.16 esbuild@0.25.12
+      - run: node scripts/testing/prepare-postgres-pgtap.mjs
+      - name: Apply canonical migrations to fresh loopback database and test all policies
+        run: node tests/competition-presentation.postgres.mjs

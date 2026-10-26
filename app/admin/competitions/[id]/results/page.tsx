@@ -5,8 +5,8 @@ import { requireAdmin } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ResultForm, ResultSetForm, type ResultFormValue, type ResultSetFormValue } from "@/components/admin/result-forms";
-import { createResult, createResultSet, deleteResult, deleteResultSet, updateResult, updateResultSet } from "./actions";
+import { ResultForm, ResultSetForm, ResultsPublicationForm, type ResultFormValue, type ResultSetFormValue } from "@/components/admin/result-forms";
+import { createResult, createResultSet, deleteResult, deleteResultSet, updateResult, updateResultSet, setResultsPublication } from "./actions";
 
 type AdminEntry = ResultFormValue & { id: string };
 type AdminResultSet = ResultSetFormValue & { id: string; competition_results: AdminEntry[] };
@@ -16,12 +16,13 @@ export default async function CompetitionResultsAdmin({ params, searchParams }: 
   const { id } = await params;
   const query = await searchParams;
   const supabase = await createClient();
-  const [{ data: competition }, { data, error }] = await Promise.all([
+  const [{ data: competition }, { data, error }, { data: audits, error: auditError }] = await Promise.all([
     supabase.from("competitions").select("id,title,slug").eq("id", id).maybeSingle(),
     supabase.from("competition_result_sets").select("id,name,status,source,source_label,source_url,published,presentation,competition_results(presentation,id,result_set_id,participant_type,participant_name,rank,score,score_display,country_code,award,result_status,external_participant_id,profiles:profiles!competition_results_user_id_fkey(username))").eq("competition_id", id).order("created_at", { ascending: false }).order("rank", { referencedTable: "competition_results", ascending: true, nullsFirst: false }),
+    supabase.rpc("get_competition_result_audits", { p_competition_id: id }),
   ]);
   if (!competition) notFound();
-  if (error) throw new Error("Unable to load result management.");
+  if (error || auditError) throw new Error("Unable to load result management. Check the results privacy migration.");
   const resultSets = (data ?? []) as unknown as AdminResultSet[];
   const entries = resultSets.flatMap((set) => set.competition_results);
   const editingSet = resultSets.find((set) => set.id === query.editSet);
@@ -34,6 +35,13 @@ export default async function CompetitionResultsAdmin({ params, searchParams }: 
   return <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
     <Button asChild variant="ghost" size="sm"><Link href="/admin"><ArrowLeft className="size-4"/>Admin competitions</Link></Button>
     <header className="mt-5 flex flex-col gap-4 border-b pb-6 sm:flex-row sm:items-end sm:justify-between"><div><p className="micro-label text-primary">Restricted · Results</p><h1 className="mt-2 text-3xl font-bold">{competition.title}</h1><p className="mt-2 text-sm text-muted-foreground">Publish official or provisional standings without changing the competition record.</p></div><Button asChild variant="outline"><Link href={`/competitions/${competition.slug}`}>Public page<ExternalLink className="size-4"/></Link></Button></header>
+
+    {resultSets.length > 0 && <Card className="mt-6 space-y-4 p-5">
+      <h2 className="font-bold">Publication controls</h2>
+      <p className="text-sm text-muted-foreground">Changes only the selected set’s publication state. Participant data and attribution are untouched.</p>
+      {resultSets.map((set) => <div key={set.id} className="flex flex-wrap items-center justify-between gap-3"><span className="text-sm">{set.name}</span><ResultsPublicationForm action={setResultsPublication.bind(null, id)} resultSetId={set.id} published={set.published}/></div>)}
+      <details><summary className="cursor-pointer text-sm font-medium">Internal audit attribution (admin only)</summary><div className="mt-3 overflow-x-auto"><table className="w-full text-left font-mono text-xs"><thead><tr><th>Entity / UUID</th><th>Created by</th><th>Updated by</th></tr></thead><tbody>{(audits as { entity: string; id: string; created_by: string | null; updated_by: string | null }[] ?? []).map((audit) => <tr key={`${audit.entity}-${audit.id}`}><td className="whitespace-nowrap py-2">{audit.entity} / {audit.id}</td><td className="px-3">{audit.created_by ?? "—"}</td><td>{audit.updated_by ?? "—"}</td></tr>)}</tbody></table></div></details>
+    </Card>}
 
     <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_22rem]">
       <main className="space-y-6"><div className="flex items-center justify-between"><div><p className="micro-label text-muted-foreground">Standings</p><h2 className="mt-1 text-xl font-bold">Current result rows</h2></div>{editingEntry && <Button asChild variant="outline" size="sm"><Link href={`/admin/competitions/${id}/results`}><Plus className="size-4"/>Add instead</Link></Button>}</div>

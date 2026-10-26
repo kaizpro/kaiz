@@ -7,7 +7,7 @@ import { createClient } from "@/lib/supabase/server";
 import { competitionResultSchema, resultSetSchema } from "@/lib/validation/competition-result";
 
 export type AdminResultState = { error?: string; success?: string };
-const uuid = z.string().uuid();
+const uuid = z.string().uuid().toLowerCase();
 
 async function refreshCompetition(competitionId: string) {
   const supabase = await createClient();
@@ -32,19 +32,18 @@ function resultSetRow(data: z.infer<typeof resultSetSchema>) {
     source: data.source,
     source_label: data.sourceLabel || null,
     source_url: data.sourceUrl || null,
-    published: data.published,
-    verified_at: data.status === "official" && data.published ? new Date().toISOString() : null,
   };
 }
 
 export async function createResultSet(competitionId: string, _: AdminResultState, formData: FormData): Promise<AdminResultState> {
   const user = await requireAdmin();
+  if (formData.has("published")) return { error: "Use the separate publication control." };
   const validCompetitionId = uuid.parse(competitionId);
   const parsed = resultSetSchema.safeParse(Object.fromEntries(formData));
   if (!parsed.success) return { error: parsed.error.issues[0]?.message };
   const supabase = await createClient();
   const { error } = await supabase.from("competition_result_sets").insert({
-    ...resultSetRow(parsed.data), competition_id: validCompetitionId, created_by: user.id, updated_by: user.id,
+    ...resultSetRow(parsed.data), published: false, verified_at: null, competition_id: validCompetitionId, created_by: user.id, updated_by: user.id,
   });
   if (error) return { error: error.message };
   await refreshCompetition(validCompetitionId);
@@ -53,6 +52,7 @@ export async function createResultSet(competitionId: string, _: AdminResultState
 
 export async function updateResultSet(competitionId: string, resultSetId: string, _: AdminResultState, formData: FormData): Promise<AdminResultState> {
   const user = await requireAdmin();
+  if (formData.has("published")) return { error: "Use the separate publication control." };
   const validCompetitionId = uuid.parse(competitionId);
   const validResultSetId = uuid.parse(resultSetId);
   const parsed = resultSetSchema.safeParse(Object.fromEntries(formData));
@@ -61,10 +61,32 @@ export async function updateResultSet(competitionId: string, resultSetId: string
   const row = resultSetRow(parsed.data);
   const { data, error } = await supabase.from("competition_result_sets").update({ ...row, updated_by: user.id }).eq("id", validResultSetId).eq("competition_id", validCompetitionId).select("id").single();
   if (error || !data) return { error: error?.message || "Result set not found." };
-  const { error: entryError } = await supabase.from("competition_results").update({ verified: row.status === "official" && row.published, updated_by: user.id }).eq("result_set_id", validResultSetId);
-  if (entryError) return { error: entryError.message };
   await refreshCompetition(validCompetitionId);
   return { success: "Result set updated." };
+}
+
+const publicationSchema = z.object({
+  resultSetIds: z.array(uuid).min(1).max(50).refine((ids) => new Set(ids).size === ids.length, "Duplicate result-set UUID"),
+  published: z.enum(["true", "false"]),
+}).strict();
+
+export async function setResultsPublication(competitionId: string, _: AdminResultState, formData: FormData): Promise<AdminResultState> {
+  await requireAdmin();
+  const validCompetitionId = uuid.parse(competitionId);
+  const parsed = publicationSchema.safeParse({ resultSetIds: formData.getAll("resultSetId"), published: formData.get("published") });
+  if (!parsed.success) return { error: parsed.error.issues[0]?.message };
+  const supabase = await createClient();
+  const { data, error } = await supabase.rpc("set_competition_results_publication", {
+    p_competition_id: validCompetitionId, p_result_set_ids: parsed.data.resultSetIds, p_published: parsed.data.published === "true",
+  });
+  const returned = z.array(z.object({ id: uuid, published: z.boolean() })).safeParse(data);
+  if (error || !returned.success || returned.data.length !== parsed.data.resultSetIds.length
+    || new Set(returned.data.map((row) => row.id)).size !== parsed.data.resultSetIds.length
+    || returned.data.some((row) => !parsed.data.resultSetIds.includes(row.id) || row.published !== (parsed.data.published === "true"))) {
+    return { error: "Publication failed. Recheck the result sets before retrying." };
+  }
+  await refreshCompetition(validCompetitionId);
+  return { success: parsed.data.published === "true" ? "Selected result sets published." : "Selected result sets withdrawn." };
 }
 
 export async function deleteResultSet(competitionId: string, formData: FormData) {

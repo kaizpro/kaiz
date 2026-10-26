@@ -7,11 +7,11 @@ import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 const { build } = await import(pathToFileURL(resolve(process.env.KAIZ_ESBUILD_MODULE)));
 const { chromium } = await import(pathToFileURL(resolve(process.env.KAIZ_PLAYWRIGHT_MODULE)));
-const bundle = await build({ entryPoints: ["tests/fixtures/edition-release-qa.tsx"], bundle: true, platform: "browser", format: "esm", write: false,
+const bundle = await build({ entryPoints: ["tests/fixtures/edition-release-qa.tsx"], bundle: true, platform: "browser", format: "esm", write: false, outdir: "work/edition-release/bundle",
   define: { "process.env.NODE_ENV": '"production"', "process.env": "{}" } });
-const css = readdirSync(".next/static/chunks").filter(f => f.endsWith(".css")).map(f => readFileSync(".next/static/chunks/" + f)).join("\n");
+const css = readdirSync(".next/static/chunks").filter(f => f.endsWith(".css")).map(f => readFileSync(".next/static/chunks/" + f)).join("\n") + "\n" + bundle.outputFiles.filter(f=>f.path.endsWith('.css')).map(f=>f.text).join('\n');
 const server = createServer((req, res) => {
-  if (req.url === "/qa.js") { res.setHeader("Content-Type", "text/javascript"); res.end(bundle.outputFiles[0].contents); }
+  if (req.url === "/qa.js") { res.setHeader("Content-Type", "text/javascript"); res.end(bundle.outputFiles.find(f=>f.path.endsWith('.js')).contents); }
   else if (req.url === "/qa.css") { res.setHeader("Content-Type", "text/css"); res.end(css); }
   else { res.setHeader("Content-Type", "text/html"); res.end('<!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/qa.css"><title>Local content review</title></head><body><div id="qa-root"></div><script type="module" src="/qa.js"></script></body></html>'); }
 });
