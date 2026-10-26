@@ -109,6 +109,15 @@ removed. Normal intentional admin participant editing remains available.
   pass. No shared public layout, Auth, XP or premium style was changed.
 - A focused CI workflow executes the canonical SQL suite against a fresh local
   embedded database without dotenv loading or hosted credentials.
+  Its pgTAP setup uses the pinned distribution's Linux share/postgresql path
+  (Windows retains share/extension); no assertion was removed to fix CI setup.
+
+Separate dependency warnings were detected by `npm audit --omit=dev`: installed
+Next.js is flagged critical/high (GHSA-2464-fhr4-w9xw, GHSA-p3m5-59mp-jv5r,
+GHSA-673q-mjm6-r5xr), and Zod high (GHSA-mrhx-c7xc-m3w5). These are dependency
+advisory matches, not proof every exploit is reachable in KAIZ. They require a
+separate upgrade/reachability review before beta; this focused PR does not modify
+package.json/lockfile or claim those findings are resolved.
 
 These are real PostgreSQL privileges/RLS tests and real component-browser
 interactions, **not a running isolated GoTrue/PostgREST/GraphQL service test** or

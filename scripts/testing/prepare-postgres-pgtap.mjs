@@ -5,7 +5,10 @@ import { createHash } from "node:crypto";
 import { access, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 const platform = process.platform === "win32" ? "windows" : process.platform;
-const destination = resolve(`work/release-postgres/node_modules/@embedded-postgres/${platform}-${process.arch}/native/share/extension`);
+// The pinned Linux distribution installs into share/postgresql/extension;
+// Windows installs into share/extension. Do not write outside the test runtime.
+const share = process.platform === "linux" ? "share/postgresql" : "share";
+const destination = resolve(`work/release-postgres/node_modules/@embedded-postgres/${platform}-${process.arch}/native/${share}/extension`);
 assert.ok(destination.startsWith(resolve("work/release-postgres/node_modules") + "/") || destination.startsWith(resolve("work/release-postgres/node_modules") + "\\"));
 await access(destination);
 const source = "https://raw.githubusercontent.com/theory/pgtap/v1.3.3/sql/pgtap.sql.in";
