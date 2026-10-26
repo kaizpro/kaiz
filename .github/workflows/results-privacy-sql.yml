@@ -4,6 +4,8 @@ on:
   pull_request:
     branches: [main]
     paths:
+      - 'package.json'
+      - 'package-lock.json'
       - 'supabase/**'
       - 'app/admin/competitions/**/results/**'
       - 'tests/competition-presentation.postgres.mjs'
