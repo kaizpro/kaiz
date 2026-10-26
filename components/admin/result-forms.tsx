@@ -32,10 +32,21 @@ export function ResultSetForm({ action, value }: { action: FormAction; value?: R
     <label className="text-sm font-medium">Source label<Input className={field} name="sourceLabel" defaultValue={value?.source_label ?? ""} placeholder="e.g. Official organizer"/></label>
     <label className="text-sm font-medium sm:col-span-2">Source URL<Input className={field} name="sourceUrl" type="url" defaultValue={value?.source_url ?? ""} placeholder="https://…"/></label>
     <label className="text-sm font-medium sm:col-span-2">Stage presentation JSON<Textarea name="presentation" className="mt-2 font-mono text-xs" defaultValue={JSON.stringify(value?.presentation ?? {}, null, 2)}/><span className="mt-2 block text-xs text-muted-foreground">Use availability, coverage, stageLabel, displayOrder, notes and columns. Partial selections are not full standings. See content operations.</span></label>
-    <label className="flex items-center gap-2 text-sm font-medium sm:col-span-2"><input type="checkbox" name="published" value="true" defaultChecked={value?.published ?? false}/> Publish this result set publicly</label>
+    <p className="text-xs text-muted-foreground sm:col-span-2">New sets are drafts. Publication is a separate action and never changes participant rows.</p>
     {state.error && <p role="alert" className="text-sm text-destructive sm:col-span-2">{state.error}</p>}
     {state.success && <p role="status" className="text-sm text-success sm:col-span-2">{state.success}</p>}
     <div className="sm:col-span-2"><Button disabled={pending}>{pending ? "Saving…" : value ? "Update result set" : "Create result set"}</Button></div>
+  </form>;
+}
+
+export function ResultsPublicationForm({ action, resultSetId, published }: { action: FormAction; resultSetId: string; published: boolean }) {
+  const [state, formAction, pending] = useActionState(action, {});
+  return <form action={formAction} className="space-y-2">
+    <input type="hidden" name="resultSetId" value={resultSetId}/>
+    <input type="hidden" name="published" value={published ? "false" : "true"}/>
+    <Button variant="outline" size="sm" disabled={pending}>{pending ? "Saving…" : published ? "Withdraw publication" : "Publish standings"}</Button>
+    {state.error && <p role="alert" className="text-sm text-destructive">{state.error}</p>}
+    {state.success && <p role="status" className="text-sm text-success">{state.success}</p>}
   </form>;
 }
 

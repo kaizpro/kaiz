@@ -45,7 +45,10 @@ function load(file, imports) {
 }
 function environment({ authorized = true, belongs = true, published = false, databaseError = null } = {}) {
   const calls = [];
-  const client = { from(table) {
+  const client = { rpc(name, payload) {
+    calls.push({ operation: "rpc", name, payload });
+    return Promise.resolve({ data: databaseError ? null : payload.p_result_set_ids.map(id => ({ id, published: payload.p_published })), error: databaseError });
+  }, from(table) {
     let operation = "read", payload; const filters = [];
     const query = {
       select() { return query; }, eq(k, v) { filters.push([k, v]); return query; },
@@ -74,14 +77,53 @@ const form = (values) => { const data = new FormData(); for (const [k, v] of Obj
 const setForm = () => form({ name: "Official selected rows", status: "official", source: "official_import", sourceLabel: "Organizer", sourceUrl: "https://example.org/results" });
 const rowForm = (extra = {}) => form({ resultSetId: setId, participantType: "individual", participantName: "Public contestant", rank: "1", score: "0", scoreDisplay: "0.0000", countryCode: "KZ", award: "", resultStatus: "ranked", ...extra });
 
-test("all six result write actions require an admin before touching the database", async () => {
+test("all result write actions require an admin before touching the database", async () => {
   const { actions, calls } = environment({ authorized: false });
   for (const call of [
     () => actions.createResultSet(competitionId, {}, setForm()), () => actions.updateResultSet(competitionId, setId, {}, setForm()),
     () => actions.deleteResultSet(competitionId, form({ resultSetId: setId })), () => actions.createResult(competitionId, {}, rowForm()),
     () => actions.updateResult(competitionId, resultId, {}, rowForm()), () => actions.deleteResult(competitionId, form({ resultId })),
+    () => actions.setResultsPublication(competitionId, {}, form({ resultSetId: setId, published: "true" })),
   ]) await assert.rejects(call, /admin required/);
   assert.equal(calls.length, 0);
+});
+
+test("publication is separate from set metadata editing and never updates participant rows", async () => {
+  const { actions, calls } = environment();
+  const forged = setForm(); forged.set("published", "true");
+  assert.ok((await actions.createResultSet(competitionId, {}, forged)).error);
+  assert.ok((await actions.updateResultSet(competitionId, setId, {}, forged)).error);
+  assert.equal(calls.length, 0);
+  assert.ok((await actions.updateResultSet(competitionId, setId, {}, setForm())).success);
+  const updates=calls.filter(c=>c.operation==='update');assert.equal(updates.length,1);
+  assert.equal(updates[0].table,'competition_result_sets');
+  for(const k of ['published','verified_at'])assert.equal(Object.hasOwn(updates[0].payload,k),false);
+  assert.equal(calls.some(c=>c.table==='competition_results'),false);
+});
+
+test("publication validates exact UUID targets and boolean strings before any database call", async () => {
+  const { actions, calls } = environment();
+  for(const values of [{published:'true'},{resultSetId:'bad',published:'true'},{resultSetId:setId,published:'false-ish'}])assert.ok((await actions.setResultsPublication(competitionId,{},form(values))).error);
+  const repeated=form({resultSetId:setId,published:'true'});repeated.append('resultSetId',setId);
+  assert.ok((await actions.setResultsPublication(competitionId,{},repeated)).error);
+  await assert.rejects(actions.setResultsPublication('bad',{},form({resultSetId:setId,published:'true'})));
+  assert.equal(calls.length,0);
+});
+
+test("publication sends only scoped targets and publication state to a non-elevated RPC",async()=>{
+ const {actions,calls}=environment();
+ for(const published of ['true','false'])assert.ok((await actions.setResultsPublication(competitionId,{},form({resultSetId:setId,published,score:'999',updated_by:'forged'}))).success);
+ const writes=calls.filter(c=>c.operation==='rpc');assert.equal(writes.length,2);
+ assert.equal(writes[0].name,'set_competition_results_publication');
+ assert.deepEqual(JSON.parse(JSON.stringify(writes[0].payload)),{p_competition_id:competitionId,p_result_set_ids:[setId],p_published:true});
+ assert.equal(writes[1].payload.p_published,false);
+ assert.equal(calls.some(c=>['insert','update','delete'].includes(c.operation)),false);
+});
+
+test("publication errors are not retried or followed by participant updates",async()=>{
+ const {actions,calls}=environment({databaseError:{message:'denied'}});
+ assert.match((await actions.setResultsPublication(competitionId,{},form({resultSetId:setId,published:'true'}))).error,/Recheck/);
+ assert.equal(calls.length,1);assert.equal(calls[0].operation,'rpc');
 });
 test("set creation without the published checkbox is draft and timestamps/actor are server-derived", async () => {
   const { actions, calls } = environment(); assert.ok((await actions.createResultSet(competitionId, {}, setForm())).success);
@@ -129,6 +171,7 @@ test("public data query explicitly filters published sets, preserves ties and pu
   let inspected = false;
   const client = new PostgrestClient("https://example.org/rest/v1", { fetch: async (input) => {
     const query = new URL(input).searchParams;
+    assert.doesNotMatch(query.get("select"), /created_by|updated_by|metadata|external_reference|\*/);
     assert.equal(query.get("published"), "eq.true"); assert.equal(query.get("competition_id"), `eq.${competitionId}`);
     assert.match(query.get("competition_results.order"), /rank.asc.nullslast/); inspected = true;
     return new Response("[]", { headers: { "Content-Type": "application/json" } });
