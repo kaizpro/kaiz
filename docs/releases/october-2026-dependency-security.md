@@ -40,6 +40,24 @@ including mobile/light/dark, keyboard, reduced motion and 200% text cases.
 `npm audit` reports zero advisories after the patch, including dev dependencies.
 This is a point-in-time advisory check, not a guarantee against future findings.
 
+Additional production-build browser checks pass for all 40 lesson pages across
+320/375/1280/1440 widths and light/dark themes, with full-row keyboard/pointer
+navigation, 200% text and repeated reduced-motion checks. Premium Roadmaps and
+Strategist pass 40 further page/theme/viewport checks. A small, non-stress Zod
+check confirms oversized bounded arrays fail before visiting their elements.
+
+Real Auth compatibility also passes against the previously approved isolated
+Free-plan Supabase QA project and a localhost **production build**: disposable
+password login, lesson completion, refresh, sign-out/new-session persistence,
+saved XP, undo, replay idempotency, cross-user isolation, anonymous write denial
+and guest Learn. Owned disposable fixtures are removed afterward. An earlier
+development-server browser attempt stalled; it is not counted as a passing
+check or evidence of a production defect. No application/Auth workaround was
+introduced. Google OAuth and email delivery still require post-release owner
+smoke checks; this test does not send confirmation emails or alter provider
+settings. Production's new results-specific API/admin matrix remains a separate
+mandatory post-migration gate, not a claim from these learning/Auth tests.
+
 ## Actual production state: application deployed before database gate
 
 Read-only checks on October 26 found PR #67 already merged by the owner at
