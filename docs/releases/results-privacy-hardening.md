@@ -96,7 +96,7 @@ removed. Normal intentional admin participant editing remains available.
   rows before/after migration and publication. Public original names, scores,
   ranks/ties, awards and original score presentation match in memory. No named
   originals, private URLs, user credentials or row logs are committed.
-- 310 application tests cover Auth/authorization, learning/XP, admin actions,
+- 311 application tests cover Auth/authorization, learning/XP, admin actions,
   original source/award integrity and public loader projections. TypeScript,
   ESLint, production build and diff checks pass.
 - Component browser QA: 60 edition views, 56 stage views, 108 task-link checks;

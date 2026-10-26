@@ -7,7 +7,7 @@ import { createClient } from "@/lib/supabase/server";
 import { competitionResultSchema, resultSetSchema } from "@/lib/validation/competition-result";
 
 export type AdminResultState = { error?: string; success?: string };
-const uuid = z.string().uuid();
+const uuid = z.string().uuid().toLowerCase();
 
 async function refreshCompetition(competitionId: string) {
   const supabase = await createClient();
@@ -66,7 +66,7 @@ export async function updateResultSet(competitionId: string, resultSetId: string
 }
 
 const publicationSchema = z.object({
-  resultSetIds: z.array(z.string().uuid()).min(1).max(50).refine((ids) => new Set(ids).size === ids.length, "Duplicate result-set UUID"),
+  resultSetIds: z.array(uuid).min(1).max(50).refine((ids) => new Set(ids).size === ids.length, "Duplicate result-set UUID"),
   published: z.enum(["true", "false"]),
 }).strict();
 

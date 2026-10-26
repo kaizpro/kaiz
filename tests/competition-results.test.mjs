@@ -125,6 +125,14 @@ test("publication errors are not retried or followed by participant updates",asy
  assert.match((await actions.setResultsPublication(competitionId,{},form({resultSetId:setId,published:'true'}))).error,/Recheck/);
  assert.equal(calls.length,1);assert.equal(calls[0].operation,'rpc');
 });
+
+test("publication normalizes UUID case before duplicate checks and readback validation",async()=>{
+ const {actions,calls}=environment();const target='aa000000-0000-4000-8000-000000000001';
+ assert.ok((await actions.setResultsPublication(competitionId,{},form({resultSetId:target.toUpperCase(),published:'true'}))).success);
+ assert.equal(calls.find(c=>c.operation==='rpc').payload.p_result_set_ids[0],target);
+ const duplicate=form({resultSetId:target,published:'true'});duplicate.append('resultSetId',target.toUpperCase());const n=calls.length;
+ assert.ok((await actions.setResultsPublication(competitionId,{},duplicate)).error);assert.equal(calls.length,n);
+});
 test("set creation without the published checkbox is draft and timestamps/actor are server-derived", async () => {
   const { actions, calls } = environment(); assert.ok((await actions.createResultSet(competitionId, {}, setForm())).success);
   const row = calls.find((c) => c.operation === "insert").payload;
