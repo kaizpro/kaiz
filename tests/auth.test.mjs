@@ -8,13 +8,13 @@ import ts from "typescript";
 const require = createRequire(import.meta.url);
 // Exercise real auth modules with isolated provider responses. No accounts,
 // emails, environment files, credentials or external requests are used.
-function load(relative, mocks = {}) {
+function load(relative, mocks = {}, env = {}) {
   const source = readFileSync(new URL(relative, import.meta.url), "utf8");
   const exports = {};
   vm.runInNewContext(ts.transpileModule(source, {
     compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.ReactJSX },
   }).outputText, {
-    exports, URL, process: { env: {} },
+    exports, URL, process: { env },
     require: (name) => {
       if (Object.hasOwn(mocks, name)) return mocks[name];
       if (name === "./redirects" || name === "@/lib/auth/redirects") return redirects;
@@ -80,6 +80,41 @@ test("production uses Vercel domain fallback; preview does not default to produc
   assert.equal(urls.resolveSiteOrigin({ VERCEL_URL: "deployment.vercel.app" }), "https://deployment.vercel.app");
   assert.equal(urls.resolveSiteOrigin({ NEXT_PUBLIC_VERCEL_URL: "legacy.vercel.app" }), "https://legacy.vercel.app");
 });
+
+const previewEnv = {
+  VERCEL: "1", VERCEL_ENV: "preview", NODE_ENV: "production",
+  NEXT_PUBLIC_SITE_URL: production, VERCEL_PROJECT_PRODUCTION_URL: "kaizpro.com",
+  VERCEL_URL: "kaiz-deployment-team.vercel.app",
+  VERCEL_BRANCH_URL: "kaiz-git-auth-team.vercel.app",
+};
+test("Preview ignores an inherited production site URL and fails closed without deployment identity", () => {
+  assert.equal(urls.resolveSiteOrigin(previewEnv), "https://kaiz-deployment-team.vercel.app");
+  assert.throws(() => urls.resolveSiteOrigin({...previewEnv, VERCEL_URL: undefined}));
+});
+test("Preview preserves the initiating deployment or branch alias only by exact trusted match", () => {
+  for (const origin of ["https://kaiz-deployment-team.vercel.app", "https://kaiz-git-auth-team.vercel.app"]) {
+    assert.equal(urls.resolveAuthOrigin(previewEnv, origin), origin);
+  }
+  assert.equal(urls.resolveAuthOrigin(previewEnv, null), "https://kaiz-deployment-team.vercel.app");
+  for (const origin of [production, "https://evil.invalid", "https://kaiz-other-team.vercel.app",
+    "https://kaiz-deployment-team.vercel.app.evil.invalid", "https://kaiz-deployment-team.vercel.app@evil.invalid",
+    "https://kaiz-deployment-team.vercel.app/path", "http://kaiz-deployment-team.vercel.app", "null", "//evil.invalid"]) {
+    assert.throws(() => urls.resolveAuthOrigin(previewEnv, origin), /Untrusted authentication request origin/);
+  }
+});
+test("production auth never reflects a caller-supplied origin", () => {
+  assert.equal(urls.resolveAuthOrigin({VERCEL_ENV: "production", NEXT_PUBLIC_SITE_URL: production}, "https://evil.invalid"), production);
+});
+test("request-aware server helper reads async headers and checks the actual Preview origin", async () => {
+  for (const origin of ["https://kaiz-git-auth-team.vercel.app", "https://evil.invalid"]) {
+    const helper = load("../lib/auth/origin.ts", {
+      "./urls": urls,
+      "next/headers": {headers: async () => new Headers({origin})},
+    }, previewEnv);
+    if (origin.includes("evil")) await assert.rejects(helper.getAuthOrigin(), /Untrusted authentication request origin/);
+    else assert.equal(await helper.getAuthOrigin(), origin);
+  }
+});
 for (const value of ["http://localhost:3000", "https://localhost", "https://127.0.0.1", "http://example.invalid",
   "javascript:alert(1)", "file:///tmp/test", "https://name:password@example.invalid", "https://example.invalid/path",
   "https://example.invalid?query=1", "https://example.invalid#fragment"]) {
@@ -88,7 +123,7 @@ for (const value of ["http://localhost:3000", "https://localhost", "https://127.
   });
 }
 
-function callback(error = null) {
+function callback(error = null, origin = production) {
   const calls = [];
   const callbackRoute = load("../app/auth/callback/route.ts", {
     "@/lib/supabase/server": { createClient: async () => ({ auth: {
@@ -96,7 +131,7 @@ function callback(error = null) {
       verifyOtp: async (args) => { calls.push(["otp", args]); return { error }; },
     } }) },
   });
-  return { calls, get: (query) => callbackRoute.GET(new Request(`${production}/auth/callback?${query}`)) };
+  return { calls, get: (query) => callbackRoute.GET(new Request(`${origin}/auth/callback?${query}`)) };
 }
 test("PKCE callback exchanges code and never redirects outside request origin", async () => {
   const flow = callback();
@@ -129,8 +164,21 @@ test("failed code and expired OTP do not establish a successful redirect", async
   }
 });
 
+for (const origin of [production, "https://kaiz-deployment-team.vercel.app", "https://kaiz-git-auth-team.vercel.app"]) {
+  test(`callback success, recovery and rejection stay on their initiating origin: ${origin}`, async () => {
+    for (const [query, path] of [["code=test-code&next=/onboarding", "/onboarding"],
+      ["token_hash=test-token&type=recovery&next=//evil.invalid", "/auth/update-password"]]) {
+      const response = await callback(null, origin).get(query);
+      assert.equal(response.headers.get("location"), origin + path);
+      assert.equal(response.headers.get("cache-control"), "no-store");
+    }
+    const rejected = await callback({message: "missing code verifier"}, origin).get("code=test-code");
+    assert.equal(rejected.headers.get("location"), origin + "/auth/login?error=callback");
+  });
+}
+
 class Redirect extends Error { constructor(path) { super("Redirect"); this.path = path; } }
-function actions(overrides = {}) {
+function actions(overrides = {}, origin = production) {
   const calls = [];
   const auth = Object.fromEntries(["signUp", "resend", "resetPasswordForEmail", "signInWithOAuth", "signInWithPassword", "signOut"].map((method) => [method, async (...args) => {
     calls.push({ method, args });
@@ -138,7 +186,7 @@ function actions(overrides = {}) {
   }]));
   const authActions = load("../app/auth/actions.ts", {
     "next/navigation": { redirect: (path) => { throw new Redirect(path); } },
-    "@/lib/supabase/env": { getSiteUrl: () => production },
+    "@/lib/auth/origin": { getAuthOrigin: async () => origin },
     "@/lib/auth": { profileDestination: (profile) => profile?.username ? `/u/${profile.username}` : "/onboarding" },
     "@/lib/supabase/server": { createClient: async () => ({ auth, from: () => ({ select: () => ({ eq: () => ({ maybeSingle: async () => ({ data: { username: "test-user" } }) }) }) }) }) },
   });
@@ -168,6 +216,25 @@ test("Google uses the supported provider and production PKCE callback", async ()
   assert.equal(flow.calls[0].args[0].provider, "google");
   assert.equal(new URL(flow.calls[0].args[0].options.redirectTo).origin, production);
 });
+
+for (const origin of [production, "https://kaiz-deployment-team.vercel.app", "https://kaiz-git-auth-team.vercel.app"]) {
+  test(`signup, resend, OAuth and recovery retain the selected auth origin: ${origin}`, async () => {
+    const flow = actions({}, origin);
+    await flow.module.register({}, form());
+    await flow.module.resendConfirmation({}, form());
+    await flow.module.resetPassword({}, form());
+    await assert.rejects(flow.module.signInWithGoogle(), error => error instanceof Redirect);
+    for (const {method, args} of flow.calls) {
+      const raw = method === "resetPasswordForEmail" ? args[1].redirectTo
+        : method === "signInWithOAuth" ? args[0].options.redirectTo : args[0].options.emailRedirectTo;
+      const url = new URL(raw);
+      assert.equal(url.origin, origin);
+      assert.equal(url.pathname, "/auth/callback");
+      assert.equal(url.searchParams.get("next"), method === "resetPasswordForEmail" ? "/auth/update-password" : "/onboarding");
+    }
+    await assert.rejects(flow.module.login({}, form({next: "/dashboard"})), error => error instanceof Redirect && error.path === "/dashboard");
+  });
+}
 test("login unsafe targets fall back to saved public profile; internal targets are retained", async () => {
   for (const [next, expected] of [["/\\example.invalid", "/u/test-user"], ["//example.invalid", "/u/test-user"], ["/settings/profile", "/settings/profile"]]) {
     await assert.rejects(actions().module.login({}, form({ next })), (error) => error instanceof Redirect && error.path === expected);

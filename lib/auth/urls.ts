@@ -6,9 +6,11 @@ export function resolveSiteOrigin(env: Environment): string {
   const hosted = env.VERCEL_ENV === "production" || env.VERCEL_ENV === "preview"
     || (env.VERCEL === "1" && env.VERCEL_ENV !== "development");
   const deploymentUrl = env.VERCEL_URL ?? env.NEXT_PUBLIC_VERCEL_URL;
-  const value = env.NEXT_PUBLIC_SITE_URL ?? (env.VERCEL_ENV === "preview"
+  // A production-scoped value accidentally inherited by Preview must not send
+  // its PKCE code to a different host, where the verifier cookie cannot exist.
+  const value = env.VERCEL_ENV === "preview"
     ? deploymentUrl
-    : env.VERCEL_PROJECT_PRODUCTION_URL ?? deploymentUrl);
+    : env.NEXT_PUBLIC_SITE_URL ?? env.VERCEL_PROJECT_PRODUCTION_URL ?? deploymentUrl;
 
   if (!value) {
     if (!hosted && env.NODE_ENV !== "production") return "http://localhost:3000";
@@ -28,6 +30,20 @@ export function resolveSiteOrigin(env: Environment): string {
     throw new Error("NEXT_PUBLIC_SITE_URL must be an HTTP(S) origin; hosted authentication requires public HTTPS.");
   }
   return url.origin;
+}
+
+/** Select the initiating Preview host only from exact, server-configured origins. */
+export function resolveAuthOrigin(env: Environment, requestOrigin?: string | null): string {
+  const deployment = resolveSiteOrigin(env);
+  // Never reflect Host / Forwarded headers or arbitrary origins into auth links.
+  // Production retains its canonical origin; localhost retains its explicit port.
+  if (env.VERCEL_ENV !== "preview" || !requestOrigin) return deployment;
+  const allowed = new Set([deployment]);
+  if (env.VERCEL_BRANCH_URL) {
+    allowed.add(resolveSiteOrigin({ ...env, VERCEL_URL: env.VERCEL_BRANCH_URL }));
+  }
+  if (!allowed.has(requestOrigin)) throw new Error("Untrusted authentication request origin.");
+  return requestOrigin;
 }
 
 export function authCallbackUrl(origin: string, next: string): string {
