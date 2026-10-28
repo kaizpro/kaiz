@@ -53,6 +53,9 @@ document metadata are excluded. Original score-column labels are retained.
 Viewer access prevents editing the hosted copy, not copying or redistribution.
 Public readers may download, copy, screenshot or reshare it. Inspect the hosting
 account's public owner/display information and use an appropriate KAIZ account.
+Google states that a shared file's owner name and email are visible; prefer a
+KAIZ-controlled publishing account, not a personal account whose identity must
+remain private. See [Google's file-sharing guidance](https://support.google.com/drive/answer/2494822?hl=en).
 Do not describe this as revocable confidentiality or protection of published names.
 
 ## Security and rollback
