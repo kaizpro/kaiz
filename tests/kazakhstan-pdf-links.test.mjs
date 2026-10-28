@@ -10,9 +10,14 @@ const url='https://drive.google.com/file/d/SYNTHETIC_QA_PDF_FILE_NOT_PUBLISHED/v
 const load=loadTypescript(),{getKazakhstanResultsPdf,getKazakhstanPdfDefinition}=load('lib/results/kazakhstan-pdf.ts');
 const {OfficialResultSource}=load('components/official-result-source.tsx');
 
-test('PDF slots are edition-scoped, optional and fail closed without invented links',()=>{
- for(const slug of ['ai-olymp-kazakhstan-2025','ai-olymp-kazakhstan-2026']){
-  for(const empty of [undefined,'','   '])assert.equal(getKazakhstanResultsPdf(slug,empty),null);
+test('verified public defaults are edition-scoped and explicit empty overrides disable links',()=>{
+ const published={
+  'ai-olymp-kazakhstan-2025':'https://drive.google.com/file/d/16wh5iwhsvbkHTS5viTS1JpJ-yB7vfP5C/view',
+  'ai-olymp-kazakhstan-2026':'https://drive.google.com/file/d/1-qrntPtloG19JLBVGmhwPZJqzqvkPqU6/view',
+ };
+ for(const [slug,href] of Object.entries(published)){
+  assert.equal(getKazakhstanResultsPdf(slug).url,href);
+  for(const empty of ['','   '])assert.equal(getKazakhstanResultsPdf(slug,empty),null);
  }
  for(const slug of ['__proto__','constructor','ioai-2025','ai-olymp-kazakhstan-2027']){
   assert.equal(getKazakhstanPdfDefinition(slug),undefined);assert.equal(getKazakhstanResultsPdf(slug,url),null);
@@ -41,10 +46,10 @@ test('private workbooks, secrets, active URLs and arbitrary destinations never r
 test('premium Results UI is honest while slots are empty and labels PDF exports accurately',()=>{
  for(const [year,count] of [['2025','38'],['2026','39']]){
   const slug='ai-olymp-kazakhstan-'+year;
-  const empty=renderToStaticMarkup(React.createElement(OfficialResultSource,{slug}));
+  const empty=renderToStaticMarkup(React.createElement(OfficialResultSource,{slug,resultsPdf:getKazakhstanResultsPdf(slug,'')}));
   assert.match(empty,/Results PDF awaiting publication/);assert.match(empty,new RegExp(count+' recorded'));
   assert.doesNotMatch(empty,/href=|docs\.google\.com|created_by|updated_by/);
-  const html=renderToStaticMarkup(React.createElement(OfficialResultSource,{slug,resultsPdf:getKazakhstanResultsPdf(slug,url)}));
+  const html=renderToStaticMarkup(React.createElement(OfficialResultSource,{slug,resultsPdf:getKazakhstanResultsPdf(slug)}));
   assert.match(html,/Organizer-provided results — KAIZ PDF copy/);assert.match(html,/noopener noreferrer/);assert.match(html,/opens in a new tab/);
   assert.match(html,/hosted separately on Google Drive/);assert.doesNotMatch(html,/awaiting publication|Official results at the source/);
  }

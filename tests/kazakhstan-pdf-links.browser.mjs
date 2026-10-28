@@ -1,4 +1,4 @@
-// Component/browser QA only. No actual PDF URLs, uploads, DB or Auth sessions.
+// Component/browser QA only. External navigation is blocked; no uploads/DB/Auth.
 import assert from 'node:assert/strict';
 import {createServer} from 'node:http';
 import {readFileSync,readdirSync,mkdirSync} from 'node:fs';
@@ -23,20 +23,21 @@ try{
   const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));await page.goto(origin);await page.getByRole('heading',{name:'Local Kazakhstan PDF link QA'}).waitFor();
   await page.evaluate(t=>document.documentElement.classList.toggle('dark',t==='dark'),theme);
   await page.getByText('Results',{exact:true}).focus();await page.keyboard.press('Enter');
-  for(const year of ['2025','2026'])for(const mode of ['missing','ready','unsafe']){
+  for(const year of ['2025','2026'])for(const mode of ['default','disabled','ready','unsafe']){
    await page.getByLabel('Edition',{exact:true}).selectOption(year);await page.getByLabel('Configuration',{exact:true}).selectOption(mode);
    await page.getByText(year==='2025'?'38 recorded / 40 announced finalists. No medals inferred.':'39 recorded / 40 qualifiers. Confirmed medals: 3 Gold, 5 Silver, 15 Bronze.',{exact:true}).waitFor();
    const link=page.getByRole('link',{name:/Organizer-provided results — KAIZ PDF copy/});
-   assert.equal(await link.count(),mode==='ready'?1:0);
-   if(mode==='ready'){
-    assert.equal(await link.getAttribute('href'),'https://drive.google.com/file/d/SYNTHETIC_QA_PDF_FILE_NOT_PUBLISHED/view');
+   assert.equal(await link.count(),['default','ready'].includes(mode)?1:0);
+   if(['default','ready'].includes(mode)){
+    const expected=mode==='ready'?'https://drive.google.com/file/d/SYNTHETIC_QA_PDF_FILE_NOT_PUBLISHED/view':year==='2025'?'https://drive.google.com/file/d/16wh5iwhsvbkHTS5viTS1JpJ-yB7vfP5C/view':'https://drive.google.com/file/d/1-qrntPtloG19JLBVGmhwPZJqzqvkPqU6/view';
+    assert.equal(await link.getAttribute('href'),expected);
     assert.equal(await link.getAttribute('target'),'_blank');assert.match(await link.getAttribute('rel'),/noopener/);await link.focus();assert.equal(await link.evaluate(e=>e===document.activeElement),true);
    }else await page.getByText('Results PDF awaiting publication.',{exact:true}).waitFor();
    assert.equal(await page.locator('a[href*="docs.google.com"]').count(),0);
    await page.getByText('No published KAIZ standings yet. Use the official source when available.',{exact:true}).waitFor();
    await page.evaluate(()=>document.documentElement.style.fontSize='200%');assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));views++;
   }
-  await page.getByLabel('Configuration',{exact:true}).selectOption('ready');await page.screenshot({path:`work/kazakhstan-pdf-browser/${width}-${theme}.png`,fullPage:true});await context.close();
+  await page.getByLabel('Configuration',{exact:true}).selectOption('default');await page.screenshot({path:`work/kazakhstan-pdf-browser/${width}-${theme}.png`,fullPage:true});await context.close();
  }
- assert.deepEqual(errors,[]);console.log(JSON.stringify({status:'PASS',views,keyboard:true,textZoom:'200%',reducedMotion:true,themes:['light','dark'],syntheticConfigurationOnly:true,actualAnonymousHostedPdfAccess:'PENDING_REAL_URLS',productionWrites:0}));
+ assert.deepEqual(errors,[]);console.log(JSON.stringify({status:'PASS',views,keyboard:true,textZoom:'200%',reducedMotion:true,themes:['light','dark'],reviewedDefaultsAndSyntheticOverrides:true,actualAnonymousHostedPdfAccess:'NOT_PERFORMED_BY_COMPONENT_TEST',productionWrites:0}));
 }finally{await browser.close();await new Promise(done=>server.close(done));}
