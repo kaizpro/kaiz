@@ -18,6 +18,7 @@ import { PreparationLinks } from "@/components/learning/preparation-links";
 import { getCurrentUser } from "@/lib/auth";
 import { getCompetition, listCompetitionEditions } from "@/lib/data/competitions";
 import { getPublishedCompetitionResults } from "@/lib/data/competition-results";
+import { getConfiguredKazakhstanResultsPdf } from "@/lib/data/kazakhstan-results-pdf";
 import { listDiscussionPosts } from "@/lib/data/discussions";
 import { listCompetitionProblems } from "@/lib/data/problems";
 import { formatCompetitionFormat, formatCompetitionLocation, formatDate, formatDateRange, isSameDate } from "@/lib/utils";
@@ -60,7 +61,7 @@ export default async function CompetitionDetail({ params }: { params: Promise<{ 
         {competition.eligibility && <section className="border-t py-8"><div className="flex items-center gap-2"><ShieldCheck className="size-5 text-primary"/><h2 className="text-lg font-bold">Eligibility</h2></div><p className="mt-3 max-w-4xl leading-7 text-muted-foreground">{competition.eligibility}</p></section>}
         {!!competition.tags.length && <section className="border-t py-6"><p className="micro-label text-muted-foreground">Tags</p><div className="mt-3 flex flex-wrap gap-2">{competition.tags.map((tag) => <Badge key={tag}>{tag}</Badge>)}</div></section>}
         {presentation.sourceNotes && <p className="border-t py-6 text-sm leading-6 text-muted-foreground">{presentation.sourceNotes}</p>}
-        </>} results={<><OfficialResultSource slug={competition.slug}/>{resultSets.length > 0 ? <CompetitionLeaderboard resultSets={resultSets} expectedStages={presentation.expectedStages}/> : <p className="border-t py-5 text-sm text-muted-foreground">No published KAIZ standings yet. Use the official source when available.</p>}</>} tasks={<><CompetitionTaskSources slug={slug}/>{(problems.length > 0 || !guide) && <CompetitionProblems problems={problems} tasksUrl={presentation.tasksUrl}/>}</>}/>
+        </>} results={<><OfficialResultSource slug={competition.slug} resultsPdf={getConfiguredKazakhstanResultsPdf(competition.slug)}/>{resultSets.length > 0 ? <CompetitionLeaderboard resultSets={resultSets} expectedStages={presentation.expectedStages}/> : <p className="border-t py-5 text-sm text-muted-foreground">No published KAIZ standings yet. Use the official source when available.</p>}</>} tasks={<><CompetitionTaskSources slug={slug}/>{(problems.length > 0 || !guide) && <CompetitionProblems problems={problems} tasksUrl={presentation.tasksUrl}/>}</>}/>
         <PreparationLinks category={competition.category}/>
         <CompetitionDiscussions competitionId={competition.id} posts={discussionResult.posts} signedIn={Boolean(user)}/>
         <details className={product.details}><summary>Participant directory</summary><UnavailablePanel title="Participant directory unavailable" description="Registration data will appear here."/></details>
