@@ -26,7 +26,7 @@ try{
   for(const year of ['2025','2026'])for(const mode of ['missing','ready','unsafe']){
    await page.getByLabel('Edition',{exact:true}).selectOption(year);await page.getByLabel('Configuration',{exact:true}).selectOption(mode);
    await page.getByText(year==='2025'?'38 recorded / 40 announced finalists. No medals inferred.':'39 recorded / 40 qualifiers. Confirmed medals: 3 Gold, 5 Silver, 15 Bronze.',{exact:true}).waitFor();
-   const link=page.getByRole('link',{name:/View Results PDF/});
+   const link=page.getByRole('link',{name:/Organizer-provided results — KAIZ PDF copy/});
    assert.equal(await link.count(),mode==='ready'?1:0);
    if(mode==='ready'){
     assert.equal(await link.getAttribute('href'),'https://drive.google.com/file/d/SYNTHETIC_QA_PDF_FILE_NOT_PUBLISHED/view');

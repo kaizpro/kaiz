@@ -5,6 +5,10 @@ standings, or database rows. Both Supabase result sets must stay unpublished.
 There is no PDF, named participant data, original workbook, or private source URL
 in this PR. The exports are prepared privately outside Git for owner review.
 
+The Results link is labelled **Organizer-provided results — KAIZ PDF copy**.
+The Kazakhstan source heading and attribution explicitly identify a KAIZ copy
+hosted on Google Drive, not a file hosted on the organizer's website.
+
 ## Approved export scope
 
 | Edition | Coverage | Included fields | Awards |

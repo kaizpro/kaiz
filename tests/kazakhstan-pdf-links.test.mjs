@@ -45,11 +45,11 @@ test('premium Results UI is honest while slots are empty and labels PDF exports 
   assert.match(empty,/Results PDF awaiting publication/);assert.match(empty,new RegExp(count+' recorded'));
   assert.doesNotMatch(empty,/href=|docs\.google\.com|created_by|updated_by/);
   const html=renderToStaticMarkup(React.createElement(OfficialResultSource,{slug,resultsPdf:getKazakhstanResultsPdf(slug,url)}));
-  assert.match(html,/View Results PDF/);assert.match(html,/noopener noreferrer/);assert.match(html,/opens in a new tab/);
-  assert.match(html,/KAIZ export of organizer-provided standings/);assert.doesNotMatch(html,/awaiting publication/);
+  assert.match(html,/Organizer-provided results — KAIZ PDF copy/);assert.match(html,/noopener noreferrer/);assert.match(html,/opens in a new tab/);
+  assert.match(html,/hosted separately on Google Drive/);assert.doesNotMatch(html,/awaiting publication|Official results at the source/);
  }
  const other=renderToStaticMarkup(React.createElement(OfficialResultSource,{slug:'ioai-2025'}));
- assert.match(other,/View Official Results/);assert.doesNotMatch(other,/Results PDF/);
+ assert.match(other,/View Official Results/);assert.match(other,/Official results at the source/);assert.doesNotMatch(other,/KAIZ PDF copy/);
 });
 
 test('configuration is server-only; result reads still require publication and no PDF data is committed',()=>{
